@@ -16,8 +16,8 @@
             <div class="col-lg-3">
               <div class="logo-cat-wrap">
                 <div class="logo-part">
-                  <a href="index.html">
-                    <img src="src/assets/images/logo.png" alt="Logo" />
+                  <a id="ico" href="index.html">
+                    <img id="" src="src/assets/images/logo.png" alt="Logo" />
                   </a>
                 </div>
               </div>
