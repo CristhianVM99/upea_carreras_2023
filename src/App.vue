@@ -1,6 +1,5 @@
 <template>
   <router-view></router-view>
-  hola a todos
 </template>
 
 <script>
