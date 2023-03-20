@@ -10,7 +10,6 @@ import FooterCompVue from '../components/FooterComp.vue'
 import HeaderCompVue from '../components/HeaderComp.vue'
 import { mapState } from 'vuex'
 import Services from '@/services/Services'
-import axios from 'axios'
 
 export default {
   name: 'AppLayout',
@@ -105,7 +104,7 @@ export default {
         /*this.setImages(response.data.Descripcion.portada);*/
       } catch (e) {
         console.log(e)
-        if (error.code == 'ERR_NETWORK') {
+        if (e.code == 'ERR_NETWORK') {
           this.$router.push('/error_network')
         }
       }

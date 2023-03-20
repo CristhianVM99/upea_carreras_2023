@@ -9,6 +9,35 @@
   <div class="sc-header-section transparent-header">
     <!--Header Start-->
     <header id="sc-header" class="sc-header">
+      <!-- Topbar Area Start -->
+      <div class="topbar-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-7">
+              <ul class="topbar-contact">
+                <li>
+                  <i class="flaticon flaticon-call"></i>
+                  <a href="tel:+(111)256352">Call:  +501  {{ Institucion.institucion_telefono1 }}</a>
+                </li>
+                <li>
+                  <i class="flaticon flaticon-mail"></i>
+                  <a href="mailto:support@rstheme.com">{{ Institucion.institucion_correo1 }}</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-5 text-end">
+              <ul class="topbar-right">
+                <li class="login-register">
+                  <i class="fa fa-sign-in"></i>
+                  <a href="#">Login</a> / <a href="register.html">Register</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Topbar Area End -->
+
       <!-- Menu Start -->
       <div class="menu-area menu-sticky">
         <div class="container">
@@ -17,11 +46,12 @@
               <div class="logo-cat-wrap">
                 <div class="logo-part">
                   <a id="ico" href="#">
-                    <img id="logo_carrera" 
-                    :src=" url_api+'/InstitucionUpea/'+Institucion.institucion_logo"
-                    alt="Img" 
-                    width="70"
-                    height="70"
+                    <img
+                      id="logo_carrera"
+                      :src="url_api + '/InstitucionUpea/' + Institucion.institucion_logo"
+                      alt="Img"
+                      width="70"
+                      height="70"
                     />
                   </a>
                 </div>
@@ -40,10 +70,12 @@
                       <li class="menu-item-has-children current-menu-item">
                         <router-link to="/">Inicio</router-link>
                         <ul class="sub-menu">
-                          <li class="current-menu-item"><router-link to="/">Sobre Nosotros</router-link></li>
+                          <li class="current-menu-item">
+                            <router-link to="/">Sobre Nosotros</router-link>
+                          </li>
                         </ul>
                       </li>
-                      <li><a href="about.html">About</a></li>
+                      <li><a href="about.html">Convocatorias</a></li>
                       <li class="menu-item-has-children">
                         <a href="#">Courses</a>
                         <ul class="sub-menu">
@@ -56,7 +88,7 @@
                       </li>
 
                       <li class="menu-item-has-children">
-                        <a href="#">Pages</a>
+                        <a href="#">Cursos</a>
                         <ul class="sub-menu">
                           <li>
                             <a href="#">Team</a>
@@ -88,14 +120,14 @@
                       </li>
 
                       <li class="menu-item-has-children">
-                        <a href="#">Blog</a>
+                        <a href="#">Mas</a>
                         <ul class="sub-menu">
                           <li><a href="blog.html">Blog</a></li>
                           <li><a href="blog2.html">Blog Sidebar</a></li>
                           <li><a href="blog-single.html">Blog Details</a></li>
                         </ul>
                       </li>
-                      <li><a href="contact.html">Contact</a></li>
+                      <li><a href="contact.html">Links</a></li>
                     </ul>
                     <!-- //.nav-menu -->
                   </nav>
@@ -184,75 +216,75 @@
   <!--Full width header End-->
 </template>
 <script>
-import { mapState } from 'vuex';
+import { mapState } from 'vuex'
 
 export default {
   name: 'HeaderComp',
   data() {
     return {
       sopen: false,
-      LInks:[],
+      LInks: [],
       m_inicio: false,
       m_conv: false,
       m_cur: false,
       m_mas: false,
-      m_link: false 
-    };
+      m_link: false
+    }
   },
   computed: {
-    ...mapState(["url_api", "MenuConv", "MenuCur", "Institucion", "getter"]),
+    ...mapState(['url_api', 'MenuConv', 'MenuCur', 'Institucion', 'getter'])
   },
   methods: {
     click_m() {
-      this.$store.commit("clickLink");
-      this.openMenu();
+      this.$store.commit('clickLink')
+      this.openMenu()
     },
     showSubMenu(id) {
       switch (id) {
-        case "m_inicio":
-          this.m_inicio = !this.m_inicio;
-          this.m_conv = false;
-          this.m_cur = false;
-          this.m_mas = false;
-          this.m_link = false;
-          break;
-        case "m_conv":
-          this.m_inicio = false;
-          this.m_conv = !this.m_conv;
-          this.m_cur = false;
-          this.m_mas = false;
-          this.m_link = false;
-          break;
-        case "m_cur":
-          this.m_inicio = false;
-          this.m_conv = false;
-          this.m_cur = !this.m_cur;
-          this.m_mas = false;
-          this.m_link = false;
-          break;
-        case "m_mas":
-          this.m_inicio = false;
-          this.m_conv = false;
-          this.m_cur = false;
-          this.m_mas = !this.m_mas;
-          this.m_link = false;
-          break;
-        case "m_link":
-          this.m_inicio = false;
-          this.m_conv = false;
-          this.m_cur = false;
-          this.m_mas = false;
-          this.m_link = !this.m_link;
-          break;
+        case 'm_inicio':
+          this.m_inicio = !this.m_inicio
+          this.m_conv = false
+          this.m_cur = false
+          this.m_mas = false
+          this.m_link = false
+          break
+        case 'm_conv':
+          this.m_inicio = false
+          this.m_conv = !this.m_conv
+          this.m_cur = false
+          this.m_mas = false
+          this.m_link = false
+          break
+        case 'm_cur':
+          this.m_inicio = false
+          this.m_conv = false
+          this.m_cur = !this.m_cur
+          this.m_mas = false
+          this.m_link = false
+          break
+        case 'm_mas':
+          this.m_inicio = false
+          this.m_conv = false
+          this.m_cur = false
+          this.m_mas = !this.m_mas
+          this.m_link = false
+          break
+        case 'm_link':
+          this.m_inicio = false
+          this.m_conv = false
+          this.m_cur = false
+          this.m_mas = false
+          this.m_link = !this.m_link
+          break
 
         default:
-          console.log("");
-          break;
+          console.log('')
+          break
       }
     },
     openMenu() {
-      this.sopen = !this.sopen;
-    },
+      this.sopen = !this.sopen
+    }
     /*async getLinks() {
       try {
         let res = await this.axios.get(
@@ -272,6 +304,6 @@ export default {
       this.getLinks();
       this.$store.state.getter = false;
     }*/
-  },
+  }
 }
 </script>

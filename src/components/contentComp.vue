@@ -11,7 +11,7 @@
 
                                 <h1 class="banner-title mb-15 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2500ms">World's Most Popular <br>Develop Skill Platform</h1>
                                 <h5 class="banner-des mb-35 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="3000ms">
-                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                    {{ Institucion.institucion_sobre_ins }}
                                 </h5>
                                 <form class="newsletter-form mt-40">
                                     <input type="text" name="email" placeholder="search course...">
