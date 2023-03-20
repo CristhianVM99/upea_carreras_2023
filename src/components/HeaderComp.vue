@@ -42,7 +42,6 @@
                         </ul>
                       </li>
                       <li><a href="about.html">About</a></li>
-
                       <li class="menu-item-has-children">
                         <a href="#">Courses</a>
                         <ul class="sub-menu">

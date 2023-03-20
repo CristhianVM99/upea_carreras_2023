@@ -12,7 +12,8 @@
                 data-wow-delay="300ms"
                 data-wow-duration="2000ms"
               >
-                Digital Education <span class="heading-border-line"></span>
+                Digital Educatio+n {{ Institucion.institucion_nombre }}
+                <span class="heading-border-line"></span>
               </div>
 
               <h1
@@ -64,7 +65,7 @@
             <div class="banner-img hidden-sm">
               <img
                 class="wow fadeInRight"
-                src="assets/images/banner/banner-image3.png"
+                src="src/assets/images/banner/banner-image3.png"
                 alt="Banner Image"
                 data-wow-delay="300ms"
                 data-wow-duration="2000ms"
@@ -75,42 +76,42 @@
               data-wow-delay="300ms"
               data-wow-duration="2000ms"
             >
-              <img src="assets/images/banner/view-students.png" alt="Banner Image" />
+              <img src="src/assets/images/banner/view-students.png" alt="Banner Image" />
             </div>
             <div class="animate-circle"></div>
           </div>
         </div>
       </div>
       <div class="animated-arrow-1 animated-arrow left-right-new">
-        <img src="assets/images/banner/arrow-1.png" alt="" />
+        <img src="src/assets/images/banner/arrow-1.png" alt="" />
       </div>
       <div class="animated-arrow-2 animated-arrow up-down-new">
-        <img src="assets/images/banner/arrow-2.png" alt="" />
+        <img src="src/assets/images/banner/arrow-2.png" alt="" />
       </div>
 
       <div class="animated-arrow-3 animated-arrow up-down-new">
-        <img src="assets/images/banner/arrow-3.png" alt="" />
+        <img src="src/assets/images/banner/arrow-3.png" alt="" />
       </div>
       <div class="animated-arrow-4 animated-arrow left-right-new">
-        <img src="assets/images/banner/arrow-4.png" alt="" />
+        <img src="src/assets/images/banner/arrow-4.png" alt="" />
       </div>
       <div class="animated-arrow-5 animated-arrow up-down-new">
-        <img src="assets/images/banner/arrow-5.png" alt="" />
+        <img src="src/assets/images/banner/arrow-5.png" alt="" />
       </div>
       <div class="animated-arrow-7 animated-arrow up-down-new">
-        <img src="assets/images/banner/arrow-6.png" alt="" />
+        <img src="src/assets/images/banner/arrow-6.png" alt="" />
       </div>
       <div class="animated-arrow-8 animated-arrow up-down-new">
-        <img src="assets/images/banner/arrow-7.png" alt="" />
+        <img src="src/assets/images/banner/arrow-7.png" alt="" />
       </div>
       <div class="animated-arrow-9 animated-arrow up-down-new">
-        <img src="assets/images/banner/arrow-8.png" alt="" />
+        <img src="src/assets/images/banner/arrow-8.png" alt="" />
       </div>
       <div class="animated-arrow-10 animated-arrow up-down-new">
-        <img src="assets/images/banner/arrow-9.png" alt="" />
+        <img src="src/assets/images/banner/arrow-9.png" alt="" />
       </div>
       <div class="animated-arrow-11 animated-arrow up-down-new">
-        <img src="assets/images/banner/arrow-9.png" alt="" />
+        <img src="src/assets/images/banner/arrow-9.png" alt="" />
       </div>
     </div>
     <!-- Banner Section End -->
@@ -121,7 +122,7 @@
         <div class="row align-items-center">
           <div class="col-lg-5">
             <div class="img-part position-relative">
-              <img class="" src="assets/images/about/about3.png" alt="About Image" />
+              <img class="" src="src/assets/images/about/about3.png" alt="About Image" />
               <a class="popup-videos-button" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
                 <i class="fa fa-play"></i>
               </a>
@@ -151,7 +152,7 @@
             </div>
           </div>
         </div>
-        <img class="up-down-new" src="assets/images/about/shap_image.png" alt="" />
+        <img class="up-down-new" src="src/assets/images/about/shap_image.png" alt="" />
       </div>
     </div>
     <!-- About Section End -->
@@ -183,7 +184,7 @@
             <div class="courses-grid image-radius mb-30">
               <div class="img-part">
                 <a href="course-single.html"
-                  ><img src="assets/images/courses/lg1.jpg" alt="" width="255px" height="255px"
+                  ><img src="src/assets/images/courses/lg1.jpg" alt="" width="255px" height="255px"
                 /></a>
                 <div class="course-price">
                   <span class="price">Free</span>
@@ -194,7 +195,7 @@
                 <div class="des">Excepteur sint occaecat cupidatat non proident, sunt in culpa</div>
                 <ul class="meta-part">
                   <li class="user">
-                    <img src="assets/images/courses/user/1.jpg" alt="" />
+                    <img src="src/assets/images/courses/user/1.jpg" alt="" />
                     Michael Joe
                   </li>
                   <li class="user">
@@ -225,7 +226,9 @@
           <div class="col-lg-4 col-md-6 grid-item grid-item filter4">
             <div class="courses-grid image-radius mb-30">
               <div class="img-part">
-                <a href="course-single.html"><img src="assets/images/courses/lg2.jpg" alt="" /></a>
+                <a href="course-single.html"
+                  ><img src="src/assets/images/courses/lg2.jpg" alt=""
+                /></a>
                 <div class="course-price">
                   <span class="price">$35</span>
                 </div>
@@ -235,7 +238,7 @@
                 <div class="des">Excepteur sint occaecat cupidatat non proident, sunt in culpa</div>
                 <ul class="meta-part">
                   <li class="user">
-                    <img src="assets/images/courses/user/3.jpg" alt="" />
+                    <img src="src/assets/images/courses/user/3.jpg" alt="" />
                     Bolt Jari
                   </li>
                   <li class="user">
@@ -266,7 +269,9 @@
           <div class="col-lg-4 col-md-6 grid-item filter3 filter2 filter3">
             <div class="courses-grid image-radius mb-30">
               <div class="img-part">
-                <a href="course-single.html"><img src="assets/images/courses/lg3.jpg" alt="" /></a>
+                <a href="course-single.html"
+                  ><img src="src/assets/images/courses/lg3.jpg" alt=""
+                /></a>
                 <div class="course-price">
                   <span class="price">$45</span>
                 </div>
@@ -276,7 +281,7 @@
                 <div class="des">Excepteur sint occaecat cupidatat non proident, sunt in culpa</div>
                 <ul class="meta-part">
                   <li class="user">
-                    <img src="assets/images/courses/user/3.jpg" alt="" />
+                    <img src="src/assets/images/courses/user/3.jpg" alt="" />
                     Torio Jokar
                   </li>
                   <li class="user">
@@ -364,7 +369,7 @@
           </div>
           <div class="col-lg-6">
             <div class="img-part">
-              <img class="" src="assets/images/about/skill-image.png" alt="About Image" />
+              <img class="" src="src/assets/images/about/skill-image.png" alt="About Image" />
             </div>
           </div>
         </div>
@@ -397,20 +402,20 @@
       </div>
 
       <div class="animated-arrow-1 animated-arrow left-right-new">
-        <img src="assets/images/arrow-1.png" alt="" />
+        <img src="src/assets/images/arrow-1.png" alt="" />
       </div>
       <div class="animated-arrow-2 animated-arrow up-down-new">
-        <img src="assets/images/arrow-2.png" alt="" />
+        <img src="src/assets/images/arrow-2.png" alt="" />
       </div>
 
       <div class="animated-arrow-3 animated-arrow up-down-new">
-        <img src="assets/images/arrow-3.png" alt="" />
+        <img src="src/assets/images/arrow-3.png" alt="" />
       </div>
       <div class="animated-arrow-4 animated-arrow left-right-new">
-        <img src="assets/images/arrow-3.png" alt="" />
+        <img src="src/assets/images/arrow-3.png" alt="" />
       </div>
       <div class="animated-arrow-6 animated-arrow left-right-new">
-        <img src="assets/images/arrow-7.png" alt="" />
+        <img src="src/assets/images/arrow-7.png" alt="" />
       </div>
     </div>
     <!-- CTA Section End -->
@@ -421,7 +426,7 @@
         <div class="row align-items-center">
           <div class="col-lg-5 md-mb-45">
             <div class="img-part position-relative">
-              <img class="" src="assets/images/about/event.png" alt="About Image" />
+              <img class="" src="src/assets/images/about/event.png" alt="About Image" />
             </div>
           </div>
           <div class="col-lg-7 pl-85 md-pl-15">
@@ -458,22 +463,30 @@
             <div class="rotate--circle">
               <ul class="circle--rotate" id="circle--rotate">
                 <li class="block">
-                  <div class="sl-icon"><img src="assets/images/testimonial/4.png" alt="" /></div>
+                  <div class="sl-icon">
+                    <img src="src/assets/images/testimonial/4.png" alt="" />
+                  </div>
                 </li>
                 <li class="block">
-                  <div class="sl-icon"><img src="assets/images/testimonial/5.png" alt="" /></div>
+                  <div class="sl-icon">
+                    <img src="src/assets/images/testimonial/5.png" alt="" />
+                  </div>
                 </li>
                 <li class="block">
-                  <div class="sl-icon"><img src="assets/images/testimonial/6.png" alt="" /></div>
+                  <div class="sl-icon">
+                    <img src="src/assets/images/testimonial/6.png" alt="" />
+                  </div>
                 </li>
                 <li class="block">
-                  <div class="sl-icon"><img src="assets/images/testimonial/7.png" alt="" /></div>
+                  <div class="sl-icon">
+                    <img src="src/assets/images/testimonial/7.png" alt="" />
+                  </div>
                 </li>
               </ul>
               <div class="animate-wrapper">
                 <div class="animate">
                   <div class="animate-img">
-                    <div class="animate-img__in" data-image="assets/images/testimonial/4.png">
+                    <div class="animate-img__in" data-image="src/assets/images/testimonial/4.png">
                       <div class="animate-more">
                         <div class="animate-content">
                           <div class="icon-part">
@@ -501,7 +514,7 @@
                 </div>
                 <div class="animate">
                   <div class="animate-img">
-                    <div class="animate-img__in" data-image="assets/images/testimonial/5.png">
+                    <div class="animate-img__in" data-image="src/assets/images/testimonial/5.png">
                       <div class="animate-more">
                         <div class="animate-content">
                           <div class="icon-part">
@@ -529,7 +542,7 @@
                 </div>
                 <div class="animate">
                   <div class="animate-img">
-                    <div class="animate-img__in" data-image="assets/images/testimonial/6.png">
+                    <div class="animate-img__in" data-image="src/assets/images/testimonial/6.png">
                       <div class="animate-more">
                         <div class="animate-content">
                           <div class="icon-part">
@@ -557,7 +570,7 @@
                 </div>
                 <div class="animate">
                   <div class="animate-img">
-                    <div class="animate-img__in" data-image="assets/images/testimonial/7.png">
+                    <div class="animate-img__in" data-image="src/assets/images/testimonial/7.png">
                       <div class="animate-more">
                         <div class="animate-content">
                           <div class="icon-part">
@@ -592,20 +605,20 @@
         </div>
       </div>
       <div class="animated-arrow-1 animated-arrow left-right-new">
-        <img src="assets/images/arrow-1.png" alt="" />
+        <img src="src/assets/images/arrow-1.png" alt="" />
       </div>
       <div class="animated-arrow-2 animated-arrow up-down-new">
-        <img src="assets/images/arrow-2.png" alt="" />
+        <img src="src/assets/images/arrow-2.png" alt="" />
       </div>
 
       <div class="animated-arrow-3 animated-arrow up-down-new">
-        <img src="assets/images/arrow-3.png" alt="" />
+        <img src="src/assets/images/arrow-3.png" alt="" />
       </div>
       <div class="animated-arrow-4 animated-arrow left-right-new">
-        <img src="assets/images/arrow-3.png" alt="" />
+        <img src="src/assets/images/arrow-3.png" alt="" />
       </div>
       <div class="animated-arrow-6 animated-arrow left-right-new">
-        <img src="assets/images/arrow-7.png" alt="" />
+        <img src="src/assets/images/arrow-7.png" alt="" />
       </div>
     </div>
     <!-- Testimonial Section End -->
@@ -645,7 +658,7 @@
         >
           <div class="blog-item">
             <div class="image-part">
-              <img src="assets/images/blog/1.jpg" alt="" />
+              <img src="src/assets/images/blog/1.jpg" alt="" />
             </div>
             <div class="blog-content">
               <ul class="blog-meta">
@@ -666,7 +679,7 @@
 
           <div class="blog-item">
             <div class="image-part">
-              <img src="assets/images/blog/2.jpg" alt="" />
+              <img src="src/assets/images/blog/2.jpg" alt="" />
             </div>
             <div class="blog-content">
               <ul class="blog-meta">
@@ -687,7 +700,7 @@
 
           <div class="blog-item">
             <div class="image-part">
-              <img src="assets/images/blog/3.jpg" alt="" />
+              <img src="src/assets/images/blog/3.jpg" alt="" />
             </div>
             <div class="blog-content">
               <ul class="blog-meta">
@@ -708,7 +721,7 @@
 
           <div class="blog-item">
             <div class="image-part">
-              <img src="assets/images/blog/4.jpg" alt="" />
+              <img src="src/assets/images/blog/4.jpg" alt="" />
             </div>
             <div class="blog-content">
               <ul class="blog-meta">
@@ -736,6 +749,7 @@
 <script>
 import { mapState } from 'vuex'
 import Services from '@/services/Services'
+import { ssrContextKey } from 'vue'
 
 export default {
   name: 'HomeView',
@@ -763,25 +777,191 @@ export default {
     }
   },
   computed: {
-    ...mapState([
-      'url_api',
-      'Institucion',
-      'MenuConvocatorias', 
-      'MenuCursos', 
-      'Links'
-    ]),
+    ...mapState(["url_api", "Institucion", "MenuConv", "MenuCur", "Links"]),
   },
-  components:{
-
-  },
+  components: {},
   methods: {
-    async getConvocatoriasAll(){
-        try {
-            const response = await Services.getConvocatoriasAll()
-        } catch (e) {
-            console.log(e)
+    async getConvocatoriasAll() {
+      try {
+        const response = await Services.getConvocatoriasAll()
+        this.Conv = response.data
+        if(response != null ){
+          this.Conv.forEach((conv) => {
+          if (
+            conv.tipo_conv_comun.tipo_conv_comun_titulo == 'CONVOCATORIAS' &&
+            conv.con_estado == '1'
+          ) {
+            if (Object.keys(this.latestConv).length == 0) {
+              this.latestConv = conv
+            }
+          } else {
+            if (
+              conv.tipo_conv_comun.tipo_conv_comun_titulo == 'COMUNICADOS' &&
+              conv.con_estado == '1'
+            ) {
+              if (Object.keys(this.latestComun).length == 0) {
+                this.latestComun = conv
+              }
+            } else {
+              if (
+                conv.tipo_conv_comun.tipo_conv_comun_titulo == 'AVISOS' &&
+                conv.con_estado == '1'
+              ) {
+                if (Object.keys(this.latestAv).length == 0) {
+                  this.latestAv = conv
+                }
+              }
+            }
+          }
+        })
         }
+        this.pager = this.Institucion.autoridad.length / this.NUM_RESULTS        
+        if (this.pager - Math.trunc(this.pager) > 0) {
+          this.pager = Math.trunc(this.pager) + 1
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async getCursosAll() {
+      try {
+        const response = await Services.getCursosAll()
+        this.Cur = response.data
+        this.Cur.forEach((cur) => {
+          if (cur.tipo_curso_otro.tipo_conv_curso_nombre == 'CURSOS' && cur.det_estado == '1') {
+            if (Object.keys(this.latestCur).length == 0) {
+              this.latestCur = cur
+            }
+          } else {
+            if (
+              cur.tipo_curso_otro.tipo_conv_curso_nombre == 'SEMINARIOS' &&
+              cur.det_estado == '1'
+            ) {
+              if (Object.keys(this.latestSem).length == 0) {
+                this.latestSem = cur
+              }
+            }
+          }
+        })
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async getServiciosAll() {
+      try {
+        const response = await Services.getServiciosAll()
+        this.Serv = response.data
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async getOfertasAll() {
+      try {
+        const response = await Services.getOfertasAll()
+        this.Ofer = response.data
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async getPublicaciones() {
+      try {
+        const response = await Services.getPublicaciones()
+        this.Publi = response.data
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async getGacetaAll() {
+      try {
+        const response = await Services.getGacetaAll()
+        this.Gac = response.data
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async getEventos() {
+      try {
+        const response = await Services.getEventos()
+        this.Event = response.data
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async getVideos() {
+      try {
+        const response = await Services.getVideos()
+        this.Vid = response.data
+        //this.$store.commit("loanding")
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async setImage(id, img) {
+      try {
+        await document
+          .querySelector('.' + id)
+          .setAttribute('style', 'background-image: url("' + img + '");')
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    contarConv(tipo) {
+      if (tipo && this.Conv) {
+        let count = 0
+        this.Conv.forEach((conv) => {
+          if (conv.tipo_conv_comun.tipo_conv_comun_titulo == tipo) {
+            count++
+          }
+        })
+        return count
+      }
+    },
+    contarCur(tipo) {
+      if (tipo && this.Cur) {
+        let count = 0
+        this.Cur.forEach((cur) => {
+          if (cur.tipo_curso_otro.tipo_conv_curso_nombre == tipo) {
+            count++
+          }
+        })
+        return count
+      }
+    },
+    dmy(fecha) {
+      if (fecha != undefined) {
+        const meses = [
+          'enero',
+          'febrero',
+          'marzo',
+          'abril',
+          'mayo',
+          'junio',
+          'julio',
+          'agosto',
+          'septiembre',
+          'octubre',
+          'noviembre',
+          'diciembre'
+        ]
+        let fechaCadena = fecha.substr(0, 10)
+        let fechaArray = fechaCadena.split('-')
+        return fechaArray[2] + ' de ' + meses[fechaArray[1] - 1] + ' de ' + fechaArray[0]
+      }
+    },
+    createdComponent() {
+      //this.$store.commit("loadOn");
+      this.getConvocatoriasAll()
+      this.getCursosAll()
+      this.getServiciosAll()
+      this.getOfertasAll()
+      this.getPublicaciones()
+      this.getGacetaAll()
+      this.getEventos()
+      this.getVideos()
     }
+  },
+  created() {
+    this.createdComponent()
   }
 }
 </script>

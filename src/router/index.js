@@ -4,7 +4,14 @@ const routes = [
   {
     path: '/',
     name: 'AppLayout',
-    component: () => import('@/pages/AppLayout.vue')
+    component: () => import('@/pages/AppLayout.vue'),
+    children: [
+      {
+        path: '/',
+        name: 'home',
+        component: () => import('@/views/HomeView.vue')
+      }
+    ]
   },
   {
     path: '/:pathMatch(.*)*',

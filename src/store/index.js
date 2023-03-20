@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    url_api: import.meta.env.VUE_APP_ROOT_API,
+    url_api: import.meta.env.VITE_VUE_APP_ROOT_API,
     getter: true,
     MenuConvocatorias: [],
     MenuCursos: [],
@@ -13,7 +13,7 @@ export default createStore({
   getters: {
   },
   mutations: {
-    /*loadOn() {
+    loadOn() {
       document.querySelector("#preloader").style.visibility = "visible";
       window.scrollTo(0, 0);
     },
@@ -22,7 +22,7 @@ export default createStore({
     },
     clickLink(state) {
       state.getter = true
-    },*/
+    },
   },
   actions: {
   },
