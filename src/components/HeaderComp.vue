@@ -16,8 +16,13 @@
             <div class="col-lg-3">
               <div class="logo-cat-wrap">
                 <div class="logo-part">
-                  <a id="ico" href="index.html">
-                    <img id="" src="src/assets/images/logo.png" alt="Logo" />
+                  <a id="ico" href="#">
+                    <img id="logo_carrera" 
+                    :src=" url_api+'/InstitucionUpea/'+Institucion.institucion_logo"
+                    alt="Img" 
+                    width="70"
+                    height="70"
+                    />
                   </a>
                 </div>
               </div>
@@ -33,12 +38,9 @@
                   <nav class="sc-menu">
                     <ul class="nav-menu">
                       <li class="menu-item-has-children current-menu-item">
-                        <a href="index.html">Home</a>
+                        <router-link to="/">Inicio</router-link>
                         <ul class="sub-menu">
-                          <li><a href="index.html">Home One</a></li>
-                          <li><a href="index2.html">Home Two</a></li>
-                          <li class="current-menu-item"><a href="index3.html">Home Three</a></li>
-                          <li><a href="index4.html">Home Four</a></li>
+                          <li class="current-menu-item"><router-link to="/">Sobre Nosotros</router-link></li>
                         </ul>
                       </li>
                       <li><a href="about.html">About</a></li>
@@ -182,7 +184,94 @@
   <!--Full width header End-->
 </template>
 <script>
+import { mapState } from 'vuex';
+
 export default {
-  name: 'HeaderComp'
+  name: 'HeaderComp',
+  data() {
+    return {
+      sopen: false,
+      LInks:[],
+      m_inicio: false,
+      m_conv: false,
+      m_cur: false,
+      m_mas: false,
+      m_link: false 
+    };
+  },
+  computed: {
+    ...mapState(["url_api", "MenuConv", "MenuCur", "Institucion", "getter"]),
+  },
+  methods: {
+    click_m() {
+      this.$store.commit("clickLink");
+      this.openMenu();
+    },
+    showSubMenu(id) {
+      switch (id) {
+        case "m_inicio":
+          this.m_inicio = !this.m_inicio;
+          this.m_conv = false;
+          this.m_cur = false;
+          this.m_mas = false;
+          this.m_link = false;
+          break;
+        case "m_conv":
+          this.m_inicio = false;
+          this.m_conv = !this.m_conv;
+          this.m_cur = false;
+          this.m_mas = false;
+          this.m_link = false;
+          break;
+        case "m_cur":
+          this.m_inicio = false;
+          this.m_conv = false;
+          this.m_cur = !this.m_cur;
+          this.m_mas = false;
+          this.m_link = false;
+          break;
+        case "m_mas":
+          this.m_inicio = false;
+          this.m_conv = false;
+          this.m_cur = false;
+          this.m_mas = !this.m_mas;
+          this.m_link = false;
+          break;
+        case "m_link":
+          this.m_inicio = false;
+          this.m_conv = false;
+          this.m_cur = false;
+          this.m_mas = false;
+          this.m_link = !this.m_link;
+          break;
+
+        default:
+          console.log("");
+          break;
+      }
+    },
+    openMenu() {
+      this.sopen = !this.sopen;
+    },
+    /*async getLinks() {
+      try {
+        let res = await this.axios.get(
+          "/api/linksIntExtAll/" + import.meta.env.VITE_VUE_APP_ID_INSTITUCION
+        );
+        this.Links = res.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },*/
+  },
+  created() {
+    //this.getLinks();
+  },
+  mounted() {
+    /*if (this.getter) {
+      this.getLinks();
+      this.$store.state.getter = false;
+    }*/
+  },
 }
 </script>

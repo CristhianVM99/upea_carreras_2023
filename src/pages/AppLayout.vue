@@ -34,7 +34,6 @@ export default {
       try {
         const response = await Services.getMenuConvocatorias()
         const filterConv = []
-        console.log(response)
 
         response.data.forEach((element) => {
           if (element.tipo_conv_comun_estado == '1') {

@@ -12,7 +12,7 @@
                 data-wow-delay="300ms"
                 data-wow-duration="2000ms"
               >
-                Digital Educatio+n {{ Institucion.institucion_nombre }}
+              {{ Institucion.institucion_iniciales }}
                 <span class="heading-border-line"></span>
               </div>
 
@@ -21,7 +21,7 @@
                 data-wow-delay="300ms"
                 data-wow-duration="2500ms"
               >
-                World's Most Popular <br />Develop Skill Platform
+              {{ Institucion.institucion_nombre }}
               </h1>
               <h5
                 class="banner-des mb-35 wow fadeInUp"
@@ -29,7 +29,7 @@
                 data-wow-duration="3000ms"
               >
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum."
+                mollit anim id est laborum."                
               </h5>
               <form class="newsletter-form mt-40">
                 <input type="text" name="email" placeholder="search course..." />
