@@ -81,35 +81,35 @@
         </div>
       </div>
       <div class="animated-arrow-1 animated-arrow left-right-new">
-        <img src="src/assets/images/banner/arrow-1.png" alt="" />
+        <img src="../assets/images/banner/arrow-1.png" alt="" />
       </div>
       <div class="animated-arrow-2 animated-arrow up-down-new">
-        <img src="src/assets/images/banner/arrow-2.png" alt="" />
+        <img src="../assets/images/banner/arrow-2.png" alt="" />
       </div>
 
       <div class="animated-arrow-3 animated-arrow up-down-new">
-        <img src="/src/assets/images/banner/arrow-3.png" alt="" />
+        <img src="../assets/images/banner/arrow-3.png" alt="" />
       </div>
       <div class="animated-arrow-4 animated-arrow left-right-new">
-        <img src="src/assets/images/banner/arrow-4.png" alt="" />
+        <img src="../assets/images/banner/arrow-4.png" alt="" />
       </div>
       <div class="animated-arrow-5 animated-arrow up-down-new">
-        <img src="src/assets/images/banner/arrow-5.png" alt="" />
+        <img src="../assets/images/banner/arrow-5.png" alt="" />
       </div>
       <div class="animated-arrow-7 animated-arrow up-down-new">
-        <img src="src/assets/images/banner/arrow-6.png" alt="" />
+        <img src="../assets/images/banner/arrow-6.png" alt="" />
       </div>
       <div class="animated-arrow-8 animated-arrow up-down-new">
-        <img src="src/assets/images/banner/arrow-7.png" alt="" />
+        <img src="../assets/images/banner/arrow-7.png" alt="" />
       </div>
       <div class="animated-arrow-9 animated-arrow up-down-new">
-        <img src="src/assets/images/banner/arrow-8.png" alt="" />
+        <img src="../assets/images/banner/arrow-8.png" alt="" />
       </div>
       <div class="animated-arrow-10 animated-arrow up-down-new">
-        <img src="src/assets/images/banner/arrow-9.png" alt="" />
+        <img src="../assets/images/banner/arrow-9.png" alt="" />
       </div>
       <div class="animated-arrow-11 animated-arrow up-down-new">
-        <img src="src/assets/images/banner/arrow-9.png" alt="" />
+        <img src="../assets/images/banner/arrow-9.png" alt="" />
       </div>
     </div>
     <!-- Banner Section End -->
@@ -142,11 +142,7 @@
                 </ul>
                 <div class="blog-desc">
                   <h4>{{ Institucion.institucion_nombre }}</h4>
-                  <p v-html="Institucion.institucion_sobre_ins"></p>
-                  <p>
-                    Completely dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
-                  </p>
+                  <p v-html="Institucion.institucion_sobre_ins"></p>                  
                 </div>
                 <blockquote>
                   <p>
@@ -172,27 +168,12 @@
             </div>            
           </div>
           <div class="col-lg-4 col-md-12 md-mt-60">
-            <div class="widget-area">
-              <div class="search-widget mb-50">
-                <div class="search-wrap">
-                  <input
-                    type="search"
-                    placeholder="Searching..."
-                    name="s"
-                    class="search-input"
-                    value=""
-                  />
-                  <button type="submit" value="Search">
-                    <i class="flaticon flaticon-magnifying-glass"></i>
-                  </button>
-                </div>
-              </div>
+            <div class="widget-area">              
               <div class="widget-archives mb-50">
                 <h3 class="widget-title">Links Externos</h3>
                 <ul>
-                  <li>
-                    <a 
-                    v-for="(link, id_link) of Links" 
+                  <li
+                  v-for="(link, id_link) of Links" 
                     :key="id_link"
                     :href="id_link"
                     target="_blank"
@@ -201,12 +182,14 @@
                       url_api +
                       '/InstitucionUpea/LinksExternos/' +
                       link.ei_imagen +
-                      ');object-fit:cover'
+                      ');object-fit:cover;height:100px;'
                     "
-                    >{{ link.ei_nombre }} <span>+</span></a>
+                    class="links_externos"
+                  >
+                    <router-link to="/">{{ link.ei_nombre }}</router-link>
                   </li>                  
                 </ul>
-              </div>
+              </div>              
 
               <div class="recent-posts-widget mb-50">
                 <h3 class="widget-title">Mision</h3>
@@ -244,6 +227,47 @@
     </div>
     <!-- Blog Single End -->
 
+    <!-- CTA Section Start -->
+    <div class="sc-cta-section cta-bg-image3 cta md-pt-75 md-pb-80 position-relative arrow-animation-1">
+                <div class="container">
+                    <div class="row align-items-center"> 
+                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
+                            <div class="sec-title">
+                                <div class="sub-title position-relative">Join Our Course <span class="heading-border-line"></span></div>
+                                <h2 class="title mb-0 white-color">If you  interested join<br> our course</h2>
+                            </div>
+                            <form class="newsletter-form mt-40">
+                                <input type="email" name="email" placeholder="Your email address" required="">
+                                <button type="submit">Join Now <i class="flaticon flaticon-right-arrow"></i></button>
+                            </form>
+                        </div>
+                        <div class="col-lg-6 hidden-md">
+                            <div class="img-part">
+                                  <img src="../assets/images/cta/men-women.png" alt="Image">
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="animated-arrow-1 animated-arrow left-right-new">
+                    <img src="../assets/images/arrow-1.png" alt="">
+                </div>
+                <div class="animated-arrow-2 animated-arrow up-down-new">
+                    <img src="../assets/images/arrow-2.png" alt="">
+                </div>
+
+                <div class="animated-arrow-3 animated-arrow up-down-new">
+                    <img src="../assets/images/arrow-3.png" alt="">
+                </div>
+                <div class="animated-arrow-4 animated-arrow left-right-new">
+                    <img src="../assets/images/arrow-3.png" alt="">
+                </div>
+                <div class="animated-arrow-6 animated-arrow left-right-new">
+                    <img src="../assets/images/arrow-7.png" alt="">
+                </div>
+            </div>
+            <!-- CTA Section End --> 
+
     <!-- Counter Section Start -->
     <div
       class="sc-counter counter-bg1 pt-120 pb-120 md-pt-80 md-pb-50 sc-counter-bg position-relative arrow-animation-1"
@@ -262,7 +286,7 @@
                 </div>
                 <h2 class="counter-title">
                   <span class="sc-count">{{ contarConv(conv.tipo_conv_comun_titulo) }} </span
-                  ><span class="text">M+</span>
+                  ><span class="text">+</span>
                 </h2>
                 <h5 class="title mb-0">{{ conv.tipo_conv_comun_titulo }}</h5>
               </div>
@@ -280,7 +304,7 @@
                 </div>
                 <h2 class="counter-title">
                   <span class="sc-count">{{ contarCur(cur.tipo_conv_curso_nombre) }} </span
-                  ><span class="text">K+</span>
+                  ><span class="text">+</span>
                 </h2>
                 <h5 class="title mb-0">{{ cur.tipo_conv_curso_nombre }}</h5>
               </div>
@@ -291,7 +315,7 @@
                   <i class="flaticon flaticon-study"></i>
                 </div>
                 <h2 class="counter-title">
-                  <span class="sc-count">{{ Event.length }} </span><span class="text">K+</span>
+                  <span class="sc-count">{{ Event.length }} </span><span class="text">+</span>
                 </h2>
                 <h5 class="title mb-0">EVENTOS</h5>
               </div>
@@ -315,7 +339,7 @@
                   <i class="flaticon flaticon-study"></i>
                 </div>
                 <h2 class="counter-title">
-                  <span class="sc-count">{{ Gac.length }} </span><span class="text">K+</span>
+                  <span class="sc-count">{{ Gac.length }} </span><span class="text">+</span>
                 </h2>
                 <h5 class="title mb-0">GACETA</h5>
               </div>
@@ -326,7 +350,7 @@
                   <i class="flaticon flaticon-study"></i>
                 </div>
                 <h2 class="counter-title">
-                  <span class="sc-count">{{ Vid.length }} </span><span class="text">K+</span>
+                  <span class="sc-count">{{ Vid.length }} </span><span class="text">+</span>
                 </h2>
                 <h5 class="title mb-0">VIDEOS</h5>
               </div>
@@ -360,17 +384,17 @@
         </div>
       </div>
       <div class="animated-arrow-1 animated-arrow left-right-new">
-        <img src="assets/images/arrow-5.png" alt="" />
+        <img src="../assets/images/arrow-5.png" alt="" />
       </div>
       <div class="animated-arrow-2 animated-arrow up-down-new">
-        <img src="assets/images/arrow-2.png" alt="" />
+        <img src="../assets/images/arrow-2.png" alt="" />
       </div>
 
       <div class="animated-arrow-3 animated-arrow up-down-new">
-        <img src="assets/images/arrow-4.png" alt="" />
+        <img src="../assets/images/arrow-4.png" alt="" />
       </div>
       <div class="animated-arrow-4 animated-arrow left-right-new">
-        <img src="assets/images/arrow-3.png" alt="" />
+        <img src="../assets/images/arrow-3.png" alt="" />
       </div>
     </div>
     <!-- Counter Section End -->
@@ -1230,6 +1254,46 @@ export default {
   margin: 20px 0px;
 }
 .cat:hover {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.links_externos{  
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+  background-repeat: no-repeat !important;
+  background-position: right !important;
+  background-size: contain !important;
+
+}
+.links_externos a{
+  background-color: crimson;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+  color: #ffffff !important;
+  padding: 7px 20px;
+  width: 10em;
+  border-radius: 20px;
+  text-align: center;
+}
+.cta {
+  position: relative;
+}
+.cta::after {
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to bottom,rgba(0,0,0,1),transparent);
+  content: '';
+  left: 0;
+  top: 0;
+}
+.cta::before {
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to top,rgba(0,0,0,1),transparent);
+  content: '';
+  left: 0;
+  bottom: 0;
 }
 </style>

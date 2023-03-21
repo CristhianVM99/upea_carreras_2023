@@ -297,6 +297,10 @@ body .dblock {
 .cta-bg-image2 {
   background: url(../images/bg/cta-bg2.jpg);
 }
+.cta-bg-image3 {
+  background: url(../images/bg/cta-bg6.jpg);
+  background-size: cover;
+}
 .course-bg {
   background: url(../images/bg/course_bg.png);
 }
