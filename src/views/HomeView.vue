@@ -12,7 +12,7 @@
                 data-wow-delay="300ms"
                 data-wow-duration="2000ms"
               >
-              {{ Institucion.institucion_iniciales }}
+                {{ Institucion.institucion_iniciales }}
                 <span class="heading-border-line"></span>
               </div>
 
@@ -21,21 +21,19 @@
                 data-wow-delay="300ms"
                 data-wow-duration="2500ms"
               >
-              {{ Institucion.institucion_nombre }}
+                {{ Institucion.institucion_nombre }}
               </h1>
               <h5
                 class="banner-des mb-35 wow fadeInUp"
                 data-wow-delay="300ms"
                 data-wow-duration="3000ms"
-              >
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum."                
-              </h5>
+                v-html="Institucion.institucion_objetivos"
+              ></h5>
               <form class="newsletter-form mt-40">
                 <input type="text" name="email" placeholder="search course..." />
                 <button type="submit"><i class="flaticon flaticon-magnifying-glass"></i></button>
               </form>
-              <div class="bannner-skillbar d-flex mt-45">
+              <!--<div class="bannner-skillbar d-flex mt-45">
                 <div class="course-skill course-summary">
                   <h3 class="mb-0">26k+</h3>
                   <ul class="heart-icon">
@@ -58,7 +56,7 @@
                   </ul>
                   <span>Active Course</span>
                 </div>
-              </div>
+              </div>-->
             </div>
           </div>
           <div class="col-lg-6 hidden-md">
@@ -90,7 +88,7 @@
       </div>
 
       <div class="animated-arrow-3 animated-arrow up-down-new">
-        <img src="src/assets/images/banner/arrow-3.png" alt="" />
+        <img src="/src/assets/images/banner/arrow-3.png" alt="" />
       </div>
       <div class="animated-arrow-4 animated-arrow left-right-new">
         <img src="src/assets/images/banner/arrow-4.png" alt="" />
@@ -115,6 +113,267 @@
       </div>
     </div>
     <!-- Banner Section End -->
+
+    <!-- Blog Single Start -->
+    <div class="sc-blog-single pt-120 pb-120 md-pt-80 md-pb-80">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="blog-deatails">
+              <div class="post-img">
+                <iframe
+                  :src="Institucion.institucion_link_video_vision"
+                  frameborder="0"
+                  style="width: 100%; min-height: 400px"
+                  allowfullscreen="allowfullscreen"
+                ></iframe>
+              </div>
+              <div class="blog-full">
+                <ul class="single-post-meta">
+                  <li>
+                    <span class="p-date"> <i class="fa fa-user-o"></i> admin </span>
+                  </li>
+                  <li>
+                    <span class="p-date">
+                      <i class="fa fa-calendar-check-o"></i> April 20, 2021
+                    </span>
+                  </li>
+                  <li class="post-comment"><i class="fa fa-comments-o"></i> 0</li>
+                </ul>
+                <div class="blog-desc">
+                  <h4>{{ Institucion.institucion_nombre }}</h4>
+                  <p v-html="Institucion.institucion_sobre_ins"></p>
+                  <p>
+                    Completely dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.
+                  </p>
+                </div>
+                <blockquote>
+                  <p>
+                    Frameworks ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+                </blockquote>
+                <div class="blog-desc mb-40">
+                  <p>
+                    Evolved from sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+                <div class="tags-area">
+                  <span class="tags">Tags</span>
+                  <ul class="tags-list">
+                    <li><a href="#">Education</a></li>
+                    <li><a href="#">Computer</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>            
+          </div>
+          <div class="col-lg-4 col-md-12 md-mt-60">
+            <div class="widget-area">
+              <div class="search-widget mb-50">
+                <div class="search-wrap">
+                  <input
+                    type="search"
+                    placeholder="Searching..."
+                    name="s"
+                    class="search-input"
+                    value=""
+                  />
+                  <button type="submit" value="Search">
+                    <i class="flaticon flaticon-magnifying-glass"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="widget-archives mb-50">
+                <h3 class="widget-title">Links Externos</h3>
+                <ul>
+                  <li>
+                    <a 
+                    v-for="(link, id_link) of Links" 
+                    :key="id_link"
+                    :href="id_link"
+                    target="_blank"
+                    :style="
+                    'background-image: url(' +
+                      url_api +
+                      '/InstitucionUpea/LinksExternos/' +
+                      link.ei_imagen +
+                      ');object-fit:cover'
+                    "
+                    >{{ link.ei_nombre }} <span>+</span></a>
+                  </li>                  
+                </ul>
+              </div>
+
+              <div class="recent-posts-widget mb-50">
+                <h3 class="widget-title">Mision</h3>
+                <div class="show-featured">                  
+                  <div class="post-desc">      
+                    <p v-html="Institucion.institucion_mision"></p>              
+                  </div>
+                </div>                                
+              </div>
+
+              <div class="recent-posts-widget mb-50">
+                <h3 class="widget-title">Vision</h3>
+                <div class="show-featured">                  
+                  <div class="post-desc">      
+                    <p v-html="Institucion.institucion_vision"></p>              
+                  </div>
+                </div>                                
+              </div>
+
+              <div class="posts-tags mb-50 md-mb-0">
+                <h3 class="widget-title">Tags</h3>
+                <ul>
+                  <li><a href="#">Education</a></li>
+                  <li><a href="#">Civil Engineering</a></li>
+                  <li><a href="#">Learning</a></li>
+                  <li><a href="#">Courses</a></li>
+                  <li><a href="#">Instructor</a></li>
+                  <li><a href="#">Training</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Blog Single End -->
+
+    <!-- Counter Section Start -->
+    <div
+      class="sc-counter counter-bg1 pt-120 pb-120 md-pt-80 md-pb-50 sc-counter-bg position-relative arrow-animation-1"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 md-mb-30">
+            <router-link
+              v-for="(conv, id_conv) of this.MenuConvocatorias"
+              :key="id_conv"
+              :to="'/convocatorias/' + conv.idtipo_conv_comun"
+            >
+              <div class="counter-item text-center cat">
+                <div class="icon-part">
+                  <i class="flaticon flaticon-laptop"></i>
+                </div>
+                <h2 class="counter-title">
+                  <span class="sc-count">{{ contarConv(conv.tipo_conv_comun_titulo) }} </span
+                  ><span class="text">M+</span>
+                </h2>
+                <h5 class="title mb-0">{{ conv.tipo_conv_comun_titulo }}</h5>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-lg-3 col-md-6 md-mb-30">
+            <router-link
+              v-for="(cur, id_cur) of MenuCursos"
+              :key="id_cur"
+              :to="'/cursos/' + cur.idtipo_curso_otros"
+            >
+              <div class="counter-item text-center ping-color cat">
+                <div class="icon-part">
+                  <i class="flaticon flaticon-study"></i>
+                </div>
+                <h2 class="counter-title">
+                  <span class="sc-count">{{ contarCur(cur.tipo_conv_curso_nombre) }} </span
+                  ><span class="text">K+</span>
+                </h2>
+                <h5 class="title mb-0">{{ cur.tipo_conv_curso_nombre }}</h5>
+              </div>
+            </router-link>
+            <router-link to="/eventos">
+              <div class="counter-item text-center ping-color cat">
+                <div class="icon-part">
+                  <i class="flaticon flaticon-study"></i>
+                </div>
+                <h2 class="counter-title">
+                  <span class="sc-count">{{ Event.length }} </span><span class="text">K+</span>
+                </h2>
+                <h5 class="title mb-0">EVENTOS</h5>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-lg-3 col-md-6 md-mb-30">
+            <router-link to="/servicios">
+              <div class="counter-item text-center green-color cat">
+                <div class="icon-part">
+                  <i class="flaticon flaticon-teacher"></i>
+                </div>
+                <h2 class="counter-title">
+                  <span class="sc-count">{{ Serv.length }} </span><span class="text">+</span>
+                </h2>
+                <h5 class="title mb-0">SERVICIOS</h5>
+              </div>
+            </router-link>
+            <router-link to="/gaceta">
+              <div class="counter-item text-center ping-color cat">
+                <div class="icon-part">
+                  <i class="flaticon flaticon-study"></i>
+                </div>
+                <h2 class="counter-title">
+                  <span class="sc-count">{{ Gac.length }} </span><span class="text">K+</span>
+                </h2>
+                <h5 class="title mb-0">GACETA</h5>
+              </div>
+            </router-link>
+            <router-link to="/videos">
+              <div class="counter-item text-center ping-color cat">
+                <div class="icon-part">
+                  <i class="flaticon flaticon-study"></i>
+                </div>
+                <h2 class="counter-title">
+                  <span class="sc-count">{{ Vid.length }} </span><span class="text">K+</span>
+                </h2>
+                <h5 class="title mb-0">VIDEOS</h5>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-lg-3 col-md-6 md-mb-30">
+            <router-link to="/ofertas">
+              <div class="counter-item text-center yellow-color cat">
+                <div class="icon-part">
+                  <i class="flaticon flaticon-monitor"></i>
+                </div>
+                <h2 class="counter-title">
+                  <span class="sc-count">{{ Ofer.length }}</span
+                  ><span class="text">+</span>
+                </h2>
+                <h5 class="title mb-0">OFERTAS ACADEMICAS</h5>
+              </div>
+            </router-link>
+            <router-link to="/publicaciones">
+              <div class="counter-item text-center green-color cat">
+                <div class="icon-part">
+                  <i class="flaticon flaticon-teacher"></i>
+                </div>
+                <h2 class="counter-title">
+                  <span class="sc-count">{{ Publi.length }} </span><span class="text">+</span>
+                </h2>
+                <h5 class="title mb-0">PUBLICACIONES</h5>
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
+      <div class="animated-arrow-1 animated-arrow left-right-new">
+        <img src="assets/images/arrow-5.png" alt="" />
+      </div>
+      <div class="animated-arrow-2 animated-arrow up-down-new">
+        <img src="assets/images/arrow-2.png" alt="" />
+      </div>
+
+      <div class="animated-arrow-3 animated-arrow up-down-new">
+        <img src="assets/images/arrow-4.png" alt="" />
+      </div>
+      <div class="animated-arrow-4 animated-arrow left-right-new">
+        <img src="assets/images/arrow-3.png" alt="" />
+      </div>
+    </div>
+    <!-- Counter Section End -->
 
     <!-- About Section Start -->
     <div id="sc-about" class="sc-about about-style2 pt-120 pb-120 md-pt-80 md-pb-70">
@@ -769,6 +1028,7 @@ export default {
       Gac: [],
       Event: [],
       Vid: [],
+      ObjetivosCarrera: [],
 
       NUM_RESULTS: 3,
       pag: 1,
@@ -776,7 +1036,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["url_api", "Institucion", "MenuConv", "MenuCur", "Links"]),
+    ...mapState(['url_api', 'Institucion', 'MenuConvocatorias', 'MenuCursos', 'Links'])
   },
   components: {},
   methods: {
@@ -784,37 +1044,37 @@ export default {
       try {
         const response = await Services.getConvocatoriasAll()
         this.Conv = response.data
-        if(response != null ){
+        if (response != null) {
           this.Conv.forEach((conv) => {
-          if (
-            conv.tipo_conv_comun.tipo_conv_comun_titulo == 'CONVOCATORIAS' &&
-            conv.con_estado == '1'
-          ) {
-            if (Object.keys(this.latestConv).length == 0) {
-              this.latestConv = conv
-            }
-          } else {
             if (
-              conv.tipo_conv_comun.tipo_conv_comun_titulo == 'COMUNICADOS' &&
+              conv.tipo_conv_comun.tipo_conv_comun_titulo == 'CONVOCATORIAS' &&
               conv.con_estado == '1'
             ) {
-              if (Object.keys(this.latestComun).length == 0) {
-                this.latestComun = conv
+              if (Object.keys(this.latestConv).length == 0) {
+                this.latestConv = conv
               }
             } else {
               if (
-                conv.tipo_conv_comun.tipo_conv_comun_titulo == 'AVISOS' &&
+                conv.tipo_conv_comun.tipo_conv_comun_titulo == 'COMUNICADOS' &&
                 conv.con_estado == '1'
               ) {
-                if (Object.keys(this.latestAv).length == 0) {
-                  this.latestAv = conv
+                if (Object.keys(this.latestComun).length == 0) {
+                  this.latestComun = conv
+                }
+              } else {
+                if (
+                  conv.tipo_conv_comun.tipo_conv_comun_titulo == 'AVISOS' &&
+                  conv.con_estado == '1'
+                ) {
+                  if (Object.keys(this.latestAv).length == 0) {
+                    this.latestAv = conv
+                  }
                 }
               }
             }
-          }
-        })
+          })
         }
-        this.pager = this.Institucion.autoridad.length / this.NUM_RESULTS        
+        this.pager = this.Institucion.autoridad.length / this.NUM_RESULTS
         if (this.pager - Math.trunc(this.pager) > 0) {
           this.pager = Math.trunc(this.pager) + 1
         }
@@ -964,3 +1224,12 @@ export default {
   }
 }
 </script>
+<style scoped>
+.cat {
+  transition: 0.5s;
+  margin: 20px 0px;
+}
+.cat:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+</style>
