@@ -301,6 +301,9 @@ body .dblock {
   background: url(../images/bg/cta-bg6.jpg);
   background-size: cover;
 }
+.cta-bg-image-autor {
+  background: url(../images/cta/cta-autores.png);
+}
 .course-bg {
   background: url(../images/bg/course_bg.png);
 }

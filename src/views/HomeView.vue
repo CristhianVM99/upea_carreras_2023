@@ -12,7 +12,7 @@
                 data-wow-delay="300ms"
                 data-wow-duration="2000ms"
               >
-                {{ Institucion.institucion_iniciales }}
+                {{ Institucion.institubcion_iniciales }}
                 <span class="heading-border-line"></span>
               </div>
 
@@ -142,7 +142,7 @@
                 </ul>
                 <div class="blog-desc">
                   <h4>{{ Institucion.institucion_nombre }}</h4>
-                  <p v-html="Institucion.institucion_sobre_ins"></p>                  
+                  <p v-html="Institucion.institucion_sobre_ins"></p>
                 </div>
                 <blockquote>
                   <p>
@@ -165,20 +165,20 @@
                   </ul>
                 </div>
               </div>
-            </div>            
+            </div>
           </div>
           <div class="col-lg-4 col-md-12 md-mt-60">
-            <div class="widget-area">              
+            <div class="widget-area">
               <div class="widget-archives mb-50">
                 <h3 class="widget-title">Links Externos</h3>
                 <ul>
                   <li
-                  v-for="(link, id_link) of Links" 
+                    v-for="(link, id_link) of Links"
                     :key="id_link"
                     :href="id_link"
                     target="_blank"
                     :style="
-                    'background-image: url(' +
+                      'background-image: url(' +
                       url_api +
                       '/InstitucionUpea/LinksExternos/' +
                       link.ei_imagen +
@@ -187,26 +187,26 @@
                     class="links_externos"
                   >
                     <router-link to="/">{{ link.ei_nombre }}</router-link>
-                  </li>                  
+                  </li>
                 </ul>
-              </div>              
+              </div>
 
               <div class="recent-posts-widget mb-50">
                 <h3 class="widget-title">Mision</h3>
-                <div class="show-featured">                  
-                  <div class="post-desc">      
-                    <p v-html="Institucion.institucion_mision"></p>              
+                <div class="show-featured">
+                  <div class="post-desc">
+                    <p v-html="Institucion.institucion_mision"></p>
                   </div>
-                </div>                                
+                </div>
               </div>
 
               <div class="recent-posts-widget mb-50">
                 <h3 class="widget-title">Vision</h3>
-                <div class="show-featured">                  
-                  <div class="post-desc">      
-                    <p v-html="Institucion.institucion_vision"></p>              
+                <div class="show-featured">
+                  <div class="post-desc">
+                    <p v-html="Institucion.institucion_vision"></p>
                   </div>
-                </div>                                
+                </div>
               </div>
 
               <div class="posts-tags mb-50 md-mb-0">
@@ -228,45 +228,48 @@
     <!-- Blog Single End -->
 
     <!-- CTA Section Start -->
-    <div class="sc-cta-section cta-bg-image3 cta md-pt-75 md-pb-80 position-relative arrow-animation-1">
-                <div class="container">
-                    <div class="row align-items-center"> 
-                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
-                            <div class="sec-title">
-                                <div class="sub-title position-relative">Join Our Course <span class="heading-border-line"></span></div>
-                                <h2 class="title mb-0 white-color">If you  interested join<br> our course</h2>
-                            </div>
-                            <form class="newsletter-form mt-40">
-                                <input type="email" name="email" placeholder="Your email address" required="">
-                                <button type="submit">Join Now <i class="flaticon flaticon-right-arrow"></i></button>
-                            </form>
-                        </div>
-                        <div class="col-lg-6 hidden-md">
-                            <div class="img-part">
-                                  <img src="../assets/images/cta/men-women.png" alt="Image">
-                            </div>
-                        </div> 
-                    </div>
-                </div>
-
-                <div class="animated-arrow-1 animated-arrow left-right-new">
-                    <img src="../assets/images/arrow-1.png" alt="">
-                </div>
-                <div class="animated-arrow-2 animated-arrow up-down-new">
-                    <img src="../assets/images/arrow-2.png" alt="">
-                </div>
-
-                <div class="animated-arrow-3 animated-arrow up-down-new">
-                    <img src="../assets/images/arrow-3.png" alt="">
-                </div>
-                <div class="animated-arrow-4 animated-arrow left-right-new">
-                    <img src="../assets/images/arrow-3.png" alt="">
-                </div>
-                <div class="animated-arrow-6 animated-arrow left-right-new">
-                    <img src="../assets/images/arrow-7.png" alt="">
-                </div>
+    <div
+      class="sc-cta-section cta-bg-image3 cta md-pt-75 md-pb-80 position-relative arrow-animation-1"
+    >
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
+            <div class="sec-title">
+              <div class="sub-title position-relative">
+                Frases <span class="heading-border-line"></span>
+              </div>
+              <h2 class="title mb-0 white-color">
+                La tecnología avanza a una velocidad increíble,<br />
+                y si no estás al día, te quedas atrás.
+              </h2>
             </div>
-            <!-- CTA Section End --> 
+          </div>
+          <div class="col-lg-6 hidden-md">
+            <div class="img-part img-autor">
+              <img src="../assets/images/cta/cta-autores.png" alt="Image" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="animated-arrow-1 animated-arrow left-right-new">
+        <img src="../assets/images/arrow-1.png" alt="" />
+      </div>
+      <div class="animated-arrow-2 animated-arrow up-down-new">
+        <img src="../assets/images/arrow-2.png" alt="" />
+      </div>
+
+      <div class="animated-arrow-3 animated-arrow up-down-new">
+        <img src="../assets/images/arrow-3.png" alt="" />
+      </div>
+      <div class="animated-arrow-4 animated-arrow left-right-new">
+        <img src="../assets/images/arrow-3.png" alt="" />
+      </div>
+      <div class="animated-arrow-6 animated-arrow left-right-new">
+        <img src="../assets/images/arrow-7.png" alt="" />
+      </div>
+    </div>
+    <!-- CTA Section End -->
 
     <!-- Counter Section Start -->
     <div
@@ -398,6 +401,191 @@
       </div>
     </div>
     <!-- Counter Section End -->
+
+    <!-- Team Section Start -->
+    <div
+      class="sc-team team-style-1 gray-bg arrow-animation-1 position-relative pt-110 pb-90 md-pt-70 md-pb-50"
+    >
+      <div class="container">
+        <div class="sec-title mb-30 text-center md-mb-10">
+          <div class="sub-title primary">Teachers <span class="heading-border-line"></span></div>
+          <h2 class="title mb-0">Professional Teachers</h2>
+        </div>
+        <div
+          class="sc-carousel owl-carousel nav-style2"
+          data-loop="true"
+          data-items="3"
+          data-margin="0"
+          data-autoplay="true"
+          data-hoverpause="true"
+          data-autoplay-timeout="5000"
+          data-smart-speed="800"
+          data-dots="false"
+          data-nav="true"
+          data-nav-speed="false"
+          data-center-mode="true"
+          data-mobile-device="1"
+          data-mobile-device-nav="true"
+          data-mobile-device-dots="false"
+          data-ipad-device="2"
+          data-ipad-device-nav="true"
+          data-ipad-device-dots="false"
+          data-ipad-device2="2"
+          data-ipad-device-nav2="true"
+          data-ipad-device-dots2="false"
+          data-md-device="3"
+          data-md-device-nav="true"
+          data-md-device-dots="false"
+        >
+          <div
+            class="team-inner-item"
+          >
+            <div class="team-wrap">
+              <div class="team-img">
+                <img
+                  src="../assets/images/team/1.jpg"
+                  alt="img"
+                />
+                <ul class="team-social">
+                  <li>
+                    <a href="team-single.html" class="social-icon"
+                      ><i class="fa fa-facebook"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="team-single.html" class="social-icon"
+                      ><i class="fa fa-google-plus"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="team-single.html" class="social-icon"><i class="fa fa-twitter"></i></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="team-item-text">
+                <div class="team-details">
+                  <h3 class="team-name"><a href="team-single.html">Mike Jason</a></h3>
+                  <span class="team-title">Business Advisor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="team-inner-item"
+          >
+            <div class="team-wrap">
+              <div class="team-img">
+                <img
+                  src="../assets/images/team/1.jpg"
+                  alt="img"
+                />
+                <ul class="team-social">
+                  <li>
+                    <a href="team-single.html" class="social-icon"
+                      ><i class="fa fa-facebook"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="team-single.html" class="social-icon"
+                      ><i class="fa fa-google-plus"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="team-single.html" class="social-icon"><i class="fa fa-twitter"></i></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="team-item-text">
+                <div class="team-details">
+                  <h3 class="team-name"><a href="team-single.html">Mike Jason</a></h3>
+                  <span class="team-title">Business Advisor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="team-inner-item"
+          >
+            <div class="team-wrap">
+              <div class="team-img">
+                <img
+                  src="../assets/images/team/1.jpg"
+                  alt="img"
+                />
+                <ul class="team-social">
+                  <li>
+                    <a href="team-single.html" class="social-icon"
+                      ><i class="fa fa-facebook"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="team-single.html" class="social-icon"
+                      ><i class="fa fa-google-plus"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="team-single.html" class="social-icon"><i class="fa fa-twitter"></i></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="team-item-text">
+                <div class="team-details">
+                  <h3 class="team-name"><a href="team-single.html">Mike Jason</a></h3>
+                  <span class="team-title">Business Advisor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="team-inner-item"
+          >
+            <div class="team-wrap">
+              <div class="team-img">
+                <img
+                  src="../assets/images/team/1.jpg"
+                  alt="img"
+                />
+                <ul class="team-social">
+                  <li>
+                    <a href="team-single.html" class="social-icon"
+                      ><i class="fa fa-facebook"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="team-single.html" class="social-icon"
+                      ><i class="fa fa-google-plus"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a href="team-single.html" class="social-icon"><i class="fa fa-twitter"></i></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="team-item-text">
+                <div class="team-details">
+                  <h3 class="team-name"><a href="team-single.html">Mike Jason</a></h3>
+                  <span class="team-title">Business Advisor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="animated-arrow-1 animated-arrow left-right-new">
+        <img src="../assets/images/arrow-5.png" alt="" />
+      </div>
+      <div class="animated-arrow-2 animated-arrow up-down-new">
+        <img src="../assets/images/arrow-2.png" alt="" />
+      </div>
+
+      <div class="animated-arrow-3 animated-arrow up-down-new">
+        <img src="../assets/images/arrow-4.png" alt="" />
+      </div>
+      <div class="animated-arrow-4 animated-arrow left-right-new">
+        <img src="../assets/images/arrow-3.png" alt="" />
+      </div>
+    </div>
+    <!-- Team Section End -->
 
     <!-- About Section Start -->
     <div id="sc-about" class="sc-about about-style2 pt-120 pb-120 md-pt-80 md-pb-70">
@@ -1256,7 +1444,7 @@ export default {
 .cat:hover {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
-.links_externos{  
+.links_externos {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -1264,9 +1452,8 @@ export default {
   background-repeat: no-repeat !important;
   background-position: right !important;
   background-size: contain !important;
-
 }
-.links_externos a{
+.links_externos a {
   background-color: crimson;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
   color: #ffffff !important;
@@ -1282,7 +1469,7 @@ export default {
   position: absolute;
   width: 100%;
   height: 20%;
-  background: linear-gradient(to bottom,rgba(0,0,0,1),transparent);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent);
   content: '';
   left: 0;
   top: 0;
@@ -1291,9 +1478,31 @@ export default {
   position: absolute;
   width: 100%;
   height: 20%;
-  background: linear-gradient(to top,rgba(0,0,0,1),transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
   content: '';
   left: 0;
   bottom: 0;
+}
+.img-autor {
+  margin: 40px !important;
+  position: relative;
+  text-align: center;
+}
+.img-autor img {
+  width: 400px !important;
+  margin: 10px 0px;
+}
+.img-autor::before {
+  content: 'Kevin Mitnick';
+  top: 20px;
+  right: 125px;
+  position: absolute;
+  width: 100px;
+  color: #fff;
+  padding-left: 15px;
+  background: #f24d5d;
+  text-align: center;
+  letter-spacing: 1px;
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
 }
 </style>
