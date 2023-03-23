@@ -29,7 +29,7 @@
               <ul class="topbar-right">
                 <li class="login-register">
                   <i class="fa fa-sign-in"></i>
-                  <a href="#">Login</a> / <a href="register.html">Register</a>
+                  <router-link :to="{ name : 'login' }">Login</router-link> / <router-link :to="{ name : 'register' }">Register</router-link>
                 </li>
               </ul>
             </div>
@@ -67,10 +67,10 @@
                   </div>
                   <nav class="sc-menu">
                     <ul class="nav-menu">
-                      <li class="menu-item-has-children current-menu-item">
+                      <li class="menu-item-has-children">
                         <a href="#">Inicio</a>
                         <ul class="sub-menu">
-                          <li class="current-menu-item">
+                          <li>
                             <router-link :to="{ name: 'about' }">Sobre Nosotros</router-link>
                           </li>
                         </ul>
@@ -168,7 +168,13 @@
           </div>
         </div>
         <div class="canvas-logo">
-          <a href="index.html"><img src="assets/images/logo.png" alt="logo" /></a>
+          <router-link :to="{ name: 'home' }"
+            ><img
+              :src="url_api + '/InstitucionUpea/' + Institucion.institucion_logo"
+              alt="logo"
+              width="70"
+              height="70"
+          /></router-link>
         </div>
         <div class="offcanvas-text">
           <p>
@@ -309,7 +315,7 @@ export default {
 }
 </script>
 <style scoped>
-.txt_logo{
+.txt_logo {
   color: #000;
   font-weight: bold;
   text-transform: uppercase;

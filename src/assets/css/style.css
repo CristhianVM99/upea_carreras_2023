@@ -279,6 +279,18 @@ body .dblock {
   background: url(../images/bg/cta-right-bg.jpg);
   right: 0;
 }
+.right-bg-image2:before {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 40%;
+  top: 0;
+  transition: all 0.3s ease;
+  background: url(../images/bg/cta-bg9.jpg);
+  right: 0;
+  background-size: cover;
+  background-position: right;
+}
 .testimonial-bg {
   background: url(../images/bg/testimonial-bg.jpg);
 }

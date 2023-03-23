@@ -713,24 +713,20 @@
 
     <!-- CTA Section Start -->
     <div
-      class="sc-cta-section cta-bg-image right-bg-image pt-110 pb-120 md-pt-75 md-pb-80 position-relative arrow-animation-1"
+      class="sc-cta-section cta-bg-image right-bg-image2 pt-110 pb-120 md-pt-75 md-pb-80 position-relative arrow-animation-1"
     >
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
             <div class="sec-title">
               <div class="sub-title position-relative">
-                Join Our Course<span class="heading-border-line"></span>
+                Frases<span class="heading-border-line"></span>
               </div>
               <h2 class="title mb-0 white-color">
-                If you interested join<br />
-                our course
+                Un buen desarrollador de software trabaja con disciplina y constancia desde el primer día.
+                <br>- Omar Bradley -
               </h2>
-            </div>
-            <form class="newsletter-form mt-40">
-              <input type="email" name="email" placeholder="Your email address" required="" />
-              <button type="submit">Join Now <i class="flaticon flaticon-right-arrow"></i></button>
-            </form>
+            </div>            
           </div>
         </div>
       </div>
