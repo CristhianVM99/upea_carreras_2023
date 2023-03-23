@@ -301,6 +301,10 @@ body .dblock {
   background: url(../images/bg/cta-bg6.jpg);
   background-size: cover;
 }
+.cta-bg-image4 {
+  background: url(../images/bg/cta-bg7.jpg);
+  background-size: cover;
+}
 .cta-bg-image-autor {
   background: url(../images/cta/cta-autores.png);
 }

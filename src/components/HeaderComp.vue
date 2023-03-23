@@ -6,7 +6,7 @@
   <!--Preloader area End here-->
 
   <!--Full width header Start-->
-  <div class="sc-header-section transparent-header">
+  <div class="sc-header-section">
     <!--Header Start-->
     <header id="sc-header" class="sc-header">
       <!-- Topbar Area Start -->
@@ -17,11 +17,11 @@
               <ul class="topbar-contact">
                 <li>
                   <i class="flaticon flaticon-call"></i>
-                  <a href="tel:+(111)256352">Call:  +501  {{ Institucion.institucion_telefono1 }}</a>
+                  <a href="tel:+(111)256352">+591 {{ Institucion.institucion_telefono1 }} </a>
                 </li>
                 <li>
                   <i class="flaticon flaticon-mail"></i>
-                  <a href="mailto:support@rstheme.com">{{ Institucion.institucion_correo1 }}</a>
+                  <a href="mailto:support@rstheme.com">{{ Institucion.institucion_correo1 }} </a>
                 </li>
               </ul>
             </div>
@@ -45,15 +45,15 @@
             <div class="col-lg-3">
               <div class="logo-cat-wrap">
                 <div class="logo-part">
-                  <a id="ico" href="#">
+                  <router-link :to="{ name: 'home' }" href="index.html">
                     <img
-                      id="logo_carrera"
                       :src="url_api + '/InstitucionUpea/' + Institucion.institucion_logo"
-                      alt="Img"
+                      alt="logo"
                       width="70"
                       height="70"
                     />
-                  </a>
+                    <span class="txt_logo">Ingenieria de Sistemas</span>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -68,66 +68,65 @@
                   <nav class="sc-menu">
                     <ul class="nav-menu">
                       <li class="menu-item-has-children current-menu-item">
-                        <router-link to="/">Inicio</router-link>
+                        <a href="#">Inicio</a>
                         <ul class="sub-menu">
                           <li class="current-menu-item">
-                            <router-link to="/">Sobre Nosotros</router-link>
+                            <router-link :to="{ name: 'about' }">Sobre Nosotros</router-link>
                           </li>
                         </ul>
                       </li>
-                      <li><a href="about.html">Convocatorias</a></li>
+
                       <li class="menu-item-has-children">
-                        <a href="#">Courses</a>
+                        <a href="#">Convocatorias</a>
                         <ul class="sub-menu">
-                          <li><a href="course.html">Courses Grid 3</a></li>
-                          <li><a href="course2.html">Courses Sidebar 1</a></li>
-                          <li><a href="course3.html">Courses Sidebar 2</a></li>
-                          <li><a href="course4.html">Courses Sidebar 3</a></li>
-                          <li><a href="course-single.html">Courses Single</a></li>
+                          <li><router-link :to="{ name: 'avisos' }">Avisos</router-link></li>
+                          <li>
+                            <router-link :to="{ name: 'comunicados' }">Comunicados</router-link>
+                          </li>
+                          <li>
+                            <router-link :to="{ name: 'convocatorias' }">Convocatorias</router-link>
+                          </li>
                         </ul>
                       </li>
 
                       <li class="menu-item-has-children">
                         <a href="#">Cursos</a>
                         <ul class="sub-menu">
+                          <li><router-link :to="{ name: 'cursos' }">Cursos</router-link></li>
                           <li>
-                            <a href="#">Team</a>
-                            <ul class="sub-menu">
-                              <li><a href="team.html">Team</a></li>
-                              <li><a href="team-single.html">Team Single</a></li>
-                            </ul>
+                            <router-link :to="{ name: 'seminarios' }">Seminarios</router-link>
                           </li>
-                          <li>
-                            <a href="#">Gallery</a>
-                            <ul class="sub-menu">
-                              <li><a href="gallery1.html">Gallery Grid</a></li>
-                              <li><a href="gallery2.html">Gallery Filter</a></li>
-                              <li><a href="gallery3.html">Gallery Masonry</a></li>
-                            </ul>
-                          </li>
-                          <li>
-                            <a href="#">Events</a>
-                            <ul class="sub-menu">
-                              <li><a href="events.html">Events 1</a></li>
-                              <li><a href="events2.html">Events 2</a></li>
-                              <li><a href="events-single.html">Events Single</a></li>
-                            </ul>
-                          </li>
-                          <li><a href="login.html">Login</a></li>
-                          <li><a href="register.html">Register</a></li>
-                          <li><a href="error.html">404 Page</a></li>
                         </ul>
                       </li>
 
                       <li class="menu-item-has-children">
                         <a href="#">Mas</a>
                         <ul class="sub-menu">
-                          <li><a href="blog.html">Blog</a></li>
-                          <li><a href="blog2.html">Blog Sidebar</a></li>
-                          <li><a href="blog-single.html">Blog Details</a></li>
+                          <li><router-link :to="{ name: 'servicios' }">Servicios</router-link></li>
+                          <li>
+                            <router-link :to="{ name: 'ofertasacademicas' }"
+                              >Ofertas Academicas</router-link
+                            >
+                          </li>
+                          <li>
+                            <router-link :to="{ name: 'publicaciones' }">Publicaciones</router-link>
+                          </li>
+                          <li><router-link :to="{ name: 'gacetas' }">Gaceta</router-link></li>
+                          <li><router-link :to="{ name: 'eventos' }">Eventos</router-link></li>
+                          <li><router-link :to="{ name: 'videos' }">Videos</router-link></li>
                         </ul>
                       </li>
-                      <li><a href="contact.html">Links</a></li>
+
+                      <li class="menu-item-has-children">
+                        <a href="#">Links</a>
+                        <ul class="sub-menu">
+                          <li><a href="#">Pagina Web</a></li>
+                          <li><a href="#">Inscripciones</a></li>
+                          <li><a href="#">Campus Virtual</a></li>
+                        </ul>
+                      </li>
+
+                      <li><router-link :to="{ name: 'contacto' }">Contacto</router-link></li>
                     </ul>
                     <!-- //.nav-menu -->
                   </nav>
@@ -160,6 +159,7 @@
         </div>
       </div>
       <!-- Menu End -->
+
       <!-- Canvas Menu start -->
       <nav class="right_menu_togle hidden-md">
         <div class="close-btn">
@@ -168,7 +168,7 @@
           </div>
         </div>
         <div class="canvas-logo">
-          <a href="index.html"><img src="src/assets/images/logo.png" alt="logo" /></a>
+          <a href="index.html"><img src="assets/images/logo.png" alt="logo" /></a>
         </div>
         <div class="offcanvas-text">
           <p>
@@ -176,6 +176,7 @@
             default model text, and a search for web sites still in their infancy.
           </p>
         </div>
+
         <ul class="address-widget">
           <li>
             <i class="flaticon flaticon-call"></i>
@@ -307,3 +308,11 @@ export default {
   }
 }
 </script>
+<style scoped>
+.txt_logo{
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+</style>
