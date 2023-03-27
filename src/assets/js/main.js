@@ -131,7 +131,7 @@
             center: (centerMode ? true : false),
             autoplayHoverPause: (HoverPause ? true : false),
             margin: (margin ? margin : 0),
-            //stagePadding: (stagePadding ? stagePadding : 0),
+            stagePadding: (stagePadding ? stagePadding : 0),
             autoplay: (autoplay ? true : false),
             autoplayTimeout: (autoplayTimeout ? autoplayTimeout : 1000),
             smartSpeed: (smartSpeed ? smartSpeed : 250),

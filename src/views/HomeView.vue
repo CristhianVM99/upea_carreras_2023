@@ -408,8 +408,8 @@
     >
       <div class="container">
         <div class="sec-title mb-30 text-center md-mb-10">
-          <div class="sub-title primary">Autoridades <span class="heading-border-line"></span></div>
-          <h2 class="title mb-0">Nuestras Autoridades</h2>
+          <div class="sub-title primary">Teachers <span class="heading-border-line"></span></div>
+          <h2 class="title mb-0">Professional Teachers</h2>
         </div>
         <div
           class="sc-carousel owl-carousel nav-style2"
@@ -440,7 +440,7 @@
           <div class="team-inner-item">
             <div class="team-wrap">
               <div class="team-img">
-                <img src="../assets/images/team/1.jpg" alt="img" />
+                <img src="../assets/images/team/1.jpg" alt="" />
                 <ul class="team-social">
                   <li>
                     <a href="team-single.html" class="social-icon"
@@ -465,10 +465,11 @@
               </div>
             </div>
           </div>
+
           <div class="team-inner-item">
             <div class="team-wrap">
               <div class="team-img">
-                <img src="../assets/images/team/1.jpg" alt="img" />
+                <img src="../assets/images/team/2.jpg" alt="" />
                 <ul class="team-social">
                   <li>
                     <a href="team-single.html" class="social-icon"
@@ -487,16 +488,17 @@
               </div>
               <div class="team-item-text">
                 <div class="team-details">
-                  <h3 class="team-name"><a href="team-single.html">Mike Jason</a></h3>
-                  <span class="team-title">Business Advisor</span>
+                  <h3 class="team-name"><a href="team-single.html">Alexander Daniel</a></h3>
+                  <span class="team-title">Teaches Art</span>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="team-inner-item">
             <div class="team-wrap">
               <div class="team-img">
-                <img src="../assets/images/team/1.jpg" alt="img" />
+                <img src="../assets/images/team/3.jpg" alt="" />
                 <ul class="team-social">
                   <li>
                     <a href="team-single.html" class="social-icon"
@@ -515,16 +517,17 @@
               </div>
               <div class="team-item-text">
                 <div class="team-details">
-                  <h3 class="team-name"><a href="team-single.html">Mike Jason</a></h3>
-                  <span class="team-title">Business Advisor</span>
+                  <h3 class="team-name"><a href="team-single.html">Liam Ethan</a></h3>
+                  <span class="team-title">Teacher Program</span>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="team-inner-item">
             <div class="team-wrap">
               <div class="team-img">
-                <img src="../assets/images/team/1.jpg" alt="img" />
+                <img src="../assets/images/team/4.jpg" alt="" />
                 <ul class="team-social">
                   <li>
                     <a href="team-single.html" class="social-icon"
@@ -539,12 +542,17 @@
                   <li>
                     <a href="team-single.html" class="social-icon"><i class="fa fa-twitter"></i></a>
                   </li>
+                  <li>
+                    <a href="team-single.html" class="social-icon"
+                      ><i class="fa fa-linkedin"></i
+                    ></a>
+                  </li>
                 </ul>
               </div>
               <div class="team-item-text">
                 <div class="team-details">
-                  <h3 class="team-name"><a href="team-single.html">Mike Jason</a></h3>
-                  <span class="team-title">Business Advisor</span>
+                  <h3 class="team-name"><a href="team-single.html">Sophia Ava</a></h3>
+                  <span class="team-title">Teacher Fashion</span>
                 </div>
               </div>
             </div>
@@ -567,6 +575,10 @@
     </div>
     <!-- Team Section End -->
 
+    <!-- PRUEBA -->
+
+    <!-- FIN PRUEBA -->
+    
     <!-- About Instructor Section Start -->
     <div id="sc-about-instructor" class="sc-about-instructor pt-80 pb-90 md-pt-50 md-pb-70">
       <div class="container">
@@ -723,10 +735,11 @@
                 Frases<span class="heading-border-line"></span>
               </div>
               <h2 class="title mb-0 white-color">
-                Un buen desarrollador de software trabaja con disciplina y constancia desde el primer día.
-                <br>- Omar Bradley -
+                Un buen desarrollador de software trabaja con disciplina y constancia desde el
+                primer día.
+                <br />- Omar Bradley -
               </h2>
-            </div>            
+            </div>
           </div>
         </div>
       </div>
@@ -869,14 +882,14 @@
         </div>
       </div>
     </div>
-    <!-- Blog Section End -->    
+    <!-- Blog Section End -->
   </div>
   <!-- Map Start -->
   <div class="contact-g-map ml-70 mr-70 mb-150">
-        <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
-        <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
-      </div>
-    <!-- Map End -->
+    <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
+    <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
+  </div>
+  <!-- Map End -->
   <!-- Main content End -->
 </template>
 <script>
