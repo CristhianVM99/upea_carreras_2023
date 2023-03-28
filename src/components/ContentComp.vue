@@ -7,12 +7,12 @@
         <img src="../assets/images/breadcrumbs/1.jpg" alt="Breadcrumbs Image" />
       </div>
       <div class="breadcrumbs-text white-color">
-        <h1 class="page-title">{{ tipo.toUpperCase() }} <br> VIGENTES EN LA CARRERA</h1>
+        <h1 class="page-title">{{ tipo_conv.toUpperCase() }} <br> VIGENTES EN LA CARRERA</h1>
         <ul>
           <li>
             <router-link :to="{ name : 'home' }" class="active">Home ></router-link>
           </li>
-          <li class="active">{{ tipo }}</li>
+          <li class="active">{{ tipo_conv }}</li>
         </ul>
       </div>
     </div>
@@ -26,189 +26,54 @@
               <div class="sc-gallery-section pt-30 pb-30 md-pt-80 md-pb-80">
                 <div class="container">
                   <div class="row masonry-grid">
-                    <div class="col-lg-4 col-md-6 loadgallery addgallery">
-                      <div class="gallery-item mb-30">
-                        <img src="../assets/images/gallery/1.jpg" alt="Gallery Image" />
-                        <a
+                    <div class="col-lg-4 col-md-6 loadgallery addgallery"
+                    v-if="Convocatorias.length != 0"
+                    >
+                      <div class="gallery-item mb-30"
+                      v-for="(conv, id_conv) of Convocatorias"
+                      :key="id_conv"
+                      >
+                        <img 
+                        :src="url_api + '/Convocatorias/' + conv.con_foto_portada"
+                        alt="img"
+                        />
+                        <router-link
                           class="popup-galley"
-                          href="assets/images/gallery/1.jpg"
+                          :href="url_api + '/Convocatorias/' + conv.con_foto_portada"
+                          alt="img"
                           title="Overall Rolling trophy"
                         >
                           <i class="flaticon flaticon-magnifying-glass"></i>
-                        </a>
-                      </div>
-                      <div class="gallery-item mb-30">
-                        <img src="../assets/images/gallery/2.jpg" alt="Gallery Image" />
-                        <a
+                        </router-link>
+                      </div>                      
+                    </div>
+                    <div class="col-lg-4 col-md-6 loadgallery addgallery"
+                    v-if="Comunicados.length != 0"
+                    >
+                      <div class="gallery-item mb-30"
+                      v-for="(conv, id_conv) of Comunicados"
+                      :key="id_conv"
+                      >
+                        <img 
+                        :src="url_api + '/Convocatorias/' + conv.con_foto_portada"
+                        alt="img"
+                        />
+                        <router-link
                           class="popup-galley"
-                          href="assets/images/gallery/2.jpg"
+                          :href="url_api + '/Convocatorias/' + conv.con_foto_portada"
+                          alt="img"
                           title="Overall Rolling trophy"
                         >
                           <i class="flaticon flaticon-magnifying-glass"></i>
-                        </a>
-                      </div>
-                      <div class="gallery-item mb-30">
-                        <img
-                          src="../assets/images/gallery/m1.jpg"
-                          alt="Gallery Image"
-                          width="415px"
-                          height="500px"
-                        />
-                        <a
-                          class="popup-galley"
-                          href="assets/images/gallery/m1.jpg"
-                          title="Overall Rolling trophy"
-                        >
-                          <i class="flaticon flaticon-magnifying-glass"></i>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 loadgallery addgallery">
-                      <div class="gallery-item mb-30">
-                        <img src="../assets/images/gallery/3.jpg" alt="Gallery Image" />
-                        <a
-                          class="popup-galley"
-                          href="assets/images/gallery/3.jpg"
-                          title="Annual Sports Meet 2021"
-                        >
-                          <i class="flaticon flaticon-magnifying-glass"></i>
-                        </a>
-                      </div>
-                      <div class="gallery-item mb-30">
-                        <img
-                          src="../assets/images/gallery/m2.jpg"
-                          alt="Gallery Image"
-                          width="415px"
-                          height="500px"
-                        />
-                        <a
-                          class="popup-galley"
-                          href="assets/images/gallery/m2.jpg"
-                          title="Annual Sports Meet 2021"
-                        >
-                          <i class="flaticon flaticon-magnifying-glass"></i>
-                        </a>
-                      </div>
-                      <div class="gallery-item mb-30">
-                        <img src="../assets/images/gallery/4.jpg" alt="Gallery Image" />
-                        <a
-                          class="popup-galley"
-                          href="assets/images/gallery/4.jpg"
-                          title="Annual Sports Meet 2021"
-                        >
-                          <i class="flaticon flaticon-magnifying-glass"></i>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 loadgallery addgallery">
-                      <div class="gallery-item mb-30">
-                        <img
-                          src="../assets/images/gallery/m3.jpg"
-                          alt="Gallery Image"
-                          width="415px"
-                          height="500px"
-                        />
-                        <a
-                          class="popup-galley"
-                          href="assets/images/gallery/m3.jpg"
-                          title="Inter House Islamic Quiz"
-                        >
-                          <i class="flaticon flaticon-magnifying-glass"></i>
-                        </a>
-                      </div>
-                      <div class="gallery-item mb-30">
-                        <img
-                          src="../assets/images/gallery/5.jpg"
-                          alt="Gallery Image"
-                          width="415px"
-                          height="500px"
-                        />
-                        <a
-                          class="popup-galley"
-                          href="assets/images/gallery/5.jpg"
-                          title="Inter House Islamic Quiz"
-                        >
-                          <i class="flaticon flaticon-magnifying-glass"></i>
-                        </a>
-                      </div>
-                      <div class="gallery-item mb-30">
-                        <img
-                          src="../assets/images/gallery/6.jpg"
-                          alt="Gallery Image"
-                          width="415px"
-                          height="500px"
-                        />
-                        <a
-                          class="popup-galley"
-                          href="assets/images/gallery/6.jpg"
-                          title="Inter House Islamic Quiz"
-                        >
-                          <i class="flaticon flaticon-magnifying-glass"></i>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 loadgallery addgallery hidecourse">
-                      <div class="gallery-item mb-30">
-                        <img
-                          src="../assets/images/gallery/7.jpg"
-                          alt="Gallery Image"
-                          width="415px"
-                          height="500px"
-                        />
-                        <a
-                          class="popup-galley"
-                          href="assets/images/gallery/7.jpg"
-                          title="Inter House Islamic Quiz"
-                        >
-                          <i class="flaticon flaticon-magnifying-glass"></i>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 loadgallery addgallery hidecourse">
-                      <div class="gallery-item mb-30">
-                        <img
-                          src="../assets/images/gallery/8.jpg"
-                          alt="Gallery Image"
-                          width="415px"
-                          height="500px"
-                        />
-                        <a
-                          class="popup-galley"
-                          href="assets/images/gallery/8.jpg"
-                          title="Inter House Islamic Quiz"
-                        >
-                          <i class="flaticon flaticon-magnifying-glass"></i>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 loadgallery addgallery hidecourse">
-                      <div class="gallery-item mb-30">
-                        <img
-                          src="../assets/images/gallery/9.jpg"
-                          alt="Gallery Image"
-                          width="415px"
-                          height="500px"
-                        />
-                        <a
-                          class="popup-galley"
-                          href="assets/images/gallery/9.jpg"
-                          title="Inter House Islamic Quiz"
-                        >
-                          <i class="flaticon flaticon-magnifying-glass"></i>
-                        </a>
-                      </div>
-                    </div>
+                        </router-link>
+                      </div>                      
+                    </div>                      
                   </div>
-                  <div id="loadmore" class="text-center mt-30">
+                  <!--<div id="loadmore" class="text-center mt-30">
                     <a class="readon" href="#"
                       >Learn More <i class="flaticon flaticon-right-arrow"></i>
                     </a>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div>
@@ -276,10 +141,45 @@
 export default {
   name: 'ContentComp',
   props: {
-    tipo: {
+    tipo_conv: {
       type: String,
       default: ''
+    },
+    Convocatorias:{
+      type: Array,
+      default: []
+    },
+    Comunicados:{
+      type: Array,
+      default: []
     }
+  },
+  methods:{
+    dmy(fecha) {
+      const meses = [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre",
+      ];
+      let fechaCadena = fecha.substr(0, 10);
+      let fechaArray = fechaCadena.split("-");
+      return (
+        fechaArray[2] +
+        " de " +
+        meses[fechaArray[1] - 1] +
+        " de " +
+        fechaArray[0]
+      );
+    },
   }
 }
 </script>

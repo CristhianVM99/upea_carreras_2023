@@ -862,8 +862,7 @@ export default {
               }
             }
           })
-        }
-        this.pager = this.Institucion.autoridad.length / this.NUM_RESULTS
+        }        
         if (this.pager - Math.trunc(this.pager) > 0) {
           this.pager = Math.trunc(this.pager) + 1
         }

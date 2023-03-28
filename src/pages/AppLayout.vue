@@ -102,6 +102,17 @@ export default {
           );
         }*/
         /*this.setImages(response.data.Descripcion.portada);*/
+        if (this.Institucion.colorinstitucion.length > 0) {
+          document.documentElement.style.setProperty(
+            "--main-color",
+            this.Institucion.colorinstitucion[0].color_primario
+          );
+          document.documentElement.style.setProperty(
+            "--main-color-2",
+            this.Institucion.colorinstitucion[0].color_secundario
+          );          
+        }
+
       } catch (e) {
         console.log(e)
         if (e.code == 'ERR_NETWORK') {
