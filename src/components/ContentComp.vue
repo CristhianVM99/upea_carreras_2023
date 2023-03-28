@@ -40,13 +40,13 @@
                         <router-link
                           class="popup-galley"
                           :href="url_api + '/Convocatorias/' + conv.con_foto_portada"
-                          alt="img"
                           title="Overall Rolling trophy"
                         >
                           <i class="flaticon flaticon-magnifying-glass"></i>
                         </router-link>
                       </div>                      
                     </div>
+                    <!--
                     <div class="col-lg-4 col-md-6 loadgallery addgallery"
                     v-if="Comunicados.length != 0"
                     >
@@ -68,6 +68,7 @@
                         </router-link>
                       </div>                      
                     </div>                      
+                    -->
                   </div>
                   <!--<div id="loadmore" class="text-center mt-30">
                     <a class="readon" href="#"
@@ -85,7 +86,7 @@
                   <input
                     type="search"
                     placeholder="Searching..."
-                    name="s"
+                    name=""
                     class="search-input"
                     value=""
                   />
@@ -138,6 +139,7 @@
   <!-- Main content End -->
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'ContentComp',
   props: {
@@ -146,13 +148,16 @@ export default {
       default: ''
     },
     Convocatorias:{
-      type: Array,
-      default: []
+      type: Object,
+      default: ()=>({})
     },
     Comunicados:{
-      type: Array,
-      default: []
+      type: Object,
+      default: ()=>({})
     }
+  },
+  computed: {
+    ...mapState(['url_api'])
   },
   methods:{
     dmy(fecha) {
@@ -180,6 +185,10 @@ export default {
         fechaArray[0]
       );
     },
+  },
+  mounted(){
+    console.log(this.Comunicados)
   }
+
 }
 </script>

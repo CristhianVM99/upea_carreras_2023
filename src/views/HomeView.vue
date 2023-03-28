@@ -770,7 +770,7 @@
     <!-- Blog Section End -->
   </div>
   <!-- Map Start -->
-  <div class="container contact-g-map ml-70 mr-70 mb-150 bg-map">
+  <div class="pl-20 pr-20 contact-g-map mr-70 mb-150 bg-map">
     <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
     <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
   </div>
@@ -1107,5 +1107,6 @@ export default {
 }
 .bg-map{
   text-align: center;
+  width: 100%;
 }
 </style>
