@@ -49,17 +49,17 @@
         </div>
       </div>
       <div class="animated-arrow-1 animated-arrow left-right-new">
-        <img src="../src/assets/images/arrow-1.png" alt="" />
+        <img src="src/assets/images/arrow-1.png" alt="" />
       </div>
       <div class="animated-arrow-2 animated-arrow up-down-new">
-        <img src="../src/assets/images/arrow-2.png" alt="" />
+        <img src="src/assets/images/arrow-2.png" alt="" />
       </div>
 
       <div class="animated-arrow-3 animated-arrow up-down-new">
-        <img src="../src/assets/images/arrow-3.png" alt="" />
+        <img src="src/assets/images/arrow-3.png" alt="" />
       </div>
       <div class="animated-arrow-4 animated-arrow left-right-new">
-        <img src="../src/assets/images/arrow-3.png" alt="" />
+        <img src="src/assets/images/arrow-3.png" alt="" />
       </div>
     </div>
     <!-- About Section End -->

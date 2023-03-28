@@ -321,4 +321,7 @@ export default {
   text-transform: uppercase;
   font-size: 0.8em;
 }
+#nav-expander{
+  visibility: hidden;
+}
 </style>

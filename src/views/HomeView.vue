@@ -408,156 +408,57 @@
     >
       <div class="container">
         <div class="sec-title mb-30 text-center md-mb-10">
-          <div class="sub-title primary">Teachers <span class="heading-border-line"></span></div>
-          <h2 class="title mb-0">Professional Teachers</h2>
+          <div class="sub-title primary">Autoridades<span class="heading-border-line"></span></div>
+          <h2 class="title mb-0">Nuestras Autoridades</h2>
         </div>
-        <div
-          class="sc-carousel owl-carousel nav-style2"
-          data-loop="true"
-          data-items="3"
-          data-margin="0"
-          data-autoplay="true"
-          data-hoverpause="true"
-          data-autoplay-timeout="5000"
-          data-smart-speed="800"
-          data-dots="false"
-          data-nav="true"
-          data-nav-speed="false"
-          data-center-mode="true"
-          data-mobile-device="1"
-          data-mobile-device-nav="true"
-          data-mobile-device-dots="false"
-          data-ipad-device="2"
-          data-ipad-device-nav="true"
-          data-ipad-device-dots="false"
-          data-ipad-device2="2"
-          data-ipad-device-nav2="true"
-          data-ipad-device-dots2="false"
-          data-md-device="3"
-          data-md-device-nav="true"
-          data-md-device-dots="false"
+        <swiper
+          :slides-per-view="3"
+          :space-between="50"
+          @swiper="onSwiper"
+          @slideChange="onSlideChange"
         >
-          <div class="team-inner-item">
-            <div class="team-wrap">
-              <div class="team-img">
-                <img src="../assets/images/team/1.jpg" alt="" />
-                <ul class="team-social">
-                  <li>
-                    <a href="team-single.html" class="social-icon"
-                      ><i class="fa fa-facebook"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="team-single.html" class="social-icon"
-                      ><i class="fa fa-google-plus"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="team-single.html" class="social-icon"><i class="fa fa-twitter"></i></a>
-                  </li>
-                </ul>
-              </div>
-              <div class="team-item-text">
-                <div class="team-details">
-                  <h3 class="team-name"><a href="team-single.html">Mike Jason</a></h3>
-                  <span class="team-title">Business Advisor</span>
+          <swiper-slide v-for="(autoridad, id_aut) of Institucion.autoridad" :key="id_aut">
+            <div class="team-inner-item">
+              <div class="team-wrap">
+                <div class="team-img">
+                  <img
+                    :src="url_api + '/InstitucionUpea/Autoridad/' + autoridad.foto_autoridad"
+                    alt="img"
+                    class="img_swiper"
+                  />
+                  <ul class="team-social">
+                    <li>
+                      <a :href="autoridad.facebook_autoridad" target="_blank" class="social-icon"
+                        ><i class="fa fa-facebook"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a
+                        :href="'https://wa.me/+' + autoridad.celular_autoridad"
+                        target="_blank"
+                        class="social-icon"
+                        ><i class="fa fa-whatsapp"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a :href="autoridad.twiter_autoridad" target="_blank" class="social-icon"
+                        ><i class="fa fa-twitter"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="team-item-text">
+                  <div class="team-details">
+                    <h3 class="team-name">
+                      <a href="team-single.html">{{ autoridad.nombre_autoridad }}</a>
+                    </h3>
+                    <span class="team-title">{{ autoridad.cargo_autoridad }}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="team-inner-item">
-            <div class="team-wrap">
-              <div class="team-img">
-                <img src="../assets/images/team/2.jpg" alt="" />
-                <ul class="team-social">
-                  <li>
-                    <a href="team-single.html" class="social-icon"
-                      ><i class="fa fa-facebook"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="team-single.html" class="social-icon"
-                      ><i class="fa fa-google-plus"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="team-single.html" class="social-icon"><i class="fa fa-twitter"></i></a>
-                  </li>
-                </ul>
-              </div>
-              <div class="team-item-text">
-                <div class="team-details">
-                  <h3 class="team-name"><a href="team-single.html">Alexander Daniel</a></h3>
-                  <span class="team-title">Teaches Art</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="team-inner-item">
-            <div class="team-wrap">
-              <div class="team-img">
-                <img src="../assets/images/team/3.jpg" alt="" />
-                <ul class="team-social">
-                  <li>
-                    <a href="team-single.html" class="social-icon"
-                      ><i class="fa fa-facebook"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="team-single.html" class="social-icon"
-                      ><i class="fa fa-google-plus"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="team-single.html" class="social-icon"><i class="fa fa-twitter"></i></a>
-                  </li>
-                </ul>
-              </div>
-              <div class="team-item-text">
-                <div class="team-details">
-                  <h3 class="team-name"><a href="team-single.html">Liam Ethan</a></h3>
-                  <span class="team-title">Teacher Program</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="team-inner-item">
-            <div class="team-wrap">
-              <div class="team-img">
-                <img src="../assets/images/team/4.jpg" alt="" />
-                <ul class="team-social">
-                  <li>
-                    <a href="team-single.html" class="social-icon"
-                      ><i class="fa fa-facebook"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="team-single.html" class="social-icon"
-                      ><i class="fa fa-google-plus"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="team-single.html" class="social-icon"><i class="fa fa-twitter"></i></a>
-                  </li>
-                  <li>
-                    <a href="team-single.html" class="social-icon"
-                      ><i class="fa fa-linkedin"></i
-                    ></a>
-                  </li>
-                </ul>
-              </div>
-              <div class="team-item-text">
-                <div class="team-details">
-                  <h3 class="team-name"><a href="team-single.html">Sophia Ava</a></h3>
-                  <span class="team-title">Teacher Fashion</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          </swiper-slide>
+        </swiper>
       </div>
       <div class="animated-arrow-1 animated-arrow left-right-new">
         <img src="../assets/images/arrow-5.png" alt="" />
@@ -575,10 +476,6 @@
     </div>
     <!-- Team Section End -->
 
-    <!-- PRUEBA -->
-
-    <!-- FIN PRUEBA -->
-    
     <!-- About Instructor Section Start -->
     <div id="sc-about-instructor" class="sc-about-instructor pt-80 pb-90 md-pt-50 md-pb-70">
       <div class="container">
@@ -609,116 +506,132 @@
           <div class="sub-title primary">Lo mas reciente</div>
           <h2 class="title mb-0">Convocatorias, Comunicados y Avisos Recientes</h2>
         </div>
-        <div
-          class="sc-carousel owl-carousel"
-          data-loop="true"
-          data-items="3"
-          data-margin="30"
-          data-autoplay="true"
-          data-hoverpause="true"
-          data-autoplay-timeout="5000"
-          data-smart-speed="800"
-          data-dots="false"
-          data-nav="false"
-          data-nav-speed="false"
-          data-center-mode="false"
-          data-mobile-device="1"
-          data-mobile-device-nav="false"
-          data-mobile-device-dots="false"
-          data-ipad-device="2"
-          data-ipad-device-nav="false"
-          data-ipad-device-dots="false"
-          data-ipad-device2="2"
-          data-ipad-device-nav2="false"
-          data-ipad-device-dots2="false"
-          data-md-device="3"
-          data-md-device-nav="false"
-          data-md-device-dots="false"
+        <swiper
+          :slides-per-view="3"
+          :space-between="50"
+          @swiper="onSwiper"
+          @slideChange="onSlideChange"
+          v-if="
+            Object.keys(latestConv).length +
+              Object.keys(latestComun).length +
+              Object.keys(latestAv).length >
+            0
+          "
         >
-          <div class="blog-item">
-            <div class="image-part">
-              <img src="../assets/images/blog/1.jpg" alt="" />
-            </div>
-            <div class="blog-content">
-              <ul class="blog-meta">
-                <li><i class="fa fa-user-o"></i> Admin</li>
-                <li><i class="fa fa-calendar"></i>December 05, 2021</li>
-              </ul>
-              <h3 class="title"><a href="blog-single.html">Topic Computer Science</a></h3>
-              <div class="desc">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+          <swiper-slide>
+            <div class="blog-item bg_box" v-if="Object.keys(latestConv).length != 0">
+              <div class="image-part">
+                <router-link :to="'/detalleConvocatoria/' + latestConv.idconvocatorias">
+                  <img
+                    class="img_swiper"
+                    :src="url_api + '/Convocatorias/' + latestConv.con_foto_portada"
+                    alt="img"
+                  />
+                </router-link>
               </div>
-              <div class="btn-btm">
-                <div class="rs-view-btn">
-                  <a href="blog-single.html">Read More</a>
+              <div class="blog-content">
+                <ul class="blog-meta">
+                  <router-link
+                    :to="'/convocatorias/' + latestConv.tipo_conv_comun.idtipo_conv_comun"
+                    ><li class="btn_tipo">
+                      {{ latestConv.tipo_conv_comun.tipo_conv_comun_titulo }}
+                    </li></router-link
+                  >
+                  <li><i class="fa fa-calendar"></i>{{ dmy(latestConv.con_fecha_inicio) }}</li>
+                </ul>
+                <h3 class="title">
+                  <router-link :to="'/detalleConvocatoria/' + latestConv.idconvocatorias">{{
+                    latestConv.con_titulo.toUpperCase()
+                  }}</router-link>
+                </h3>
+                <div class="btn-btm">
+                  <div class="rs-view-btn">
+                    <router-link
+                      :to="'/detalleConvocatoria/' + latestConv.idconvocatorias"
+                      class="readon btn_link"
+                      >Leer Mas</router-link
+                    >
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="blog-item">
-            <div class="image-part">
-              <img src="../assets/images/blog/2.jpg" alt="" />
-            </div>
-            <div class="blog-content">
-              <ul class="blog-meta">
-                <li><i class="fa fa-user-o"></i> Admin</li>
-                <li><i class="fa fa-calendar"></i>December 08, 2021</li>
-              </ul>
-              <h3 class="title"><a href="blog-single.html">How does the Blended</a></h3>
-              <div class="desc">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+          </swiper-slide>
+          <swiper-slide>
+            <div class="blog-item bg_box" v-if="Object.keys(latestComun).length != 0">
+              <div class="image-part">
+                <router-link :to="'/detalleConvocatoria/' + latestComun.idconvocatorias">
+                  <img
+                    class="img_swiper"
+                    :src="url_api + '/Convocatorias/' + latestComun.con_foto_portada"
+                    alt="img"
+                  />
+                </router-link>
               </div>
-              <div class="btn-btm">
-                <div class="rs-view-btn">
-                  <a href="blog-single.html">Read More</a>
+              <div class="blog-content">
+                <ul class="blog-meta">
+                  <router-link
+                    :to="'/convocatorias/' + latestComun.tipo_conv_comun.idtipo_conv_comun"
+                    ><li class="btn_tipo">
+                      {{ latestComun.tipo_conv_comun.tipo_conv_comun_titulo }}
+                    </li></router-link
+                  >
+                  <li><i class="fa fa-calendar"></i>{{ dmy(latestComun.con_fecha_inicio) }}</li>
+                </ul>
+                <h3 class="title">
+                  <router-link :to="'/detalleConvocatoria/' + latestComun.idconvocatorias">{{
+                    latestComun.con_titulo.toUpperCase()
+                  }}</router-link>
+                </h3>
+                <div class="btn-btm">
+                  <div class="rs-view-btn">
+                    <router-link
+                      :to="'/detalleConvocatoria/' + latestComun.idconvocatorias"
+                      class="readon btn_link"
+                      >Leer Mas</router-link
+                    >
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="blog-item">
-            <div class="image-part">
-              <img src="../assets/images/blog/3.jpg" alt="" />
-            </div>
-            <div class="blog-content">
-              <ul class="blog-meta">
-                <li><i class="fa fa-user-o"></i> Admin</li>
-                <li><i class="fa fa-calendar"></i>December 10, 2021</li>
-              </ul>
-              <h3 class="title"><a href="blog-single.html">Do Learning to Outcomes</a></h3>
-              <div class="desc">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+          </swiper-slide>
+          <swiper-slide>
+            <div class="blog-item bg_box" v-if="Object.keys(latestAv).length != 0">
+              <div class="image-part">
+                <router-link :to="'/detalleConvocatoria/' + latestAv.idconvocatorias">
+                  <img
+                    class="img_swiper"
+                    :src="url_api + '/Convocatorias/' + latestAv.con_foto_portada"
+                    alt="img"
+                  />
+                </router-link>
               </div>
-              <div class="btn-btm">
-                <div class="rs-view-btn">
-                  <a href="blog-single.html">Read More</a>
+              <div class="blog-content">
+                <ul class="blog-meta">
+                  <router-link :to="'/convocatorias/' + latestAv.tipo_conv_comun.idtipo_conv_comun"
+                    ><li class="btn_tipo">
+                      {{ latestAv.tipo_conv_comun.tipo_conv_comun_titulo }}
+                    </li></router-link
+                  >
+                  <li><i class="fa fa-calendar"></i>{{ dmy(latestAv.con_fecha_inicio) }}</li>
+                </ul>
+                <h3 class="title">
+                  <router-link :to="'/detalleConvocatoria/' + latestAv.idconvocatorias">{{
+                    latestAv.con_titulo.toUpperCase()
+                  }}</router-link>
+                </h3>
+                <div class="btn-btm">
+                  <div class="rs-view-btn">
+                    <router-link
+                      :to="'/detalleConvocatoria/' + latestAv.idconvocatorias"
+                      class="readon btn_link"
+                      >Leer Mas</router-link
+                    >
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="blog-item">
-            <div class="image-part">
-              <img src="../assets/images/blog/4.jpg" alt="" />
-            </div>
-            <div class="blog-content">
-              <ul class="blog-meta">
-                <li><i class="fa fa-user-o"></i> Admin</li>
-                <li><i class="fa fa-calendar"></i>December 15, 2021</li>
-              </ul>
-              <h3 class="title"><a href="blog-single.html">The Trends in Computer</a></h3>
-              <div class="desc">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-              </div>
-              <div class="btn-btm">
-                <div class="rs-view-btn">
-                  <a href="blog-single.html">Read More</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          </swiper-slide>
+        </swiper>
       </div>
     </div>
     <!-- Blog Section End -->
@@ -770,122 +683,94 @@
           <div class="sub-title primary">Lo mas reciente</div>
           <h2 class="title mb-0">Cursos y Seminarios</h2>
         </div>
-        <div
-          class="sc-carousel owl-carousel"
-          data-loop="true"
-          data-items="3"
-          data-margin="30"
-          data-autoplay="true"
-          data-hoverpause="true"
-          data-autoplay-timeout="5000"
-          data-smart-speed="800"
-          data-dots="false"
-          data-nav="false"
-          data-nav-speed="false"
-          data-center-mode="false"
-          data-mobile-device="1"
-          data-mobile-device-nav="false"
-          data-mobile-device-dots="false"
-          data-ipad-device="2"
-          data-ipad-device-nav="false"
-          data-ipad-device-dots="false"
-          data-ipad-device2="2"
-          data-ipad-device-nav2="false"
-          data-ipad-device-dots2="false"
-          data-md-device="3"
-          data-md-device-nav="false"
-          data-md-device-dots="false"
+        <swiper
+          :slides-per-view="3"
+          :space-between="50"
+          @swiper="onSwiper"
+          @slideChange="onSlideChange"
+          v-if="Object.keys(latestCur).length + Object.keys(latestSem).length > 0"
         >
-          <div class="blog-item">
-            <div class="image-part">
-              <img src="../assets/images/blog/1.jpg" alt="" />
-            </div>
-            <div class="blog-content">
-              <ul class="blog-meta">
-                <li><i class="fa fa-user-o"></i> Admin</li>
-                <li><i class="fa fa-calendar"></i>December 05, 2021</li>
-              </ul>
-              <h3 class="title"><a href="blog-single.html">Topic Computer Science</a></h3>
-              <div class="desc">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+          <swiper-slide>
+            <div class="blog-item bg_box" v-if="Object.keys(latestCur).length != 0">
+              <div class="image-part">
+                <router-link :to="'/detalleCurso/' + latestCur.iddetalle_cursos_academicos">
+                  <img
+                    class="img_swiper"
+                    :src="url_api + '/Cursos/' + latestCur.det_img_portada"
+                    alt="img"
+                  />
+                </router-link>
               </div>
-              <div class="btn-btm">
-                <div class="rs-view-btn">
-                  <a href="blog-single.html">Read More</a>
+              <div class="blog-content">
+                <ul class="blog-meta">
+                  <router-link :to="'/cursos/' + latestCur.idtipo_curso_otros"
+                    ><li class="btn_tipo">
+                      {{ latestCur.tipo_curso_otro.tipo_conv_curso_nombre }}
+                    </li></router-link
+                  >
+                  <li><i class="fa fa-calendar"></i>{{ dmy(latestCur.det_fecha_ini) }}</li>
+                </ul>
+                <h3 class="title">
+                  <router-link :to="'/detalleCurso/' + latestCur.iddetalle_cursos_academicos">{{
+                    latestCur.det_titulo.toUpperCase()
+                  }}</router-link>
+                </h3>
+                <div class="btn-btm">
+                  <div class="rs-view-btn">
+                    <router-link
+                      :to="'/detalleCurso/' + latestCur.iddetalle_cursos_academicos"
+                      class="readon btn_link"
+                      >Leer Mas</router-link
+                    >
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="blog-item">
-            <div class="image-part">
-              <img src="../assets/images/blog/2.jpg" alt="" />
-            </div>
-            <div class="blog-content">
-              <ul class="blog-meta">
-                <li><i class="fa fa-user-o"></i> Admin</li>
-                <li><i class="fa fa-calendar"></i>December 08, 2021</li>
-              </ul>
-              <h3 class="title"><a href="blog-single.html">How does the Blended</a></h3>
-              <div class="desc">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+          </swiper-slide>
+          <swiper-slide>
+            <div class="blog-item bg_box" v-if="Object.keys(latestSem).length != 0">
+              <div class="image-part">
+                <router-link :to="'/detalleCurso/' + latestSem.iddetalle_cursos_academicos">
+                  <img
+                    class="img_swiper"
+                    :src="url_api + '/Cursos/' + latestSem.det_img_portada"
+                    alt="img"
+                  />
+                </router-link>
               </div>
-              <div class="btn-btm">
-                <div class="rs-view-btn">
-                  <a href="blog-single.html">Read More</a>
+              <div class="blog-content">
+                <ul class="blog-meta">
+                  <router-link :to="'/detalleCurso/' + latestSem.idtipo_curso_otros"
+                    ><li class="btn_tipo">
+                      {{ latestSem.tipo_curso_otro.tipo_conv_curso_nombre }}
+                    </li></router-link
+                  >
+                  <li><i class="fa fa-calendar"></i>{{ dmy(latestSem.det_fecha_ini) }}</li>
+                </ul>
+                <h3 class="title">
+                  <router-link :to="'/detalleCurso/' + latestSem.iddetalle_cursos_academicos">{{
+                    latestSem.det_titulo.toUpperCase()
+                  }}</router-link>
+                </h3>
+                <div class="btn-btm">
+                  <div class="rs-view-btn">
+                    <router-link
+                      :to="'/detalleCurso/' + latestSem.iddetalle_cursos_academicos"
+                      class="readon btn_link"
+                      >Leer Mas</router-link
+                    >
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="blog-item">
-            <div class="image-part">
-              <img src="../assets/images/blog/3.jpg" alt="" />
-            </div>
-            <div class="blog-content">
-              <ul class="blog-meta">
-                <li><i class="fa fa-user-o"></i> Admin</li>
-                <li><i class="fa fa-calendar"></i>December 10, 2021</li>
-              </ul>
-              <h3 class="title"><a href="blog-single.html">Do Learning to Outcomes</a></h3>
-              <div class="desc">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-              </div>
-              <div class="btn-btm">
-                <div class="rs-view-btn">
-                  <a href="blog-single.html">Read More</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="blog-item">
-            <div class="image-part">
-              <img src="../assets/images/blog/4.jpg" alt="" />
-            </div>
-            <div class="blog-content">
-              <ul class="blog-meta">
-                <li><i class="fa fa-user-o"></i> Admin</li>
-                <li><i class="fa fa-calendar"></i>December 15, 2021</li>
-              </ul>
-              <h3 class="title"><a href="blog-single.html">The Trends in Computer</a></h3>
-              <div class="desc">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-              </div>
-              <div class="btn-btm">
-                <div class="rs-view-btn">
-                  <a href="blog-single.html">Read More</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          </swiper-slide>
+        </swiper>
       </div>
     </div>
     <!-- Blog Section End -->
   </div>
   <!-- Map Start -->
-  <div class="contact-g-map ml-70 mr-70 mb-150">
+  <div class="container contact-g-map ml-70 mr-70 mb-150 bg-map">
     <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
     <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
   </div>
@@ -895,6 +780,8 @@
 <script>
 import { mapState } from 'vuex'
 import Services from '@/services/Services'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
 
 export default {
   name: 'HomeView',
@@ -925,7 +812,22 @@ export default {
   computed: {
     ...mapState(['url_api', 'Institucion', 'MenuConvocatorias', 'MenuCursos', 'Links'])
   },
-  components: {},
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  setup() {
+    const onSwiper = (swiper) => {
+      console.log(swiper)
+    }
+    const onSlideChange = () => {
+      console.log('slide change')
+    }
+    return {
+      onSwiper,
+      onSlideChange
+    }
+  },
   methods: {
     async getConvocatoriasAll() {
       try {
@@ -1179,5 +1081,32 @@ export default {
   text-align: center;
   letter-spacing: 1px;
   clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+}
+.img_swiper {
+  height: 400px;
+  object-fit: cover;
+}
+
+.btn_link {
+  color: #fff !important;
+  padding: 5px 10px !important;
+}
+
+.btn_tipo {
+  background: #f24d5d;
+  color: #fff;
+  padding: 5px 10px !important;
+  border-radius: 5px;
+}
+
+.bg_box{
+  background: rgb(4, 59, 80 / 10% );
+  /*box-shadow: 0px 0px 16px ;
+  box-shadow: 0px 0px 16px red;*/
+  padding: 15px;
+  height: 700px;    
+}
+.bg-map{
+  text-align: center;
 }
 </style>
