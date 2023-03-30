@@ -230,7 +230,7 @@ export default {
   data() {
     return {
       sopen: false,
-      LInks: [],
+      Links: [],
       m_inicio: false,
       m_conv: false,
       m_cur: false,
@@ -242,57 +242,7 @@ export default {
     ...mapState(['url_api', 'MenuConv', 'MenuCur', 'Institucion', 'getter'])
   },
   methods: {
-    click_m() {
-      this.$store.commit('clickLink')
-      this.openMenu()
-    },
-    showSubMenu(id) {
-      switch (id) {
-        case 'm_inicio':
-          this.m_inicio = !this.m_inicio
-          this.m_conv = false
-          this.m_cur = false
-          this.m_mas = false
-          this.m_link = false
-          break
-        case 'm_conv':
-          this.m_inicio = false
-          this.m_conv = !this.m_conv
-          this.m_cur = false
-          this.m_mas = false
-          this.m_link = false
-          break
-        case 'm_cur':
-          this.m_inicio = false
-          this.m_conv = false
-          this.m_cur = !this.m_cur
-          this.m_mas = false
-          this.m_link = false
-          break
-        case 'm_mas':
-          this.m_inicio = false
-          this.m_conv = false
-          this.m_cur = false
-          this.m_mas = !this.m_mas
-          this.m_link = false
-          break
-        case 'm_link':
-          this.m_inicio = false
-          this.m_conv = false
-          this.m_cur = false
-          this.m_mas = false
-          this.m_link = !this.m_link
-          break
-
-        default:
-          console.log('')
-          break
-      }
-    },
-    openMenu() {
-      this.sopen = !this.sopen
-    }
-    /*async getLinks() {
+    async getLinks() {
       try {
         let res = await this.axios.get(
           "/api/linksIntExtAll/" + import.meta.env.VITE_VUE_APP_ID_INSTITUCION
@@ -301,17 +251,11 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    },*/
+    },
   },
   created() {
-    //this.getLinks();
+    this.getLinks();
   },
-  mounted() {
-    /*if (this.getter) {
-      this.getLinks();
-      this.$store.state.getter = false;
-    }*/
-  }
 }
 </script>
 <style scoped>

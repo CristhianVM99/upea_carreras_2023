@@ -164,7 +164,7 @@ export default {
   data() {
     return {
       sopen: false,
-      LInks: [],
+      Links: [],
       m_inicio: false,
       m_conv: false,
       m_cur: false,

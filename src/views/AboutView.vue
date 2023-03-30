@@ -191,10 +191,6 @@ export default {
       Cur: [],
       Serv: [],
       Ofer: [],
-
-      NUM_RESULTS: 3,
-      pag: 1,
-      pager: 0
     }
   },
   computed: {
