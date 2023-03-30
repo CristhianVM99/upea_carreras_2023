@@ -76,7 +76,7 @@
                 <i class="flaticon flaticon-laptop"></i>
               </div>
               <h2 class="counter-title">
-                <span class="sc-count">{{ Conv.length }}</span
+                <span class="sc-count">{{ Convocatorias.length }}</span
                 ><span class="text">+</span>
               </h2>
               <h5 class="title mb-0">Convocatorias, Comunicados & Avisos</h5>
@@ -88,7 +88,7 @@
                 <i class="flaticon flaticon-study"></i>
               </div>
               <h2 class="counter-title">
-                <span class="sc-count">{{ Cur.length }}</span
+                <span class="sc-count">{{ Cursos.length }}</span
                 ><span class="text">+</span>
               </h2>
               <h5 class="title mb-0">Cursos & Seminarios</h5>
@@ -100,7 +100,7 @@
                 <i class="flaticon flaticon-teacher"></i>
               </div>
               <h2 class="counter-title">
-                <span class="sc-count">{{ Serv.length }}</span
+                <span class="sc-count">{{ Servicios.length }}</span
                 ><span class="text">+</span>
               </h2>
               <h5 class="title mb-0">Servicios</h5>
@@ -112,7 +112,7 @@
                 <i class="flaticon flaticon-monitor"></i>
               </div>
               <h2 class="counter-title">
-                <span class="sc-count">{{ Ofer.length }}</span
+                <span class="sc-count">{{ Ofertas.length }}</span
                 ><span class="text">+</span>
               </h2>
               <h5 class="title mb-0">Ofertas Academicas</h5>
@@ -187,10 +187,10 @@ export default {
   name: 'AboutView',
   data() {
     return {
-      Conv: [],
-      Cur: [],
-      Serv: [],
-      Ofer: [],
+      Convocatorias: [],
+      Cursos: [],
+      Servicios: [],
+      Ofertas: [],
     }
   },
   computed: {
@@ -199,41 +199,50 @@ export default {
   methods: {
     async getConvocatoriasAll() {
       try {
+        //optenemos todas la convocatorias, comunicados y avisos.
         const response = await Services.getConvocatoriasAll()
-        this.Conv = response.data
-        /*this.pager = this.Institucion.autoridad.length / this.NUM_RESULTS;
-        if (this.pager - Math.trunc(this.pager) > 0) {
-          this.pager = Math.trunc(this.pager) + 1;
-        }*/
+        this.Convocatorias = response.data        
       } catch (e) {
         console.log(e)
       }
     },
     async getCursosAll() {
       try {
+        //optenemos todos los cursos y seminarios.
         const response = await Services.getCursosAll()
-        this.Cur = response.data
+        this.Cursos = response.data
       } catch (e) {
         console.log(e)
       }
     },
     async getServiciosAll() {
       try {
+        //optenemos todos los servicios
         const response = await Services.getServiciosAll()
-        this.Serv = response.data
+        this.Servicios = response.data
       } catch (e) {
         console.log(e)
       }
     },
     async getOfertasAll() {
       try {
+        //optenemos todas las ofertas
         const response = await Services.getOfertasAll()
-        this.Ofer = response.data
-        //this.$store.commit("loading");
+        this.Ofertas = response.data
       } catch (e) {
         console.log(e)
       }
+    },
+    //metodo que ejecuta los demas
+    createdComponent(){
+      this.getConvocatoriasAll()
+      this.getCursosAll()
+      this.getServiciosAll()
+      this.getOfertasAll()
     }
+  },
+  created(){
+    this.createdComponent()
   }
 }
 </script>

@@ -32,31 +32,7 @@
               <form class="newsletter-form mt-40">
                 <input type="text" name="email" placeholder="search course..." />
                 <button type="submit"><i class="flaticon flaticon-magnifying-glass"></i></button>
-              </form>
-              <!--<div class="bannner-skillbar d-flex mt-45">
-                <div class="course-skill course-summary">
-                  <h3 class="mb-0">26k+</h3>
-                  <ul class="heart-icon">
-                    <li><i class="fa fa-heart"></i></li>
-                    <li><i class="fa fa-heart"></i></li>
-                    <li><i class="fa fa-heart"></i></li>
-                    <li><i class="fa fa-heart"></i></li>
-                    <li><i class="fa fa-heart"></i></li>
-                  </ul>
-                  <span>Active Course</span>
-                </div>
-                <div class="course-ratting course-summary">
-                  <h3 class="mb-0">6.8+</h3>
-                  <ul class="heart-icon">
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                  </ul>
-                  <span>Active Course</span>
-                </div>
-              </div>-->
+              </form>              
             </div>
           </div>
           <div class="col-lg-6 hidden-md">
@@ -129,19 +105,8 @@
                 ></iframe>
               </div>
               <div class="blog-full">
-                <ul class="single-post-meta">
-                  <li>
-                    <span class="p-date"> <i class="fa fa-user-o"></i> admin </span>
-                  </li>
-                  <li>
-                    <span class="p-date">
-                      <i class="fa fa-calendar-check-o"></i> April 20, 2021
-                    </span>
-                  </li>
-                  <li class="post-comment"><i class="fa fa-comments-o"></i> 0</li>
-                </ul>
                 <div class="blog-desc">
-                  <h4>{{ Institucion.institucion_nombre }}</h4>
+                  <h4 class="title_home">{{ Institucion.institucion_nombre }}</h4>
                   <p v-html="Institucion.institucion_sobre_ins"></p>
                 </div>
                 <blockquote>
@@ -318,7 +283,7 @@
                   <i class="flaticon flaticon-study"></i>
                 </div>
                 <h2 class="counter-title">
-                  <span class="sc-count">{{ Event.length }} </span><span class="text">+</span>
+                  <span class="sc-count">{{ Eventos.length }} </span><span class="text">+</span>
                 </h2>
                 <h5 class="title mb-0">EVENTOS</h5>
               </div>
@@ -331,7 +296,7 @@
                   <i class="flaticon flaticon-teacher"></i>
                 </div>
                 <h2 class="counter-title">
-                  <span class="sc-count">{{ Serv.length }} </span><span class="text">+</span>
+                  <span class="sc-count">{{ Servicios.length }} </span><span class="text">+</span>
                 </h2>
                 <h5 class="title mb-0">SERVICIOS</h5>
               </div>
@@ -342,7 +307,7 @@
                   <i class="flaticon flaticon-study"></i>
                 </div>
                 <h2 class="counter-title">
-                  <span class="sc-count">{{ Gac.length }} </span><span class="text">+</span>
+                  <span class="sc-count">{{ Gacetas.length }} </span><span class="text">+</span>
                 </h2>
                 <h5 class="title mb-0">GACETA</h5>
               </div>
@@ -353,7 +318,7 @@
                   <i class="flaticon flaticon-study"></i>
                 </div>
                 <h2 class="counter-title">
-                  <span class="sc-count">{{ Vid.length }} </span><span class="text">+</span>
+                  <span class="sc-count">{{ Videos.length }} </span><span class="text">+</span>
                 </h2>
                 <h5 class="title mb-0">VIDEOS</h5>
               </div>
@@ -366,7 +331,7 @@
                   <i class="flaticon flaticon-monitor"></i>
                 </div>
                 <h2 class="counter-title">
-                  <span class="sc-count">{{ Ofer.length }}</span
+                  <span class="sc-count">{{ Ofertas.length }}</span
                   ><span class="text">+</span>
                 </h2>
                 <h5 class="title mb-0">OFERTAS ACADEMICAS</h5>
@@ -378,7 +343,7 @@
                   <i class="flaticon flaticon-teacher"></i>
                 </div>
                 <h2 class="counter-title">
-                  <span class="sc-count">{{ Publi.length }} </span><span class="text">+</span>
+                  <span class="sc-count">{{ Publicaciones.length }} </span><span class="text">+</span>
                 </h2>
                 <h5 class="title mb-0">PUBLICACIONES</h5>
               </div>
@@ -512,19 +477,19 @@
           @swiper="onSwiper"
           @slideChange="onSlideChange"
           v-if="
-            Object.keys(latestConv).length +
-              Object.keys(latestComun).length +
-              Object.keys(latestAv).length >
+            Object.keys(latestConvocatoria).length +
+              Object.keys(latestComunicado).length +
+              Object.keys(latestAviso).length >
             0
           "
         >
           <swiper-slide>
-            <div class="blog-item bg_box" v-if="Object.keys(latestConv).length != 0">
+            <div class="blog-item bg_box" v-if="Object.keys(latestConvocatoria).length != 0">
               <div class="image-part">
-                <router-link :to="'/detalleConvocatoria/' + latestConv.idconvocatorias">
+                <router-link :to="'/detalleConvocatoria/' + latestConvocatoria.idconvocatorias">
                   <img
                     class="img_swiper"
-                    :src="url_api + '/Convocatorias/' + latestConv.con_foto_portada"
+                    :src="url_api + '/Convocatorias/' + latestConvocatoria.con_foto_portada"
                     alt="img"
                   />
                 </router-link>
@@ -532,22 +497,22 @@
               <div class="blog-content">
                 <ul class="blog-meta">
                   <router-link
-                    :to="'/convocatorias/' + latestConv.tipo_conv_comun.idtipo_conv_comun"
+                    :to="'/convocatorias/' + latestConvocatoria.tipo_conv_comun.idtipo_conv_comun"
                     ><li class="btn_tipo">
-                      {{ latestConv.tipo_conv_comun.tipo_conv_comun_titulo }}
+                      {{ latestConvocatoria.tipo_conv_comun.tipo_conv_comun_titulo }}
                     </li></router-link
                   >
-                  <li><i class="fa fa-calendar"></i>{{ dmy(latestConv.con_fecha_inicio) }}</li>
+                  <li><i class="fa fa-calendar"></i>{{ dmy(latestConvocatoria.con_fecha_inicio) }}</li>
                 </ul>
                 <h3 class="title">
-                  <router-link :to="'/detalleConvocatoria/' + latestConv.idconvocatorias">{{
-                    latestConv.con_titulo.toUpperCase()
+                  <router-link :to="'/detalleConvocatoria/' + latestConvocatoria.idconvocatorias">{{
+                    latestConvocatoria.con_titulo.toUpperCase()
                   }}</router-link>
                 </h3>
                 <div class="btn-btm">
                   <div class="rs-view-btn">
                     <router-link
-                      :to="'/detalleConvocatoria/' + latestConv.idconvocatorias"
+                      :to="'/detalleConvocatoria/' + latestConvocatoria.idconvocatorias"
                       class="readon btn_link"
                       >Leer Mas</router-link
                     >
@@ -557,12 +522,12 @@
             </div>
           </swiper-slide>
           <swiper-slide>
-            <div class="blog-item bg_box" v-if="Object.keys(latestComun).length != 0">
+            <div class="blog-item bg_box" v-if="Object.keys(latestComunicado).length != 0">
               <div class="image-part">
-                <router-link :to="'/detalleConvocatoria/' + latestComun.idconvocatorias">
+                <router-link :to="'/detalleConvocatoria/' + latestComunicado.idconvocatorias">
                   <img
                     class="img_swiper"
-                    :src="url_api + '/Convocatorias/' + latestComun.con_foto_portada"
+                    :src="url_api + '/Convocatorias/' + latestComunicado.con_foto_portada"
                     alt="img"
                   />
                 </router-link>
@@ -570,22 +535,22 @@
               <div class="blog-content">
                 <ul class="blog-meta">
                   <router-link
-                    :to="'/convocatorias/' + latestComun.tipo_conv_comun.idtipo_conv_comun"
+                    :to="'/convocatorias/' + latestComunicado.tipo_conv_comun.idtipo_conv_comun"
                     ><li class="btn_tipo">
-                      {{ latestComun.tipo_conv_comun.tipo_conv_comun_titulo }}
+                      {{ latestComunicado.tipo_conv_comun.tipo_conv_comun_titulo }}
                     </li></router-link
                   >
-                  <li><i class="fa fa-calendar"></i>{{ dmy(latestComun.con_fecha_inicio) }}</li>
+                  <li><i class="fa fa-calendar"></i>{{ dmy(latestComunicado.con_fecha_inicio) }}</li>
                 </ul>
                 <h3 class="title">
-                  <router-link :to="'/detalleConvocatoria/' + latestComun.idconvocatorias">{{
-                    latestComun.con_titulo.toUpperCase()
+                  <router-link :to="'/detalleConvocatoria/' + latestComunicado.idconvocatorias">{{
+                    latestComunicado.con_titulo.toUpperCase()
                   }}</router-link>
                 </h3>
                 <div class="btn-btm">
                   <div class="rs-view-btn">
                     <router-link
-                      :to="'/detalleConvocatoria/' + latestComun.idconvocatorias"
+                      :to="'/detalleConvocatoria/' + latestComunicado.idconvocatorias"
                       class="readon btn_link"
                       >Leer Mas</router-link
                     >
@@ -595,34 +560,34 @@
             </div>
           </swiper-slide>
           <swiper-slide>
-            <div class="blog-item bg_box" v-if="Object.keys(latestAv).length != 0">
+            <div class="blog-item bg_box" v-if="Object.keys(latestAviso).length != 0">
               <div class="image-part">
-                <router-link :to="'/detalleConvocatoria/' + latestAv.idconvocatorias">
+                <router-link :to="'/detalleConvocatoria/' + latestAviso.idconvocatorias">
                   <img
                     class="img_swiper"
-                    :src="url_api + '/Convocatorias/' + latestAv.con_foto_portada"
+                    :src="url_api + '/Convocatorias/' + latestAviso.con_foto_portada"
                     alt="img"
                   />
                 </router-link>
               </div>
               <div class="blog-content">
                 <ul class="blog-meta">
-                  <router-link :to="'/convocatorias/' + latestAv.tipo_conv_comun.idtipo_conv_comun"
+                  <router-link :to="'/convocatorias/' + latestAviso.tipo_conv_comun.idtipo_conv_comun"
                     ><li class="btn_tipo">
-                      {{ latestAv.tipo_conv_comun.tipo_conv_comun_titulo }}
+                      {{ latestAviso.tipo_conv_comun.tipo_conv_comun_titulo }}
                     </li></router-link
                   >
-                  <li><i class="fa fa-calendar"></i>{{ dmy(latestAv.con_fecha_inicio) }}</li>
+                  <li><i class="fa fa-calendar"></i>{{ dmy(latestAviso.con_fecha_inicio) }}</li>
                 </ul>
                 <h3 class="title">
-                  <router-link :to="'/detalleConvocatoria/' + latestAv.idconvocatorias">{{
-                    latestAv.con_titulo.toUpperCase()
+                  <router-link :to="'/detalleConvocatoria/' + latestAviso.idconvocatorias">{{
+                    latestAviso.con_titulo.toUpperCase()
                   }}</router-link>
                 </h3>
                 <div class="btn-btm">
                   <div class="rs-view-btn">
                     <router-link
-                      :to="'/detalleConvocatoria/' + latestAv.idconvocatorias"
+                      :to="'/detalleConvocatoria/' + latestAviso.idconvocatorias"
                       class="readon btn_link"
                       >Leer Mas</router-link
                     >
@@ -688,37 +653,37 @@
           :space-between="50"
           @swiper="onSwiper"
           @slideChange="onSlideChange"
-          v-if="Object.keys(latestCur).length + Object.keys(latestSem).length > 0"
+          v-if="Object.keys(latestCurso).length + Object.keys(latestSeminario).length > 0"
         >
           <swiper-slide>
-            <div class="blog-item bg_box" v-if="Object.keys(latestCur).length != 0">
+            <div class="blog-item bg_box" v-if="Object.keys(latestCurso).length != 0">
               <div class="image-part">
-                <router-link :to="'/detalleCurso/' + latestCur.iddetalle_cursos_academicos">
+                <router-link :to="'/detalleCurso/' + latestCurso.iddetalle_cursos_academicos">
                   <img
                     class="img_swiper"
-                    :src="url_api + '/Cursos/' + latestCur.det_img_portada"
+                    :src="url_api + '/Cursos/' + latestCurso.det_img_portada"
                     alt="img"
                   />
                 </router-link>
               </div>
               <div class="blog-content">
                 <ul class="blog-meta">
-                  <router-link :to="'/cursos/' + latestCur.idtipo_curso_otros"
+                  <router-link :to="'/cursos/' + latestCurso.idtipo_curso_otros"
                     ><li class="btn_tipo">
-                      {{ latestCur.tipo_curso_otro.tipo_conv_curso_nombre }}
+                      {{ latestCurso.tipo_curso_otro.tipo_conv_curso_nombre }}
                     </li></router-link
                   >
-                  <li><i class="fa fa-calendar"></i>{{ dmy(latestCur.det_fecha_ini) }}</li>
+                  <li><i class="fa fa-calendar"></i>{{ dmy(latestCurso.det_fecha_ini) }}</li>
                 </ul>
                 <h3 class="title">
-                  <router-link :to="'/detalleCurso/' + latestCur.iddetalle_cursos_academicos">{{
-                    latestCur.det_titulo.toUpperCase()
+                  <router-link :to="'/detalleCurso/' + latestCurso.iddetalle_cursos_academicos">{{
+                    latestCurso.det_titulo.toUpperCase()
                   }}</router-link>
                 </h3>
                 <div class="btn-btm">
                   <div class="rs-view-btn">
                     <router-link
-                      :to="'/detalleCurso/' + latestCur.iddetalle_cursos_academicos"
+                      :to="'/detalleCurso/' + latestCurso.iddetalle_cursos_academicos"
                       class="readon btn_link"
                       >Leer Mas</router-link
                     >
@@ -728,34 +693,34 @@
             </div>
           </swiper-slide>
           <swiper-slide>
-            <div class="blog-item bg_box" v-if="Object.keys(latestSem).length != 0">
+            <div class="blog-item bg_box" v-if="Object.keys(latestSeminario).length != 0">
               <div class="image-part">
-                <router-link :to="'/detalleCurso/' + latestSem.iddetalle_cursos_academicos">
+                <router-link :to="'/detalleCurso/' + latestSeminario.iddetalle_cursos_academicos">
                   <img
                     class="img_swiper"
-                    :src="url_api + '/Cursos/' + latestSem.det_img_portada"
+                    :src="url_api + '/Cursos/' + latestSeminario.det_img_portada"
                     alt="img"
                   />
                 </router-link>
               </div>
               <div class="blog-content">
                 <ul class="blog-meta">
-                  <router-link :to="'/detalleCurso/' + latestSem.idtipo_curso_otros"
+                  <router-link :to="'/detalleCurso/' + latestSeminario.idtipo_curso_otros"
                     ><li class="btn_tipo">
-                      {{ latestSem.tipo_curso_otro.tipo_conv_curso_nombre }}
+                      {{ latestSeminario.tipo_curso_otro.tipo_conv_curso_nombre }}
                     </li></router-link
                   >
-                  <li><i class="fa fa-calendar"></i>{{ dmy(latestSem.det_fecha_ini) }}</li>
+                  <li><i class="fa fa-calendar"></i>{{ dmy(latestSeminario.det_fecha_ini) }}</li>
                 </ul>
                 <h3 class="title">
-                  <router-link :to="'/detalleCurso/' + latestSem.iddetalle_cursos_academicos">{{
-                    latestSem.det_titulo.toUpperCase()
+                  <router-link :to="'/detalleCurso/' + latestSeminario.iddetalle_cursos_academicos">{{
+                    latestSeminario.det_titulo.toUpperCase()
                   }}</router-link>
                 </h3>
                 <div class="btn-btm">
                   <div class="rs-view-btn">
                     <router-link
-                      :to="'/detalleCurso/' + latestSem.iddetalle_cursos_academicos"
+                      :to="'/detalleCurso/' + latestSeminario.iddetalle_cursos_academicos"
                       class="readon btn_link"
                       >Leer Mas</router-link
                     >
@@ -787,21 +752,21 @@ export default {
   name: 'HomeView',
   data() {
     return {
-      Conv: 0,
-      latestConv: {},
-      latestComun: {},
-      latestAv: {},
+      Convocatorias: 0,
+      latestConvocatoria: {},
+      latestComunicado: {},
+      latestAviso: {},
 
-      Cur: 0,
-      latestCur: {},
-      latestSem: {},
+      Cursos: 0,
+      latestCurso: {},
+      latestSeminario: {},
 
-      Serv: [],
-      Ofer: [],
-      Publi: [],
-      Gac: [],
-      Event: [],
-      Vid: [],
+      Servicios: [],
+      Ofertas: [],
+      Publicaciones: [],
+      Gacetas: [],
+      Eventos: [],
+      Videos: [],
       ObjetivosCarrera: [],
 
       NUM_RESULTS: 3,
@@ -814,7 +779,7 @@ export default {
   },
   components: {
     Swiper,
-    SwiperSlide,
+    SwiperSlide
   },
   setup() {
     const onSwiper = (swiper) => {
@@ -831,62 +796,57 @@ export default {
   methods: {
     async getConvocatoriasAll() {
       try {
+        //optenemos todas la convocatoarias de la api
         const response = await Services.getConvocatoriasAll()
-        this.Conv = response.data
+        this.Convocatorias = response.data
+
+        //obtenemos los ultimos comunicados de convocatorias, comunicados y avisos
         if (response != null) {
-          this.Conv.forEach((conv) => {
+          this.Convocatorias.forEach((conv) => {
             if (
               conv.tipo_conv_comun.tipo_conv_comun_titulo == 'CONVOCATORIAS' &&
               conv.con_estado == '1'
             ) {
-              if (Object.keys(this.latestConv).length == 0) {
-                this.latestConv = conv
-              }
+                this.latestConvocatoria = conv                
             } else {
               if (
                 conv.tipo_conv_comun.tipo_conv_comun_titulo == 'COMUNICADOS' &&
                 conv.con_estado == '1'
               ) {
-                if (Object.keys(this.latestComun).length == 0) {
-                  this.latestComun = conv
-                }
+                  this.latestComunicado = conv
               } else {
                 if (
                   conv.tipo_conv_comun.tipo_conv_comun_titulo == 'AVISOS' &&
                   conv.con_estado == '1'
                 ) {
-                  if (Object.keys(this.latestAv).length == 0) {
-                    this.latestAv = conv
-                  }
+                    this.latestAviso = conv
                 }
               }
             }
           })
-        }        
-        if (this.pager - Math.trunc(this.pager) > 0) {
-          this.pager = Math.trunc(this.pager) + 1
         }
+
       } catch (e) {
         console.log(e)
       }
-    },
+    },    
+
     async getCursosAll() {
       try {
+        //optenemos todos los registros de cursos de la api
         const response = await Services.getCursosAll()
-        this.Cur = response.data
-        this.Cur.forEach((cur) => {
+        this.Cursos = response.data
+        
+        //obtenemos los ultimos cursos y seminarios
+        this.Cursos.forEach((cur) => {
           if (cur.tipo_curso_otro.tipo_conv_curso_nombre == 'CURSOS' && cur.det_estado == '1') {
-            if (Object.keys(this.latestCur).length == 0) {
-              this.latestCur = cur
-            }
+              this.latestCurso = cur
           } else {
             if (
               cur.tipo_curso_otro.tipo_conv_curso_nombre == 'SEMINARIOS' &&
               cur.det_estado == '1'
             ) {
-              if (Object.keys(this.latestSem).length == 0) {
-                this.latestSem = cur
-              }
+                this.latestSeminario = cur
             }
           }
         })
@@ -894,10 +854,11 @@ export default {
         console.log(e)
       }
     },
+    //optencion de todos los servicios, ofertas, publicaciones, gacetas, eventos y videos.
     async getServiciosAll() {
       try {
         const response = await Services.getServiciosAll()
-        this.Serv = response.data
+        this.Servicios = response.data
       } catch (e) {
         console.log(e)
       }
@@ -905,7 +866,7 @@ export default {
     async getOfertasAll() {
       try {
         const response = await Services.getOfertasAll()
-        this.Ofer = response.data
+        this.Ofertas = response.data
       } catch (e) {
         console.log(e)
       }
@@ -913,7 +874,7 @@ export default {
     async getPublicaciones() {
       try {
         const response = await Services.getPublicaciones()
-        this.Publi = response.data
+        this.Publicaciones = response.data
       } catch (e) {
         console.log(e)
       }
@@ -921,7 +882,7 @@ export default {
     async getGacetaAll() {
       try {
         const response = await Services.getGacetaAll()
-        this.Gac = response.data
+        this.Gacetas = response.data        
       } catch (e) {
         console.log(e)
       }
@@ -929,7 +890,7 @@ export default {
     async getEventos() {
       try {
         const response = await Services.getEventos()
-        this.Event = response.data
+        this.Eventos = response.data
       } catch (e) {
         console.log(e)
       }
@@ -937,12 +898,12 @@ export default {
     async getVideos() {
       try {
         const response = await Services.getVideos()
-        this.Vid = response.data
-        //this.$store.commit("loanding")
+        this.Videos = response.data
       } catch (e) {
         console.log(e)
       }
     },
+
     async setImage(id, img) {
       try {
         await document
@@ -953,9 +914,9 @@ export default {
       }
     },
     contarConv(tipo) {
-      if (tipo && this.Conv) {
+      if (tipo && this.Convocatorias) {
         let count = 0
-        this.Conv.forEach((conv) => {
+        this.Convocatorias.forEach((conv) => {
           if (conv.tipo_conv_comun.tipo_conv_comun_titulo == tipo) {
             count++
           }
@@ -964,9 +925,9 @@ export default {
       }
     },
     contarCur(tipo) {
-      if (tipo && this.Cur) {
+      if (tipo && this.Cursos) {
         let count = 0
-        this.Cur.forEach((cur) => {
+        this.Cursos.forEach((cur) => {
           if (cur.tipo_curso_otro.tipo_conv_curso_nombre == tipo) {
             count++
           }
@@ -996,7 +957,6 @@ export default {
       }
     },
     createdComponent() {
-      //this.$store.commit("loadOn");
       this.getConvocatoriasAll()
       this.getCursosAll()
       this.getServiciosAll()
@@ -1004,15 +964,26 @@ export default {
       this.getPublicaciones()
       this.getGacetaAll()
       this.getEventos()
-      this.getVideos()
+      this.getVideos()      
     }
   },
   created() {
     this.createdComponent()
+    console.log('@')
   }
 }
 </script>
 <style scoped>
+
+.title_home{
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: var(--main-color);
+  padding: 10px;
+  color: #fff;
+  letter-spacing: 2px;
+}
 .cat {
   transition: 0.5s;
   margin: 20px 0px;
@@ -1098,14 +1069,14 @@ export default {
   border-radius: 5px;
 }
 
-.bg_box{
-  background: rgb(4, 59, 80 / 10% );
+.bg_box {
+  background: rgb(4, 59, 80 / 10%);
   /*box-shadow: 0px 0px 16px ;
   box-shadow: 0px 0px 16px red;*/
   padding: 15px;
-  height: 700px;    
+  height: 700px;
 }
-.bg-map{
+.bg-map {
   text-align: center;
   width: 100%;
 }

@@ -1,11 +1,9 @@
 <template>
-  <header-comp-vue></header-comp-vue>
-  <!--<content-comp-vue></content-comp-vue>-->
+  <header-comp-vue></header-comp-vue>  
   <router-view></router-view>
   <footer-comp-vue></footer-comp-vue>
 </template>
 <script>
-//import contentCompVue from '../components/contentComp.vue'
 import FooterCompVue from '../components/FooterComp.vue'
 import HeaderCompVue from '../components/HeaderComp.vue'
 import { mapState } from 'vuex'
@@ -16,55 +14,57 @@ export default {
   components: {
     HeaderCompVue,
     FooterCompVue
-    //contentCompVue,
   },
   computed: {
-    ...mapState([
-      'url_api',
-      'Institucion',
-      'MenuConvocatorias',
-      'MenuCursos',
-      'Colors',
-      'statusImg'
-    ])
+    ...mapState(['url_api', 'Institucion', 'MenuConvocatorias', 'MenuCursos'])
   },
   methods: {
-    async getMenuConv() {
+    async getMenuConvocatorias() {
       try {
+        //optencion de menu de convocatorias.
         const response = await Services.getMenuConvocatorias()
-        const filterConv = []
 
-        response.data.forEach((element) => {
-          if (element.tipo_conv_comun_estado == '1') {
-            filterConv.push(element)
+        //filtramos aquellos que siguen vigentes
+        const filterConvocatorias = []
+        response.data.forEach((data) => {
+          if (data.tipo_conv_comun_estado == '1') {
+            filterConvocatorias.push(data)
           }
         })
-        this.$store.state.MenuConvocatorias = filterConv
+        this.$store.state.MenuConvocatorias = filterConvocatorias
       } catch (e) {
         console.log(e)
       }
     },
-    async getMenuCur() {
+
+    async getMenuCursos() {
       try {
+        //optencion del menu de los cursos.
         const response = await Services.getMenuCursos()
-        const filterCur = []
-        response.data.forEach((element) => {
-          if (element.tipo_conv_curso_estado == '1') {
-            filterCur.push(element)
+
+        //filtramos aquellos que siguen vigentes
+        const filterCursos = []
+        response.data.forEach((data) => {
+          if (data.tipo_conv_curso_estado == '1') {
+            filterCursos.push(data)
           }
         })
-        this.$store.state.MenuCursos = filterCur
+        this.$store.state.MenuCursos = filterCursos
       } catch (e) {
         console.log(e)
       }
     },
+
     async getLinks() {
       try {
+        //optencion de menu de links.
         const response = await Services.getLinks()
+
+        //filtramos aquellos que siguen vigentes
         let filterLinks = []
-        response.data.forEach((link) => {
-          if (link.ei_estado == '1') {
-            filterLinks.push(link)
+        response.data.forEach((data) => {
+          if (data.ei_estado == '1') {
+            filterLinks.push(data)
           }
         })
         this.$store.state.Links = filterLinks
@@ -72,47 +72,20 @@ export default {
         console.log(e)
       }
     },
+
     async getInstitucion() {
       try {
-        let response = await Services.getInstitucion()      
-        this.$store.state.Institucion = response.data.Descripcion;
-        /*document
-          .querySelector("#ico")
-          .setAttribute(
-            "href",
-            this.url_api +
-              "/InstitucionUpea/" +
-              this.Institucion.institucion_logo
-          );
-        document.querySelector("#title-page").innerHTML =
-          this.Institucion.institucion_nombre;*/
-        // Colores CSS
-        /*if (this.Institucion.colorinstitucion.length > 0) {
-          document.documentElement.style.setProperty(
-            "--main-color",
-            this.Institucion.colorinstitucion[0].color_primario
-          );
-          document.documentElement.style.setProperty(
-            "--main-color-2",
-            this.Institucion.colorinstitucion[0].color_secundario
-          );
-          document.documentElement.style.setProperty(
-            "--main-color-3",
-            this.Institucion.colorinstitucion[0].color_terciario
-          );
-        }*/
-        /*this.setImages(response.data.Descripcion.portada);*/
-        if (this.Institucion.colorinstitucion.length > 0) {
-          document.documentElement.style.setProperty(
-            "--main-color",
-            this.Institucion.colorinstitucion[0].color_primario
-          );
-          document.documentElement.style.setProperty(
-            "--main-color-2",
-            this.Institucion.colorinstitucion[0].color_secundario
-          );          
-        }
+        //optencion de los datos de la Institucion
+        let response = await Services.getInstitucion()
+        this.$store.state.Institucion = response.data.Descripcion        
+        
+        //asignacion de icon segun Institucion.
+        this.setIconInstitucion()
+        
+        //asginacion de colores segun Institucion.
+        this.setColorsInstitucion()
 
+        /*this.setImages(response.data.Descripcion.portada); ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/        
       } catch (e) {
         console.log(e)
         if (e.code == 'ERR_NETWORK') {
@@ -120,6 +93,7 @@ export default {
         }
       }
     },
+
     setImages(images) {
       if (Object.keys(images).length > 0) {
         let count = images.length
@@ -150,20 +124,40 @@ export default {
       this.$store.commit('loading')
     },
 
+    setIconInstitucion(){
+      document
+          .querySelector('#icon')
+          .setAttribute(
+            'href',
+            this.url_api + '/InstitucionUpea/' + this.Institucion.institucion_logo
+          )      
+    },
+
+    setColorsInstitucion(){
+      if (this.Institucion.colorinstitucion.length > 0) {
+          document.documentElement.style.setProperty(
+            '--main-color',
+            this.Institucion.colorinstitucion[0].color_primario
+          )
+          document.documentElement.style.setProperty(
+            '--main-color-2',
+            this.Institucion.colorinstitucion[0].color_secundario
+          )
+        }
+    },
+
+    //metodo que ejecuta todos los demas
     createdComponent() {
       this.getInstitucion()
-      this.getMenuConv()
-      this.getMenuCur()
+      this.getMenuConvocatorias()
+      this.getMenuCursos()
       this.getLinks()
-    }
+    },
+
   },
   created() {
-    this.createdComponent();
-    /*axios
-      .get(
-        'https://serviciopagina.upea.bo/api/InstitucionUPEA/8cc13f2bc03ced0087e20b666cac5adeffa6010b2d3010ff87c7aaf1345a260d7f7612efbf0319d23cff25761f605014075f17c996eb5a055598ab37dd868458d04e7f5fc1630463ebf3accd1a94596a321ecd19988f7c34ac8b2647f2cb067d16'
-      )
-      .then((response) => console.log(response))*/
-  }
+    //creamos el componente
+    this.createdComponent()
+  },    
 }
 </script>

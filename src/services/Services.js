@@ -38,7 +38,7 @@ function getPublicaciones(){
 }
 
 function getGacetaAll(){
-  return Api().get('/api/gacetaunivAll' + import.meta.env.VITE_VUE_APP_ID_INSTITUCION)
+  return Api().get('/api/gacetaunivAll/' + import.meta.env.VITE_VUE_APP_ID_INSTITUCION)
 }
 
 function getEventos(){
@@ -46,7 +46,7 @@ function getEventos(){
 }
 
 function getVideos(){
-  return Api().get('/api/VideosAll' + import.meta.env.VITE_VUE_APP_ID_INSTITUCION)
+  return Api().get('/api/VideosAll/' + import.meta.env.VITE_VUE_APP_ID_INSTITUCION)
 }
 
 export default {

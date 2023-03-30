@@ -227,34 +227,14 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'HeaderComp',
-  data() {
-    return {
-      sopen: false,
-      Links: [],
-      m_inicio: false,
-      m_conv: false,
-      m_cur: false,
-      m_mas: false,
-      m_link: false
-    }
-  },
+  
   computed: {
-    ...mapState(['url_api', 'MenuConv', 'MenuCur', 'Institucion', 'getter'])
+    ...mapState(['url_api', 'MenuConvocatorias', 'MenuCursos', 'Institucion', 'Links'])
   },
   methods: {
-    async getLinks() {
-      try {
-        let res = await this.axios.get(
-          "/api/linksIntExtAll/" + import.meta.env.VITE_VUE_APP_ID_INSTITUCION
-        );
-        this.Links = res.data;
-      } catch (error) {
-        console.log(error);
-      }
-    },
+
   },
-  created() {
-    this.getLinks();
+  created() {    
   },
 }
 </script>
