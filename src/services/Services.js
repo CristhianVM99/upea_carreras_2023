@@ -49,6 +49,11 @@ function getVideos(){
   return Api().get('/api/VideosAll/' + import.meta.env.VITE_VUE_APP_ID_INSTITUCION)
 }
 
+//Convocatorias
+function getTipoConvocatoria(tipo_id){
+  return Api().get('/api/Tipoconvocatorias/'+tipo_id)
+}
+
 export default {
   getMenuConvocatorias,
   getMenuCursos,
@@ -62,6 +67,7 @@ export default {
   getPublicaciones,
   getGacetaAll,
   getEventos,
-  getVideos
-  
+  getVideos,
+  //Convocatorias View
+  getTipoConvocatoria  
 }

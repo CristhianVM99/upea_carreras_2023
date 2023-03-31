@@ -379,8 +379,6 @@
         <swiper
           :slides-per-view="3"
           :space-between="50"
-          @swiper="onSwiper"
-          @slideChange="onSlideChange"
         >
           <swiper-slide v-for="(autoridad, id_aut) of Institucion.autoridad" :key="id_aut">
             <div class="team-inner-item">
@@ -474,8 +472,6 @@
         <swiper
           :slides-per-view="3"
           :space-between="50"
-          @swiper="onSwiper"
-          @slideChange="onSlideChange"
           v-if="
             Object.keys(latestConvocatoria).length +
               Object.keys(latestComunicado).length +
@@ -651,8 +647,6 @@
         <swiper
           :slides-per-view="3"
           :space-between="50"
-          @swiper="onSwiper"
-          @slideChange="onSlideChange"
           v-if="Object.keys(latestCurso).length + Object.keys(latestSeminario).length > 0"
         >
           <swiper-slide>
@@ -783,15 +777,15 @@ export default {
   },
   setup() {
     const onSwiper = (swiper) => {
-      console.log(swiper)
-    }
-    const onSlideChange = () => {
-      console.log('slide change')
-    }
-    return {
-      onSwiper,
-      onSlideChange
-    }
+        console.log(swiper);
+      };
+      const onSlideChange = () => {
+        console.log('slide change');
+      };
+      return {
+        onSwiper,
+        onSlideChange,
+      };
   },
   methods: {
     async getConvocatoriasAll() {
@@ -909,8 +903,8 @@ export default {
         await document
           .querySelector('.' + id)
           .setAttribute('style', 'background-image: url("' + img + '");')
-      } catch (error) {
-        console.log(error)
+      } catch (e) {
+        console.log(e)
       }
     },
     contarConv(tipo) {
@@ -969,7 +963,6 @@ export default {
   },
   created() {
     this.createdComponent()
-    console.log('@')
   }
 }
 </script>

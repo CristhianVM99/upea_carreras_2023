@@ -17,59 +17,44 @@ const routes = [
         component: () => import('@/views/AboutView.vue')
       },
       {
-        path : '/Convocatorias/Avisos',
-        name : 'avisos',
-        component: () => import('@/views/Convocatorias/AvisosView.vue')
-      },
-      {
-        path : '/Convocatorias/Comunicados',
-        name : 'comunicados',
-        component: () => import('@/views/Convocatorias/ComunicadosView.vue')
-      },
-      {
-        path : '/Convocatorias/Convocatorias',
+        path : '/Convocatorias/:tipo_id',
         name : 'convocatorias',
         component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Cursos/Cursos',
+        path : '/Cursos/:tipo_id',
         name : 'cursos',
-        component: () => import('@/views/Cursos/CursosView.vue')
+        component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Cursos/Seminarios',
-        name : 'seminarios',
-        component: () => import('@/views/Cursos/SeminariosView.vue')
-      },
-      {
-        path : '/Mas/Eventos',
+        path : '/Mas/Eventos/:tipo_id',
         name : 'eventos',
-        component: () => import('@/views/Mas/EventosView.vue')
+        component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Mas/Gacetas',
+        path : '/Mas/Gacetas/:tipo_id',
         name : 'gacetas',
-        component: () => import('@/views/Mas/GacetasView.vue')
+        component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Mas/OfertasAcademicas',
+        path : '/Mas/OfertasAcademicas/:tipo_id',
         name : 'ofertasacademicas',
-        component: () => import('@/views/Mas/OfertasAcademicasView.vue')
+        component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Mas/Publicaciones',
+        path : '/Mas/Publicaciones/:tipo_id',
         name : 'publicaciones',
-        component: () => import('@/views/Mas/PublicacionesView.vue')
+        component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Mas/Servicios',
+        path : '/Mas/Servicios/:tipo_id',
         name : 'servicios',
-        component: () => import('@/views/Mas/ServiciosView.vue')
+        component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Mas/Videos',
+        path : '/Mas/Videos/:tipo_id',
         name : 'videos',
-        component: () => import('@/views/Mas/VideosView.vue')
+        component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
         path : '/Contacto',

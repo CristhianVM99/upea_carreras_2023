@@ -29,7 +29,8 @@
               <ul class="topbar-right">
                 <li class="login-register">
                   <i class="fa fa-sign-in"></i>
-                  <router-link :to="{ name : 'login' }">Login</router-link> / <router-link :to="{ name : 'register' }">Register</router-link>
+                  <router-link :to="{ name: 'login' }">Login</router-link> /
+                  <router-link :to="{ name: 'register' }">Register</router-link>
                 </li>
               </ul>
             </div>
@@ -45,14 +46,14 @@
             <div class="col-lg-3">
               <div class="logo-cat-wrap">
                 <div class="logo-part">
-                  <router-link :to="{ name: 'home' }" href="index.html">
+                  <router-link :to="{ name: 'home' }">
                     <img
                       :src="url_api + '/InstitucionUpea/' + Institucion.institucion_logo"
                       alt="logo"
                       width="70"
                       height="70"
                     />
-                    <span class="txt_logo">Ingenieria de Sistemas</span>
+                    <span class="txt_logo">{{ Institucion.institucion_nombre }}</span>
                   </router-link>
                 </div>
               </div>
@@ -79,12 +80,16 @@
                       <li class="menu-item-has-children">
                         <a href="#">Convocatorias</a>
                         <ul class="sub-menu">
-                          <li><router-link :to="{ name: 'avisos' }">Avisos</router-link></li>
-                          <li>
-                            <router-link :to="{ name: 'comunicados' }">Comunicados</router-link>
-                          </li>
-                          <li>
-                            <router-link :to="{ name: 'convocatorias' }">Convocatorias</router-link>
+                          <li v-for="(link, id_conv) in MenuConvocatorias" :key="id_conv">
+                            <router-link
+                              :to="{
+                                name: 'convocatorias',
+                                params: {
+                                  tipo_id: link.idtipo_conv_comun
+                                }
+                              }"
+                              >{{ link.tipo_conv_comun_titulo.toLowerCase() }}</router-link
+                            >
                           </li>
                         </ul>
                       </li>
@@ -92,9 +97,16 @@
                       <li class="menu-item-has-children">
                         <a href="#">Cursos</a>
                         <ul class="sub-menu">
-                          <li><router-link :to="{ name: 'cursos' }">Cursos</router-link></li>
-                          <li>
-                            <router-link :to="{ name: 'seminarios' }">Seminarios</router-link>
+                          <li v-for="(link, id_conv) in MenuCursos" :key="id_conv">
+                            <router-link
+                              :to="{
+                                name: 'cursos',
+                                params: {
+                                  tipo_id: link.idtipo_curso_otros
+                                }
+                              }"
+                              >{{ link.tipo_conv_curso_nombre.toLowerCase() }}</router-link
+                            >
                           </li>
                         </ul>
                       </li>
@@ -102,18 +114,72 @@
                       <li class="menu-item-has-children">
                         <a href="#">Mas</a>
                         <ul class="sub-menu">
-                          <li><router-link :to="{ name: 'servicios' }">Servicios</router-link></li>
                           <li>
-                            <router-link :to="{ name: 'ofertasacademicas' }"
+                            <router-link
+                              :to="{
+                                name: 'servicios',
+                                params: {
+                                  tipo_id: 'servicios'
+                                }
+                              }"
+                              >Servicios</router-link
+                            >
+                          </li>
+                          <li>
+                            <router-link
+                              :to="{
+                                name: 'ofertasacademicas',
+                                params: {
+                                  tipo_id: 'convocatorias'
+                                }
+                              }"
                               >Ofertas Academicas</router-link
                             >
                           </li>
                           <li>
-                            <router-link :to="{ name: 'publicaciones' }">Publicaciones</router-link>
+                            <router-link
+                              :to="{
+                                name: 'publicaciones',
+                                params: {
+                                  tipo_id: 'convocatorias'
+                                }
+                              }"
+                              >Publicaciones</router-link
+                            >
                           </li>
-                          <li><router-link :to="{ name: 'gacetas' }">Gaceta</router-link></li>
-                          <li><router-link :to="{ name: 'eventos' }">Eventos</router-link></li>
-                          <li><router-link :to="{ name: 'videos' }">Videos</router-link></li>
+                          <li>
+                            <router-link
+                              :to="{
+                                name: 'gacetas',
+                                params: {
+                                  tipo_id: 'convocatorias'
+                                }
+                              }"
+                              >Gaceta</router-link
+                            >
+                          </li>
+                          <li>
+                            <router-link
+                              :to="{
+                                name: 'eventos',
+                                params: {
+                                  tipo_id: 'convocatorias'
+                                }
+                              }"
+                              >Eventos</router-link
+                            >
+                          </li>
+                          <li>
+                            <router-link
+                              :to="{
+                                name: 'videos',
+                                params: {
+                                  tipo_id: 'convocatorias'
+                                }
+                              }"
+                              >Videos</router-link
+                            >
+                          </li>
                         </ul>
                       </li>
 
@@ -227,15 +293,12 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'HeaderComp',
-  
+
   computed: {
     ...mapState(['url_api', 'MenuConvocatorias', 'MenuCursos', 'Institucion', 'Links'])
   },
-  methods: {
-
-  },
-  created() {    
-  },
+  methods: {},
+  created() {}
 }
 </script>
 <style scoped>
@@ -245,7 +308,7 @@ export default {
   text-transform: uppercase;
   font-size: 0.8em;
 }
-#nav-expander{
+#nav-expander {
   visibility: hidden;
 }
 </style>
