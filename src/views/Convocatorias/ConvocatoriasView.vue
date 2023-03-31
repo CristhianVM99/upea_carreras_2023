@@ -145,11 +145,8 @@
 <script>
 import Services from '@/services/Services'
 //import Pagination from 'vue-pagination-2';
-import pagination from 'vue-pagination-bootstrap'
-import 'vue-pagination-2/dist/vue-pagination-2.min.js'
-import debounce from 'lodash.debounce'
+//import 'vue-pagination-2/dist/vue-pagination-2.min.js'
 import { mapState } from 'vuex'
-import { text } from 'body-parser'
 
 export default {
   name: 'ConvocatoriasView',
@@ -175,30 +172,38 @@ export default {
     },
 
     //optenemos los registros segun el tipo
-    async getCategoria(tipo_id) {
+    async getCategoria(name,tipo_id) {
 
-      this.tipo_conv = tipo_id
+      if(
+        name != "eventos" &&
+        name != "gacetas" &&
+        name != "ofertas" &&
+        name != "publicaciones" &&
+        name != "servicios" &&
+        name != "videos"
+      ){        
+        this.getTipoConvocatoria(tipo_id)
+      }else{
+        this.tipo_conv=name
+      }
+
+      
       let valor = this.tipo_conv.toLowerCase()
 
       switch (valor) {
         case 'avisos':
-            await this.getTipoConvocatoria()
             await this.getConvocatoriasAll()
           break
         case 'comunicados':
-            await this.getTipoConvocatoria()
             await this.getConvocatoriasAll()
           break
         case 'convocatorias':
-            await this.getTipoConvocatoria()
             await this.getConvocatoriasAll()
           break
         case 'cursos':
-            await this.getTipoConvocatoria()
             await this.getCursosAll()
           break
         case 'seminarios':
-            await this.getTipoConvocatoria()
             await this.getCursosAll()
           break
         case 'eventos':            
@@ -392,13 +397,13 @@ export default {
   },
 
   created() {
-    this.getCategoria(this.$route.params.tipo_id)
+    this.getCategoria(this.$route.name,this.$route.params.tipo_id)
   },
   updated(){
-    this.getCategoria(this.$route.params.tipo_id)
+    this.getCategoria(this.$route.name,this.$route.params.tipo_id)    
   },
-  mounted() {
+  /*mounted() {
     this.getCategoria(this.$route.params.tipo_id)
-  },
+  },*/
 }
 </script>
