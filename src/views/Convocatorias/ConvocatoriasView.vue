@@ -172,60 +172,62 @@ export default {
     },
 
     //optenemos los registros segun el tipo
-    async getCategoria(name,tipo_id) {
+    async getCategoria(name, tipo_id) {
+      try {
+        if (
+          name != 'eventos' &&
+          name != 'gacetas' &&
+          name != 'ofertas' &&
+          name != 'publicaciones' &&
+          name != 'servicios' &&
+          name != 'videos'
+        ) {
+          this.getTipoConvocatoria(tipo_id)
+        } else {
+          this.tipo_conv = name
+        }
 
-      if(
-        name != "eventos" &&
-        name != "gacetas" &&
-        name != "ofertas" &&
-        name != "publicaciones" &&
-        name != "servicios" &&
-        name != "videos"
-      ){        
-        this.getTipoConvocatoria(tipo_id)
-      }else{
-        this.tipo_conv=name
-      }
+        let valor = this.tipo_conv.toLowerCase()
 
-      
-      let valor = this.tipo_conv.toLowerCase()
-
-      switch (valor) {
-        case 'avisos':
+        switch (valor) {
+          case 'avisos':
             await this.getConvocatoriasAll()
-          break
-        case 'comunicados':
+            break
+          case 'comunicados':
             await this.getConvocatoriasAll()
-          break
-        case 'convocatorias':
+            break
+          case 'convocatorias':
             await this.getConvocatoriasAll()
-          break
-        case 'cursos':
+            break
+          case 'cursos':
             await this.getCursosAll()
-          break
-        case 'seminarios':
+            break
+          case 'seminarios':
             await this.getCursosAll()
-          break
-        case 'eventos':            
+            break
+          case 'eventos':
             await this.getEventosAll()
-          break
-        case 'gacetas':
+            break
+          case 'gacetas':
             await this.getGacetasAll()
-          break
-        case 'ofertas':
+            break
+          case 'ofertas':
             await this.getOfertasAll()
-          break
-        case 'publicaciones':
+            break
+          case 'publicaciones':
             await this.getPublicacionesAll()
-          break
-        case 'servicios':
+            break
+          case 'servicios':
             await this.getServiciosAll()
-          break
-        case 'videos':
+            break
+          case 'videos':
             await this.getVideosAll()
-          break
-        default:
-            console.log("error de carga")
+            break
+          default:
+            console.log('error de carga')
+        }
+      } catch (e) {
+        console.log(e)
       }
     },
 
@@ -373,7 +375,6 @@ export default {
       }
     },
 
-
     //formateamos las fechas a la correcta para el usuario.
     dmy(fecha) {
       const meses = [
@@ -397,11 +398,11 @@ export default {
   },
 
   created() {
-    this.getCategoria(this.$route.name,this.$route.params.tipo_id)
+    this.getCategoria(this.$route.name, this.$route.params.tipo_id)
   },
-  updated(){
-    this.getCategoria(this.$route.name,this.$route.params.tipo_id)    
-  },
+  updated() {
+    this.getCategoria(this.$route.name, this.$route.params.tipo_id)
+  }
   /*mounted() {
     this.getCategoria(this.$route.params.tipo_id)
   },*/
