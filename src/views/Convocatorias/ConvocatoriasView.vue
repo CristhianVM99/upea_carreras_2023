@@ -399,9 +399,11 @@ export default {
 
   created() {
     this.getCategoria(this.$route.name, this.$route.params.tipo_id)
+    console.log("created");
   },
   updated() {
     this.getCategoria(this.$route.name, this.$route.params.tipo_id)
+    console.log("update");
   }
   /*mounted() {
     this.getCategoria(this.$route.params.tipo_id)

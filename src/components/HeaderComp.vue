@@ -46,12 +46,12 @@
             <div class="col-lg-3">
               <div class="logo-cat-wrap">
                 <div class="logo-part">
-                  <router-link :to="{ name: 'home' }">
+                  <router-link :to="{ name: 'home' }"
+                  class="logo-content"
+                  >
                     <img
                       :src="url_api + '/InstitucionUpea/' + Institucion.institucion_logo"
                       alt="logo"
-                      width="70"
-                      height="70"
                     />
                     <span class="txt_logo">{{ Institucion.institucion_nombre }}</span>
                   </router-link>
@@ -77,8 +77,9 @@
                         </ul>
                       </li>
 
-                      <li class="menu-item-has-children">
-                        <a href="#">Convocatorias</a>
+                      <li class="menu-item-has-children" id="menu_convocatorias"
+                      >
+                        <a href="#">Convocatorias </a>
                         <ul class="sub-menu">
                           <li v-for="(link, id_conv) in MenuConvocatorias" :key="id_conv">
                             <router-link
@@ -94,7 +95,9 @@
                         </ul>
                       </li>
 
-                      <li class="menu-item-has-children">
+                      <li class="menu-item-has-children"
+                      v-if="Object.keys(MenuCursos).length != 0"
+                      >
                         <a href="#">Cursos</a>
                         <ul class="sub-menu">
                           <li v-for="(link, id_conv) in MenuCursos" :key="id_conv">
@@ -111,7 +114,9 @@
                         </ul>
                       </li>
 
-                      <li class="menu-item-has-children">
+                      <li class="menu-item-has-children"
+                      v-if="(Object.keys(MenuConvocatorias).length != 0 && Object.keys(MenuCursos).length != 0)"
+                      >
                         <a href="#">Mas</a>
                         <ul class="sub-menu">
                           <li>
@@ -183,7 +188,9 @@
                         </ul>
                       </li>
 
-                      <li class="menu-item-has-children">
+                      <li class="menu-item-has-children"
+                      v-if="(Object.keys(MenuConvocatorias).length != 0 && Object.keys(MenuCursos).length != 0)"
+                      >
                         <a href="#">Links</a>
                         <ul class="sub-menu">
                           <li><a href="#">Pagina Web</a></li>
@@ -275,7 +282,7 @@
             </li>
             <li>
               <a href="#"><i class="fa fa-pinterest-p"></i></a>
-            </li>
+            </li>console.log(this.MenuConvocatorias.length)
             <li>
               <a href="#"><i class="fa fa-linkedin"></i></a>
             </li>
@@ -298,15 +305,44 @@ export default {
     ...mapState(['url_api', 'MenuConvocatorias', 'MenuCursos', 'Institucion', 'Links'])
   },
   methods: {},
-  created() {}
+  created() {
+    if(this.MenuConvocatorias.length != 0){
+      let menu_conv = document.getElementById('menu_convocatorias');
+      menu_conv.style.display = 'none';
+    }
+  }
 }
 </script>
 <style scoped>
+
+.logo-content{
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-content img {
+  width: 100px;
+  display: block;
+}
 .txt_logo {
   color: #000;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 0.8em;
+  font-size: 1em;
+  font-family: fantasy;
+  text-align: center;
+  display: block;
+  border-left: 3px solid var(--main-color-2);
+  padding-left: 5px;
+  margin-left: 5px;
+}
+
+.txt_logo::first-letter{
+  font-size: 1.5em;
+  color: var(--main-color-2);
 }
 #nav-expander {
   visibility: hidden;

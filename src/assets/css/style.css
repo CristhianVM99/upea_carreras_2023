@@ -713,7 +713,7 @@ body .modal-backdrop {
   z-index: 99;
 }
 .sc-header-section .sc-header .topbar-area {
-  background: var(--main-color-2);
+  background: linear-gradient(to left, var(--main-color), var(--main-color-2));
 }
 .sc-header-section .sc-header .topbar-area .topbar-contact li {
   display: inline-block;
@@ -738,7 +738,8 @@ body .modal-backdrop {
   font-size: 15px;
 }
 .sc-header-section .sc-header .topbar-area .topbar-contact li a:hover {
-  color: var(--main-color);
+  text-shadow: 0px 0px 2px #ffffff;  
+  border-bottom: 1px solid #ffffff;
 }
 .sc-header-section .sc-header .topbar-area .topbar-contact li:last-child {
   padding-left: 20px;
@@ -763,13 +764,13 @@ body .modal-backdrop {
 }
 .sc-header-section .sc-header .topbar-area .topbar-right li.login-register i {
   margin-right: 10px;
-  color: var(--main-color);
 }
 .sc-header-section .sc-header .topbar-area .topbar-right li.login-register a {
   color: #ffffff;
 }
 .sc-header-section .sc-header .topbar-area .topbar-right li.login-register a:hover {
-  color: var(--main-color);
+  text-shadow: 0px 0px 2px #ffffff;  
+  border-bottom: 1px solid #ffffff;
 }
 .sc-header-section .sc-header .logo-part {
   position: relative;
@@ -843,6 +844,7 @@ body .modal-backdrop {
   cursor: pointer;
   transform: translateY(-50%);
   transition: all 0.5s ease;
+  color: var(--main-color);
 }
 .sc-header-section
   .sc-header
@@ -853,6 +855,7 @@ body .modal-backdrop {
   li.menu-item-has-children
   a:hover:before {
   content: '-';
+  color: var(--main-color-2);
 }
 .sc-header-section
   .sc-header
@@ -1268,15 +1271,15 @@ body .modal-backdrop {
 ---------------------------------------*/
 .sc-banner {
   position: relative;
-  background-color: #f3fafc;
+  background-color: transparent;
   min-height: 750px;
   display: grid;
-  align-items: flex-end;
+  align-items: center;
   z-index: 9;
   overflow: hidden;
 }
 .sc-banner .banner-content {
-  padding-bottom: 200px;
+  /*padding-bottom: 200px;*/
 }
 .sc-banner .banner-content .sub-title {
   color: #40c1ec;
@@ -1286,10 +1289,14 @@ body .modal-backdrop {
   font-family: 'Jost', sans-serif;
 }
 .sc-banner .banner-content .banner-title {
-  color: var(--main-color-2);
+  color: #ffffff;
   font-size: 60px;
   line-height: 1.2;
 }
+.sc-banner .banner-content .banner-title::first-letter {
+  font-size: 1.2em;
+}
+
 .sc-banner .banner-content .banner-des {
   line-height: 1.6;
 }

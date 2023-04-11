@@ -2,7 +2,28 @@
   <!-- Main content Start -->
   <div class="main-content">
     <!-- Banner Section Start -->
-    <div id="sc-banner" class="sc-banner banner-style3 banner-bg3 position-relative">
+    <swiper
+    :spaceBetween="30"
+    :centeredSlides="true"
+    :autoplay="{
+      delay: 2500,
+      disableOnInteraction: false,
+    }"
+    :pagination="{
+      clickable: true,
+    }"
+    :navigation="true"
+    :modules="modules"
+    class="mySwiper"
+    >
+      <swiper-slide>
+        <div class="bg" 
+        v-for="(portada, id_img) in Institucion.portada" :key="id_img"
+        >
+          <img :src="this.url_api+'/InstitucionUpea/Portada/'+portada.portada_imagen" alt="" width="100px" height="200px">          
+        </div>
+      </swiper-slide>      
+      <div id="sc-banner" class="sc-banner banner-style3 upposition-relative">
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
@@ -29,10 +50,10 @@
                 data-wow-duration="3000ms"
                 v-html="Institucion.institucion_objetivos"
               ></h5>
-              <form class="newsletter-form mt-40">
+              <!--<form class="newsletter-form mt-40">
                 <input type="text" name="email" placeholder="search course..." />
                 <button type="submit"><i class="flaticon flaticon-magnifying-glass"></i></button>
-              </form>              
+              </form>-->              
             </div>
           </div>
           <div class="col-lg-6 hidden-md">
@@ -45,13 +66,14 @@
                 data-wow-duration="2000ms"
               />
             </div>
-            <div
+            <!--<div
               class="view-students-img wow fadeInUp"
               data-wow-delay="300ms"
               data-wow-duration="2000ms"
             >
               <img src="src/assets/images/banner/view-students.png" alt="Banner Image" />
             </div>
+            -->
             <div class="animate-circle"></div>
           </div>
         </div>
@@ -88,6 +110,7 @@
         <img src="../assets/images/banner/arrow-9.png" alt="" />
       </div>
     </div>
+    </swiper>
     <!-- Banner Section End -->
 
     <!-- Blog Single Start -->
@@ -740,7 +763,12 @@
 import { mapState } from 'vuex'
 import Services from '@/services/Services'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+
 import 'swiper/css'
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+import { Autoplay, Pagination, Navigation } from 'swiper';
 
 export default {
   name: 'HomeView',
@@ -785,6 +813,7 @@ export default {
       return {
         onSwiper,
         onSlideChange,
+        modules: [Autoplay, Pagination, Navigation],
       };
   },
   methods: {
@@ -1072,5 +1101,9 @@ export default {
 .bg-map {
   text-align: center;
   width: 100%;
+}
+.bg{
+  z-index: -1;
+  position: absolute;
 }
 </style>
