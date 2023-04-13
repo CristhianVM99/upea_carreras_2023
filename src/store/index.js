@@ -7,10 +7,12 @@ export default createStore({
     getter: true,
     MenuConvocatorias: [],
     MenuCursos: [],
+    MenuAreasyCarreras:[],
     Links: [],
     Institucion: {},
     //no uso
-    statusImg: true
+    statusImg: true,
+    carrera_id: import.meta.env.VITE_VUE_APP_ID_CARRERA,
   },
   getters: {
   },

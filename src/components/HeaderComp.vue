@@ -78,6 +78,75 @@
                       </li>
 
                       <li class="menu-item-has-children" id="menu_convocatorias"
+                      v-if="(this.carrera_id==0)"
+                      >
+                        <a href="#">Areas y Carreras </a>
+                        <ul class="sub-menu">
+                          <li v-for="(area, id_area) in MenuAreasyCarreras" :key="id_area">
+                            <a href="#">{{ area.area.toLowerCase() }}</a>
+                            <ul class="sub-menu">
+                              <li v-for="(carrera, id_carrera) in area.carreras" :key="id_carrera">
+                                <router-link
+                              :to="{
+                                name: 'convocatorias',
+                                params: {
+                                  tipo_id: carrera.car_id
+                                }
+                              }"
+                              >{{ carrera.carrera }}</router-link>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>                      
+                      
+                      <li class="menu-item-has-children" id="menu_convocatorias"
+                      v-if="(this.carrera_id==0)"
+                      >
+                        <a href="#">Unidades Administrativas</a>
+                        <ul class="sub-menu">
+                          <li>
+                            <a href="#">RECTORADO</a>
+                            <ul class="sub-menu">
+                              <li><a href="#">Unidad de Titulos y Diplomas</a></li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#">VICERRECTORADO</a>
+                            <ul class="sub-menu">
+                              <li><a href="#">Vicerrectorado</a></li>
+                              <li><a href="#">Unidad de Sistemas de Informacion y Estadistica</a></li>
+                              <li><a href="#">Registros y Admiciones</a></li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#">EXTENSION UNIVERSITARIA (BIENESTAR ESTUDIANTIL)</a>
+                            <ul class="sub-menu">
+                              <li><a href="#">Direccion de Interaccion Social y Cultural</a></li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#">DECANATURA AREA INGENIERIAS</a>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <li class="menu-item-has-children" id="menu_convocatorias"
+                      v-if="(this.carrera_id==0)"
+                      >
+                        <a href="#">Auditoria Interna </a>
+                        <ul class="sub-menu">
+                          <li>
+                            <a href="#">Auditoria Interna</a>
+                            <ul class="sub-menu">
+                              <a href="#">Direccion de Auditoria Interna</a>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <li class="menu-item-has-children" id="menu_convocatorias"
+                      v-if="(this.carrera_id!=0)"
                       >
                         <a href="#">Convocatorias </a>
                         <ul class="sub-menu">
@@ -86,7 +155,7 @@
                               :to="{
                                 name: 'convocatorias',
                                 params: {
-                                  tipo_id: link.idtipo_conv_comun
+                                  tipo: link.tipo_conv_comun_titulo.toLowerCase()
                                 }
                               }"
                               >{{ link.tipo_conv_comun_titulo.toLowerCase() }}</router-link
@@ -96,7 +165,7 @@
                       </li>
 
                       <li class="menu-item-has-children"
-                      v-if="Object.keys(MenuCursos).length != 0"
+                      v-if="(this.carrera_id!=0)"                                      
                       >
                         <a href="#">Cursos</a>
                         <ul class="sub-menu">
@@ -105,7 +174,7 @@
                               :to="{
                                 name: 'cursos',
                                 params: {
-                                  tipo_id: link.idtipo_curso_otros
+                                  tipo: link.tipo_conv_curso_nombre.toLowerCase()
                                 }
                               }"
                               >{{ link.tipo_conv_curso_nombre.toLowerCase() }}</router-link
@@ -115,7 +184,7 @@
                       </li>
 
                       <li class="menu-item-has-children"
-                      v-if="(Object.keys(MenuConvocatorias).length != 0 && Object.keys(MenuCursos).length != 0)"
+                      v-if="(this.carrera_id!=0)"
                       >
                         <a href="#">Mas</a>
                         <ul class="sub-menu">
@@ -124,7 +193,7 @@
                               :to="{
                                 name: 'servicios',
                                 params: {
-                                  tipo_id: 'servicios'
+                                  tipo: 'servicios'
                                 }
                               }"
                               >Servicios</router-link
@@ -135,7 +204,7 @@
                               :to="{
                                 name: 'ofertasacademicas',
                                 params: {
-                                  tipo_id: 'convocatorias'
+                                  tipo: 'ofertasacademicas'
                                 }
                               }"
                               >Ofertas Academicas</router-link
@@ -146,7 +215,7 @@
                               :to="{
                                 name: 'publicaciones',
                                 params: {
-                                  tipo_id: 'convocatorias'
+                                  tipo: 'publicaciones'
                                 }
                               }"
                               >Publicaciones</router-link
@@ -157,7 +226,7 @@
                               :to="{
                                 name: 'gacetas',
                                 params: {
-                                  tipo_id: 'convocatorias'
+                                  tipo: 'gacetas'
                                 }
                               }"
                               >Gaceta</router-link
@@ -168,7 +237,7 @@
                               :to="{
                                 name: 'eventos',
                                 params: {
-                                  tipo_id: 'convocatorias'
+                                  tipo: 'eventos'
                                 }
                               }"
                               >Eventos</router-link
@@ -179,7 +248,7 @@
                               :to="{
                                 name: 'videos',
                                 params: {
-                                  tipo_id: 'convocatorias'
+                                  tipo: 'videos'
                                 }
                               }"
                               >Videos</router-link
@@ -189,7 +258,7 @@
                       </li>
 
                       <li class="menu-item-has-children"
-                      v-if="(Object.keys(MenuConvocatorias).length != 0 && Object.keys(MenuCursos).length != 0)"
+                      v-if="(this.carrera_id!=0)"
                       >
                         <a href="#">Links</a>
                         <ul class="sub-menu">
@@ -302,14 +371,11 @@ export default {
   name: 'HeaderComp',
 
   computed: {
-    ...mapState(['url_api', 'MenuConvocatorias', 'MenuCursos', 'Institucion', 'Links'])
+    ...mapState(['url_api', 'MenuConvocatorias', 'MenuCursos', 'Institucion', 'Links','carrera_id','MenuAreasyCarreras'])
   },
   methods: {},
   created() {
-    if(this.MenuConvocatorias.length != 0){
-      let menu_conv = document.getElementById('menu_convocatorias');
-      menu_conv.style.display = 'none';
-    }
+
   }
 }
 </script>

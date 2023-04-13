@@ -1,5 +1,9 @@
 import Api from '@/services/Api'
 
+function getMenuAreasyCarreras(){
+  return Api().get('/api/area')
+}
+
 function getMenuConvocatorias() {
   return Api().get('/api/Tipoconvocatorias')
 }
@@ -53,8 +57,13 @@ function getVideos(){
 function getTipoConvocatoria(tipo_id){
   return Api().get('/api/Tipoconvocatorias/'+tipo_id)
 }
+//Cursos
+function getTipoCurso(tipo_id){
+  return Api().get('/api/TipoCurso/'+tipo_id)
+}
 
 export default {
+  getMenuAreasyCarreras,
   getMenuConvocatorias,
   getMenuCursos,
   getLinks,
@@ -69,5 +78,6 @@ export default {
   getEventos,
   getVideos,
   //Convocatorias View
-  getTipoConvocatoria  
+  getTipoConvocatoria,
+  getTipoCurso 
 }

@@ -3,70 +3,74 @@
   <div class="main-content">
     <!-- Banner Section Start -->
     <swiper
-    :spaceBetween="30"
-    :centeredSlides="true"
-    :autoplay="{
-      delay: 2500,
-      disableOnInteraction: false,
-    }"
-    :pagination="{
-      clickable: true,
-    }"
-    :navigation="true"
-    :modules="modules"
-    class="mySwiper"
+      :spaceBetween="30"
+      :centeredSlides="true"
+      :autoplay="{
+        delay: 2500,
+        disableOnInteraction: false
+      }"
+      :pagination="{
+        clickable: true
+      }"
+      :navigation="true"
+      :modules="modules"
+      class="mySwiper"
     >
-      <swiper-slide>
-        <div class="bg" 
-        v-for="(portada, id_img) in Institucion.portada" :key="id_img"
-        >
-          <img :src="this.url_api+'/InstitucionUpea/Portada/'+portada.portada_imagen" alt="" width="100px" height="200px">          
+      <swiper-slide v-for="(portada, id_img) in Institucion.portada" :key="id_img">
+        <div class="bg sc-banner">
+          <!--<img
+            class="bg-img"
+            :src="this.url_api + '/InstitucionUpea/Portada/' + portada.portada_imagen"
+            alt="{{ id_img }}"
+          />-->
+          <img src="https://www.upea.bo/assets/upea/fondos/BackGround-UPEA-08.jpg" alt="">
         </div>
-      </swiper-slide>      
-      <div id="sc-banner" class="sc-banner banner-style3 upposition-relative">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="banner-content">
-              <div
-                class="sub-title wow position-relative mb-8 fadeInUp"
-                data-wow-delay="300ms"
-                data-wow-duration="2000ms"
-              >
-                {{ Institucion.institucion_iniciales }}
-                <span class="heading-border-line"></span>
-              </div>
+      </swiper-slide>
 
-              <h1
-                class="banner-title mb-15 wow fadeInUp"
-                data-wow-delay="300ms"
-                data-wow-duration="2500ms"
-              >
-                {{ Institucion.institucion_nombre }}
-              </h1>
-              <h5
-                class="banner-des mb-35 wow fadeInUp"
-                data-wow-delay="300ms"
-                data-wow-duration="3000ms"
-                v-html="Institucion.institucion_objetivos"
-              ></h5>
-              <!--<form class="newsletter-form mt-40">
+      <div id="sc-banner" class="sc-banner banner-style3 upposition-relative">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="banner-content">
+                <div
+                  class="sub-title wow position-relative mb-8 fadeInUp"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2000ms"
+                >
+                  {{ Institucion.institucion_iniciales }}
+                  <span class="heading-border-line"></span>
+                </div>
+
+                <h1
+                  class="banner-title mb-15 wow fadeInUp inst-nombre"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2500ms"
+                >
+                  {{ Institucion.institucion_nombre }}
+                </h1>
+                <h5
+                  class="banner-des mb-35 wow fadeInUp inst-objetivos"
+                  data-wow-delay="300ms"
+                  data-wow-duration="3000ms"
+                  v-html="Institucion.institucion_objetivos"
+                ></h5>
+                <!--<form class="newsletter-form mt-40">
                 <input type="text" name="email" placeholder="search course..." />
                 <button type="submit"><i class="flaticon flaticon-magnifying-glass"></i></button>
-              </form>-->              
+              </form>-->
+              </div>
             </div>
-          </div>
-          <div class="col-lg-6 hidden-md">
-            <div class="banner-img hidden-sm">
-              <img
-                class="wow fadeInRight"
-                src="src/assets/images/banner/banner-image3.png"
-                alt="Banner Image"
-                data-wow-delay="300ms"
-                data-wow-duration="2000ms"
-              />
-            </div>
-            <!--<div
+            <div class="col-lg-6 hidden-md">
+              <div class="banner-img hidden-sm">
+                <img
+                  class="wow fadeInRight"
+                  src="src/assets/images/banner/banner-image3.png"
+                  alt="Banner Image"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2000ms"
+                />
+              </div>
+              <!--<div
               class="view-students-img wow fadeInUp"
               data-wow-delay="300ms"
               data-wow-duration="2000ms"
@@ -74,42 +78,42 @@
               <img src="src/assets/images/banner/view-students.png" alt="Banner Image" />
             </div>
             -->
-            <div class="animate-circle"></div>
+              <div class="animate-circle"></div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="animated-arrow-1 animated-arrow left-right-new">
-        <img src="../assets/images/banner/arrow-1.png" alt="" />
-      </div>
-      <div class="animated-arrow-2 animated-arrow up-down-new">
-        <img src="../assets/images/banner/arrow-2.png" alt="" />
-      </div>
+        <div class="animated-arrow-1 animated-arrow left-right-new">
+          <img src="../assets/images/banner/arrow-1.png" alt="" />
+        </div>
+        <div class="animated-arrow-2 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-2.png" alt="" />
+        </div>
 
-      <div class="animated-arrow-3 animated-arrow up-down-new">
-        <img src="../assets/images/banner/arrow-3.png" alt="" />
+        <div class="animated-arrow-3 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-3.png" alt="" />
+        </div>
+        <div class="animated-arrow-4 animated-arrow left-right-new">
+          <img src="../assets/images/banner/arrow-4.png" alt="" />
+        </div>
+        <div class="animated-arrow-5 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-5.png" alt="" />
+        </div>
+        <div class="animated-arrow-7 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-6.png" alt="" />
+        </div>
+        <div class="animated-arrow-8 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-7.png" alt="" />
+        </div>
+        <div class="animated-arrow-9 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-8.png" alt="" />
+        </div>
+        <div class="animated-arrow-10 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-9.png" alt="" />
+        </div>
+        <div class="animated-arrow-11 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-9.png" alt="" />
+        </div>
       </div>
-      <div class="animated-arrow-4 animated-arrow left-right-new">
-        <img src="../assets/images/banner/arrow-4.png" alt="" />
-      </div>
-      <div class="animated-arrow-5 animated-arrow up-down-new">
-        <img src="../assets/images/banner/arrow-5.png" alt="" />
-      </div>
-      <div class="animated-arrow-7 animated-arrow up-down-new">
-        <img src="../assets/images/banner/arrow-6.png" alt="" />
-      </div>
-      <div class="animated-arrow-8 animated-arrow up-down-new">
-        <img src="../assets/images/banner/arrow-7.png" alt="" />
-      </div>
-      <div class="animated-arrow-9 animated-arrow up-down-new">
-        <img src="../assets/images/banner/arrow-8.png" alt="" />
-      </div>
-      <div class="animated-arrow-10 animated-arrow up-down-new">
-        <img src="../assets/images/banner/arrow-9.png" alt="" />
-      </div>
-      <div class="animated-arrow-11 animated-arrow up-down-new">
-        <img src="../assets/images/banner/arrow-9.png" alt="" />
-      </div>
-    </div>
     </swiper>
     <!-- Banner Section End -->
 
@@ -226,15 +230,14 @@
               <div class="sub-title position-relative">
                 Frases <span class="heading-border-line"></span>
               </div>
-              <h2 class="title mb-0 white-color">
-                La tecnología avanza a una velocidad increíble,<br />
-                y si no estás al día, te quedas atrás.
+              <h2 class="title mb-0 white-color cta-text">
+                "En la Universidad Pública de El Alto formamos profesionales con un compromiso ético y social para transformar nuestra sociedad."
               </h2>
             </div>
           </div>
           <div class="col-lg-6 hidden-md">
-            <div class="img-part img-autor">
-              <img src="../assets/images/cta/cta-autores.png" alt="Image" />
+            <div class="img-part cta-img">
+              <img src="../../public/bgPerson.png" alt="Image" />
             </div>
           </div>
         </div>
@@ -261,7 +264,8 @@
 
     <!-- Counter Section Start -->
     <div
-      class="sc-counter counter-bg1 pt-120 pb-120 md-pt-80 md-pb-50 sc-counter-bg position-relative arrow-animation-1"
+      class="sc-counter categoria-content pt-120 pb-120 md-pt-80 md-pb-50 sc-counter-bg position-relative arrow-animation-1"
+      v-if="(this.carrera_id!=0)"
     >
       <div class="container">
         <div class="row">
@@ -273,7 +277,7 @@
             >
               <div class="counter-item text-center cat">
                 <div class="icon-part">
-                  <i class="flaticon flaticon-laptop"></i>
+                  <i class="flaticon flaticon-study"></i>
                 </div>
                 <h2 class="counter-title">
                   <span class="sc-count">{{ contarConv(conv.tipo_conv_comun_titulo) }} </span
@@ -289,9 +293,9 @@
               :key="id_cur"
               :to="'/cursos/' + cur.idtipo_curso_otros"
             >
-              <div class="counter-item text-center ping-color cat">
+              <div class="counter-item text-center cat">
                 <div class="icon-part">
-                  <i class="flaticon flaticon-study"></i>
+                  <i class="flaticon flaticon-teacher"></i>
                 </div>
                 <h2 class="counter-title">
                   <span class="sc-count">{{ contarCur(cur.tipo_conv_curso_nombre) }} </span
@@ -301,9 +305,9 @@
               </div>
             </router-link>
             <router-link to="/eventos">
-              <div class="counter-item text-center ping-color cat">
+              <div class="counter-item text-center cat">
                 <div class="icon-part">
-                  <i class="flaticon flaticon-study"></i>
+                  <i class="flaticon flaticon-apartment"></i>
                 </div>
                 <h2 class="counter-title">
                   <span class="sc-count">{{ Eventos.length }} </span><span class="text">+</span>
@@ -314,9 +318,9 @@
           </div>
           <div class="col-lg-3 col-md-6 md-mb-30">
             <router-link to="/servicios">
-              <div class="counter-item text-center green-color cat">
+              <div class="counter-item text-center cat">
                 <div class="icon-part">
-                  <i class="flaticon flaticon-teacher"></i>
+                  <i class="flaticon flaticon-computer"></i>
                 </div>
                 <h2 class="counter-title">
                   <span class="sc-count">{{ Servicios.length }} </span><span class="text">+</span>
@@ -325,9 +329,9 @@
               </div>
             </router-link>
             <router-link to="/gaceta">
-              <div class="counter-item text-center ping-color cat">
+              <div class="counter-item text-center cat">
                 <div class="icon-part">
-                  <i class="flaticon flaticon-study"></i>
+                  <i class="flaticon flaticon-book"></i>
                 </div>
                 <h2 class="counter-title">
                   <span class="sc-count">{{ Gacetas.length }} </span><span class="text">+</span>
@@ -336,9 +340,9 @@
               </div>
             </router-link>
             <router-link to="/videos">
-              <div class="counter-item text-center ping-color cat">
+              <div class="counter-item text-center cat">
                 <div class="icon-part">
-                  <i class="flaticon flaticon-study"></i>
+                  <i class="flaticon flaticon-play"></i>
                 </div>
                 <h2 class="counter-title">
                   <span class="sc-count">{{ Videos.length }} </span><span class="text">+</span>
@@ -349,9 +353,9 @@
           </div>
           <div class="col-lg-3 col-md-6 md-mb-30">
             <router-link to="/ofertas">
-              <div class="counter-item text-center yellow-color cat">
+              <div class="counter-item text-center cat">
                 <div class="icon-part">
-                  <i class="flaticon flaticon-monitor"></i>
+                  <i class="flaticon flaticon-shopping-bag"></i>
                 </div>
                 <h2 class="counter-title">
                   <span class="sc-count">{{ Ofertas.length }}</span
@@ -361,12 +365,13 @@
               </div>
             </router-link>
             <router-link to="/publicaciones">
-              <div class="counter-item text-center green-color cat">
+              <div class="counter-item text-center cat">
                 <div class="icon-part">
-                  <i class="flaticon flaticon-teacher"></i>
+                  <i class="flaticon flaticon-monitor"></i>
                 </div>
                 <h2 class="counter-title">
-                  <span class="sc-count">{{ Publicaciones.length }} </span><span class="text">+</span>
+                  <span class="sc-count">{{ Publicaciones.length }} </span
+                  ><span class="text">+</span>
                 </h2>
                 <h5 class="title mb-0">PUBLICACIONES</h5>
               </div>
@@ -394,16 +399,13 @@
     <div
       class="sc-team team-style-1 gray-bg arrow-animation-1 position-relative pt-110 pb-90 md-pt-70 md-pb-50"
     >
-      <div class="container">
+      <div class="pt-60">
         <div class="sec-title mb-30 text-center md-mb-10">
           <div class="sub-title primary">Autoridades<span class="heading-border-line"></span></div>
           <h2 class="title mb-0">Nuestras Autoridades</h2>
         </div>
-        <swiper
-          :slides-per-view="3"
-          :space-between="50"
-        >
-          <swiper-slide v-for="(autoridad, id_aut) of Institucion.autoridad" :key="id_aut">
+        <swiper :slides-per-view="3" :space-between="50" class="autoridades-content">
+          <swiper-slide v-for="(autoridad, id_aut) of Institucion.autoridad" :key="id_aut" class="autoridades-target">
             <div class="team-inner-item">
               <div class="team-wrap">
                 <div class="team-img">
@@ -463,12 +465,32 @@
     <!-- Team Section End -->
 
     <!-- About Instructor Section Start -->
-    <div id="sc-about-instructor" class="sc-about-instructor pt-80 pb-90 md-pt-50 md-pb-70">
+    <div id="sc-about-instructor" class="sc-about-instructor pt-80 pb-90 md-pt-50 md-pb-70 organigrama"
+    v-if="(carrera_id!=0)"
+    >
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-5 md-mb-45">
-            <div class="img-part position-relative">
-              <img class="" src="../assets/images/about/instructor.png" alt="About Image" />
+            <div class="img-part position-relative organigrama-pdf">
+              <!--<img class="" src="../assets/images/about/instructor.png" alt="About Image" />-->
+              <a
+                :href="
+                  url_api +
+                  '/InstitucionUpea/' +
+                  Institucion.institucion_organigrama
+                "
+                target="_blank"
+              >
+                <vue-pdf-embed
+                  :source="
+                    url_api +
+                    '/InstitucionUpea/' +
+                    Institucion.institucion_organigrama
+                  "
+                  :page="1"
+                  height="410"
+                />
+              </a>
             </div>
           </div>
           <div class="col-lg-7 pl-85 md-pl-15">
@@ -476,8 +498,8 @@
               <div class="sub-title position-relative">
                 institucion <span class="heading-border-line"></span>
               </div>
-              <h2 class="title mb-20">Organigrama</h2>
-              <h3 class="des mb-40">Organización y estructura administrativa de la carrera.</h3>
+              <h2 class="title mb-20 organigrama-text">Organigrama</h2>
+              <h3 class="des mb-40 organigrama-text">Organización y estructura administrativa de la carrera.</h3>              
             </div>
           </div>
         </div>
@@ -521,7 +543,9 @@
                       {{ latestConvocatoria.tipo_conv_comun.tipo_conv_comun_titulo }}
                     </li></router-link
                   >
-                  <li><i class="fa fa-calendar"></i>{{ dmy(latestConvocatoria.con_fecha_inicio) }}</li>
+                  <li>
+                    <i class="fa fa-calendar"></i>{{ dmy(latestConvocatoria.con_fecha_inicio) }}
+                  </li>
                 </ul>
                 <h3 class="title">
                   <router-link :to="'/detalleConvocatoria/' + latestConvocatoria.idconvocatorias">{{
@@ -559,7 +583,9 @@
                       {{ latestComunicado.tipo_conv_comun.tipo_conv_comun_titulo }}
                     </li></router-link
                   >
-                  <li><i class="fa fa-calendar"></i>{{ dmy(latestComunicado.con_fecha_inicio) }}</li>
+                  <li>
+                    <i class="fa fa-calendar"></i>{{ dmy(latestComunicado.con_fecha_inicio) }}
+                  </li>
                 </ul>
                 <h3 class="title">
                   <router-link :to="'/detalleConvocatoria/' + latestComunicado.idconvocatorias">{{
@@ -591,7 +617,8 @@
               </div>
               <div class="blog-content">
                 <ul class="blog-meta">
-                  <router-link :to="'/convocatorias/' + latestAviso.tipo_conv_comun.idtipo_conv_comun"
+                  <router-link
+                    :to="'/convocatorias/' + latestAviso.tipo_conv_comun.idtipo_conv_comun"
                     ><li class="btn_tipo">
                       {{ latestAviso.tipo_conv_comun.tipo_conv_comun_titulo }}
                     </li></router-link
@@ -622,7 +649,7 @@
 
     <!-- CTA Section Start -->
     <div
-      class="sc-cta-section cta-bg-image right-bg-image2 pt-110 pb-120 md-pt-75 md-pb-80 position-relative arrow-animation-1"
+      class="sc-cta-section cta-bg-image5 cta pt-40 pb-30 right-bg-image2 md-pt-75 md-pb-80 position-relative arrow-animation-1"
     >
       <div class="container">
         <div class="row align-items-center">
@@ -631,10 +658,9 @@
               <div class="sub-title position-relative">
                 Frases<span class="heading-border-line"></span>
               </div>
-              <h2 class="title mb-0 white-color">
-                Un buen desarrollador de software trabaja con disciplina y constancia desde el
-                primer día.
-                <br />- Omar Bradley -
+              <h2 class="title mb-0 white-color cta-text">
+                "La educación es el camino para construir una sociedad más equitativa y la Universidad Pública de El Alto es la institución que lidera este proceso en Bolivia"
+                <br />- Upea -
               </h2>
             </div>
           </div>
@@ -661,7 +687,7 @@
     <!-- CTA Section End -->
 
     <!-- Blog Section Start -->
-    <div id="sc-blog" class="sc-blog main-home pb-200 pt-110 md-pt-70 md-pb-160">
+    <div id="sc-blog" class="sc-blog main-home pb-200 pt-120 md-pt-70 md-pb-160">
       <div class="container">
         <div class="sec-title mb-60 text-center md-mb-30">
           <div class="sub-title primary">Lo mas reciente</div>
@@ -730,9 +756,10 @@
                   <li><i class="fa fa-calendar"></i>{{ dmy(latestSeminario.det_fecha_ini) }}</li>
                 </ul>
                 <h3 class="title">
-                  <router-link :to="'/detalleCurso/' + latestSeminario.iddetalle_cursos_academicos">{{
-                    latestSeminario.det_titulo.toUpperCase()
-                  }}</router-link>
+                  <router-link
+                    :to="'/detalleCurso/' + latestSeminario.iddetalle_cursos_academicos"
+                    >{{ latestSeminario.det_titulo.toUpperCase() }}</router-link
+                  >
                 </h3>
                 <div class="btn-btm">
                   <div class="rs-view-btn">
@@ -763,12 +790,13 @@
 import { mapState } from 'vuex'
 import Services from '@/services/Services'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import VuePdfEmbed from 'vue-pdf-embed'
 
 import 'swiper/css'
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
-import { Autoplay, Pagination, Navigation } from 'swiper';
+import { Autoplay, Pagination, Navigation } from 'swiper'
 
 export default {
   name: 'HomeView',
@@ -797,24 +825,25 @@ export default {
     }
   },
   computed: {
-    ...mapState(['url_api', 'Institucion', 'MenuConvocatorias', 'MenuCursos', 'Links'])
+    ...mapState(['url_api', 'Institucion', 'MenuConvocatorias', 'MenuCursos', 'Links','carrera_id'])
   },
   components: {
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    VuePdfEmbed
   },
   setup() {
     const onSwiper = (swiper) => {
-        console.log(swiper);
-      };
-      const onSlideChange = () => {
-        console.log('slide change');
-      };
-      return {
-        onSwiper,
-        onSlideChange,
-        modules: [Autoplay, Pagination, Navigation],
-      };
+      console.log(swiper)
+    }
+    const onSlideChange = () => {
+      console.log('slide change')
+    }
+    return {
+      onSwiper,
+      onSlideChange,
+      modules: [Autoplay, Pagination, Navigation]
+    }
   },
   methods: {
     async getConvocatoriasAll() {
@@ -830,46 +859,45 @@ export default {
               conv.tipo_conv_comun.tipo_conv_comun_titulo == 'CONVOCATORIAS' &&
               conv.con_estado == '1'
             ) {
-                this.latestConvocatoria = conv                
+              this.latestConvocatoria = conv
             } else {
               if (
                 conv.tipo_conv_comun.tipo_conv_comun_titulo == 'COMUNICADOS' &&
                 conv.con_estado == '1'
               ) {
-                  this.latestComunicado = conv
+                this.latestComunicado = conv
               } else {
                 if (
                   conv.tipo_conv_comun.tipo_conv_comun_titulo == 'AVISOS' &&
                   conv.con_estado == '1'
                 ) {
-                    this.latestAviso = conv
+                  this.latestAviso = conv
                 }
               }
             }
           })
         }
-
       } catch (e) {
         console.log(e)
       }
-    },    
+    },
 
     async getCursosAll() {
       try {
         //optenemos todos los registros de cursos de la api
         const response = await Services.getCursosAll()
         this.Cursos = response.data
-        
+
         //obtenemos los ultimos cursos y seminarios
         this.Cursos.forEach((cur) => {
           if (cur.tipo_curso_otro.tipo_conv_curso_nombre == 'CURSOS' && cur.det_estado == '1') {
-              this.latestCurso = cur
+            this.latestCurso = cur
           } else {
             if (
               cur.tipo_curso_otro.tipo_conv_curso_nombre == 'SEMINARIOS' &&
               cur.det_estado == '1'
             ) {
-                this.latestSeminario = cur
+              this.latestSeminario = cur
             }
           }
         })
@@ -905,7 +933,7 @@ export default {
     async getGacetaAll() {
       try {
         const response = await Services.getGacetaAll()
-        this.Gacetas = response.data        
+        this.Gacetas = response.data
       } catch (e) {
         console.log(e)
       }
@@ -987,7 +1015,7 @@ export default {
       this.getPublicaciones()
       this.getGacetaAll()
       this.getEventos()
-      this.getVideos()      
+      this.getVideos()
     }
   },
   created() {
@@ -996,34 +1024,46 @@ export default {
 }
 </script>
 <style scoped>
-
-.title_home{
+.title_home {
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
-  background: var(--main-color);
+  background: linear-gradient(to left, var(--main-color), var(--main-color-2));
   padding: 10px;
   color: #fff;
   letter-spacing: 2px;
 }
-.cat {
-  transition: 0.5s;
-  margin: 20px 0px;
+
+.inst-objetivos{
+  background: rgba( 255, 255, 255, 0.05 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1.5px );
+  -webkit-backdrop-filter: blur( 1.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  padding: 10px 15px;
+  color: #fff;
 }
-.cat:hover {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+.inst-nombre{
+  text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.8);
 }
+
+.inst-nombre::first-letter{
+  color: var(--main-color);
+}
+
 .links_externos {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
   background-repeat: no-repeat !important;
   background-position: right !important;
   background-size: contain !important;
+  padding: 20px !important;
 }
 .links_externos a {
-  background-color: crimson;
+  background-color: var(--main-color);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
   color: #ffffff !important;
   padding: 7px 20px;
@@ -1031,49 +1071,39 @@ export default {
   border-radius: 20px;
   text-align: center;
 }
+.links_externos a:hover {
+  background: var(--main-color-2);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
+}
 .cta {
   position: relative;
+  background-attachment: fixed;
 }
-.cta::after {
-  position: absolute;
-  width: 100%;
-  height: 20%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent);
-  content: '';
-  left: 0;
-  top: 0;
-}
-.cta::before {
-  position: absolute;
-  width: 100%;
-  height: 20%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
-  content: '';
-  left: 0;
-  bottom: 0;
-}
-.img-autor {
-  margin: 40px !important;
+
+.cta-img {
+  padding-top: 20px;  
+  width: 250px;
+  margin-left: 10%;  
   position: relative;
-  text-align: center;
+  z-index: 3;
+  display: grid;
+  place-items: center;
 }
-.img-autor img {
-  width: 400px !important;
-  margin: 10px 0px;
-}
-.img-autor::before {
-  content: 'Kevin Mitnick';
-  top: 20px;
-  right: 125px;
+
+.cta-img::before{
+  content: '';
   position: absolute;
-  width: 100px;
-  color: #fff;
-  padding-left: 15px;
-  background: #f24d5d;
-  text-align: center;
-  letter-spacing: 1px;
-  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+  width: 350px;
+  height: 350px;
+  background: var(--main-color);
+  border-radius: 50%;
+  z-index: -1;
 }
+
+.cta-text{
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
 .img_swiper {
   height: 400px;
   object-fit: cover;
@@ -1102,8 +1132,112 @@ export default {
   text-align: center;
   width: 100%;
 }
-.bg{
+.bg {
   z-index: -1;
   position: absolute;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+.bg-img {
+  width: 100%;
+  height: 100vh;
+}
+
+/*==================== PDF INSTITUCION ========== */
+.organigrama-pdf{  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  background: rgba( 255, 255, 255, 0.05 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 6px );
+  -webkit-backdrop-filter: blur( 6px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  position: relative;
+}
+
+.organigrama-pdf::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  transform: rotate(-5deg);
+  background: var(--main-color);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 9.5px );
+  -webkit-backdrop-filter: blur( 9.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.organigrama-text{
+  color: #fff !important;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.organigrama{
+  background: url(../../public/bgUpea.jpg);
+  background-size: cover;
+  background-repeat: none;
+}
+
+/*================ autoridades target ============== */
+
+.autoridades-content{
+  padding: 50px 50px;
+}
+.autoridades-target{  
+  position: relative;
+}
+.autoridades-target::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba( 255, 255, 255, 0 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 10px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+/*================== icon part =============== */
+.cat {
+  transition: 0.5s;
+  margin: 20px 0px;  
+  background: #e0e0e0;
+  box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;  
+}
+.cat:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+}
+.icon-part{  
+  border-radius: 50;  
+  background: var(--main-color) !important;  
+}
+
+.icon-part i {
+  color: #fff;
+}
+.categoria-content{
+  background: #fff;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

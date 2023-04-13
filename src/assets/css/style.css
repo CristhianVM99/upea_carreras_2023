@@ -290,13 +290,14 @@ body .dblock {
   position: absolute;
   content: '';
   height: 100%;
-  width: 40%;
-  top: 0;
+  width:400px;
+  bottom: 0;
   transition: all 0.3s ease;
-  background: url(../images/bg/cta-bg9.jpg);
-  right: 0;
+  background: url(../../../public/bgPerson5.png);
+  right: 10%;
   background-size: cover;
-  background-position: right;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .testimonial-bg {
   background: url(../images/bg/testimonial-bg.jpg);
@@ -317,11 +318,15 @@ body .dblock {
   background: url(../images/bg/cta-bg2.jpg);
 }
 .cta-bg-image3 {
-  background: url(../images/bg/cta-bg6.jpg);
+  background: url(../../../public/bgFondo2.jpg);
   background-size: cover;
 }
 .cta-bg-image4 {
   background: url(../images/bg/cta-bg7.jpg);
+  background-size: cover;
+}
+.cta-bg-image5{
+  background: url(../../../public/bgFondo4.jpg);
   background-size: cover;
 }
 .cta-bg-image-autor {
@@ -802,13 +807,13 @@ body .modal-backdrop {
   height: 110px;
   line-height: 110px;
   padding-right: 18px;
-  color: var(--main-color-2);
+  color: #000000;
   z-index: 1;
   position: relative;
   font-family: 'Jost', sans-serif;
 }
 .sc-header-section .sc-header .menu-area .main-menu .sc-menu ul.nav-menu li a:hover {
-  color: var(--main-color);
+  color: var(--main-color);  
 }
 .sc-header-section .sc-header .menu-area .main-menu .sc-menu ul.nav-menu li a:last-child {
   margin-right: 0;
@@ -3777,7 +3782,7 @@ body .modal-backdrop {
   position: relative;
   margin: 0;
   font-size: 16px;
-  background: #f4fcff;
+  background: #ffffff;
   border-radius: 3px;
   padding: 12px 30px;
   margin-bottom: 10px;
@@ -3798,6 +3803,9 @@ body .modal-backdrop {
 }
 .sc-blog-single .blog-deatails .post-img {
   padding: 20px;
+}
+.sc-blog-single .blog-deatails .post-img iframe {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 }
 .sc-blog-single .blog-deatails .blog-full {
   padding: 10px 30px 40px;

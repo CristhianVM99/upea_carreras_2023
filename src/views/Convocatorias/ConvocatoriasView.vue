@@ -4,7 +4,7 @@
     <!-- Breadcrumbs Start -->
     <div class="sc-breadcrumbs breadcrumbs-overlay">
       <div class="breadcrumbs-img">
-        <img src="../../assets/images/breadcrumbs/1.jpg" alt="Breadcrumbs Image" />
+        <img src="../../../public/bgUpea.jpg" alt="Breadcrumbs Image" />
       </div>
       <div class="breadcrumbs-text white-color">
         <h1 class="page-title">
@@ -13,83 +13,598 @@
         </h1>
         <ul>
           <li>
-            <router-link :to="{ name: 'home' }" class="active">Home ></router-link>
+            <button class="cssbuttons-io">
+              <router-link :to="{ name: 'home' }">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path fill="currentColor" d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z">      
+                </path>
+              </svg>
+              Home
+            </span>
+          </router-link>
+          </button>
           </li>
-          <li class="active">{{ tipo_conv }}</li>
+          <!--<li class="active tipo_text">{{ tipo_conv.toUpperCase() }}</li>-->
+          <button class="cssbuttons-io">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path fill="currentColor" d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z">      
+                </path>
+              </svg>
+              {{ tipo_conv.toUpperCase() }}
+            </span>
+          </button>
         </ul>
       </div>
     </div>
     <!-- Breadcrumbs End -->
 
     <!-- Blog Single Start -->
-    <div class="sc-blog-single pt-120 pb-120 md-pt-80 md-pb-80 pl-40 pr-40">
+    <div class="sc-blog-single pt-120 md-pt-80 md-pb-80 pl-40 pr-40">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-9">
           <!-- Course Section Start -->
-          <div id="sc-event-section" class="sc-event-section pb-110 md-pt-80 md-pb-70">
-            <div class="container">
-              <div class="row">
-                <div
-                  class="col-lg-6 col-md-6 mb-30 loadcourse addcourse"
-                  v-for="(conv, id_conv) in Categoria"
+          <div id="sc-event-section" class="sc-event-section pb-50 md-pt-80 md-pb-70">
+            <div class="">
+              <!-- Convocatorias -->
+              <swiper
+                :modules="modules"
+                :slidesPerView="3"
+                :centeredSlides="true"
+                :spaceBetween="30"
+                :pagination="{
+                  type: 'fraction'
+                }"
+                :navigation="true"
+                :virtual="true"
+                class="mySwiper grid-conv"
+                @swiper="setSwiperRef"
+                v-if="
+                  tipo_conv.toLowerCase() == 'convocatorias' ||
+                  tipo_conv.toLowerCase() == 'avisos' ||
+                  tipo_conv.toLowerCase() == 'comunicados'
+                "
+              >
+                <swiper-slide
+                  v-for="(conv, id_conv) in Convocatorias"
                   :key="id_conv"
+                  :virtualIndex="id_conv"
+                  class="grid-conv-item"
                 >
-                  <div class="events-item">
-                    <div class="img-part">
-                      <router-link
-                        :to="'/detalleConvocatoria/' + conv.idconvocatorias"
-                        @click="$store.commit('clickLink')"
-                      >
-                        <img :src="url_api + '/Convocatorias/' + conv.con_foto_portada" alt="img" />
-                      </router-link>
-                      <div class="event-price">
-                        <span class="price">{{ tipo_conv }}</span>
-                      </div>
-                    </div>
-                    <div class="content-part">
-                      <h3 class="title">
+                  <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+                    <div class="events-item">
+                      <div class="img-part">
                         <router-link
                           :to="'/detalleConvocatoria/' + conv.idconvocatorias"
                           @click="$store.commit('clickLink')"
                         >
-                          {{ conv.con_titulo }}
+                          <img
+                            :src="url_api + '/Convocatorias/' + conv.con_foto_portada"
+                            alt="img"
+                          />
                         </router-link>
-                      </h3>
-                      <!--<div class="des" v-html="conv.con_descripcion"
-                      v-if="tipo_conv != 'avisos'"
-                      ></div>-->
-                      <ul class="meta-part">
-                        <li class="event-date">
-                          <i class="fa fa-calendar-check-o"></i>{{ dmy(conv.con_fecha_inicio) }}
-                        </li>
-                        <li class="event-date">
-                          <i class="fa fa-calendar-check-o"></i>{{ dmy(conv.con_fecha_fin) }}
-                        </li>
-                      </ul>
-                      <div class="bottom-part d-flex align-items-center justify-content-center">
-                        <div class="event-join">
+                        <div class="event-price">
+                          <span class="price">{{ tipo_conv }}</span>
+                        </div>
+                      </div>
+                      <div class="content-part">
+                        <h3 class="title">
                           <router-link
                             :to="'/detalleConvocatoria/' + conv.idconvocatorias"
-                            class="readmore-text m-auto"
+                            @click="$store.commit('clickLink')"
                           >
-                            Leer mas
+                            {{ conv.con_titulo }}
                           </router-link>
+                        </h3>
+                        <!--<div class="des" v-html="conv.con_descripcion"
+                      v-if="tipo_conv != 'avisos'"
+                      ></div>-->
+                        <ul class="meta-part">
+                          <li class="event-date">
+                            <i class="fa fa-calendar-check-o"></i>{{ dmy(conv.con_fecha_inicio) }}
+                          </li>
+                          <li class="event-date">
+                            <i class="fa fa-calendar-check-o"></i>{{ dmy(conv.con_fecha_fin) }}
+                          </li>
+                        </ul>
+                        <div class="bottom-part d-flex align-items-center justify-content-center">
+                          <div class="event-join">
+                            <router-link
+                              :to="'/detalleConvocatoria/' + conv.idconvocatorias"
+                              class="readmore-text m-auto readon"
+                            >
+                              Leer mas<i class="flaticon flaticon-right-arrow"></i>
+                            </router-link>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div id="loadmore" class="text-center mt-30">
-                <a class="readon" href="#"
-                  >Learn More <i class="flaticon flaticon-right-arrow"></i>
-                </a>
-              </div>
+                </swiper-slide>
+              </swiper>
+              <!-- Cursos -->
+              <swiper
+                :modules="modules"
+                :slidesPerView="3"
+                :centeredSlides="true"
+                :spaceBetween="30"
+                :pagination="{
+                  type: 'fraction'
+                }"
+                :navigation="true"
+                :virtual="true"
+                class="mySwiper grid-conv"
+                @swiper="setSwiperRef"
+                v-if="
+                  tipo_conv.toLowerCase() == 'seminarios' || tipo_conv.toLowerCase() == 'cursos'
+                "
+              >
+                <swiper-slide
+                  v-for="(cur, id_cur) in Cursos"
+                  :key="id_cur"
+                  :virtualIndex="id_cur"
+                  class="grid-conv-item"
+                >
+                  <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+                    <div class="events-item">
+                      <div class="img-part">
+                        <router-link
+                          :to="'/detalleCurso/' + cur.iddetalle_cursos_academicos"
+                          @click="$store.commit('clickLink')"
+                        >
+                          <img :src="url_api + '/Cursos/' + cur.det_img_portada" alt="img" />
+                        </router-link>
+                        <div class="event-price">
+                          <span class="price">{{ tipo_conv }}</span>
+                        </div>
+                      </div>
+                      <div class="content-part">
+                        <h3 class="title">
+                          <router-link
+                            :to="'/detalleCurso/' + cur.iddetalle_cursos_academicos"
+                            @click="$store.commit('clickLink')"
+                          >
+                            {{ cur.det_titulo }}
+                          </router-link>
+                        </h3>
+                        <!--<div class="des" v-html="conv.con_descripcion"
+                      v-if="tipo_conv != 'avisos'"
+                      ></div>-->
+                        <ul class="meta-part">
+                          <li class="event-date">
+                            <i class="fa fa-calendar-check-o"></i>{{ dmy(cur.det_fecha_ini) }}
+                          </li>
+                          <li class="event-date">
+                            <i class="fa fa-calendar-check-o"></i>{{ dmy(cur.det_fecha_fin) }}
+                          </li>
+                        </ul>
+                        <div class="bottom-part d-flex align-items-center justify-content-center">
+                          <div class="event-join">
+                            <router-link
+                              :to="'/detalleCurso/' + cur.iddetalle_cursos_academicos"
+                              class="readmore-text m-auto readon"
+                            >
+                              Leer mas<i class="flaticon flaticon-right-arrow"></i>
+                            </router-link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </swiper-slide>
+              </swiper>
+              <!-- Servicios -->
+              <swiper
+                :modules="modules"
+                :slidesPerView="3"
+                :centeredSlides="true"
+                :spaceBetween="30"
+                :pagination="{
+                  type: 'fraction'
+                }"
+                :navigation="true"
+                :virtual="true"
+                class="mySwiper grid-conv"
+                @swiper="setSwiperRef"
+                v-if="tipo_conv.toLowerCase() == 'servicios'"
+              >
+                <swiper-slide
+                  v-for="(serv, id_serv) in Servicios"
+                  :key="id_serv"
+                  :virtualIndex="id_serv"
+                  class="grid-conv-item"
+                >
+                  <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+                    <div class="events-item">
+                      <div class="img-part">
+                        <router-link
+                          :to="'/detalleServicio/' + serv.serv_id"
+                          @click="$store.commit('clickLink')"
+                        >
+                          <img
+                            :src="url_api + '/Carrera/Servicios/' + serv.serv_imagen"
+                            alt="img"
+                            width="300"
+                          />
+                        </router-link>
+                        <div class="event-price">
+                          <span class="price">{{ tipo_conv }}</span>
+                        </div>
+                      </div>
+                      <div class="content-part">
+                        <h3 class="title">
+                          <router-link
+                            :to="'/detalleServicio/' + serv.serv_id"
+                            @click="$store.commit('clickLink')"
+                          >
+                            {{ serv.serv_nombre }}
+                          </router-link>
+                        </h3>
+                        <!--<div class="des" v-html="conv.con_descripcion"
+                      v-if="tipo_conv != 'avisos'"
+                      ></div>-->
+                        <ul class="meta-part">
+                          <li class="event-date">
+                            <i class="fa fa-calendar-check-o"></i>{{ dmy(serv.serv_registro) }}
+                          </li>
+                          <li class="event-date">
+                            <i class="fa fa-phone"></i>{{ serv.serv_nro_celular }}
+                          </li>
+                        </ul>
+                        <div class="bottom-part d-flex align-items-center justify-content-center">
+                          <div class="event-join">
+                            <router-link
+                              :to="'/detalleServicio/' + serv.serv_id"
+                              class="readmore-text m-auto readon"
+                            >
+                              Leer mas<i class="flaticon flaticon-right-arrow"></i>
+                            </router-link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </swiper-slide>
+              </swiper>
+              <!-- Ofertas Academicas -->
+              <swiper
+                :modules="modules"
+                :slidesPerView="3"
+                :centeredSlides="true"
+                :spaceBetween="30"
+                :pagination="{
+                  type: 'fraction'
+                }"
+                :navigation="true"
+                :virtual="true"
+                class="mySwiper grid-conv"
+                @swiper="setSwiperRef"
+                v-if="tipo_conv.toLowerCase() == 'ofertasacademicas'"
+              >
+                <swiper-slide
+                  v-for="(ofer, id_ofer) in OfertasAcademicas"
+                  :key="id_ofer"
+                  :virtualIndex="id_ofer"
+                  class="grid-conv-item"
+                >
+                  <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+                    <div class="events-item">
+                      <div class="img-part">
+                        <router-link
+                          :to="'/detalleOferta/' + ofer.ofertas_id"
+                          @click="$store.commit('clickLink')"
+                        >
+                          <img
+                            :src="url_api + '/Carrera/OfertasAcademicas/' + ofer.ofertas_imagen"
+                            alt="img"
+                            width="200"
+                          />
+                        </router-link>
+                        <div class="event-price">
+                          <span class="price">{{ tipo_conv }}</span>
+                        </div>
+                      </div>
+                      <div class="content-part">
+                        <h3 class="title">
+                          <router-link
+                            :to="'/detalleOferta/' + ofer.ofertas_id"
+                            @click="$store.commit('clickLink')"
+                          >
+                            {{ ofer.ofertas_titulo }}
+                          </router-link>
+                        </h3>
+                        <!--<div class="des" v-html="conv.con_descripcion"
+                      v-if="tipo_conv != 'avisos'"
+                      ></div>-->
+                        <ul class="meta-part">
+                          <li class="event-date">
+                            <i class="fa fa-calendar-check-o"></i
+                            >{{ dmy(ofer.ofertas_inscripciones_fin) }}
+                          </li>
+                        </ul>
+                        <div class="bottom-part d-flex align-items-center justify-content-center">
+                          <div class="event-join">
+                            <router-link
+                              :to="'/detalleOferta/' + ofer.ofertas_id"
+                              class="readmore-text m-auto readon"
+                            >
+                              Leer mas<i class="flaticon flaticon-right-arrow"></i>
+                            </router-link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </swiper-slide>
+              </swiper>
+              <!-- Publicaciones -->
+              <swiper
+                :modules="modules"
+                :slidesPerView="3"
+                :centeredSlides="true"
+                :spaceBetween="30"
+                :pagination="{
+                  type: 'fraction'
+                }"
+                :navigation="true"
+                :virtual="true"
+                class="mySwiper grid-conv"
+                @swiper="setSwiperRef"
+                v-if="tipo_conv.toLowerCase() == 'publicaciones'"
+              >
+                <swiper-slide
+                  v-for="(pub, id_pub) in Publicaciones"
+                  :key="id_pub"
+                  :virtualIndex="id_pub"
+                  class="grid-conv-item"
+                >
+                  <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+                    <div class="events-item">
+                      <div class="img-part">
+                        <router-link
+                          :to="'/detallePublicacion/' + pub.publicaciones_id"
+                          @click="$store.commit('clickLink')"
+                        >
+                          <img
+                            :src="url_api + '/Publicaciones/' + pub.publicaciones_imagen"
+                            alt="img"
+                          />
+                        </router-link>
+                        <div class="event-price">
+                          <span class="price">{{ tipo_conv }}</span>
+                        </div>
+                      </div>
+                      <div class="content-part">
+                        <h3 class="title">
+                          <router-link
+                            :to="'/detallePublicacion/' + pub.publicaciones_id"
+                            @click="$store.commit('clickLink')"
+                          >
+                            {{ pub.publicaciones_titulo }}
+                          </router-link>
+                        </h3>
+                        <!--<div class="des" v-html="conv.con_descripcion"
+                      v-if="tipo_conv != 'avisos'"
+                      ></div>-->
+                        <ul class="meta-part">
+                          <li class="event-date">
+                            <i class="fa fa-calendar-check-o"></i>{{ dmy(pub.publicaciones_fecha) }}
+                          </li>
+                          <li class="event-date">Por: {{ pub.publicaciones_autor }}</li>
+                        </ul>
+                        <div class="bottom-part d-flex align-items-center justify-content-center">
+                          <div class="event-join">
+                            <router-link
+                              :to="'/detallePublicacion/' + pub.publicaciones_id"
+                              class="readmore-text m-auto readon"
+                            >
+                              Leer mas<i class="flaticon flaticon-right-arrow"></i>
+                            </router-link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </swiper-slide>
+              </swiper>
+              <!-- Gaceta -->
+              <swiper
+                :modules="modules"
+                :slidesPerView="3"
+                :centeredSlides="true"
+                :spaceBetween="30"
+                :pagination="{
+                  type: 'fraction'
+                }"
+                :navigation="true"
+                :virtual="true"
+                class="mySwiper grid-conv"
+                @swiper="setSwiperRef"
+                v-if="tipo_conv.toLowerCase() == 'gacetas'"
+              >
+                <swiper-slide
+                  v-for="(gac, id_gac) in Gacetas"
+                  :key="id_gac"
+                  :virtualIndex="id_gac"
+                  class="grid-conv-item"
+                >
+                  <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+                    <div class="events-item">
+                      <div class="img-part">
+                          <vue-pdf-embed
+                            :source="url_api + '/Gaceta/' + gac.gaceta_documento"
+                            :page="1"
+                          />
+                        <div class="event-price">
+                          <span class="price">{{ tipo_conv }}</span>
+                        </div>
+                      </div>
+                      <div class="content-part">
+                        <h3 class="title">
+                          <a>
+                            {{ gac.gaceta_titulo }}
+                          </a>
+                        </h3>
+                        <!--<div class="des" v-html="conv.con_descripcion"
+                      v-if="tipo_conv != 'avisos'"
+                      ></div>-->
+                        <ul class="meta-part">
+                          <li class="event-date">
+                            <i class="fa fa-calendar-check-o"></i>{{ dmy(gac.gaceta_fecha) }}
+                          </li>
+                        </ul>                        
+                      </div>
+                    </div>
+                  </div>
+                </swiper-slide>
+              </swiper>
+              <!-- Eventos -->
+              <swiper
+                :modules="modules"
+                :slidesPerView="3"
+                :centeredSlides="true"
+                :spaceBetween="30"
+                :pagination="{
+                  type: 'fraction'
+                }"
+                :navigation="true"
+                :virtual="true"
+                class="mySwiper grid-conv"
+                @swiper="setSwiperRef"
+                v-if="tipo_conv.toLowerCase() == 'eventos'"
+              >
+                <swiper-slide
+                  v-for="(ev, id_ev) in Eventos"
+                  :key="id_ev"
+                  :virtualIndex="id_ev"
+                  class="grid-conv-item"
+                >
+                  <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+                    <div class="events-item">
+                      <div class="img-part">
+                        <router-link
+                          :to="'/detalleEvento/' + ev.evento_id"
+                          @click="$store.commit('clickLink')"
+                        >
+                          <img
+                            :src="url_api + '/Eventos/' + ev.evento_imagen"
+                            alt="img"
+                            width="200"
+                          />
+                        </router-link>
+                        <div class="event-price">
+                          <span class="price">{{ tipo_conv }}</span>
+                        </div>
+                      </div>
+                      <div class="content-part">
+                        <h3 class="title">
+                          <router-link
+                            :to="'/detalleEvento/' + ev.evento_id"
+                            @click="$store.commit('clickLink')"
+                          >
+                            {{ ev.evento_titulo }}
+                          </router-link>
+                        </h3>
+                        <!--<div class="des" v-html="conv.con_descripcion"
+                      v-if="tipo_conv != 'avisos'"
+                      ></div>-->
+                        <ul class="meta-part">
+                          <li class="event-date">
+                            <i class="fa fa-calendar-check-o"></i>{{ dmy(ev.evento_fecha) }}
+                          </li>
+                          <li class="event-date">
+                            <i class="fa fa-map-marker"></i>{{ ev.evento_lugar }}
+                          </li>
+                        </ul>
+                        <div class="bottom-part d-flex align-items-center justify-content-center">
+                          <div class="event-join">
+                            <router-link
+                              :to="'/detalleEvento/' + ev.evento_id"
+                              class="readmore-text m-auto readon"
+                            >
+                              Leer mas<i class="flaticon flaticon-right-arrow"></i>
+                            </router-link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </swiper-slide>
+              </swiper>
+              <!-- Videos -->
+              <swiper
+                :modules="modules"
+                :slidesPerView="3"
+                :centeredSlides="true"
+                :spaceBetween="30"
+                :pagination="{
+                  type: 'fraction'
+                }"
+                :navigation="true"
+                :virtual="true"
+                class="mySwiper grid-conv"
+                @swiper="setSwiperRef"
+                v-if="tipo_conv.toLowerCase() == 'videos'"
+              >
+                <swiper-slide
+                  v-for="(vid, id_vid) in Videos"
+                  :key="id_vid"
+                  :virtualIndex="id_vid"
+                  class="grid-conv-item"
+                >
+                  <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+                    <div class="events-item">
+                      <div class="img-part">
+                        <router-link
+                          :to="'/detalleVideo/' + vid.video_id"
+                          @click="$store.commit('clickLink')"
+                        >
+                          <iframe
+                            :src="vid.video_enlace"
+                            frameborder="0"
+                            style="border-radius: 5px"
+                          />
+                        </router-link>
+                        <div class="event-price">
+                          <span class="price">{{ tipo_conv }}</span>
+                        </div>
+                      </div>
+                      <div class="content-part">
+                        <h3 class="title">
+                          <router-link
+                            :to="'/detalleVideo/' + vid.video_id"
+                            @click="$store.commit('clickLink')"
+                          >
+                            {{ vid.video_titulo }}
+                          </router-link>
+                        </h3>
+                        <!--<div class="des" v-html="conv.con_descripcion"
+                      v-if="tipo_conv != 'avisos'"
+                      ></div>-->
+                        <div class="bottom-part d-flex align-items-center justify-content-center">
+                          <div class="event-join">
+                            <router-link
+                              :to="'/detalleVideo/' + vid.video_id"
+                              class="readmore-text m-auto readon"
+                            >
+                              Leer mas<i class="flaticon flaticon-right-arrow"></i>
+                            </router-link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </swiper-slide>
+              </swiper>
             </div>
           </div>
+
           <!-- Course Section End -->
         </div>
-        <div class="col-lg-4 col-md-12 md-mt-60">
+        <div class="col-lg-3 col-md-12 md-mt-60">
           <div class="widget-area">
             <div class="search-widget mb-50">
               <div class="search-wrap">
@@ -123,7 +638,7 @@
               </ul>
             </div>
 
-            <div class="posts-tags mb-50 md-mb-0">
+            <!--<div class="posts-tags mb-50 md-mb-0">
               <h3 class="widget-title">Tags</h3>
               <ul>
                 <li><a href="#">Education</a></li>
@@ -134,6 +649,7 @@
                 <li><a href="#">Training</a></li>
               </ul>
             </div>
+            -->
           </div>
         </div>
       </div>
@@ -144,87 +660,124 @@
 </template>
 <script>
 import Services from '@/services/Services'
-//import Pagination from 'vue-pagination-2';
-//import 'vue-pagination-2/dist/vue-pagination-2.min.js'
 import { mapState } from 'vuex'
 
+import { ref } from 'vue'
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue'
+
+// Import Swiper styles
+import 'swiper/css'
+
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import 'swiper/css/virtual'
+
+import VuePdfEmbed from 'vue-pdf-embed'
+
+// import Swiper core and required modules
+import { Pagination, Navigation, Virtual } from 'swiper'
 export default {
   name: 'ConvocatoriasView',
   data() {
     return {
-      tipo_conv: 'Institucion',
-      Categoria: []
+      tipo_conv: 'Upea',
+      Convocatorias: [],
+      Cursos: [],
+      Servicios: [],
+      OfertasAcademicas: [],
+      Publicaciones: [],
+      Gacetas: [],
+      Eventos: [],
+      Videos: []
     }
   },
-  components: {},
+  components: {
+    Swiper,
+    SwiperSlide,
+    VuePdfEmbed
+  },
+  setup() {
+    // Create array with 500 slides
+    const slides = ref(Array.from({ length: 500 }).map((_, index) => `Slide ${index + 1}`))
+    let swiperRef = null
+    let appendNumber = 500
+    let prependNumber = 1
+
+    const setSwiperRef = (swiper) => {
+      swiperRef = swiper
+    }
+    const slideTo = (index) => {
+      swiperRef.slideTo(index - 1, 0)
+    }
+    const append = () => {
+      slides.value = [...slides.value, 'Slide ' + ++appendNumber]
+    }
+    const prepend = () => {
+      slides.value = [`Slide ${prependNumber - 2}`, `Slide ${prependNumber - 1}`, ...slides.value]
+      prependNumber -= 2
+      swiperRef.slideTo(swiperRef.activeIndex + 2, 0)
+    }
+    return {
+      slides,
+      swiperRef: null,
+      appendNumber,
+      prependNumber,
+      setSwiperRef,
+      slideTo,
+      append,
+      prepend,
+      modules: [Pagination, Navigation, Virtual]
+    }
+  },
   computed: {
     ...mapState(['url_api'])
   },
   methods: {
-    //optenemos el tipo de convocatoria
-    async getTipoConvocatoria(tipo_id) {
-      try {
-        let response = await Services.getTipoConvocatoria(tipo_id)
-        this.tipo_conv = response.data.Descripcion.tipo_conv_comun_titulo
-      } catch (e) {
-        console.log(e)
-      }
-    },
-
     //optenemos los registros segun el tipo
-    async getCategoria(name, tipo_id) {
+    async getCategoria(tipo_conv) {
+      this.tipo_conv = tipo_conv
+      console.log('parametro: ' + tipo_conv)
+      console.log('valor actual: ' + this.tipo_conv)
       try {
-        if (
-          name != 'eventos' &&
-          name != 'gacetas' &&
-          name != 'ofertas' &&
-          name != 'publicaciones' &&
-          name != 'servicios' &&
-          name != 'videos'
-        ) {
-          this.getTipoConvocatoria(tipo_id)
-        } else {
-          this.tipo_conv = name
-        }
-
-        let valor = this.tipo_conv.toLowerCase()
-
-        switch (valor) {
-          case 'avisos':
-            await this.getConvocatoriasAll()
-            break
-          case 'comunicados':
-            await this.getConvocatoriasAll()
-            break
-          case 'convocatorias':
-            await this.getConvocatoriasAll()
-            break
-          case 'cursos':
-            await this.getCursosAll()
-            break
-          case 'seminarios':
-            await this.getCursosAll()
-            break
-          case 'eventos':
-            await this.getEventosAll()
-            break
-          case 'gacetas':
-            await this.getGacetasAll()
-            break
-          case 'ofertas':
-            await this.getOfertasAll()
-            break
-          case 'publicaciones':
-            await this.getPublicacionesAll()
-            break
-          case 'servicios':
-            await this.getServiciosAll()
-            break
-          case 'videos':
-            await this.getVideosAll()
-            break
-          default:
-            console.log('error de carga')
+        if (this.tipo_conv != 'Upea') {
+          switch (this.tipo_conv.toLowerCase()) {
+            case 'avisos':
+              await this.getConvocatoriasAll()
+              break
+            case 'comunicados':
+              await this.getConvocatoriasAll()
+              break
+            case 'convocatorias':
+              await this.getConvocatoriasAll()
+              break
+            case 'cursos':
+              await this.getCursosAll()
+              break
+            case 'seminarios':
+              await this.getCursosAll()
+              break
+            case 'eventos':
+              await this.getEventosAll()
+              break
+            case 'gacetas':
+              await this.getGacetasAll()
+              break
+            case 'ofertasacademicas':
+              await this.getOfertasAll()
+              break
+            case 'publicaciones':
+              await this.getPublicacionesAll()
+              break
+            case 'servicios':
+              await this.getServiciosAll()
+              break
+            case 'videos':
+              await this.getVideosAll()
+              break
+            default:
+              console.log('error de carga')
+          }
         }
       } catch (e) {
         console.log(e)
@@ -235,13 +788,13 @@ export default {
     async getConvocatoriasAll() {
       try {
         const response = await Services.getConvocatoriasAll()
-        this.Categoria = []
+        this.Convocatorias = []
         response.data.forEach((conv) => {
           if (
             conv.con_estado == '1' &&
-            conv.tipo_conv_comun.tipo_conv_comun_titulo == this.tipo_conv
+            conv.tipo_conv_comun.tipo_conv_comun_titulo == this.tipo_conv.toUpperCase()
           ) {
-            this.Categoria.push(conv)
+            this.Convocatorias.push(conv)
           }
         })
       } catch (e) {
@@ -253,13 +806,15 @@ export default {
     async getCursosAll() {
       try {
         const response = await Services.getCursosAll()
-        this.Categoria = []
+        this.Cursos = []
+        console.log('cursos')
+        console.log(response)
         response.data.forEach((conv) => {
           if (
-            conv.con_estado == '1' &&
-            conv.tipo_conv_comun.tipo_conv_comun_titulo == this.tipo_conv
+            conv.tipo_curso_otro.tipo_conv_curso_estado == '1' &&
+            conv.tipo_curso_otro.tipo_conv_curso_nombre == this.tipo_conv.toUpperCase()
           ) {
-            this.Categoria.push(conv)
+            this.Cursos.push(conv)
           }
         })
       } catch (e) {
@@ -270,15 +825,10 @@ export default {
     //optenemos todos los registros de las eventos de la tipo this.tipo
     async getEventosAll() {
       try {
-        const response = await Services.getEventosAll()
-        this.Categoria = []
+        const response = await Services.getEventos()
+        this.Eventos = []
         response.data.forEach((conv) => {
-          if (
-            conv.con_estado == '1' &&
-            conv.tipo_conv_comun.tipo_conv_comun_titulo == this.tipo_conv
-          ) {
-            this.Categoria.push(conv)
-          }
+          this.Eventos.push(conv)
         })
       } catch (e) {
         console.log(e)
@@ -289,14 +839,9 @@ export default {
     async getServiciosAll() {
       try {
         const response = await Services.getServiciosAll()
-        this.Categoria = []
+        this.Servicios = []
         response.data.forEach((conv) => {
-          if (
-            conv.con_estado == '1' &&
-            conv.tipo_conv_comun.tipo_conv_comun_titulo == this.tipo_conv
-          ) {
-            this.Categoria.push(conv)
-          }
+          this.Servicios.push(conv)
         })
       } catch (e) {
         console.log(e)
@@ -306,15 +851,10 @@ export default {
     //optenemos todos los registros de las gacetas de la tipo this.tipo
     async getGacetasAll() {
       try {
-        const response = await Services.getGacetasAll()
-        this.Categoria = []
+        const response = await Services.getGacetaAll()
+        this.Gacetas = []
         response.data.forEach((conv) => {
-          if (
-            conv.con_estado == '1' &&
-            conv.tipo_conv_comun.tipo_conv_comun_titulo == this.tipo_conv
-          ) {
-            this.Categoria.push(conv)
-          }
+          this.Gacetas.push(conv)
         })
       } catch (e) {
         console.log(e)
@@ -325,14 +865,9 @@ export default {
     async getOfertasAll() {
       try {
         const response = await Services.getOfertasAll()
-        this.Categoria = []
+        this.OfertasAcademicas = []
         response.data.forEach((conv) => {
-          if (
-            conv.con_estado == '1' &&
-            conv.tipo_conv_comun.tipo_conv_comun_titulo == this.tipo_conv
-          ) {
-            this.Categoria.push(conv)
-          }
+          this.OfertasAcademicas.push(conv)
         })
       } catch (e) {
         console.log(e)
@@ -342,15 +877,10 @@ export default {
     //optenemos todos los registros de las publicaciones de la tipo this.tipo
     async getPublicacionesAll() {
       try {
-        const response = await Services.getPublicacionesAll()
-        this.Categoria = []
+        const response = await Services.getPublicaciones()
+        this.Publicaciones = []
         response.data.forEach((conv) => {
-          if (
-            conv.con_estado == '1' &&
-            conv.tipo_conv_comun.tipo_conv_comun_titulo == this.tipo_conv
-          ) {
-            this.Categoria.push(conv)
-          }
+          this.Publicaciones.push(conv)
         })
       } catch (e) {
         console.log(e)
@@ -360,15 +890,10 @@ export default {
     //optenemos todos los registros de las videos de la tipo this.tipo
     async getVideosAll() {
       try {
-        const response = await Services.getVideosAll()
-        this.Categoria = []
+        const response = await Services.getVideos()
+        this.Videos = []
         response.data.forEach((conv) => {
-          if (
-            conv.con_estado == '1' &&
-            conv.tipo_conv_comun.tipo_conv_comun_titulo == this.tipo_conv
-          ) {
-            this.Categoria.push(conv)
-          }
+          this.Videos.push(conv)
         })
       } catch (e) {
         console.log(e)
@@ -398,15 +923,96 @@ export default {
   },
 
   created() {
-    this.getCategoria(this.$route.name, this.$route.params.tipo_id)
-    console.log("created");
+    this.getCategoria(this.$route.params.tipo)
+    /*console.log("created");
+    console.log("name: "+this.$route.name)
+    console.log("tipo_id: "+this.$route.params.tipo_id)*/
   },
   updated() {
-    this.getCategoria(this.$route.name, this.$route.params.tipo_id)
-    console.log("update");
+    if (this.$route.params.tipo != this.tipo_conv) {
+      this.getCategoria(this.$route.params.tipo)
+    }
   }
   /*mounted() {
     this.getCategoria(this.$route.params.tipo_id)
   },*/
 }
 </script>
+<style scoped>
+.grid-conv {
+  width: 100%;
+  height: 100vh;
+}
+.grid-conv-item {
+}
+.breadcrumbs-img img{
+  height: 300px;
+  object-fit: cover;
+  object-position: top;
+}
+.page-title{
+  text-shadow: 0px 3px 15px rgba(0, 0, 0, .5);
+}
+
+.tipo_text{
+ background: #fff; 
+}
+
+/*==================== buttom ============ */
+.cssbuttons-io {
+  position: relative;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  border-radius: 0.8em;
+  border: none;
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  color: ghostwhite;
+  overflow: hidden;
+}
+
+.cssbuttons-io svg {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.5em;
+}
+
+.cssbuttons-io span {
+  position: relative;
+  z-index: 10;
+  transition: color 0.4s;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8em 1.2em 0.8em 1.05em;
+}
+
+.cssbuttons-io::before,
+.cssbuttons-io::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.cssbuttons-io::before {
+  content: "";
+  background: #000;
+  width: 120%;
+  left: -10%;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.cssbuttons-io:hover::before {
+  transform: translate3d(100%, 0, 0);
+}
+
+.cssbuttons-io:active {
+  transform: scale(0.95);
+}
+
+</style>
+>

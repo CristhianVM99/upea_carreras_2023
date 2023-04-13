@@ -2,7 +2,7 @@
   <!-- Footer Secton Start -->
   <footer id="sc-footer" class="sc-footer footer-style2 footer-bg-image arrow-animation-1 mt-20">
     <div class="container">
-      <div class="footer-newsletter subscribe-bg-image">
+      <!--<div class="footer-newsletter subscribe-bg-image">
         <div class="row align-items-center">
           <div class="col-lg-6 md-text-center">
             <h3 class="title white-color mb-0">Subscribe Our Newsletter</h3>
@@ -15,13 +15,13 @@
             </form>
           </div>
         </div>
-      </div>
-      <div class="footer-content pt-62 pb-70 md-pb-5">
+      </div>-->
+      <div class="footer-content pt-100 pb-70 md-pb-5">
         <div class="row">
           <div class="col-lg-4 footer-widget">
-            <div class="about-widget pr-15">
+            <div class="about-widget pl-30">
               <div class="logo-part mb-30">
-                <router-link :to="{ name: 'home' }" href="index.html">
+                <router-link :to="{ name: 'home' }">
                   <img
                     :src="url_api + '/InstitucionUpea/' + Institucion.institucion_logo"
                     alt="logo"
@@ -31,27 +31,23 @@
                 </router-link>
               </div>
               <p class="desc">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum."
+                {{ Institucion.institucion_nombre }}
               </p>
-              <h4 class="social-title white-color">Follow Us</h4>
+              <h4 class="social-title white-color">Siguenos en:</h4>
               <ul class="footer-social">
                 <li>
-                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a :href="Institucion.institucion_facebook" target="_blank"><i class="fa fa-facebook"></i></a>
                 </li>
                 <li>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a :href="Institucion.institucion_twitter" target="_blank"><i class="fa fa-twitter"></i></a>
                 </li>
                 <li>
-                  <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-linkedin"></i></a>
+                  <a :href="Institucion.institucion_youtube" target="_blank"><i class="fa fa-youtube"></i></a>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="col-lg-2 md-mb-32 footer-widget md-mt-45">
+          <div class="col-lg-4 md-mb-32 footer-widget md-mt-45">
             <h4 class="widget-title">Company</h4>
             <ul class="widget-menu">
               <li><a href="#">Features</a></li>
@@ -61,7 +57,7 @@
               <li><a href="#">News</a></li>
             </ul>
           </div>
-          <div class="col-lg-3 md-mb-32 footer-widget">
+          <!--<div class="col-lg-3 md-mb-32 footer-widget">
             <h4 class="widget-title">Learn Course</h4>
             <ul class="widget-menu">
               <li><a href="#">General Education</a></li>
@@ -70,21 +66,29 @@
               <li><a href="#">Artificial Intelligence</a></li>
               <li><a href="#">Business Studies</a></li>
             </ul>
-          </div>
-          <div class="col-lg-3 md-mb-32 footer-widget">
-            <h4 class="widget-title">Contact Info</h4>
+          </div>-->
+          <div class="col-lg-4 md-mb-32 footer-widget">
+            <h4 class="widget-title">Contactese con nosotros: </h4>
             <ul class="address-widget pr-40">
               <li>
                 <i class="flaticon flaticon-call"></i>
-                <a href="tel:+(111)256352">Call: +(111)256 352</a>
+                <a href="#">{{ Institucion.institucion_celular1 }}</a>
+              </li>
+              <li>
+                <i class="flaticon flaticon-call"></i>
+                <a href="#">{{ Institucion.institucion_celular2 }}</a>
+              </li>              
+              <li>
+                <i class="flaticon flaticon-mail"></i>
+                <a href="#">{{ Institucion.institucion_correo1 }}</a>
               </li>
               <li>
                 <i class="flaticon flaticon-mail"></i>
-                <a href="mailto:infosimple@gmail.com">infosimple@gmail.com</a>
+                <a href="#">{{ Institucion.institucion_correo2 }}</a>
               </li>
               <li>
                 <i class="flaticon flaticon-maps-and-flags"></i>
-                <div class="desc">202 Raffles Ave, Carlisle CA2 7EF, United Kingdon</div>
+                <a href="#">{{ Institucion.institucion_direccion }}</a>
               </li>
             </ul>
           </div>
@@ -96,14 +100,13 @@
         <div class="row align-items-center">
           <div class="col-md-6 sm-mb-10 text-md-start">
             <div class="copyright">
-              <p>© Copyright 2021 Edula. All Rights Reserved.</p>
+              <p>© Copyright 2023 SIE_UPEA Todos los Derechos Reservados.</p>
             </div>
           </div>
           <div class="col-md-6 text-end">
             <ul class="copyright-menu">
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms & Conditions</a></li>
-              <li><a href="#">Support</a></li>
+              <img src="../../public/upea.png" width="100" alt="sie" />
+              <li><a href="#">Cristhian Villca Mamani</a></li>
             </ul>
           </div>
         </div>

@@ -17,42 +17,42 @@ const routes = [
         component: () => import('@/views/AboutView.vue')
       },
       {
-        path : '/Convocatorias/:tipo_id',
+        path : '/Convocatorias/:tipo',
         name : 'convocatorias',
         component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Cursos/:tipo_id',
+        path : '/Cursos/:tipo',
         name : 'cursos',
         component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Mas/Eventos/:tipo_id',
+        path : '/Mas/Eventos/:tipo',
         name : 'eventos',
         component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Mas/Gacetas/:tipo_id',
+        path : '/Mas/Gacetas/:tipo',
         name : 'gacetas',
         component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Mas/OfertasAcademicas/:tipo_id',
+        path : '/Mas/OfertasAcademicas/:tipo',
         name : 'ofertasacademicas',
         component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Mas/Publicaciones/:tipo_id',
+        path : '/Mas/Publicaciones/:tipo',
         name : 'publicaciones',
         component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Mas/Servicios/:tipo_id',
+        path : '/Mas/Servicios/:tipo',
         name : 'servicios',
         component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },
       {
-        path : '/Mas/Videos/:tipo_id',
+        path : '/Mas/Videos/:tipo',
         name : 'videos',
         component: () => import('@/views/Convocatorias/ConvocatoriasView.vue')
       },

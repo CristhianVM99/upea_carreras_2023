@@ -16,7 +16,7 @@ export default {
     FooterCompVue
   },
   computed: {
-    ...mapState(['url_api', 'Institucion', 'MenuConvocatorias', 'MenuCursos'])
+    ...mapState(['url_api', 'Institucion', 'MenuConvocatorias', 'MenuCursos','MenuAreasyCarreras','carrera_id'])
   },
   methods: {
     async getMenuConvocatorias() {
@@ -32,6 +32,17 @@ export default {
           }
         })
         this.$store.state.MenuConvocatorias = filterConvocatorias
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
+    async getMenuAreasyCarreras() {
+      try {
+        //optencion de menu de areas y carreras.
+        const response = await Services.getMenuAreasyCarreras()
+        this.$store.state.MenuAreasyCarreras = response.data
+        console.log(response.data)
       } catch (e) {
         console.log(e)
       }
@@ -149,9 +160,15 @@ export default {
     //metodo que ejecuta todos los demas
     createdComponent() {
       this.getInstitucion()
-      this.getMenuConvocatorias()
-      this.getMenuCursos()
-      this.getLinks()
+      this.getMenuAreasyCarreras()
+      if(this.carrera_id!=0){
+        this.getMenuConvocatorias()
+        this.getMenuCursos()
+        this.getLinks()
+      }
+      if(this.carrera_id==0){
+
+      }
     },
 
   },
