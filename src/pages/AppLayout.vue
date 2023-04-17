@@ -166,9 +166,6 @@ export default {
         this.getMenuCursos()
         this.getLinks()
       }
-      if(this.carrera_id==0){
-
-      }
     },
 
   },

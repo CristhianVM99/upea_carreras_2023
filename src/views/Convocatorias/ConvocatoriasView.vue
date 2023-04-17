@@ -167,37 +167,7 @@
                   :key="id_serv"
                   :virtualIndex="id_serv"
                   class="card-content"
-                >
-                  <div class="card col-lg-12 col-md-6 mb-30 loadcourse addcourse">
-                    <div class="card-image">
-                      <img
-                        :src="url_api + '/Carrera/Servicios/' + serv.serv_imagen"
-                        alt="img"
-                        width="300"
-                      />
-                    </div>
-                    <div class="card-description">
-                      <h3 class="title">
-                        {{ serv.serv_nombre }}
-                      </h3>
-                      <ul class="meta-part">
-                        <li class="event-date">
-                          <i class="fa fa-calendar-check-o"></i>{{ dmy(serv.serv_registro) }}
-                        </li>
-                        <li class="event-date">
-                          <i class="fa fa-phone"></i>{{ serv.serv_nro_celular }}
-                        </li>
-                      </ul>
-                      <div class="bottom-part d-flex align-items-center justify-content-between">
-                        <div class="event-join">
-                          <router-link :to="'/detalleServicio/' + serv.serv_id" class="btn-conv"
-                            >Leer Mas</router-link
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
+                >                
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
@@ -256,30 +226,36 @@
                   :key="id_ofer"
                   :virtualIndex="id_ofer"
                   class="grid-conv-item"
-                >
-                  <div class="card col-lg-12 col-md-6 mb-30 loadcourse addcourse">
-                    <div class="card-image">
-                      <img
+                >                
+                  <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+                    <div class="events-item">
+                      <div class="img-part">
+                        <img
                         :src="url_api + '/Carrera/OfertasAcademicas/' + ofer.ofertas_imagen"
                         alt="img"
                         width="200"
                       />
-                    </div>
-                    <div class="card-description">
-                      <h3 class="title">
-                        {{ ofer.ofertas_titulo }}
-                      </h3>
-                      <ul class="meta-part">
-                        <li class="event-date">
-                          <i class="fa fa-calendar-check-o"></i
-                          >{{ dmy(ofer.ofertas_inscripciones_fin) }}
-                        </li>
-                      </ul>
-                      <div class="bottom-part d-flex align-items-center justify-content-between">
-                        <div class="event-join">
-                          <router-link :to="'/detalleOferta/' + ofer.ofertas_id" class="btn-conv"
-                            >Leer Mas</router-link
-                          >
+                        <div class="event-price">
+                          <span class="price">{{ tipo_conv }}</span>
+                        </div>
+                      </div>
+                      <div class="content-part">
+                        <h3 class="title">{{ ofer.ofertas_titulo }}</h3>
+                        <ul class="meta-part">
+                          <li class="event-date">
+                          <i class="fa fa-calendar-check-o"></i>{{ dmy(ofer.ofertas_inscripciones_fin) }}
+                        </li>                        
+                        </ul>
+                        <div class="bottom-part d-flex align-items-center justify-content-center">
+                          <div class="">
+                            <router-link
+                            :to="'/detalleOferta/' + ofer.ofertas_id"
+                              class="btn-conv"
+                              >
+                              <span>Leer Mas</span>
+                              </router-link
+                            >
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -306,49 +282,37 @@
                   :key="id_pub"
                   :virtualIndex="id_pub"
                   class="grid-conv-item"
-                >
+                >                 
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
-                        <router-link
-                          :to="'/detallePublicacion/' + pub.publicaciones_id"
-                          @click="$store.commit('clickLink')"
-                        >
-                          <img
+                        <img
                             :src="url_api + '/Publicaciones/' + pub.publicaciones_imagen"
                             alt="img"
                           />
-                        </router-link>
                         <div class="event-price">
                           <span class="price">{{ tipo_conv }}</span>
                         </div>
                       </div>
                       <div class="content-part">
-                        <h3 class="title">
-                          <router-link
-                            :to="'/detallePublicacion/' + pub.publicaciones_id"
-                            @click="$store.commit('clickLink')"
-                          >
-                            {{ pub.publicaciones_titulo }}
-                          </router-link>
-                        </h3>
-                        <!--<div class="des" v-html="conv.con_descripcion"
-                      v-if="tipo_conv != 'avisos'"
-                      ></div>-->
+                        <h3 class="title">{{ pub.publicaciones_titulo }}</h3>
                         <ul class="meta-part">
                           <li class="event-date">
                             <i class="fa fa-calendar-check-o"></i>{{ dmy(pub.publicaciones_fecha) }}
                           </li>
-                          <li class="event-date">Por: {{ pub.publicaciones_autor }}</li>
+                          <li class="event-date">
+                            Por: {{ pub.publicaciones_autor }}
+                          </li>
                         </ul>
                         <div class="bottom-part d-flex align-items-center justify-content-center">
-                          <div class="event-join">
+                          <div class="">
                             <router-link
-                              :to="'/detallePublicacion/' + pub.publicaciones_id"
-                              class="readmore-text m-auto readon"
+                            :to="'/detallePublicacion/' + pub.publicaciones_id"
+                              class="btn-conv"
+                              >
+                              <span>Leer Mas</span>
+                              </router-link
                             >
-                              Leer mas<i class="flaticon flaticon-right-arrow"></i>
-                            </router-link>
                           </div>
                         </div>
                       </div>
@@ -376,7 +340,7 @@
                   :key="id_gac"
                   :virtualIndex="id_gac"
                   class="grid-conv-item"
-                >
+                >                  
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
@@ -389,18 +353,11 @@
                         </div>
                       </div>
                       <div class="content-part">
-                        <h3 class="title">
-                          <a>
-                            {{ gac.gaceta_titulo }}
-                          </a>
-                        </h3>
-                        <!--<div class="des" v-html="conv.con_descripcion"
-                      v-if="tipo_conv != 'avisos'"
-                      ></div>-->
+                        <h3 class="title">{{ gac.gaceta_titulo }}</h3>
                         <ul class="meta-part">
                           <li class="event-date">
                             <i class="fa fa-calendar-check-o"></i>{{ dmy(gac.gaceta_fecha) }}
-                          </li>
+                          </li>                        
                         </ul>
                       </div>
                     </div>
@@ -427,36 +384,21 @@
                   :key="id_ev"
                   :virtualIndex="id_ev"
                   class="grid-conv-item"
-                >
+                >                  
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
-                        <router-link
-                          :to="'/detalleEvento/' + ev.evento_id"
-                          @click="$store.commit('clickLink')"
-                        >
-                          <img
+                        <img
                             :src="url_api + '/Eventos/' + ev.evento_imagen"
                             alt="img"
                             width="200"
                           />
-                        </router-link>
                         <div class="event-price">
                           <span class="price">{{ tipo_conv }}</span>
                         </div>
                       </div>
                       <div class="content-part">
-                        <h3 class="title">
-                          <router-link
-                            :to="'/detalleEvento/' + ev.evento_id"
-                            @click="$store.commit('clickLink')"
-                          >
-                            {{ ev.evento_titulo }}
-                          </router-link>
-                        </h3>
-                        <!--<div class="des" v-html="conv.con_descripcion"
-                      v-if="tipo_conv != 'avisos'"
-                      ></div>-->
+                        <h3 class="title">{{ ev.evento_titulo }}</h3>
                         <ul class="meta-part">
                           <li class="event-date">
                             <i class="fa fa-calendar-check-o"></i>{{ dmy(ev.evento_fecha) }}
@@ -466,13 +408,14 @@
                           </li>
                         </ul>
                         <div class="bottom-part d-flex align-items-center justify-content-center">
-                          <div class="event-join">
+                          <div class="">
                             <router-link
-                              :to="'/detalleEvento/' + ev.evento_id"
-                              class="readmore-text m-auto readon"
+                            :to="'/detalleEvento/' + ev.evento_id"
+                              class="btn-conv"
+                              >
+                              <span>Leer Mas</span>
+                              </router-link
                             >
-                              Leer mas<i class="flaticon flaticon-right-arrow"></i>
-                            </router-link>
                           </div>
                         </div>
                       </div>
@@ -500,44 +443,30 @@
                   :key="id_vid"
                   :virtualIndex="id_vid"
                   class="grid-conv-item"
-                >
+                >                  
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
-                        <router-link
-                          :to="'/detalleVideo/' + vid.video_id"
-                          @click="$store.commit('clickLink')"
-                        >
-                          <iframe
+                        <iframe
                             :src="vid.video_enlace"
                             frameborder="0"
                             style="border-radius: 5px"
                           />
-                        </router-link>
                         <div class="event-price">
                           <span class="price">{{ tipo_conv }}</span>
                         </div>
                       </div>
                       <div class="content-part">
-                        <h3 class="title">
-                          <router-link
-                            :to="'/detalleVideo/' + vid.video_id"
-                            @click="$store.commit('clickLink')"
-                          >
-                            {{ vid.video_titulo }}
-                          </router-link>
-                        </h3>
-                        <!--<div class="des" v-html="conv.con_descripcion"
-                      v-if="tipo_conv != 'avisos'"
-                      ></div>-->
+                        <h3 class="title">{{ vid.video_titulo }}</h3>                        
                         <div class="bottom-part d-flex align-items-center justify-content-center">
-                          <div class="event-join">
+                          <div class="">
                             <router-link
-                              :to="'/detalleVideo/' + vid.video_id"
-                              class="readmore-text m-auto readon"
+                            :to="'/detalleVideo/' + vid.video_id"
+                              class="btn-conv"
+                              >
+                              <span>Leer Mas</span>
+                              </router-link
                             >
-                              Leer mas<i class="flaticon flaticon-right-arrow"></i>
-                            </router-link>
                           </div>
                         </div>
                       </div>
@@ -551,52 +480,7 @@
           <!-- Course Section End -->
         </div>
         <div class="col-lg-3 col-md-12 md-mt-60">
-          <div class="widget-area">
-            <div class="search-widget mb-50">
-              <div class="search-wrap">
-                <input type="search" placeholder="Buscar..." name="" class="search-input" />
-                <button type="submit" value="Search">
-                  <i class="flaticon flaticon-magnifying-glass"></i>
-                </button>
-              </div>
-            </div>
-            <div class="widget-archives mb-50">
-              <h3 class="widget-title">Categories</h3>
-              <ul>
-                <li>
-                  <a href="#">General Education <span>2</span></a>
-                </li>
-                <li>
-                  <a href="#">Computer Science <span>4</span></a>
-                </li>
-                <li>
-                  <a href="#">Civil Engineering <span>7</span></a>
-                </li>
-                <li>
-                  <a href="#">Artificial Intelligence <span>5</span></a>
-                </li>
-                <li>
-                  <a href="#">Business Studies <span>2</span></a>
-                </li>
-                <li>
-                  <a href="#">Computer Engineering <span>4</span></a>
-                </li>
-              </ul>
-            </div>
-
-            <!--<div class="posts-tags mb-50 md-mb-0">
-              <h3 class="widget-title">Tags</h3>
-              <ul>
-                <li><a href="#">Education</a></li>
-                <li><a href="#">Civil Engineering</a></li>
-                <li><a href="#">Learning</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">Instructor</a></li>
-                <li><a href="#">Training</a></li>
-              </ul>
-            </div>
-            -->
-          </div>
+          <categories></categories>
         </div>
       </div>
     </div>
@@ -606,6 +490,7 @@
 </template>
 <script>
 import Services from '@/services/Services'
+import Categories from '../../components/CategoriesComp.vue';
 import { mapState } from 'vuex'
 
 import { ref } from 'vue'
@@ -641,7 +526,8 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
-    VuePdfEmbed
+    VuePdfEmbed,
+    Categories
   },
   setup() {
     // Create array with 500 slides

@@ -149,13 +149,13 @@
                     nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                   </p>
                 </div>
-                <div class="tags-area">
+                <!--<div class="tags-area">
                   <span class="tags">Tags</span>
                   <ul class="tags-list">
                     <li><a href="#">Education</a></li>
                     <li><a href="#">Computer</a></li>
                   </ul>
-                </div>
+                </div>-->
               </div>
             </div>
           </div>
@@ -201,7 +201,7 @@
                 </div>
               </div>
 
-              <div class="posts-tags mb-50 md-mb-0">
+              <!--<div class="posts-tags mb-50 md-mb-0">
                 <h3 class="widget-title">Tags</h3>
                 <ul>
                   <li><a href="#">Education</a></li>
@@ -211,7 +211,7 @@
                   <li><a href="#">Instructor</a></li>
                   <li><a href="#">Training</a></li>
                 </ul>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
@@ -274,7 +274,12 @@
             <router-link
               v-for="(conv, id_conv) of this.MenuConvocatorias"
               :key="id_conv"
-              :to="'/convocatorias/' + conv.idtipo_conv_comun"
+              :to="{
+                name: 'convocatorias',
+                params: {
+                  tipo: conv.tipo_conv_comun_titulo.toLowerCase()
+                }
+              }"
             >
               <div class="counter-item text-center cat">
                 <div class="icon-part">
@@ -292,7 +297,12 @@
             <router-link
               v-for="(cur, id_cur) of MenuCursos"
               :key="id_cur"
-              :to="'/cursos/' + cur.idtipo_curso_otros"
+              :to="{
+                name: 'cursos',
+                params: {
+                  tipo: cur.tipo_conv_curso_nombre.toLowerCase()
+                }
+              }"
             >
               <div class="counter-item text-center cat">
                 <div class="icon-part">
@@ -305,7 +315,14 @@
                 <h5 class="title mb-0">{{ cur.tipo_conv_curso_nombre }}</h5>
               </div>
             </router-link>
-            <router-link to="/eventos">
+            <router-link
+              :to="{
+                name: 'eventos',
+                params: {
+                  tipo: 'eventos'
+                }
+              }"
+            >
               <div class="counter-item text-center cat">
                 <div class="icon-part">
                   <i class="flaticon flaticon-apartment"></i>
@@ -318,7 +335,14 @@
             </router-link>
           </div>
           <div class="col-lg-3 col-md-6 md-mb-30">
-            <router-link to="/servicios">
+            <router-link
+              :to="{
+                name: 'servicios',
+                params: {
+                  tipo: 'servicios'
+                }
+              }"
+            >
               <div class="counter-item text-center cat">
                 <div class="icon-part">
                   <i class="flaticon flaticon-computer"></i>
@@ -329,7 +353,14 @@
                 <h5 class="title mb-0">SERVICIOS</h5>
               </div>
             </router-link>
-            <router-link to="/gaceta">
+            <router-link
+              :to="{
+                name: 'ofertasacademicas',
+                params: {
+                  tipo: 'ofertasacademicas'
+                }
+              }"
+            >
               <div class="counter-item text-center cat">
                 <div class="icon-part">
                   <i class="flaticon flaticon-book"></i>
@@ -340,7 +371,14 @@
                 <h5 class="title mb-0">GACETA</h5>
               </div>
             </router-link>
-            <router-link to="/videos">
+            <router-link
+              :to="{
+                name: 'videos',
+                params: {
+                  tipo: 'videos'
+                }
+              }"
+            >
               <div class="counter-item text-center cat">
                 <div class="icon-part">
                   <i class="flaticon flaticon-play"></i>
@@ -353,7 +391,14 @@
             </router-link>
           </div>
           <div class="col-lg-3 col-md-6 md-mb-30">
-            <router-link to="/ofertas">
+            <router-link
+              :to="{
+                name: 'ofertasacademicas',
+                params: {
+                  tipo: 'ofertasacademicas'
+                }
+              }"
+            >
               <div class="counter-item text-center cat">
                 <div class="icon-part">
                   <i class="flaticon flaticon-shopping-bag"></i>
@@ -365,7 +410,14 @@
                 <h5 class="title mb-0">OFERTAS ACADEMICAS</h5>
               </div>
             </router-link>
-            <router-link to="/publicaciones">
+            <router-link
+              :to="{
+                name: 'publicaciones',
+                params: {
+                  tipo: 'publicaciones'
+                }
+              }"
+            >
               <div class="counter-item text-center cat">
                 <div class="icon-part">
                   <i class="flaticon flaticon-monitor"></i>
@@ -693,7 +745,7 @@
               </div>
               <div class="card-description">
                 <h3 class="title">
-                  {{ latestCurso.det_titulo}}
+                  {{ latestCurso.det_titulo }}
                 </h3>
                 <ul class="meta-part">
                   <li class="event-date">
@@ -713,7 +765,7 @@
             </div>
           </swiper-slide>
           <!-- SEMINARIOS -->
-          <swiper-slide class="card-content" v-if="Object.keys(latestSeminario).length > 0">            
+          <swiper-slide class="card-content" v-if="Object.keys(latestSeminario).length > 0">
             <div class="card col-lg-12 col-md-6 mb-30 loadcourse addcourse">
               <div class="card-image">
                 <img
@@ -1379,7 +1431,7 @@ export default {
 }
 .card {
   width: 100%;
-  height: 400px;
+  height: 600px;
   position: relative;
   transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
   border-radius: 16px;
@@ -1493,44 +1545,43 @@ export default {
 
 /*=================== MAPA ================= */
 .map-card {
- width: 100%;
- height: 100%;
- margin: 0 auto;
- background-color: #f5f5f5;
- border-radius: 8px;
- z-index: 1;
- padding: 20px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  z-index: 1;
+  padding: 20px;
 }
 
 .map-tools {
- display: flex;
- align-items: center;
- padding: 9px;
+  display: flex;
+  align-items: center;
+  padding: 9px;
 }
 
 .map-circle {
- padding: 0 4px;
+  padding: 0 4px;
 }
 
 .map-box {
- display: inline-block;
- align-items: center;
- width: 10px;
- height: 10px;
- padding: 1px;
- border-radius: 50%;
+  display: inline-block;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+  padding: 1px;
+  border-radius: 50%;
 }
 
 .map-red {
- background-color: #ff605c;
+  background-color: #ff605c;
 }
 
 .map-yellow {
- background-color: #ffbd44;
+  background-color: #ffbd44;
 }
 
 .map-green {
- background-color: #00ca4e;
+  background-color: #00ca4e;
 }
-
 </style>

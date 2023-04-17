@@ -119,7 +119,7 @@
                 </ul>
               </div>
 
-              <div class="posts-tags mb-50 md-mb-0">
+              <!--<div class="posts-tags mb-50 md-mb-0">
                 <h3 class="widget-title">Tags</h3>
                 <ul>
                   <li><a href="#">Education</a></li>
@@ -130,6 +130,7 @@
                   <li><a href="#">Training</a></li>
                 </ul>
               </div>
+              -->
             </div>
           </div>
         </div>
