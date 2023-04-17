@@ -738,14 +738,54 @@ body .modal-backdrop {
 .sc-header-section .sc-header .topbar-area .topbar-contact li i.flaticon-mail:before {
   font-size: 15px;
 }
-.sc-header-section .sc-header .topbar-area .topbar-contact li a {
-  color: #ffffff;
-  font-size: 15px;
+
+.sc-header-section .sc-header .topbar-area .topbar-contact li a,
+.sc-header-section .sc-header .topbar-area .topbar-right li.login-register a{
+  font-size: 13px;
+  color: #e1e1e1;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
 }
-.sc-header-section .sc-header .topbar-area .topbar-contact li a:hover {
-  text-shadow: 0px 0px 2px #ffffff;  
-  border-bottom: 1px solid #ffffff;
+
+.sc-header-section .sc-header .topbar-area .topbar-contact li a:focus,
+.sc-header-section .sc-header .topbar-area .topbar-right li.login-register a:focus,
+.sc-header-section .sc-header .topbar-area .topbar-contact li a:hover,
+.sc-header-section .sc-header .topbar-area .topbar-right li.login-register a:hover {
+  color: #fff;
 }
+
+.sc-header-section .sc-header .topbar-area .topbar-contact li a:focus:after,
+.sc-header-section .sc-header .topbar-area .topbar-right li.login-register a:focus:after,
+.sc-header-section .sc-header .topbar-area .topbar-contact li a:hover:after,
+.sc-header-section .sc-header .topbar-area .topbar-right li.login-register a:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.sc-header-section .sc-header .topbar-area .topbar-contact li a:after,
+.sc-header-section .sc-header .topbar-area .topbar-right li.login-register a:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
+
+
 .sc-header-section .sc-header .topbar-area .topbar-contact li:last-child {
   padding-left: 20px;
   margin-left: 20px;
@@ -769,13 +809,6 @@ body .modal-backdrop {
 }
 .sc-header-section .sc-header .topbar-area .topbar-right li.login-register i {
   margin-right: 10px;
-}
-.sc-header-section .sc-header .topbar-area .topbar-right li.login-register a {
-  color: #ffffff;
-}
-.sc-header-section .sc-header .topbar-area .topbar-right li.login-register a:hover {
-  text-shadow: 0px 0px 2px #ffffff;  
-  border-bottom: 1px solid #ffffff;
 }
 .sc-header-section .sc-header .logo-part {
   position: relative;

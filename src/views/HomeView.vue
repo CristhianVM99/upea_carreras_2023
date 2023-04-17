@@ -23,7 +23,7 @@
             :src="this.url_api + '/InstitucionUpea/Portada/' + portada.portada_imagen"
             alt="{{ id_img }}"
           />-->
-          <img src="https://www.upea.bo/assets/upea/fondos/BackGround-UPEA-08.jpg" alt="">
+          <img src="https://www.upea.bo/assets/upea/fondos/BackGround-UPEA-08.jpg" alt="" />
         </div>
       </swiper-slide>
 
@@ -167,7 +167,7 @@
                   <li
                     v-for="(link, id_link) of Links"
                     :key="id_link"
-                    :href="id_link"
+                    :href="link.ei_link"
                     target="_blank"
                     :style="
                       'background-image: url(' +
@@ -231,7 +231,8 @@
                 Frases <span class="heading-border-line"></span>
               </div>
               <h2 class="title mb-0 white-color cta-text">
-                "En la Universidad Pública de El Alto formamos profesionales con un compromiso ético y social para transformar nuestra sociedad."
+                "En la Universidad Pública de El Alto formamos profesionales con un compromiso ético
+                y social para transformar nuestra sociedad."
               </h2>
             </div>
           </div>
@@ -265,7 +266,7 @@
     <!-- Counter Section Start -->
     <div
       class="sc-counter categoria-content pt-120 pb-120 md-pt-80 md-pb-50 sc-counter-bg position-relative arrow-animation-1"
-      v-if="(this.carrera_id!=0)"
+      v-if="this.carrera_id != 0"
     >
       <div class="container">
         <div class="row">
@@ -405,8 +406,8 @@
           <h2 class="title mb-0">Nuestras Autoridades</h2>
         </div>
         <swiper :slides-per-view="3" :space-between="50" class="autoridades-content">
-          <swiper-slide v-for="(autoridad, id_aut) of Institucion.autoridad" :key="id_aut" class="autoridades-target">
-            <div class="team-inner-item">
+          <swiper-slide v-for="(autoridad, id_aut) of Institucion.autoridad" :key="id_aut">
+            <div class="team-inner-item autoridades-target">
               <div class="team-wrap">
                 <div class="team-img">
                   <img
@@ -414,31 +415,35 @@
                     alt="img"
                     class="img_swiper"
                   />
-                  <ul class="team-social">
-                    <li>
-                      <a :href="autoridad.facebook_autoridad" target="_blank" class="social-icon"
-                        ><i class="fa fa-facebook"></i
-                      ></a>
+                  <ul class="team-social wrapper">
+                    <li class="icon facebook">
+                      <a :href="autoridad.facebook_autoridad" target="_blank" class="social-icon">
+                        <span class="tooltip">Facebook</span>
+                        <i class="fa fa-facebook"></i>
+                      </a>
                     </li>
-                    <li>
+                    <li class="icon whatsapp">
                       <a
                         :href="'https://wa.me/+' + autoridad.celular_autoridad"
                         target="_blank"
                         class="social-icon"
-                        ><i class="fa fa-whatsapp"></i
-                      ></a>
+                      >
+                        <span class="tooltip">WhatsApp</span>
+                        <i class="fa fa-whatsapp"></i>
+                      </a>
                     </li>
-                    <li>
-                      <a :href="autoridad.twiter_autoridad" target="_blank" class="social-icon"
-                        ><i class="fa fa-twitter"></i
-                      ></a>
+                    <li class="icon twitter">
+                      <a :href="autoridad.twiter_autoridad" target="_blank" class="social-icon">
+                        <span class="tooltip">Twitter</span>
+                        <i class="fa fa-twitter"></i>
+                      </a>
                     </li>
                   </ul>
                 </div>
                 <div class="team-item-text">
                   <div class="team-details">
                     <h3 class="team-name">
-                      <a href="team-single.html">{{ autoridad.nombre_autoridad }}</a>
+                      <h4>{{ autoridad.nombre_autoridad }}</h4>
                     </h3>
                     <span class="team-title">{{ autoridad.cargo_autoridad }}</span>
                   </div>
@@ -465,8 +470,10 @@
     <!-- Team Section End -->
 
     <!-- About Instructor Section Start -->
-    <div id="sc-about-instructor" class="sc-about-instructor pt-80 pb-90 md-pt-50 md-pb-70 organigrama"
-    v-if="(carrera_id!=0)"
+    <div
+      id="sc-about-instructor"
+      class="sc-about-instructor pt-80 pb-90 md-pt-50 md-pb-70 organigrama"
+      v-if="carrera_id != 0"
     >
       <div class="container">
         <div class="row align-items-center">
@@ -474,19 +481,11 @@
             <div class="img-part position-relative organigrama-pdf">
               <!--<img class="" src="../assets/images/about/instructor.png" alt="About Image" />-->
               <a
-                :href="
-                  url_api +
-                  '/InstitucionUpea/' +
-                  Institucion.institucion_organigrama
-                "
+                :href="url_api + '/InstitucionUpea/' + Institucion.institucion_organigrama"
                 target="_blank"
               >
                 <vue-pdf-embed
-                  :source="
-                    url_api +
-                    '/InstitucionUpea/' +
-                    Institucion.institucion_organigrama
-                  "
+                  :source="url_api + '/InstitucionUpea/' + Institucion.institucion_organigrama"
                   :page="1"
                   height="410"
                 />
@@ -499,7 +498,9 @@
                 institucion <span class="heading-border-line"></span>
               </div>
               <h2 class="title mb-20 organigrama-text">Organigrama</h2>
-              <h3 class="des mb-40 organigrama-text">Organización y estructura administrativa de la carrera.</h3>              
+              <h3 class="des mb-40 organigrama-text">
+                Organización y estructura administrativa de la carrera.
+              </h3>
             </div>
           </div>
         </div>
@@ -524,39 +525,32 @@
             0
           "
         >
-          <swiper-slide>
-            <div class="blog-item bg_box" v-if="Object.keys(latestConvocatoria).length != 0">
-              <div class="image-part">
-                <router-link :to="'/detalleConvocatoria/' + latestConvocatoria.idconvocatorias">
-                  <img
-                    class="img_swiper"
-                    :src="url_api + '/Convocatorias/' + latestConvocatoria.con_foto_portada"
-                    alt="img"
-                  />
-                </router-link>
+          <!-- CONVOCATORIAS -->
+          <swiper-slide class="card-content" v-if="Object.keys(latestConvocatoria).length > 0">
+            <div class="card col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+              <div class="card-image">
+                <img
+                  class="img_swiper"
+                  :src="url_api + '/Convocatorias/' + latestConvocatoria.con_foto_portada"
+                  alt="img"
+                />
+                <span>Convocatorias</span>
               </div>
-              <div class="blog-content">
-                <ul class="blog-meta">
-                  <router-link
-                    :to="'/convocatorias/' + latestConvocatoria.tipo_conv_comun.idtipo_conv_comun"
-                    ><li class="btn_tipo">
-                      {{ latestConvocatoria.tipo_conv_comun.tipo_conv_comun_titulo }}
-                    </li></router-link
-                  >
-                  <li>
-                    <i class="fa fa-calendar"></i>{{ dmy(latestConvocatoria.con_fecha_inicio) }}
+              <div class="card-description">
+                <h3 class="title">
+                  {{ latestConvocatoria.con_titulo.toUpperCase() }}
+                </h3>
+                <ul class="meta-part">
+                  <li class="event-date">
+                    <i class="fa fa-calendar-check-o"></i
+                    >{{ dmy(latestConvocatoria.con_fecha_inicio) }}
                   </li>
                 </ul>
-                <h3 class="title">
-                  <router-link :to="'/detalleConvocatoria/' + latestConvocatoria.idconvocatorias">{{
-                    latestConvocatoria.con_titulo.toUpperCase()
-                  }}</router-link>
-                </h3>
-                <div class="btn-btm">
-                  <div class="rs-view-btn">
+                <div class="bottom-part d-flex align-items-center justify-content-between">
+                  <div class="event-join">
                     <router-link
                       :to="'/detalleConvocatoria/' + latestConvocatoria.idconvocatorias"
-                      class="readon btn_link"
+                      class="btn-conv"
                       >Leer Mas</router-link
                     >
                   </div>
@@ -564,39 +558,32 @@
               </div>
             </div>
           </swiper-slide>
-          <swiper-slide>
-            <div class="blog-item bg_box" v-if="Object.keys(latestComunicado).length != 0">
-              <div class="image-part">
-                <router-link :to="'/detalleConvocatoria/' + latestComunicado.idconvocatorias">
-                  <img
-                    class="img_swiper"
-                    :src="url_api + '/Convocatorias/' + latestComunicado.con_foto_portada"
-                    alt="img"
-                  />
-                </router-link>
+          <!-- COMUNICADOS -->
+          <swiper-slide class="card-content" v-if="Object.keys(latestComunicado).length > 0">
+            <div class="card col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+              <div class="card-image">
+                <img
+                  class="img_swiper"
+                  :src="url_api + '/Convocatorias/' + latestComunicado.con_foto_portada"
+                  alt="img"
+                />
+                <span>Comunicados</span>
               </div>
-              <div class="blog-content">
-                <ul class="blog-meta">
-                  <router-link
-                    :to="'/convocatorias/' + latestComunicado.tipo_conv_comun.idtipo_conv_comun"
-                    ><li class="btn_tipo">
-                      {{ latestComunicado.tipo_conv_comun.tipo_conv_comun_titulo }}
-                    </li></router-link
-                  >
-                  <li>
-                    <i class="fa fa-calendar"></i>{{ dmy(latestComunicado.con_fecha_inicio) }}
+              <div class="card-description">
+                <h3 class="title">
+                  {{ latestComunicado.con_titulo.toUpperCase() }}
+                </h3>
+                <ul class="meta-part">
+                  <li class="event-date">
+                    <i class="fa fa-calendar-check-o"></i
+                    >{{ dmy(latestComunicado.con_fecha_inicio) }}
                   </li>
                 </ul>
-                <h3 class="title">
-                  <router-link :to="'/detalleConvocatoria/' + latestComunicado.idconvocatorias">{{
-                    latestComunicado.con_titulo.toUpperCase()
-                  }}</router-link>
-                </h3>
-                <div class="btn-btm">
-                  <div class="rs-view-btn">
+                <div class="bottom-part d-flex align-items-center justify-content-between">
+                  <div class="event-join">
                     <router-link
                       :to="'/detalleConvocatoria/' + latestComunicado.idconvocatorias"
-                      class="readon btn_link"
+                      class="btn-conv"
                       >Leer Mas</router-link
                     >
                   </div>
@@ -604,37 +591,31 @@
               </div>
             </div>
           </swiper-slide>
-          <swiper-slide>
-            <div class="blog-item bg_box" v-if="Object.keys(latestAviso).length != 0">
-              <div class="image-part">
-                <router-link :to="'/detalleConvocatoria/' + latestAviso.idconvocatorias">
-                  <img
-                    class="img_swiper"
-                    :src="url_api + '/Convocatorias/' + latestAviso.con_foto_portada"
-                    alt="img"
-                  />
-                </router-link>
+          <!--  AVISOS -->
+          <swiper-slide class="card-content" v-if="Object.keys(latestAviso).length > 0">
+            <div class="card col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+              <div class="card-image">
+                <img
+                  class="img_swiper"
+                  :src="url_api + '/Convocatorias/' + latestAviso.con_foto_portada"
+                  alt="img"
+                />
+                <span>Avisos</span>
               </div>
-              <div class="blog-content">
-                <ul class="blog-meta">
-                  <router-link
-                    :to="'/convocatorias/' + latestAviso.tipo_conv_comun.idtipo_conv_comun"
-                    ><li class="btn_tipo">
-                      {{ latestAviso.tipo_conv_comun.tipo_conv_comun_titulo }}
-                    </li></router-link
-                  >
-                  <li><i class="fa fa-calendar"></i>{{ dmy(latestAviso.con_fecha_inicio) }}</li>
-                </ul>
+              <div class="card-description">
                 <h3 class="title">
-                  <router-link :to="'/detalleConvocatoria/' + latestAviso.idconvocatorias">{{
-                    latestAviso.con_titulo.toUpperCase()
-                  }}</router-link>
+                  {{ latestAviso.con_titulo.toUpperCase() }}
                 </h3>
-                <div class="btn-btm">
-                  <div class="rs-view-btn">
+                <ul class="meta-part">
+                  <li class="event-date">
+                    <i class="fa fa-calendar-check-o"></i>{{ dmy(latestAviso.con_fecha_inicio) }}
+                  </li>
+                </ul>
+                <div class="bottom-part d-flex align-items-center justify-content-between">
+                  <div class="event-join">
                     <router-link
                       :to="'/detalleConvocatoria/' + latestAviso.idconvocatorias"
-                      class="readon btn_link"
+                      class="btn-conv"
                       >Leer Mas</router-link
                     >
                   </div>
@@ -659,7 +640,8 @@
                 Frases<span class="heading-border-line"></span>
               </div>
               <h2 class="title mb-0 white-color cta-text">
-                "La educación es el camino para construir una sociedad más equitativa y la Universidad Pública de El Alto es la institución que lidera este proceso en Bolivia"
+                "La educación es el camino para construir una sociedad más equitativa y la
+                Universidad Pública de El Alto es la institución que lidera este proceso en Bolivia"
                 <br />- Upea -
               </h2>
             </div>
@@ -698,36 +680,31 @@
           :space-between="50"
           v-if="Object.keys(latestCurso).length + Object.keys(latestSeminario).length > 0"
         >
-          <swiper-slide>
-            <div class="blog-item bg_box" v-if="Object.keys(latestCurso).length != 0">
-              <div class="image-part">
-                <router-link :to="'/detalleCurso/' + latestCurso.iddetalle_cursos_academicos">
-                  <img
-                    class="img_swiper"
-                    :src="url_api + '/Cursos/' + latestCurso.det_img_portada"
-                    alt="img"
-                  />
-                </router-link>
+          <!-- CURSOS -->
+          <swiper-slide class="card-content" v-if="Object.keys(latestCurso).length > 0">
+            <div class="card col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+              <div class="card-image">
+                <img
+                  class="img_swiper"
+                  :src="url_api + '/Cursos/' + latestCurso.det_img_portada"
+                  alt="img"
+                />
+                <span>Cursos</span>
               </div>
-              <div class="blog-content">
-                <ul class="blog-meta">
-                  <router-link :to="'/cursos/' + latestCurso.idtipo_curso_otros"
-                    ><li class="btn_tipo">
-                      {{ latestCurso.tipo_curso_otro.tipo_conv_curso_nombre }}
-                    </li></router-link
-                  >
-                  <li><i class="fa fa-calendar"></i>{{ dmy(latestCurso.det_fecha_ini) }}</li>
-                </ul>
+              <div class="card-description">
                 <h3 class="title">
-                  <router-link :to="'/detalleCurso/' + latestCurso.iddetalle_cursos_academicos">{{
-                    latestCurso.det_titulo.toUpperCase()
-                  }}</router-link>
+                  {{ latestCurso.det_titulo}}
                 </h3>
-                <div class="btn-btm">
-                  <div class="rs-view-btn">
+                <ul class="meta-part">
+                  <li class="event-date">
+                    <i class="fa fa-calendar-check-o"></i>{{ dmy(latestCurso.det_fecha_ini) }}
+                  </li>
+                </ul>
+                <div class="bottom-part d-flex align-items-center justify-content-between">
+                  <div class="event-join">
                     <router-link
                       :to="'/detalleCurso/' + latestCurso.iddetalle_cursos_academicos"
-                      class="readon btn_link"
+                      class="btn-conv"
                       >Leer Mas</router-link
                     >
                   </div>
@@ -735,37 +712,31 @@
               </div>
             </div>
           </swiper-slide>
-          <swiper-slide>
-            <div class="blog-item bg_box" v-if="Object.keys(latestSeminario).length != 0">
-              <div class="image-part">
-                <router-link :to="'/detalleCurso/' + latestSeminario.iddetalle_cursos_academicos">
-                  <img
-                    class="img_swiper"
-                    :src="url_api + '/Cursos/' + latestSeminario.det_img_portada"
-                    alt="img"
-                  />
-                </router-link>
+          <!-- SEMINARIOS -->
+          <swiper-slide class="card-content" v-if="Object.keys(latestSeminario).length > 0">            
+            <div class="card col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+              <div class="card-image">
+                <img
+                  class="img_swiper"
+                  :src="url_api + '/Cursos/' + latestSeminario.det_img_portada"
+                  alt="img"
+                />
+                <span>Seminarios</span>
               </div>
-              <div class="blog-content">
-                <ul class="blog-meta">
-                  <router-link :to="'/detalleCurso/' + latestSeminario.idtipo_curso_otros"
-                    ><li class="btn_tipo">
-                      {{ latestSeminario.tipo_curso_otro.tipo_conv_curso_nombre }}
-                    </li></router-link
-                  >
-                  <li><i class="fa fa-calendar"></i>{{ dmy(latestSeminario.det_fecha_ini) }}</li>
-                </ul>
+              <div class="card-description">
                 <h3 class="title">
-                  <router-link
-                    :to="'/detalleCurso/' + latestSeminario.iddetalle_cursos_academicos"
-                    >{{ latestSeminario.det_titulo.toUpperCase() }}</router-link
-                  >
+                  {{ latestSeminario.det_titulo }}
                 </h3>
-                <div class="btn-btm">
-                  <div class="rs-view-btn">
+                <ul class="meta-part">
+                  <li class="event-date">
+                    <i class="fa fa-calendar-check-o"></i>{{ dmy(latestSeminario.det_fecha_ini) }}
+                  </li>
+                </ul>
+                <div class="bottom-part d-flex align-items-center justify-content-between">
+                  <div class="event-join">
                     <router-link
                       :to="'/detalleCurso/' + latestSeminario.iddetalle_cursos_academicos"
-                      class="readon btn_link"
+                      class="btn-conv"
                       >Leer Mas</router-link
                     >
                   </div>
@@ -779,9 +750,25 @@
     <!-- Blog Section End -->
   </div>
   <!-- Map Start -->
-  <div class="pl-20 pr-20 contact-g-map mr-70 mb-150 bg-map">
-    <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
-    <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
+
+  <div class="map-card">
+    <div class="map-tools">
+      <div class="map-circle">
+        <span class="map-red map-box"></span>
+      </div>
+      <div class="map-circle">
+        <span class="map-yellow map-box"></span>
+      </div>
+      <div class="map-circle">
+        <span class="map-green map-box"></span>
+      </div>
+    </div>
+    <div class="map-card__content">
+      <div class="">
+        <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
+        <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
+      </div>
+    </div>
   </div>
   <!-- Map End -->
   <!-- Main content End -->
@@ -825,7 +812,14 @@ export default {
     }
   },
   computed: {
-    ...mapState(['url_api', 'Institucion', 'MenuConvocatorias', 'MenuCursos', 'Links','carrera_id'])
+    ...mapState([
+      'url_api',
+      'Institucion',
+      'MenuConvocatorias',
+      'MenuCursos',
+      'Links',
+      'carrera_id'
+    ])
   },
   components: {
     Swiper,
@@ -1034,25 +1028,25 @@ export default {
   letter-spacing: 2px;
 }
 
-.inst-objetivos{
-  background: rgba( 255, 255, 255, 0.05 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 1.5px );
-  -webkit-backdrop-filter: blur( 1.5px );
+.inst-objetivos {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 10px 15px;
   color: #fff;
 }
 
-.inst-nombre{
+.inst-nombre {
   text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.8);
 }
 
-.inst-nombre::first-letter{
+.inst-nombre::first-letter {
   color: var(--main-color);
 }
-
+/* ============================== diseño de los links externos  ====================== */
 .links_externos {
   display: flex;
   justify-content: flex-start;
@@ -1062,7 +1056,7 @@ export default {
   background-size: contain !important;
   padding: 20px !important;
 }
-.links_externos a {
+/*.links_externos a {
   background-color: var(--main-color);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
   color: #ffffff !important;
@@ -1070,37 +1064,81 @@ export default {
   width: 10em;
   border-radius: 20px;
   text-align: center;
+  border: 1px solid red !important;
 }
 .links_externos a:hover {
   background: var(--main-color-2);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
+}*/
+
+.links_externos a {
+  width: 10em;
+  height: 2.3em;
+  margin: 0.5em;
+  background: var(--main-color);
+  color: #fff !important;
+  border: none;
+  border-radius: 0.625em;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  text-align: center;
+  padding: 7px 20px;
 }
+
+.links_externos a:hover {
+  color: var(--main-color-2) !important;
+}
+
+.links_externos a:after {
+  content: '';
+  background: white;
+  position: absolute;
+  z-index: -1;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.5s;
+}
+
+.links_externos a:hover:after {
+  transform: skewX(-45deg) scale(1, 1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+/*==========================================  ===================== */
 .cta {
   position: relative;
   background-attachment: fixed;
 }
 
 .cta-img {
-  padding-top: 20px;  
+  padding-top: 20px;
   width: 250px;
-  margin-left: 10%;  
+  margin-left: 10%;
   position: relative;
   z-index: 3;
   display: grid;
   place-items: center;
 }
 
-.cta-img::before{
+.cta-img::before {
   content: '';
   position: absolute;
   width: 350px;
   height: 350px;
-  background: var(--main-color);
+  background: var(--main-color-2);
   border-radius: 50%;
   z-index: -1;
 }
 
-.cta-text{
+.cta-text {
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -1145,21 +1183,21 @@ export default {
 }
 
 /*==================== PDF INSTITUCION ========== */
-.organigrama-pdf{  
+.organigrama-pdf {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px 0;
-  background: rgba( 255, 255, 255, 0.05 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 6px );
-  -webkit-backdrop-filter: blur( 6px );
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
   position: relative;
 }
 
-.organigrama-pdf::after{
+.organigrama-pdf::after {
   content: '';
   position: absolute;
   top: 0;
@@ -1170,19 +1208,19 @@ export default {
   opacity: 0.5;
   transform: rotate(-5deg);
   background: var(--main-color);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 9.5px );
-  -webkit-backdrop-filter: blur( 9.5px );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.organigrama-text{
+.organigrama-text {
   color: #fff !important;
   text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.organigrama{
+.organigrama {
   background: url(../../public/bgUpea.jpg);
   background-size: cover;
   background-repeat: none;
@@ -1190,48 +1228,40 @@ export default {
 
 /*================ autoridades target ============== */
 
-.autoridades-content{
+.autoridades-content {
   padding: 50px 50px;
 }
-.autoridades-target{  
-  position: relative;
+.team-inner-item.autoridades-target {
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
 }
-.autoridades-target::before{
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba( 255, 255, 255, 0 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 10px );
-  -webkit-backdrop-filter: blur( 10px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+.team-inner-item.autoridades-target .team-wrap {
+  background: transparent;
+  box-shadow: 0px 0px 0px transparent;
+}
+.team-inner-item {
 }
 
 /*================== icon part =============== */
 .cat {
   transition: 0.5s;
-  margin: 20px 0px;  
+  margin: 20px 0px;
   background: #e0e0e0;
-  box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;  
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
 }
 .cat:hover {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-
 }
-.icon-part{  
-  border-radius: 50;  
-  background: var(--main-color) !important;  
+.icon-part {
+  border-radius: 50;
+  background: var(--main-color) !important;
 }
 
 .icon-part i {
   color: #fff;
 }
-.categoria-content{
+.categoria-content {
   background: #fff;
 }
 
@@ -1240,4 +1270,267 @@ export default {
     transform: rotate(360deg);
   }
 }
+
+/*==================== icon social ================== */
+.wrapper {
+  display: inline-flex;
+  list-style: none;
+  height: 120px;
+  width: 100%;
+  padding-top: 40px;
+  font-family: 'Poppins', sans-serif;
+  justify-content: center;
+}
+
+.wrapper .icon {
+  position: relative;
+  background: #fff;
+  border-radius: 50%;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.wrapper .icon a i {
+  background: transparent !important;
+  font-size: 1.3em;
+  color: #000 !important;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.wrapper .icon a {
+  background: transparent !important;
+}
+.wrapper .icon:hover a i {
+  color: #fff !important;
+}
+.wrapper .icon::before {
+  content: '' !important;
+}
+.wrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  background: #fff;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip::before {
+  position: absolute;
+  content: '';
+  height: 8px;
+  width: 8px;
+  background: #fff;
+  bottom: -3px;
+  left: 20%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
+  background: #1877f2;
+  color: #fff;
+}
+
+.wrapper .twitter:hover,
+.wrapper .twitter:hover .tooltip,
+.wrapper .twitter:hover .tooltip::before {
+  background: #1da1f2;
+  color: #fff;
+}
+
+.wrapper .whatsapp:hover,
+.wrapper .whatsapp:hover .tooltip,
+.wrapper .whatsapp:hover .tooltip::before {
+  background: #25d366;
+  color: #fff;
+}
+
+/*================== card de comunicados cursos etc. ==============*/
+
+.card-content {
+  padding: 20px;
+}
+.card {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius: 16px;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+  overflow: hidden;
+}
+
+/*Image*/
+.card-image {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background: #0a3394;
+  background: linear-gradient(to top, #0a3394, #4286f4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-image img {
+  object-fit: cover;
+}
+.card-image span {
+  position: absolute;
+  background: var(--main-color);
+  top: 2%;
+  right: 2%;
+  padding: 5px 10px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px var(--main-color-2);
+  color: #fff;
+}
+/*Description */
+.card-description {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  gap: 0.5em;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  color: #212121;
+  height: 70%;
+  bottom: -100%;
+  border-radius: 16px;
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  padding: 1rem;
+}
+/*Text*/
+.card-description .title {
+  font-size: 1em !important;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Hover states */
+.card:hover .card-description {
+  transform: translateY(-398px);
+}
+/* =========================== Boton Convocatorias ================= */
+.btn-conv {
+  --color: var(--main-color);
+  font-family: inherit;
+  display: inline-block;
+  text-align: center;
+  width: 8em;
+  height: 2.6em;
+  line-height: 2.5em;
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 17px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
+}
+
+.btn-conv:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.btn-conv:hover {
+  color: #fff;
+}
+
+.btn-conv:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.btn-conv:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.btn-conv:active:before {
+  background: #3a0ca3;
+  transition: background 0s;
+}
+
+/*=================== MAPA ================= */
+.map-card {
+ width: 100%;
+ height: 100%;
+ margin: 0 auto;
+ background-color: #f5f5f5;
+ border-radius: 8px;
+ z-index: 1;
+ padding: 20px;
+}
+
+.map-tools {
+ display: flex;
+ align-items: center;
+ padding: 9px;
+}
+
+.map-circle {
+ padding: 0 4px;
+}
+
+.map-box {
+ display: inline-block;
+ align-items: center;
+ width: 10px;
+ height: 10px;
+ padding: 1px;
+ border-radius: 50%;
+}
+
+.map-red {
+ background-color: #ff605c;
+}
+
+.map-yellow {
+ background-color: #ffbd44;
+}
+
+.map-green {
+ background-color: #00ca4e;
+}
+
 </style>
