@@ -10,7 +10,7 @@
         disableOnInteraction: false
       }"
       :pagination="{
-        clickable: true
+        clickable: false
       }"
       :navigation="true"
       :modules="modules"
@@ -18,15 +18,17 @@
     >
       <swiper-slide v-for="(portada, id_img) in Institucion.portada" :key="id_img" class="bg-principal-slide">
         <div class="bg-principal-content">
-          <!--<img
-            class="bg-img"
+          <img
+            class="bg-img bg-principal-img"
             :src="this.url_api + '/InstitucionUpea/Portada/' + portada.portada_imagen"
             alt="{{ id_img }}"
-          />-->
-          <img class="bg-principal-img" src="https://www.upea.bo/assets/upea/fondos/BackGround-UPEA-08.jpg" alt="" />
+          />
+          <!--<img class="bg-principal-img" src="https://www.upea.bo/assets/upea/fondos/BackGround-UPEA-08.jpg" alt="" />-->
         </div>
       </swiper-slide>            
     </swiper>
+    
+    <!-- Banner Section End -->
     <div id="sc-banner" class="sc-banner banner-style3 upposition-relative bg-principal-view">
         <div class="container">
           <div class="row">
@@ -114,7 +116,6 @@
           <img src="../assets/images/banner/arrow-9.png" alt="" />
         </div>
       </div>
-    <!-- Banner Section End -->
 
     <!-- Blog Single Start -->
     <div class="sc-blog-single pt-120 pb-120 md-pt-80 md-pb-80">
@@ -1221,35 +1222,31 @@ export default {
 /*=================== SLIDE PRINCIPAL BACKGROUND ============== */
 
 .bg-principal-slide-content{
-  border: 1px solid blue;
+  position: absolute;
   width: 100%;
   height: 100vh;
-  z-index: 1;
-  position: absolute;
+}
+
+.swiper .swiper-button-prev,
+.swiper .swiper-button-next{
+  z-index: 1000;
+  border: 1px solid red !important;
+  color: red !important;
 }
 .bg-principal-slide{
-  border: 1px solid red;    
-  z-index: 12;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  
 
 }
 .bg-principal-content {
-  width: 100%;
-  height: 100%;
-  /*z-index: -1;
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;*/
+  
 }
 .bg-principal-img {
+  
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 .bg-principal-view{
-  z-index: 100;
+
 }
 
 /*==================== PDF INSTITUCION ========== */

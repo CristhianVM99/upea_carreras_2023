@@ -29,8 +29,8 @@
               <ul class="topbar-right">
                 <li class="login-register">
                   <i class="fa fa-sign-in"></i>
-                  <router-link :to="{ name: 'login' }">Login</router-link> /
-                  <router-link :to="{ name: 'register' }">Register</router-link>
+                  <a href="http://administracionpaginas.upea.edu.bo/login">Login</a>
+                  <!--<router-link :to="{ name: 'register' }">Register</router-link>-->
                 </li>
               </ul>
             </div>
