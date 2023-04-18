@@ -262,9 +262,11 @@
                       >
                         <a href="#">Links</a>
                         <ul class="sub-menu">
-                          <li><a href="#">Pagina Web</a></li>
-                          <li><a href="#">Inscripciones</a></li>
-                          <li><a href="#">Campus Virtual</a></li>
+                          <li
+                            v-for="(link, id_link) of Links"
+                            :key="id_link">
+                            <a :href="link.ei_link" target="_blank">{{ link.ei_nombre }}</a>
+                          </li>                          
                         </ul>
                       </li>
 

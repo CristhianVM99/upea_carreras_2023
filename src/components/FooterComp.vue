@@ -18,7 +18,7 @@
       </div>-->
       <div class="footer-content pt-100 pb-70 md-pb-5">
         <div class="row">
-          <div class="col-lg-4 footer-widget">
+          <div class="col-lg-3 footer-widget">
             <div class="about-widget pl-30">
               <div class="logo-part mb-30">
                 <router-link :to="{ name: 'home' }">
@@ -36,39 +36,127 @@
               <h4 class="social-title white-color">Siguenos en:</h4>
               <ul class="footer-social">
                 <li>
-                  <a :href="Institucion.institucion_facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                  <a :href="Institucion.institucion_facebook" target="_blank"
+                    ><i class="fa fa-facebook"></i
+                  ></a>
                 </li>
                 <li>
-                  <a :href="Institucion.institucion_twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                  <a :href="Institucion.institucion_twitter" target="_blank"
+                    ><i class="fa fa-twitter"></i
+                  ></a>
                 </li>
                 <li>
-                  <a :href="Institucion.institucion_youtube" target="_blank"><i class="fa fa-youtube"></i></a>
+                  <a :href="Institucion.institucion_youtube" target="_blank"
+                    ><i class="fa fa-youtube"></i
+                  ></a>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="col-lg-4 md-mb-32 footer-widget md-mt-45">
-            <h4 class="widget-title">Company</h4>
-            <ul class="widget-menu">
-              <li><a href="#">Features</a></li>
-              <li><a href="#">Course</a></li>
-              <li><a href="#">Learning</a></li>
-              <li><a href="#">Testiminial</a></li>
-              <li><a href="#">News</a></li>
+          <div class="col-lg-3 md-mb-32 footer-widget md-mt-45">
+            <h4 class="widget-title">
+              Convocatorias <br />y<br />
+              Cursos
+            </h4>
+            <ul class="widget-menu" v-if="this.carrera_id != 0">
+              <li v-for="(link, id_conv) in MenuConvocatorias" :key="id_conv">
+                <router-link
+                  :to="{
+                    name: 'convocatorias',
+                    params: {
+                      tipo: link.tipo_conv_comun_titulo.toLowerCase()
+                    }
+                  }"
+                  >{{ link.tipo_conv_comun_titulo.toLowerCase() }}</router-link
+                >
+              </li>
+
+              <li v-for="(link, id_conv) in MenuCursos" :key="id_conv">
+                <router-link
+                  :to="{
+                    name: 'cursos',
+                    params: {
+                      tipo: link.tipo_conv_curso_nombre.toLowerCase()
+                    }
+                  }"
+                  >{{ link.tipo_conv_curso_nombre.toLowerCase() }}</router-link
+                >
+              </li>
             </ul>
           </div>
-          <!--<div class="col-lg-3 md-mb-32 footer-widget">
-            <h4 class="widget-title">Learn Course</h4>
-            <ul class="widget-menu">
-              <li><a href="#">General Education</a></li>
-              <li><a href="#">Computer Science</a></li>
-              <li><a href="#">Civil Engineering</a></li>
-              <li><a href="#">Artificial Intelligence</a></li>
-              <li><a href="#">Business Studies</a></li>
+          <div class="col-lg-3 md-mb-32 footer-widget">
+            <h4 class="widget-title">Mas+</h4>
+            <ul class="widget-menu" v-if="(this.carrera_id!=0)">
+              <li>
+                <router-link
+                  :to="{
+                    name: 'servicios',
+                    params: {
+                      tipo: 'servicios'
+                    }
+                  }"
+                  >Servicios</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  :to="{
+                    name: 'ofertasacademicas',
+                    params: {
+                      tipo: 'ofertasacademicas'
+                    }
+                  }"
+                  >Ofertas Academicas</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  :to="{
+                    name: 'publicaciones',
+                    params: {
+                      tipo: 'publicaciones'
+                    }
+                  }"
+                  >Publicaciones</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  :to="{
+                    name: 'gacetas',
+                    params: {
+                      tipo: 'gacetas'
+                    }
+                  }"
+                  >Gaceta</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  :to="{
+                    name: 'eventos',
+                    params: {
+                      tipo: 'eventos'
+                    }
+                  }"
+                  >Eventos</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  :to="{
+                    name: 'videos',
+                    params: {
+                      tipo: 'videos'
+                    }
+                  }"
+                  >Videos</router-link
+                >
+              </li>
             </ul>
-          </div>-->
-          <div class="col-lg-4 md-mb-32 footer-widget">
-            <h4 class="widget-title">Contactese con nosotros: </h4>
+          </div>
+          <div class="col-lg-3 md-mb-32 footer-widget">
+            <h4 class="widget-title">Contactese con nosotros:</h4>
             <ul class="address-widget pr-40">
               <li>
                 <i class="flaticon flaticon-call"></i>
@@ -77,7 +165,7 @@
               <li>
                 <i class="flaticon flaticon-call"></i>
                 <a href="#">{{ Institucion.institucion_celular2 }}</a>
-              </li>              
+              </li>
               <li>
                 <i class="flaticon flaticon-mail"></i>
                 <a href="#">{{ Institucion.institucion_correo1 }}</a>
@@ -176,7 +264,14 @@ export default {
     }
   },
   computed: {
-    ...mapState(['url_api', 'MenuConv', 'MenuCur', 'Institucion', 'getter'])
-  },
+    ...mapState([
+      'url_api',
+      'MenuConvocatorias',
+      'MenuCursos',
+      'Institucion',
+      'getter',
+      'carrera_id'
+    ])
+  }
 }
 </script>

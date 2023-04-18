@@ -125,8 +125,8 @@ export default {
   name: 'AppLayout',
   data() {
     return {
-      Convocatorias: 0,
-      Cursos: 0,
+      Convocatorias: [],
+      Cursos: [],
       Servicios: [],
       Ofertas: [],
       Publicaciones: [],
@@ -146,40 +146,26 @@ export default {
     ])
   },
   methods: {
-    /*async getMenuConvocatorias() {
+    async getConvocatoriasAll() {
       try {
-        //optencion de menu de convocatorias.
-        const response = await Services.getMenuConvocatorias()
-
-        //filtramos aquellos que siguen vigentes
-        const filterConvocatorias = []
-        response.data.forEach((data) => {
-          if (data.tipo_conv_comun_estado == '1') {
-            filterConvocatorias.push(data)
-          }
-        })
-        this.$store.state.MenuConvocatorias = filterConvocatorias
+        //optenemos todas la convocatoarias de la api
+        const response = await Services.getConvocatoriasAll()
+        this.Convocatorias = response.data
       } catch (e) {
         console.log(e)
       }
     },
-    async getMenuCursos() {
-      try {
-        //optencion del menu de los cursos.
-        const response = await Services.getMenuCursos()
 
-        //filtramos aquellos que siguen vigentes
-        const filterCursos = []
-        response.data.forEach((data) => {
-          if (data.tipo_conv_curso_estado == '1') {
-            filterCursos.push(data)
-          }
-        })
-        this.$store.state.MenuCursos = filterCursos
+    async getCursosAll() {
+      try {
+        //optenemos todos los registros de cursos de la api
+        const response = await Services.getCursosAll()
+        this.Cursos = response.data
       } catch (e) {
         console.log(e)
       }
-    },*/
+    },
+
     async getServiciosAll() {
       try {
         const response = await Services.getServiciosAll()
@@ -229,27 +215,37 @@ export default {
       }
     },
     contarConv(tipo) {
-      if (tipo && this.Convocatorias) {
-        let count = 0
-        this.Convocatorias.forEach((conv) => {
+      let count = 0
+        this.Convocatorias.forEach((conv) => {          
           if (conv.tipo_conv_comun.tipo_conv_comun_titulo == tipo) {
             count++
           }
         })
         return count
-      }
     },
     contarCur(tipo) {
-      if (tipo && this.Cursos) {
-        let count = 0
+      let count = 0
         this.Cursos.forEach((cur) => {
           if (cur.tipo_curso_otro.tipo_conv_curso_nombre == tipo) {
             count++
           }
         })
         return count
-      }
-    }
+    },
+    //metodo que ejecuta todos los demas
+    createdComponent() {
+      this.getConvocatoriasAll()
+      this.getCursosAll()
+      this.getServiciosAll()
+      this.getOfertasAll()
+      this.getPublicaciones()
+      this.getGacetaAll()
+      this.getEventos()
+      this.getVideos()
+    },
+  },
+  created(){
+    this.createdComponent()
   }
 }
 </script>

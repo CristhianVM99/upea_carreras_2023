@@ -14,20 +14,20 @@
       }"
       :navigation="true"
       :modules="modules"
-      class="mySwiper"
+      class="mySwiper bg-principal-slide-content"
     >
-      <swiper-slide v-for="(portada, id_img) in Institucion.portada" :key="id_img">
-        <div class="bg sc-banner">
+      <swiper-slide v-for="(portada, id_img) in Institucion.portada" :key="id_img" class="bg-principal-slide">
+        <div class="bg-principal-content">
           <!--<img
             class="bg-img"
             :src="this.url_api + '/InstitucionUpea/Portada/' + portada.portada_imagen"
             alt="{{ id_img }}"
           />-->
-          <img src="https://www.upea.bo/assets/upea/fondos/BackGround-UPEA-08.jpg" alt="" />
+          <img class="bg-principal-img" src="https://www.upea.bo/assets/upea/fondos/BackGround-UPEA-08.jpg" alt="" />
         </div>
-      </swiper-slide>
-
-      <div id="sc-banner" class="sc-banner banner-style3 upposition-relative">
+      </swiper-slide>            
+    </swiper>
+    <div id="sc-banner" class="sc-banner banner-style3 upposition-relative bg-principal-view">
         <div class="container">
           <div class="row">
             <div class="col-lg-6">
@@ -114,7 +114,6 @@
           <img src="../assets/images/banner/arrow-9.png" alt="" />
         </div>
       </div>
-    </swiper>
     <!-- Banner Section End -->
 
     <!-- Blog Single Start -->
@@ -138,17 +137,16 @@
                 </div>
                 <blockquote>
                   <p>
-                    Frameworks ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
+                    La Universidad Pública de El Alto no solo forma profesionales altamente capacitados en diversas áreas del conocimiento, sino que también es un espacio de encuentro y diálogo intercultural, donde se fomenta el respeto y la valoración de la diversidad de saberes y culturas
                   </p>
                 </blockquote>
-                <div class="blog-desc mb-40">
+                <!--<div class="blog-desc mb-40">
                   <p>
                     Evolved from sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
                     nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                   </p>
-                </div>
+                </div>-->
                 <!--<div class="tags-area">
                   <span class="tags">Tags</span>
                   <ul class="tags-list">
@@ -167,8 +165,6 @@
                   <li
                     v-for="(link, id_link) of Links"
                     :key="id_link"
-                    :href="link.ei_link"
-                    target="_blank"
                     :style="
                       'background-image: url(' +
                       url_api +
@@ -178,7 +174,7 @@
                     "
                     class="links_externos"
                   >
-                    <router-link to="/">{{ link.ei_nombre }}</router-link>
+                    <a :href="link.ei_link" target="_blank">{{ link.ei_nombre }}</a>                    
                   </li>
                 </ul>
               </div>
@@ -1222,16 +1218,38 @@ export default {
   text-align: center;
   width: 100%;
 }
-.bg {
-  z-index: -1;
+/*=================== SLIDE PRINCIPAL BACKGROUND ============== */
+
+.bg-principal-slide-content{
+  border: 1px solid blue;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  position: absolute;
+}
+.bg-principal-slide{
+  border: 1px solid red;    
+  z-index: 12;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+}
+.bg-principal-content {
+  width: 100%;
+  height: 100%;
+  /*z-index: -1;
   position: absolute;
   width: 100%;
   height: 100vh;
-  object-fit: cover;
+  object-fit: cover;*/
 }
-.bg-img {
+.bg-principal-img {
   width: 100%;
-  height: 100vh;
+  height: 100%;
+}
+.bg-principal-view{
+  z-index: 100;
 }
 
 /*==================== PDF INSTITUCION ========== */
@@ -1431,7 +1449,7 @@ export default {
 }
 .card {
   width: 100%;
-  height: 600px;
+  height: 70vh;
   position: relative;
   transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
   border-radius: 16px;
@@ -1490,7 +1508,7 @@ export default {
 
 /* Hover states */
 .card:hover .card-description {
-  transform: translateY(-398px);
+  transform: translateY(-70vh);
 }
 /* =========================== Boton Convocatorias ================= */
 .btn-conv {

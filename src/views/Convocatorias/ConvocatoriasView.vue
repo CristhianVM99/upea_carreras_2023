@@ -569,8 +569,8 @@ export default {
     //optenemos los registros segun el tipo
     async getCategoria(tipo_conv) {
       this.tipo_conv = tipo_conv
-      console.log('parametro: ' + tipo_conv)
-      console.log('valor actual: ' + this.tipo_conv)
+      //console.log('parametro: ' + tipo_conv)
+      //console.log('valor actual: ' + this.tipo_conv)
       try {
         if (this.tipo_conv != 'Upea') {
           switch (this.tipo_conv.toLowerCase()) {
@@ -639,8 +639,8 @@ export default {
       try {
         const response = await Services.getCursosAll()
         this.Cursos = []
-        console.log('cursos')
-        console.log(response)
+        //console.log('cursos')
+        //console.log(response)
         response.data.forEach((conv) => {
           if (
             conv.tipo_curso_otro.tipo_conv_curso_estado == '1' &&
@@ -773,7 +773,7 @@ export default {
 <style scoped>
 .grid-conv {
   width: 100%;
-  height: 110vh;
+  height: 115vh;
 }
 .grid-conv-item {
 }
