@@ -297,7 +297,7 @@ body .dblock {
   right: 10%;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;  
 }
 .testimonial-bg {
   background: url(../images/bg/testimonial-bg.jpg);

@@ -224,7 +224,7 @@
         <div class="row align-items-center">
           <div class="col-lg-6 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
             <div class="sec-title">
-              <div class="sub-title position-relative">
+              <div class="sub-title position-relative cta-span">
                 Frases <span class="heading-border-line"></span>
               </div>
               <h2 class="title mb-0 white-color cta-text">
@@ -561,7 +561,7 @@
     <div id="sc-blog" class="sc-blog main-home pb-200 pt-110 md-pt-70 md-pb-160">
       <div class="container">
         <div class="sec-title mb-60 text-center md-mb-30">
-          <div class="sub-title primary">Lo mas reciente</div>
+          <div class="sub-title primary txt-reciente">lo más reciente</div>
           <h2 class="title mb-0">Convocatorias, Comunicados y Avisos Recientes</h2>
         </div>
         <swiper
@@ -583,11 +583,12 @@
                   :src="url_api + '/Convocatorias/' + latestConvocatoria.con_foto_portada"
                   alt="img"
                 />
-                <span>Convocatorias</span>
+                <span>{{latestConvocatoria.tipo_conv_comun.tipo_conv_comun_titulo.toLowerCase()}}</span>
               </div>
               <div class="card-description">
                 <h3 class="title">
                   {{ latestConvocatoria.con_titulo.toUpperCase() }}
+                  <p>{{ latestConvocatoria.idconvocatorias }}</p>
                 </h3>
                 <ul class="meta-part">
                   <li class="event-date">
@@ -598,10 +599,16 @@
                 <div class="bottom-part d-flex align-items-center justify-content-between">
                   <div class="event-join">
                     <router-link
-                      :to="'/detalleConvocatoria/' + latestConvocatoria.idconvocatorias"
+                      :to="{
+                        name: 'convocatoriadetalle',
+                        params: {
+                          tipo: latestConvocatoria.tipo_conv_comun.tipo_conv_comun_titulo.toLowerCase(),
+                          idconv: latestConvocatoria.idconvocatorias
+                        }
+                      }"
                       class="btn-conv"
-                      >Leer Mas</router-link
-                    >
+                      >Leer Mas</router-link                      
+                    >                    
                   </div>
                 </div>
               </div>
@@ -631,7 +638,13 @@
                 <div class="bottom-part d-flex align-items-center justify-content-between">
                   <div class="event-join">
                     <router-link
-                      :to="'/detalleConvocatoria/' + latestComunicado.idconvocatorias"
+                      :to="{
+                        name: 'convocatoriadetalle',
+                        params: {
+                          tipo: latestComunicado.tipo_conv_comun.tipo_conv_comun_titulo.toLowerCase(),
+                          idconv: latestComunicado.idconvocatorias
+                        }
+                      }"
                       class="btn-conv"
                       >Leer Mas</router-link
                     >
@@ -663,7 +676,13 @@
                 <div class="bottom-part d-flex align-items-center justify-content-between">
                   <div class="event-join">
                     <router-link
-                      :to="'/detalleConvocatoria/' + latestAviso.idconvocatorias"
+                      :to="{
+                        name: 'convocatoriadetalle',
+                        params: {
+                          tipo: latestAviso.tipo_conv_comun.tipo_conv_comun_titulo.toLowerCase(),
+                          idconv: latestAviso.idconvocatorias
+                        }
+                      }"
                       class="btn-conv"
                       >Leer Mas</router-link
                     >
@@ -685,13 +704,13 @@
         <div class="row align-items-center">
           <div class="col-lg-6 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
             <div class="sec-title">
-              <div class="sub-title position-relative">
+              <div class="sub-title position-relative cta-span">
                 Frases<span class="heading-border-line"></span>
               </div>
               <h2 class="title mb-0 white-color cta-text">
                 "La educación es el camino para construir una sociedad más equitativa y la
                 Universidad Pública de El Alto es la institución que lidera este proceso en Bolivia"
-                <br />- Upea -
+                <span>Upea</span>
               </h2>
             </div>
           </div>
@@ -721,7 +740,7 @@
     <div id="sc-blog" class="sc-blog main-home pb-200 pt-120 md-pt-70 md-pb-160">
       <div class="container">
         <div class="sec-title mb-60 text-center md-mb-30">
-          <div class="sub-title primary">Lo mas reciente</div>
+          <div class="sub-title primary txt-reciente">lo más reciente</div>
           <h2 class="title mb-0">Cursos y Seminarios</h2>
         </div>
         <swiper
@@ -751,9 +770,15 @@
                 </ul>
                 <div class="bottom-part d-flex align-items-center justify-content-between">
                   <div class="event-join">
-                    <router-link
-                      :to="'/detalleCurso/' + latestCurso.iddetalle_cursos_academicos"
+                    <router-link                      
                       class="btn-conv"
+                      :to="{
+                        name: 'convocatoriadetalle',
+                        params: {
+                          tipo: latestCurso.tipo_curso_otro.tipo_conv_curso_nombre.toLowerCase(),
+                          idconv: latestCurso.iddetalle_cursos_academicos
+                        }
+                      }"
                       >Leer Mas</router-link
                     >
                   </div>
@@ -783,8 +808,14 @@
                 </ul>
                 <div class="bottom-part d-flex align-items-center justify-content-between">
                   <div class="event-join">
-                    <router-link
-                      :to="'/detalleCurso/' + latestSeminario.iddetalle_cursos_academicos"
+                    <router-link                      
+                      :to="{
+                        name: 'convocatoriadetalle',
+                        params: {
+                          tipo: latestSeminario.tipo_curso_otro.tipo_conv_curso_nombre.toLowerCase(),
+                          idconv: latestSeminario.iddetalle_cursos_academicos
+                        }
+                      }"
                       class="btn-conv"
                       >Leer Mas</router-link
                     >
@@ -899,19 +930,19 @@ export default {
         if (response != null) {
           this.Convocatorias.forEach((conv) => {
             if (
-              conv.tipo_conv_comun.tipo_conv_comun_titulo == 'CONVOCATORIAS' &&
+              conv.tipo_conv_comun.tipo_conv_comun_titulo.toUpperCase() == 'CONVOCATORIAS' &&
               conv.con_estado == '1'
             ) {
               this.latestConvocatoria = conv
             } else {
               if (
-                conv.tipo_conv_comun.tipo_conv_comun_titulo == 'COMUNICADOS' &&
+                conv.tipo_conv_comun.tipo_conv_comun_titulo.toUpperCase() == 'COMUNICADOS' &&
                 conv.con_estado == '1'
               ) {
                 this.latestComunicado = conv
               } else {
                 if (
-                  conv.tipo_conv_comun.tipo_conv_comun_titulo == 'AVISOS' &&
+                  conv.tipo_conv_comun.tipo_conv_comun_titulo.toUpperCase() == 'AVISOS' &&
                   conv.con_estado == '1'
                 ) {
                   this.latestAviso = conv
@@ -1161,7 +1192,7 @@ export default {
   transition: all 0.5s;
 }
 
-/*==========================================  ===================== */
+/*=============================== FRASES INTERMEDIAS  ===================== */
 .cta {
   position: relative;
   background-attachment: fixed;
@@ -1170,7 +1201,7 @@ export default {
 .cta-img {
   padding-top: 20px;
   width: 250px;
-  margin-left: 10%;
+  margin-left: 40%;
   position: relative;
   z-index: 3;
   display: grid;
@@ -1182,13 +1213,41 @@ export default {
   position: absolute;
   width: 350px;
   height: 350px;
-  background: var(--main-color-2);
+  background: linear-gradient(to top, var(--main-color-2), var(--main-color));
   border-radius: 50%;
   z-index: -1;
 }
 
 .cta-text {
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  background: var(--main-color-2);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 30px );
+  -webkit-backdrop-filter: blur( 10px );
+  border-radius: 10px;
+  padding: 20px;
+  opacity: .95; 
+  position: relative;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  text-align: center;
+  position: relative;
+}
+.cta-text span{
+  width: 3em;
+  height: 1.5em;
+  position: absolute;
+  background: var(--main-color);
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 10px;
+}
+.cta-span{
+  font-size: 1.5em;  
+  margin-bottom: 15px;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  padding-left: 20px;
 }
 
 .img_swiper {
@@ -1440,6 +1499,9 @@ export default {
 }
 
 /*================== card de comunicados cursos etc. ==============*/
+.txt-reciente{
+  color: red;
+}
 
 .card-content {
   padding: 20px;

@@ -24,9 +24,15 @@ function getInstitucion() {
 function getConvocatoriasAll(){
     return Api().get('/api/convocatoriasAll/' + import.meta.env.VITE_VUE_APP_ID_CARRERA)
 }
+function getConvocatoria(id){
+  return Api().get('/api/convocatorias/'+id)
+}
 
 function getCursosAll(){
   return Api().get('/api/cursosAll/' + import.meta.env.VITE_VUE_APP_ID_CARRERA)
+}
+function getCurso(id){
+  return Api().get('/api/cursos/'+id)
 }
 
 function getServiciosAll(){
@@ -70,7 +76,9 @@ export default {
   getInstitucion,
   //Home View
   getConvocatoriasAll,
+  getConvocatoria,
   getCursosAll,
+  getCurso,
   getServiciosAll,
   getOfertasAll,
   getPublicaciones,

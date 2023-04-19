@@ -70,6 +70,11 @@ const routes = [
         path : '/register',
         name : 'register',
         component: () => import('@/views/RegisterView.vue')
+      },
+      {
+        path : '/ConvocatoriaDetalle/:tipo/:idconv',
+        name : 'convocatoriadetalle',
+        component :()=> import('@/views/Convocatorias/ConvocatoriasDetalleView.vue')
       }
     ]
   },
