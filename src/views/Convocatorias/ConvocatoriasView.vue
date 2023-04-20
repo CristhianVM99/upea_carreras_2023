@@ -12,10 +12,11 @@
           VIGENTES EN LA CARRERA
         </h1>
         <ul>
-          <button class="btn-page mr-40">
-            <router-link :to="{ name: 'home' }"> Home </router-link>
-          </button>
-          <!--<li class="active tipo_text">{{ tipo_conv.toUpperCase() }}</li>-->
+          <router-link :to="{ name: 'home' }">
+            <button class="btn-page mr-40">
+              Home
+            </button>
+          </router-link>          
           <button class="btn-page">
             {{ tipo_conv.toUpperCase() }}
           </button>
@@ -55,7 +56,7 @@
                   :key="id_conv"
                   :virtualIndex="id_conv"
                   class=""
-                >                  
+                >
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
@@ -77,17 +78,23 @@
                         <div class="bottom-part d-flex align-items-center justify-content-center">
                           <div class="">
                             <router-link
-                              :to="'/detalleConvocatoria/' + conv.idconvocatorias"
+                              :to="{
+                                name: 'convocatoriadetalle',
+                                params: {
+                                  tipo: conv.tipo_conv_comun.tipo_conv_comun_titulo.toLowerCase(),
+                                  idconv: conv.idconvocatorias
+                                }
+                              }"
                               class="btn-conv"
-                              >
-                              <span>Leer Mas</span>
-                              </router-link
                             >
+                              <span>Leer Mas</span>
+                            </router-link>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                  
                 </swiper-slide>
               </swiper>
               <!-- Cursos -->
@@ -112,7 +119,7 @@
                   :key="id_cur"
                   :virtualIndex="id_cur"
                   class="card-content"
-                >                 
+                >
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
@@ -125,26 +132,34 @@
                         <h3 class="title">{{ cur.det_titulo }}</h3>
                         <ul class="meta-part">
                           <li class="event-date">
-                          <i class="fa fa-calendar-check-o"></i>{{ dmy(cur.det_fecha_ini) }}
-                        </li>
-                        <li class="event-date">
-                          <i class="fa fa-calendar-check-o"></i>{{ dmy(cur.det_fecha_fin) }}
-                        </li>
+                            <i class="fa fa-calendar-check-o"></i>{{ dmy(cur.det_fecha_ini) }}
+                          </li>
+                          <li class="event-date">
+                            <i class="fa fa-calendar-check-o"></i>{{ dmy(cur.det_fecha_fin) }}
+                          </li>
                         </ul>
                         <div class="bottom-part d-flex align-items-center justify-content-center">
                           <div class="">
                             <router-link
-                              :to="'/detalleCurso/' + cur.iddetalle_cursos_academicos"
+                              :to="{
+                                name: 'convocatoriadetalle',
+                                params: {
+                                  tipo: cur.tipo_curso_otro.tipo_conv_curso_nombre.toLowerCase(),
+                                  idconv: cur.iddetalle_cursos_academicos
+                                }
+                              }"
                               class="btn-conv"
-                              >
-                              <span>Leer Mas</span>
-                              </router-link
                             >
+                              <span>Leer Mas</span>
+                            </router-link>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                  <sin-registros
+                  
+                  ></sin-registros>
                 </swiper-slide>
               </swiper>
               <!-- Servicios -->
@@ -167,15 +182,15 @@
                   :key="id_serv"
                   :virtualIndex="id_serv"
                   class="card-content"
-                >                
+                >
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
                         <img
-                        :src="url_api + '/Carrera/Servicios/' + serv.serv_imagen"
-                        alt="img"
-                        width="300"
-                      />
+                          :src="url_api + '/Carrera/Servicios/' + serv.serv_imagen"
+                          alt="img"
+                          width="300"
+                        />
                         <div class="event-price">
                           <span class="price">{{ tipo_conv }}</span>
                         </div>
@@ -184,21 +199,25 @@
                         <h3 class="title">{{ serv.serv_nombre }}</h3>
                         <ul class="meta-part">
                           <li class="event-date">
-                          <i class="fa fa-calendar-check-o"></i>{{ dmy(serv.serv_registro) }}
-                        </li>
-                        <li class="event-date">
-                          <i class="fa fa-phone"></i>{{ serv.serv_nro_celular }}
-                        </li>
+                            <i class="fa fa-calendar-check-o"></i>{{ dmy(serv.serv_registro) }}
+                          </li>
+                          <li class="event-date">
+                            <i class="fa fa-phone"></i>{{ serv.serv_nro_celular }}
+                          </li>
                         </ul>
                         <div class="bottom-part d-flex align-items-center justify-content-center">
                           <div class="">
-                            <router-link
-                            :to="'/detalleServicio/' + serv.serv_id"
-                              class="btn-conv"
-                              >
+                            <router-link 
+                            :to="{
+                                name: 'convocatoriadetalle',
+                                params: {
+                                  tipo: tipo_conv.toLowerCase(),
+                                  idconv: serv.serv_id
+                                }
+                              }"
+                            class="btn-conv">
                               <span>Leer Mas</span>
-                              </router-link
-                            >
+                            </router-link>
                           </div>
                         </div>
                       </div>
@@ -226,15 +245,15 @@
                   :key="id_ofer"
                   :virtualIndex="id_ofer"
                   class="grid-conv-item"
-                >                
+                >
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
                         <img
-                        :src="url_api + '/Carrera/OfertasAcademicas/' + ofer.ofertas_imagen"
-                        alt="img"
-                        width="200"
-                      />
+                          :src="url_api + '/Carrera/OfertasAcademicas/' + ofer.ofertas_imagen"
+                          alt="img"
+                          width="200"
+                        />
                         <div class="event-price">
                           <span class="price">{{ tipo_conv }}</span>
                         </div>
@@ -243,18 +262,23 @@
                         <h3 class="title">{{ ofer.ofertas_titulo }}</h3>
                         <ul class="meta-part">
                           <li class="event-date">
-                          <i class="fa fa-calendar-check-o"></i>{{ dmy(ofer.ofertas_inscripciones_fin) }}
-                        </li>                        
+                            <i class="fa fa-calendar-check-o"></i
+                            >{{ dmy(ofer.ofertas_inscripciones_fin) }}
+                          </li>
                         </ul>
                         <div class="bottom-part d-flex align-items-center justify-content-center">
                           <div class="">
-                            <router-link
-                            :to="'/detalleOferta/' + ofer.ofertas_id"
-                              class="btn-conv"
-                              >
+                            <router-link 
+                            :to="{
+                                name: 'convocatoriadetalle',
+                                params: {
+                                  tipo: tipo_conv.toLowerCase(),
+                                  idconv: ofer.evento_id
+                                }
+                              }"
+                            class="btn-conv">
                               <span>Leer Mas</span>
-                              </router-link
-                            >
+                            </router-link>
                           </div>
                         </div>
                       </div>
@@ -282,14 +306,14 @@
                   :key="id_pub"
                   :virtualIndex="id_pub"
                   class="grid-conv-item"
-                >                 
+                >
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
                         <img
-                            :src="url_api + '/Publicaciones/' + pub.publicaciones_imagen"
-                            alt="img"
-                          />
+                          :src="url_api + '/Publicaciones/' + pub.publicaciones_imagen"
+                          alt="img"
+                        />
                         <div class="event-price">
                           <span class="price">{{ tipo_conv }}</span>
                         </div>
@@ -300,19 +324,22 @@
                           <li class="event-date">
                             <i class="fa fa-calendar-check-o"></i>{{ dmy(pub.publicaciones_fecha) }}
                           </li>
-                          <li class="event-date">
-                            Por: {{ pub.publicaciones_autor }}
-                          </li>
+                          <li class="event-date">Por: {{ pub.publicaciones_autor }}</li>
                         </ul>
                         <div class="bottom-part d-flex align-items-center justify-content-center">
                           <div class="">
                             <router-link
-                            :to="'/detallePublicacion/' + pub.publicaciones_id"
+                            :to="{
+                                name: 'convocatoriadetalle',
+                                params: {
+                                  tipo: tipo_conv.toLowerCase(),
+                                  idconv: pub.publicaciones_id
+                                }
+                              }"
                               class="btn-conv"
-                              >
-                              <span>Leer Mas</span>
-                              </router-link
                             >
+                              <span>Leer Mas</span>
+                            </router-link>
                           </div>
                         </div>
                       </div>
@@ -340,7 +367,7 @@
                   :key="id_gac"
                   :virtualIndex="id_gac"
                   class="grid-conv-item"
-                >                  
+                >
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
@@ -357,8 +384,23 @@
                         <ul class="meta-part">
                           <li class="event-date">
                             <i class="fa fa-calendar-check-o"></i>{{ dmy(gac.gaceta_fecha) }}
-                          </li>                        
+                          </li>
                         </ul>
+                        <div class="bottom-part d-flex align-items-center justify-content-center">
+                          <div class="">
+                            <router-link 
+                            :to="{
+                                name: 'convocatoriadetalle',
+                                params: {
+                                  tipo: tipo_conv.toLowerCase(),
+                                  idconv: gac.gaceta_id
+                                }
+                              }"
+                            class="btn-conv">
+                              <span>Leer Mas</span>
+                            </router-link>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -384,15 +426,15 @@
                   :key="id_ev"
                   :virtualIndex="id_ev"
                   class="grid-conv-item"
-                >                  
+                >
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
                         <img
-                            :src="url_api + '/Eventos/' + ev.evento_imagen"
-                            alt="img"
-                            width="200"
-                          />
+                          :src="url_api + '/Eventos/' + ev.evento_imagen"
+                          alt="img"
+                          width="200"
+                        />
                         <div class="event-price">
                           <span class="price">{{ tipo_conv }}</span>
                         </div>
@@ -409,13 +451,17 @@
                         </ul>
                         <div class="bottom-part d-flex align-items-center justify-content-center">
                           <div class="">
-                            <router-link
-                            :to="'/detalleEvento/' + ev.evento_id"
-                              class="btn-conv"
-                              >
+                            <router-link 
+                            :to="{
+                                name: 'convocatoriadetalle',
+                                params: {
+                                  tipo: tipo_conv.toLowerCase(),
+                                  idconv: ev.evento_id
+                                }
+                              }"
+                            class="btn-conv">
                               <span>Leer Mas</span>
-                              </router-link
-                            >
+                            </router-link>
                           </div>
                         </div>
                       </div>
@@ -443,30 +489,34 @@
                   :key="id_vid"
                   :virtualIndex="id_vid"
                   class="grid-conv-item"
-                >                  
+                >
                   <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
                     <div class="events-item">
                       <div class="img-part">
                         <iframe
-                            :src="vid.video_enlace"
-                            frameborder="0"
-                            style="border-radius: 5px"
-                          />
+                          :src="vid.video_enlace"
+                          frameborder="0"
+                          style="border-radius: 5px"
+                        />
                         <div class="event-price">
                           <span class="price">{{ tipo_conv }}</span>
                         </div>
                       </div>
                       <div class="content-part">
-                        <h3 class="title">{{ vid.video_titulo }}</h3>                        
+                        <h3 class="title">{{ vid.video_titulo }}</h3>
                         <div class="bottom-part d-flex align-items-center justify-content-center">
                           <div class="">
-                            <router-link
-                            :to="'/detalleVideo/' + vid.video_id"
-                              class="btn-conv"
-                              >
+                            <router-link 
+                            :to="{
+                                name: 'convocatoriadetalle',
+                                params: {
+                                  tipo: tipo_conv.toLowerCase(),
+                                  idconv: vid.video_id
+                                }
+                              }"
+                            class="btn-conv">
                               <span>Leer Mas</span>
-                              </router-link
-                            >
+                            </router-link>
                           </div>
                         </div>
                       </div>
@@ -480,7 +530,7 @@
           <!-- Course Section End -->
         </div>
         <div class="col-lg-3 col-md-12 md-mt-60">
-          <categories></categories>
+          <categories :tipo_cat="tipo_cat"></categories>
         </div>
       </div>
     </div>
@@ -490,7 +540,7 @@
 </template>
 <script>
 import Services from '@/services/Services'
-import Categories from '../../components/CategoriesComp.vue';
+import Categories from '../../components/CategoriesComp.vue'
 import { mapState } from 'vuex'
 
 import { ref } from 'vue'
@@ -508,6 +558,7 @@ import VuePdfEmbed from 'vue-pdf-embed'
 
 // import Swiper core and required modules
 import { Pagination, Navigation, Virtual } from 'swiper'
+import SinRegistros from '../../pages/SinRegistros.vue'
 export default {
   name: 'ConvocatoriasView',
   data() {
@@ -520,14 +571,16 @@ export default {
       Publicaciones: [],
       Gacetas: [],
       Eventos: [],
-      Videos: []
+      Videos: [],
+      tipo_cat: 1
     }
   },
   components: {
     Swiper,
     SwiperSlide,
     VuePdfEmbed,
-    Categories
+    Categories,
+    SinRegistros
   },
   setup() {
     // Create array with 500 slides
@@ -778,15 +831,15 @@ export default {
 .grid-conv-item {
 }
 
-.title{
+.title {
   text-align: center;
   font-size: 1em !important;
 }
-.price{  
+.price {
   border-radius: 20px !important;
   background: var(--main-color) !important;
 }
-.event-date{
+.event-date {
   text-align: center;
 }
 .breadcrumbs-img img {
@@ -841,65 +894,64 @@ export default {
 
 /* =========================== Boton Convocatorias ================= */
 .btn-conv {
- position: relative;
- display: flex;
- justify-content: center;
- align-items: center;
- border-radius: 5px;
- background: var(--main-color-2);
- font-family: "Montserrat", sans-serif;
- box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
- overflow: hidden;
- border: none;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: var(--main-color-2);
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border: none;
 }
 
 .btn-conv:after {
- content: " ";
- width: 0%;
- height: 100%;
- background: var(--main-color);
- position: absolute;
- transition: all 0.4s ease-in-out;
- right: 0;
+  content: ' ';
+  width: 0%;
+  height: 100%;
+  background: var(--main-color);
+  position: absolute;
+  transition: all 0.4s ease-in-out;
+  right: 0;
 }
 
 .btn-conv:hover::after {
- right: auto;
- left: 0;
- width: 100%;
+  right: auto;
+  left: 0;
+  width: 100%;
 }
 
 .btn-conv span {
- text-align: center;
- text-decoration: none;
- width: 100%;
- padding: 10px 20px;
- color: #fff;
- font-size: 1em;
- font-weight: 700;
- letter-spacing: 0.1em;
- z-index: 20;
- transition: all 0.3s ease-in-out;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  z-index: 20;
+  transition: all 0.3s ease-in-out;
 }
 
 .btn-conv:hover span {
- color: #fff;
- animation: scaleUp 0.3s ease-in-out;
+  color: #fff;
+  animation: scaleUp 0.3s ease-in-out;
 }
 
 @keyframes scaleUp {
- 0% {
-  transform: scale(1);
- }
+  0% {
+    transform: scale(1);
+  }
 
- 50% {
-  transform: scale(0.95);
- }
+  50% {
+    transform: scale(0.95);
+  }
 
- 100% {
-  transform: scale(1);
- }
+  100% {
+    transform: scale(1);
+  }
 }
-
 </style>
 >

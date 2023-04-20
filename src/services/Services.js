@@ -39,24 +39,48 @@ function getServiciosAll(){
   return Api().get('/api/ServicioAll/' + import.meta.env.VITE_VUE_APP_ID_CARRERA)
 }
 
+function getServicio(id){
+  return Api().get('/api/Servicio/' + id)
+}
+
 function getOfertasAll(){
   return Api().get('/api/OfertasAcademicasAll/' + import.meta.env.VITE_VUE_APP_ID_CARRERA)
+}
+
+function getOferta(id){
+  return Api().get('/api/OfertasAcademicas/' +id)
 }
 
 function getPublicaciones(){
   return Api().get('/api/publicacionesAll/'+ import.meta.env.VITE_VUE_APP_ID_INSTITUCION)
 }
 
+function getPublicacion(id){
+  return Api().get('/api/publicaciones/'+ id)
+}
+
 function getGacetaAll(){
   return Api().get('/api/gacetaunivAll/' + import.meta.env.VITE_VUE_APP_ID_INSTITUCION)
+}
+
+function getGaceta(id){
+  return Api().get('/api/gacetauniv/' + id)
 }
 
 function getEventos(){
   return Api().get('/api/eventoAll/' + import.meta.env.VITE_VUE_APP_ID_INSTITUCION)
 }
 
+function getEvento(id){
+  return Api().get('/api/evento/' + id)
+}
+
 function getVideos(){
   return Api().get('/api/VideosAll/' + import.meta.env.VITE_VUE_APP_ID_INSTITUCION)
+}
+
+function getVideo(id){
+  return Api().get('/api/Videos/' + id)
 }
 
 //Convocatorias
@@ -77,14 +101,27 @@ export default {
   //Home View
   getConvocatoriasAll,
   getConvocatoria,
+
   getCursosAll,
   getCurso,
+
   getServiciosAll,
+  getServicio,
+
   getOfertasAll,
+  getOferta,
+
   getPublicaciones,
+  getPublicacion,
+  
   getGacetaAll,
+  getGaceta,
+
   getEventos,
+  getEvento,
+
   getVideos,
+  getVideo,
   //Convocatorias View
   getTipoConvocatoria,
   getTipoCurso 

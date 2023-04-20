@@ -9,10 +9,15 @@
       <div class="breadcrumbs-text white-color">
         <h1 class="page-title">Events Details</h1>
         <ul>
-          <li>
-            <router-link :to="{ name : 'home' }">Home</router-link>
-          </li>
-          <li class="active">{{ tipo_conv }}</li>
+          <router-link :to="{ name: 'home' }">
+            <button class="btn-page mr-40">
+              Home
+            </button>
+          </router-link> 
+          <!--<li class="active tipo_text">{{ tipo_conv.toUpperCase() }}</li>-->
+          <button class="btn-page">
+            {{ tipo_conv.toUpperCase() }}
+          </button>
         </ul>
       </div>
     </div>
@@ -22,7 +27,7 @@
     <section class="sc-course-details pt-120 pb-70 md-pt-80 md-pb-40">
       <div class="container">
         <div class="row clearfix">
-          <!-- Content Column -->
+          <!-- Convocatorias Avisos Comunicados -->
           <div class="col-lg-8 md-mb-60" 
           v-if="
           tipo_conv.toLowerCase() == 'convocatorias' ||
@@ -66,29 +71,154 @@
                     >Join Now <i class="flaticon flaticon-right-arrow"></i>
                   </a>-->
                 </div>
-                <div class="share-icons">
+                <!--<div class="share-icons">
                   <span>Comparte en tus redes sociales:</span>
                   <a href="#"><i class="fa fa-facebook"></i></a>
                   <a href="#"><i class="fa fa-twitter"></i></a>
                   <a href="#"><i class="fa fa-google"></i></a>
                   <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                </div>-->
+              </div>
+            </div>
+          </div>
+
+          <!-- Cursos Seminarios -->
+          <div class="col-lg-8 md-mb-60" 
+          v-if="
+          tipo_conv.toLowerCase() == 'seminarios' ||
+          tipo_conv.toLowerCase() == 'cursos' 
+          "
+          >
+            <!-- Intro Info Tabs-->
+            <div class="intro-info-tabs">
+              <div class="post-img">
+                <img :src="url_api + '/Cursos/' + this.Curso.det_img_portada" alt="img" />
+              </div>
+              <h3>{{ this.Curso.det_titulo }}</h3>
+              <div class="event-meta d-flex align-items-center">
+                <div class="event-date">
+                  <i class="fa fa-calendar"></i>
+                  Fecha de inicio
+                  <span>{{ dmy(this.Curso.det_fecha_ini) }}</span>
+                </div>                
+                <div class="event-location">
+                    <i class="fa fa-calendar"></i>
+                  Fecha final
+                  <span>{{ dmy(this.Curso.det_fecha_fin) }}</span>
                 </div>
+              </div>
+              <div class="desc mt-20 mb-30" v-html="this.Curso.det_descripcion">                                
+              </div>
+              <div class="desc mt-20 mb-30">
+                <ul>
+                  <li><p><b>Costo del Curso en general : </b> {{ this.Curso.det_costo }} Bs.</p></li>
+                  <li><p><b>Costo del Curso para extrangeros : </b> {{ this.Curso.det_costo_ext }} Bs.</p></li>
+                  <li><p><b>Costo del Curso para docentes : </b> {{ this.Curso.det_costo_profe }} Bs.</p></li>
+                  <li><p><b>Cupo limitado para : </b> {{ this.Curso.det_cupo_max }} Personas</p></li>
+                  <li><p><b>Cargar Horaria : </b> {{ this.Curso.det_carga_horaria }} Hrs.</p></li>
+                  <li><p><b>Lugar del Curso : </b> {{ this.Curso.det_lugar_curso }}</p></li>
+                  <li><p><b>Modalidad : </b> {{ this.Curso.det_modalidad }}</p></li>
+                  <li><p><b>Enlace de grupo de WhatsApp : </b> <a href="{{ this.Curso.det_grupo_whatssap }}">Enlace del curso</a></p></li>                
+                  <li><p><b>Costo del Curso: </b> {{ this.Curso.det_costo }} Bs.</p></li>
+                </ul>
+              </div>
+
+              <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>              
+              <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
+              <div class="event-share d-flex align-items-center justify-content-between mt-20">
+                <div
+                  class="btn-part wow fadeInUp"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2000ms"
+                >
+                  <!--<a class="readon" href="about.html"
+                    >Join Now <i class="flaticon flaticon-right-arrow"></i>
+                  </a>-->
+                </div>
+                <!--<div class="share-icons">
+                  <span>Comparte en tus redes sociales:</span>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-google"></i></a>
+                  <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                </div>-->
+              </div>
+            </div>
+          </div>
+
+          <!-- Eventos -->
+          <div class="col-lg-8 md-mb-60" 
+          v-if="
+          tipo_conv.toLowerCase() == 'eventos'          
+          "
+          >
+            <!-- Intro Info Tabs-->
+            <div class="intro-info-tabs">
+              <div class="post-img">
+                <img :src="url_api + '/Convocatorias/' + this.Evento.evento_imagen" alt="img" />
+              </div>
+              <h3>{{ this.Evento.evento_titulo }}</h3>
+              <div class="event-meta d-flex align-items-center">
+                <div class="event-date">
+                  <i class="fa fa-calendar"></i>
+                  Fecha de la actividad 
+                  <span>{{ dmy(this.Evento.evento_fecha) }}</span>
+                </div>
+                <!--<div class="event-time">
+                  <i class="fa fa-clock-o"></i>
+                  <span>12.30AM-05.30PM</span>
+                </div>-->
+                <!--<div class="event-location">
+                    <i class="fa fa-calendar"></i>
+                  Lugar
+                  <span>{{ dmy(this.Evento.evento_lugar) }}</span>
+                </div>-->
+              </div>
+              <div class="desc mt-20 mb-30" v-html="this.Evento.evento_descripcion">                
+              </div>
+              <div class="desc mt-20 mb-30">  
+                <ul>
+                  <li><b>Fecha del Evento</b>: {{ Evento.evento_fecha }}</li>
+                  <li><b>Lugar del Evento</b>: {{ Evento.evento_lugar }}</li>
+                  <li><b>Hora del Evento</b>: {{ Evento.evento_hora }}</li>
+                  
+                </ul>
+              </div>
+              <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
+              <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
+              <div class="event-share d-flex align-items-center justify-content-between mt-20">
+                <div
+                  class="btn-part wow fadeInUp"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2000ms"
+                >
+                  <!--<a class="readon" href="about.html"
+                    >Join Now <i class="flaticon flaticon-right-arrow"></i>
+                  </a>-->
+                </div>
+                <!--<div class="share-icons">
+                  <span>Comparte en tus redes sociales:</span>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-google"></i></a>
+                  <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                </div>-->
               </div>
             </div>
           </div>
 
           <!-- Course Sidebar Start -->
           <div class="course-sidebar-area col-lg-4">
-            <categories></categories>
+            <categories :tipo_cat="tipo_cat"></categories>
           </div>
           <!-- Course Sidebar End -->
         </div>
       </div>
     </section>
-    <!-- End intro Courses -->
+    <!-- End intro Courses -->    
 
     <!-- Course Section Start -->
-    <div id="sc-event-section" class="sc-event-section related-course pb-105 md-pb-60">
+    <!--<div id="sc-event-section" class="sc-event-section related-course pb-105 md-pb-60">
       <div class="container">
         <div class="align-items-center mb-30 md-mb-10">
           <div class="sec-title">
@@ -201,7 +331,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <!-- Course Section End -->
   </div>
   <!-- Main content End -->
@@ -223,7 +353,8 @@ export default {
       Publicacion: [],
       Gaceta: [],
       Evento: [],
-      Video: []
+      Video: [],
+      tipo_cat: 2,
     }
   },
   components:{
@@ -252,28 +383,28 @@ export default {
               await this.getConvocatoria(id)
               break
             case 'cursos':
-              await this.getCursosAll()
+              await this.getCurso(id)
               break
             case 'seminarios':
-              await this.getCursosAll()
+              await this.getCurso(id)
               break
             case 'eventos':
-              await this.getEventosAll()
+              await this.getEvento(id)
               break
             case 'gacetas':
-              await this.getGacetasAll()
+              await this.getGaceta(id)
               break
             case 'ofertasacademicas':
-              await this.getOfertasAll()
+              await this.getOferta(id)
               break
             case 'publicaciones':
-              await this.getPublicacionesAll()
+              await this.getPublicacion(id)
               break
             case 'servicios':
-              await this.getServiciosAll()
+              await this.getServicio(id)
               break
             case 'videos':
-              await this.getVideosAll()
+              await this.getVideo(id)
               break
             default:
               console.log('error de carga')
@@ -289,106 +420,76 @@ export default {
       try {
         const response = await Services.getConvocatoria(id)
         this.Convocatoria = response.data.Descripcion        
-        console.log(this.Convocatoria)
       } catch (e) {
         console.log(e)
       }
     },
 
     //optenemos todos los registros de las cursos de la tipo this.tipo
-    async getCursosAll() {
+    async getCurso(id) {
       try {
-        const response = await Services.getCursosAll()
-        this.Cursos = []
-        //console.log('cursos')
-        //console.log(response)
-        response.data.forEach((conv) => {
-          if (
-            conv.tipo_curso_otro.tipo_conv_curso_estado == '1' &&
-            conv.tipo_curso_otro.tipo_conv_curso_nombre == this.tipo_conv.toUpperCase() &&
-            conv.iddetalle_cursos_academicos == this.id
-          ) {
-            this.Cursos.push(conv)
-          }
-        })
+        const response = await Services.getCurso(id)        
+        this.Curso = response.data.Descripcion   
       } catch (e) {
         console.log(e)
       }
     },
 
     //optenemos todos los registros de las eventos de la tipo this.tipo
-    async getEventosAll() {
+    async getEvento(id) {
       try {
-        const response = await Services.getEventos()
-        this.Eventos = []
-        response.data.forEach((conv) => {
-          this.Eventos.push(conv)
-        })
+        const response = await Services.getEvento(id)
+        this.Evento = response.data.Descripcion
       } catch (e) {
         console.log(e)
       }
     },
 
     //optenemos todos los registros de las servicios de la tipo this.tipo
-    async getServiciosAll() {
+    async getServicio(id) {
       try {
-        const response = await Services.getServiciosAll()
-        this.Servicios = []
-        response.data.forEach((conv) => {
-          this.Servicios.push(conv)
-        })
+        const response = await Services.getServicio(id)
+        this.Servicio = response.data.Descripcion
       } catch (e) {
         console.log(e)
       }
     },
 
     //optenemos todos los registros de las gacetas de la tipo this.tipo
-    async getGacetasAll() {
+    async getGaceta(id) {
       try {
-        const response = await Services.getGacetaAll()
-        this.Gacetas = []
-        response.data.forEach((conv) => {
-          this.Gacetas.push(conv)
-        })
+        const response = await Services.getGaceta(id)
+        this.Gaceta = response.data.Descripcion
       } catch (e) {
         console.log(e)
       }
     },
 
     //optenemos todos los registros de las gacetas de la tipo this.tipo
-    async getOfertasAll() {
+    async getOferta(id) {
       try {
-        const response = await Services.getOfertasAll()
-        this.OfertasAcademicas = []
-        response.data.forEach((conv) => {
-          this.OfertasAcademicas.push(conv)
-        })
+        const response = await Services.getOferta(id)
+        this.OfertaAcademica = response.data.Descripcion
       } catch (e) {
         console.log(e)
       }
     },
 
     //optenemos todos los registros de las publicaciones de la tipo this.tipo
-    async getPublicacionesAll() {
+    async getPublicacion(id) {
       try {
-        const response = await Services.getPublicaciones()
-        this.Publicaciones = []
-        response.data.forEach((conv) => {
-          this.Publicaciones.push(conv)
-        })
+        const response = await Services.getPublicacion(id)
+        this.Publicacion = response.data.Descripcion
       } catch (e) {
         console.log(e)
       }
     },
 
     //optenemos todos los registros de las videos de la tipo this.tipo
-    async getVideosAll() {
+    async getVideo(id) {
       try {
-        const response = await Services.getVideos()
-        this.Videos = []
-        response.data.forEach((conv) => {
-          this.Videos.push(conv)
-        })
+        const response = await Services.getVideo(id)
+        this.Video = response.data.Descripcion
       } catch (e) {
         console.log(e)
       }
@@ -422,3 +523,36 @@ export default {
   },
 }
 </script>
+<style scoped>
+.btn-page {
+  padding: 0.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000 !important;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+.btn-page a {
+  color: #000;
+}
+.btn-page a:hover {
+  color: #fff;
+}
+.btn-page:hover {
+  background-color: var(--main-color);
+  box-shadow: 0px 15px 20px var(--main-color-2);
+  color: #fff !important;
+  transform: translateY(-7px);
+}
+
+.btn-page:active {
+  transform: translateY(-1px);
+}
+</style>

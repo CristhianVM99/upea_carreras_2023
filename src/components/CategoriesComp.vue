@@ -1,5 +1,6 @@
 <template>
-  <div class="widget-area">
+  <!-- CONVOCATOARIAS VIEW -->
+  <div class="widget-area" v-if="tipo_cat == 1">
     <div class="search-widget mb-50">
       <div class="search-wrap">
         <input type="search" placeholder="Buscar..." name="" class="search-input" />
@@ -87,8 +88,8 @@
                 tipo: 'eventos'
               }
             }"
-            >EVENTOS <span>{{ Eventos.length }}</span> </router-link
-          >
+            >EVENTOS <span>{{ Eventos.length }}</span>
+          </router-link>
         </li>
         <li>
           <router-link
@@ -98,24 +99,122 @@
                 tipo: 'videos'
               }
             }"
-            >VIDEOS <span>{{ Videos.length }}</span> </router-link
-          >
+            >VIDEOS <span>{{ Videos.length }}</span>
+          </router-link>
         </li>
       </ul>
     </div>
+  </div>
+  <!-- CONVOCATORIAS DETALLE -->
+  <div class="inner-column" v-if="tipo_cat == 2">
+    <div class="search-widget mb-50">
+      <div class="search-wrap">
+        <input type="search" placeholder="Searching..." name="s" class="search-input" value="" />
+        <button type="submit" value="Search">
+          <i class="flaticon flaticon-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+    <div class="course-features-info">
+      <h4 class="course-title">Category</h4>
+      <ul>
+        <li class="lectures-feature" v-for="(conv, id_conv) of this.MenuConvocatorias" :key="id_conv">
+          <router-link
+          :to="{
+              name: 'convocatorias',
+              params: {
+                tipo: conv.tipo_conv_comun_titulo.toLowerCase()
+              }
+            }"
+          ><span class="label">{{ conv.tipo_conv_comun_titulo.toUpperCase() }}</span></router-link>
+          <span class="value">{{ contarConv(conv.tipo_conv_comun_titulo) }}</span>
+        </li>
 
-    <!--<div class="posts-tags mb-50 md-mb-0">
-              <h3 class="widget-title">Tags</h3>
-              <ul>
-                <li><a href="#">Education</a></li>
-                <li><a href="#">Civil Engineering</a></li>
-                <li><a href="#">Learning</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">Instructor</a></li>
-                <li><a href="#">Training</a></li>
-              </ul>
-            </div>
-            -->
+        <li class="duration-feature" v-for="(cur, id_cur) of MenuCursos" :key="id_cur">
+          <router-link
+          :to="{
+              name: 'cursos',
+              params: {
+                tipo: cur.tipo_conv_curso_nombre.toLowerCase()
+              }
+            }"
+          ><span class="label">{{ cur.tipo_conv_curso_nombre.toUpperCase() }}</span></router-link>
+          <span class="value">{{ contarCur(cur.tipo_conv_curso_nombre) }}</span>
+        </li>
+
+        <li class="quizzes-feature">
+          <router-link 
+          :to="{
+              name: 'servicios',
+              params: {
+                tipo: 'servicios'
+              }
+            }"
+          ><span class="label">SERVICIOS</span></router-link>
+          <span class="value">{{ Servicios.length }}</span>
+        </li>      
+
+        <li class="students-feature">
+          <router-link
+          :to="{
+              name: 'ofertasacademicas',
+              params: {
+                tipo: 'ofertasacademicas'
+              }
+            }"
+          ><span class="label">OFERTAS ACADEMICAS</span></router-link>
+          <span class="value">{{ Ofertas.length }}</span>
+        </li>
+
+        <li class="assessments-feature">
+          <router-link
+          :to="{
+              name: 'publicaciones',
+              params: {
+                tipo: 'publicaciones'
+              }
+            }"
+          ><span class="label">PUBLICACIONES</span></router-link>
+          <span class="value">{{ Publicaciones.length }}</span>
+        </li>
+
+        <li class="assessments-feature">
+          <router-link
+          :to="{
+              name: 'gacetas',
+              params: {
+                tipo: 'gacetas'
+              }
+            }"
+          ><span class="label">GACETAS</span></router-link>
+          <span class="value">{{ Gacetas.length }}</span>
+        </li>
+
+        <li class="assessments-feature">
+          <router-link
+          :to="{
+              name: 'eventos',
+              params: {
+                tipo: 'eventos'
+              }
+            }"
+          ><span class="label">EVENTOS</span></router-link>
+          <span class="value">{{ Eventos.length }}</span>
+        </li>
+
+        <li class="assessments-feature">
+          <router-link
+          :to="{
+              name: 'videos',
+              params: {
+                tipo: 'videos'
+              }
+            }"
+          ><span class="label">VIDEOS</span></router-link>
+          <span class="value">{{ Videos.length }}</span>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>
@@ -123,6 +222,11 @@ import { mapState } from 'vuex'
 import Services from '@/services/Services'
 export default {
   name: 'AppLayout',
+  props: {
+    tipo_cat: {
+      type: Number
+    }
+  },
   data() {
     return {
       Convocatorias: [],
@@ -135,6 +239,7 @@ export default {
       Videos: []
     }
   },
+
   computed: {
     ...mapState([
       'url_api',
@@ -216,21 +321,21 @@ export default {
     },
     contarConv(tipo) {
       let count = 0
-        this.Convocatorias.forEach((conv) => {          
-          if (conv.tipo_conv_comun.tipo_conv_comun_titulo == tipo) {
-            count++
-          }
-        })
-        return count
+      this.Convocatorias.forEach((conv) => {
+        if (conv.tipo_conv_comun.tipo_conv_comun_titulo == tipo) {
+          count++
+        }
+      })
+      return count
     },
     contarCur(tipo) {
       let count = 0
-        this.Cursos.forEach((cur) => {
-          if (cur.tipo_curso_otro.tipo_conv_curso_nombre == tipo) {
-            count++
-          }
-        })
-        return count
+      this.Cursos.forEach((cur) => {
+        if (cur.tipo_curso_otro.tipo_conv_curso_nombre == tipo) {
+          count++
+        }
+      })
+      return count
     },
     //metodo que ejecuta todos los demas
     createdComponent() {
@@ -242,10 +347,11 @@ export default {
       this.getGacetaAll()
       this.getEventos()
       this.getVideos()
-    },
+    }
   },
-  created(){
+  created() {
     this.createdComponent()
+    console.log('el tipo es: ' + this.tipo_cat)
   }
 }
 </script>
