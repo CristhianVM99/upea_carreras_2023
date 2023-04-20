@@ -117,6 +117,7 @@ body {
   line-height: 28px;
   font-weight: 400;
   overflow-x: hidden;
+  background: #fff;
 }
 img {
   max-width: 100%;
@@ -816,7 +817,7 @@ body .modal-backdrop {
 }
 .sc-header-section .sc-header .menu-area {
   transition: all 0.3s ease;
-  background: #ffffff;
+  background: #fff;
 }
 .sc-header-section .sc-header .menu-area .logo-area {
   position: relative;

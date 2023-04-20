@@ -32,8 +32,9 @@
     <div id="sc-banner" class="sc-banner banner-style3 upposition-relative bg-principal-view">
         <div class="container">
           <div class="row">
-            <div class="col-lg-6">
-              <div class="banner-content">
+            <div class="col-lg-6 box-p">
+              <span></span>
+              <div class="banner-content content-p">
                 <div
                   class="sub-title wow position-relative mb-8 fadeInUp"
                   data-wow-delay="300ms"
@@ -54,6 +55,7 @@
                   class="banner-des mb-35 wow fadeInUp inst-objetivos"
                   data-wow-delay="300ms"
                   data-wow-duration="3000ms"
+                  v-if="(Institucion.institucion_objetivos!=null)"
                   v-html="Institucion.institucion_objetivos"
                 ></h5>
                 <!--<form class="newsletter-form mt-40">
@@ -121,7 +123,7 @@
     <div class="sc-blog-single pt-120 pb-120 md-pt-80 md-pb-80">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8">
+          <div class="col-lg-9">
             <div class="blog-deatails">
               <div class="post-img">
                 <iframe
@@ -158,7 +160,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-12 md-mt-60">
+          <div class="col-lg-3 col-md-12 md-mt-60">
             <div class="widget-area">
               <div class="widget-archives mb-50">
                 <h3 class="widget-title">Links Externos</h3>
@@ -181,7 +183,7 @@
               </div>
 
               <div class="recent-posts-widget mb-50">
-                <h3 class="widget-title">Mision</h3>
+                <h3 class="widget-title">Misión</h3>
                 <div class="show-featured">
                   <div class="post-desc">
                     <p v-html="Institucion.institucion_mision"></p>
@@ -190,7 +192,7 @@
               </div>
 
               <div class="recent-posts-widget mb-50">
-                <h3 class="widget-title">Vision</h3>
+                <h3 class="widget-title">Visión</h3>
                 <div class="show-featured">
                   <div class="post-desc">
                     <p v-html="Institucion.institucion_vision"></p>
@@ -588,7 +590,6 @@
               <div class="card-description">
                 <h3 class="title">
                   {{ latestConvocatoria.con_titulo.toUpperCase() }}
-                  <p>{{ latestConvocatoria.idconvocatorias }}</p>
                 </h3>
                 <ul class="meta-part">
                   <li class="event-date">
@@ -1109,14 +1110,8 @@ export default {
 }
 
 .inst-objetivos {
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(1.5px);
-  -webkit-backdrop-filter: blur(1.5px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 10px 15px;
-  color: #fff;
+  
+  
 }
 
 .inst-nombre {
@@ -1124,7 +1119,7 @@ export default {
 }
 
 .inst-nombre::first-letter {
-  color: var(--main-color);
+  color: var(--main-color-2);
 }
 /* ============================== diseño de los links externos  ====================== */
 .links_externos {
@@ -1500,7 +1495,17 @@ export default {
 
 /*================== card de comunicados cursos etc. ==============*/
 .txt-reciente{
-  color: red;
+  color: var(--main-color);
+  font-size: 1.5em;
+  text-transform: uppercase;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.txt-reciente::after{
+  content: '...';
+}
+
+.txt-reciente::first-letter{
+  font-size: 1.7em;
 }
 
 .card-content {
@@ -1508,7 +1513,7 @@ export default {
 }
 .card {
   width: 100%;
-  height: 70vh;
+  height: 50vh;
   position: relative;
   transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
   border-radius: 16px;
@@ -1567,7 +1572,7 @@ export default {
 
 /* Hover states */
 .card:hover .card-description {
-  transform: translateY(-70vh);
+  transform: translateY(-49vh);
 }
 /* =========================== Boton Convocatorias ================= */
 .btn-conv {
@@ -1660,5 +1665,142 @@ export default {
 
 .map-green {
   background-color: #00ca4e;
+}
+/*=========================== PRINCIPAL PAGINA =================== */
+.box-p {
+ position: relative;
+ width: 700px;
+ height: 650px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ transition: 0.5s;
+ z-index: 1;
+}
+
+.box-p::before {
+ content: ' ';
+ position: absolute;
+ top: 0;
+ left: 50px;
+ width: 50%;
+ height: 100%;
+ text-decoration: none;
+ background: #fff;
+ border-radius: 8px;
+ transform: skewX(15deg);
+ transition: 0.5s;
+}
+
+.box-p::after {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 50;
+ width: 50%;
+ height: 100%;
+ background: #fff;
+ border-radius: 8px;
+ transform: skewX(15deg);
+ transition: 0.5s;
+ filter: blur(30px);
+}
+
+.box-p:hover:before,
+.box-p:hover:after {
+ transform: skewX(0deg) scaleX(1.3);
+}
+
+.box-p:before,
+.box-p:after {
+ background: linear-gradient(315deg, var(--main-color-2), var(--main-color));
+
+}
+
+.box-p span {
+ display: block;
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ z-index: 5;
+ pointer-events: none;
+}
+
+.box-p span::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 0;
+ height: 0;
+ border-radius: 8px;
+ background: rgba(255, 255, 255, 0.1);
+ backdrop-filter: blur(10px);
+ opacity: 0;
+ transition: 0.1s;
+ animation: animate 2s ease-in-out infinite;
+ box-shadow: 0 5px 15px rgba(0,0,0,0.08)
+}
+
+.box-p span::before {
+ top: -40px;
+ left: 40px;
+ width: 50px;
+ height: 50px;
+ opacity: 1;
+}
+
+.box-p span::after {
+ content: '';
+ position: absolute;
+ bottom: 0;
+ right: 0;
+ width: 100%;
+ height: 100%;
+ border-radius: 8px;
+ background: rgba(255, 255, 255, 0.1);
+ backdrop-filter: blur(10px);
+ opacity: 0;
+ transition: 0.5s;
+ box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+ animation-delay: -1s;
+}
+
+.box-p span:after {
+ bottom: -40px;
+ right: 40px;
+ width: 50px;
+ height: 50px;
+ opacity: 1;
+}
+
+.box-p .content-p {
+ position: relative;
+ width: 690px;
+ height: 500px;
+ padding: 20px 40px;
+ background: rgba(255, 255, 255, 0.05);
+ backdrop-filter: blur(10px);
+ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+ border-radius: 8px;
+ z-index: 1;
+ transform: 0.5s;
+ color: #fff;
+ display: flex;
+ justify-content: center;
+ align-items: start;
+ flex-direction: column;
+}
+
+.box-p .content-p h2 {
+ font-size: 20px;
+ color: #fff;
+ margin-bottom: 10px;
+}
+.box-p .content-p h5 {
+  color: #ffffff;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
 }
 </style>
