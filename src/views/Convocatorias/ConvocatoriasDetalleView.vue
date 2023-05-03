@@ -155,7 +155,7 @@
             <!-- Intro Info Tabs-->
             <div class="intro-info-tabs">
               <div class="post-img">
-                <img :src="url_api + '/Convocatorias/' + this.Evento.evento_imagen" alt="img" />
+                <img :src="url_api + '/Eventos/' + this.Evento.evento_imagen" alt="img" />
               </div>
               <h3>{{ this.Evento.evento_titulo }}</h3>
               <div class="event-meta d-flex align-items-center">
@@ -182,6 +182,256 @@
                   <li><b>Lugar del Evento</b>: {{ Evento.evento_lugar }}</li>
                   <li><b>Hora del Evento</b>: {{ Evento.evento_hora }}</li>
                   
+                </ul>
+              </div>
+              <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
+              <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
+              <div class="event-share d-flex align-items-center justify-content-between mt-20">
+                <div
+                  class="btn-part wow fadeInUp"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2000ms"
+                >
+                  <!--<a class="readon" href="about.html"
+                    >Join Now <i class="flaticon flaticon-right-arrow"></i>
+                  </a>-->
+                </div>
+                <!--<div class="share-icons">
+                  <span>Comparte en tus redes sociales:</span>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-google"></i></a>
+                  <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                </div>-->
+              </div>
+            </div>
+          </div>
+
+          <!-- Videos -->
+          <div class="col-lg-8 md-mb-60" 
+          v-if="
+          tipo_conv.toLowerCase() == 'videos'          
+          "
+          >
+            <!-- Intro Info Tabs-->
+            <div class="intro-info-tabs">
+              <div class="post-img">
+                <iframe
+                          :src="this.Video.video_enlace"
+                          frameborder="0"
+                          style="border-radius: 5px"
+                />
+              </div>
+              <h3>{{ this.Video.video_titulo }}</h3>              
+              <div class="desc mt-20 mb-30" v-html="this.Video.video_breve_descripcion">                
+              </div>              
+              <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
+              <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
+              <div class="event-share d-flex align-items-center justify-content-between mt-20">
+                <div
+                  class="btn-part wow fadeInUp"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2000ms"
+                >
+                  <!--<a class="readon" href="about.html"
+                    >Join Now <i class="flaticon flaticon-right-arrow"></i>
+                  </a>-->
+                </div>
+                <!--<div class="share-icons">
+                  <span>Comparte en tus redes sociales:</span>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-google"></i></a>
+                  <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                </div>-->
+              </div>
+            </div>
+          </div>
+
+          <!-- Gacetas -->
+          <div class="col-lg-8 md-mb-60" 
+          v-if="
+          tipo_conv.toLowerCase() == 'gacetas'          
+          "
+          >
+            <!-- Intro Info Tabs-->
+            <div class="intro-info-tabs">
+              <div class="">
+                <vue-pdf-embed
+                          :source="url_api + '/Gaceta/' + this.Gaceta.gaceta_documento"
+                          :page="1"
+                />
+              </div>
+              <h3>{{ this.Gaceta.gaceta_titulo }}</h3>
+              <div class="event-meta d-flex align-items-center">
+                <div class="event-date">
+                  <i class="fa fa-calendar"></i>
+                  Fecha de la actividad 
+                  <span>{{ dmy(this.Gaceta.gaceta_fecha) }}</span>
+                </div>                
+              </div>                         
+              <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
+              <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
+              <div class="event-share d-flex align-items-center justify-content-between mt-20">
+                <div
+                  class="btn-part wow fadeInUp"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2000ms"
+                >
+                  <!--<a class="readon" href="about.html"
+                    >Join Now <i class="flaticon flaticon-right-arrow"></i>
+                  </a>-->
+                </div>
+                <!--<div class="share-icons">
+                  <span>Comparte en tus redes sociales:</span>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-google"></i></a>
+                  <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                </div>-->
+              </div>
+            </div>
+          </div>
+
+          <!-- Publicaciones -->
+          <div class="col-lg-8 md-mb-60" 
+          v-if="
+          tipo_conv.toLowerCase() == 'publicaciones'          
+          "
+          >
+            <!-- Intro Info Tabs-->
+            <div class="intro-info-tabs">
+              <div class="post-img">
+                <img
+                  :src="url_api + '/Publicaciones/' + this.Publicacion.publicaciones_imagen"
+                  alt="img"
+                />
+              </div>
+              <h3>{{ this.Publicacion.publicaciones_titulo }}</h3>
+              <div class="event-meta d-flex align-items-center">
+                <div class="event-date">
+                  <i class="fa fa-calendar"></i>
+                  Fecha de la actividad 
+                  <span>{{ dmy(this.Publicacion.publicaciones_fecha) }}</span>
+                </div>                
+              </div>              
+              <div class="desc mt-20 mb-30">  
+                <ul>
+                  <p><b>Autor: </b>{{ this.Publicacion.publicaciones_autor }}</p>
+                </ul>
+              </div>
+              <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
+              <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
+              <div class="event-share d-flex align-items-center justify-content-between mt-20">
+                <div
+                  class="btn-part wow fadeInUp"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2000ms"
+                >
+                  <!--<a class="readon" href="about.html"
+                    >Join Now <i class="flaticon flaticon-right-arrow"></i>
+                  </a>-->
+                </div>
+                <!--<div class="share-icons">
+                  <span>Comparte en tus redes sociales:</span>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-google"></i></a>
+                  <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                </div>-->
+              </div>
+            </div>
+          </div>
+
+          <!-- Ofertas Academicas -->
+          <div class="col-lg-8 md-mb-60" 
+          v-if="
+          tipo_conv.toLowerCase() == 'ofertasacademicas'          
+          "
+          >
+            <!-- Intro Info Tabs-->
+            <div class="intro-info-tabs">
+              <div class="post-img">
+                <img
+                  :src="url_api + '/Carrera/OfertasAcademicas/' + this.OfertaAcademica.ofertas_imagen"
+                  alt="img"
+                />
+              </div>
+              <h3>{{ this.OfertaAcademica.ofertas_titulo }}</h3>
+              <div class="event-meta d-flex align-items-center">
+                <div class="event-date">
+                  <i class="fa fa-calendar"></i>
+                  Fecha de Inicio 
+                  <span>{{ dmy(this.OfertaAcademica.ofertas_inscripciones_ini) }}</span>                  
+                </div>                
+                <div class="event-date">
+                  <i class="fa fa-calendar"></i>
+                  Fecha de Final
+                  <span>{{ dmy(this.OfertaAcademica.ofertas_inscripciones_fin) }}</span>                  
+                </div>                
+              </div>
+              <div class="desc mt-20 mb-30" v-html="this.OfertaAcademica.ofertas_descripcion">                
+              </div>
+              <div class="desc mt-20 mb-30">  
+                <ul>
+                  <li><b>Fecha de Examen</b>: {{ dmy(this.OfertaAcademica.ofertas_fecha_examen) }}</li>                                    
+                </ul>
+              </div>
+              <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
+              <iframe :src="Institucion.institucion_api_google_map" width="100%" height="500px"></iframe>
+              <div class="event-share d-flex align-items-center justify-content-between mt-20">
+                <div
+                  class="btn-part wow fadeInUp"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2000ms"
+                >
+                  <!--<a class="readon" href="about.html"
+                    >Join Now <i class="flaticon flaticon-right-arrow"></i>
+                  </a>-->
+                </div>
+                <!--<div class="share-icons">
+                  <span>Comparte en tus redes sociales:</span>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-google"></i></a>
+                  <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                </div>-->
+              </div>
+            </div>
+          </div>
+
+           <!-- Servicios -->
+           <div class="col-lg-8 md-mb-60" 
+          v-if="
+          tipo_conv.toLowerCase() == 'servicios'          
+          "
+          >
+            <!-- Intro Info Tabs-->
+            <div class="intro-info-tabs">
+              <div class="post-img">
+                <img
+                          :src="url_api + '/Carrera/Servicios/' + this.Servicio.serv_imagen"
+                          alt="img"
+                        />
+              </div>
+              <h3>{{ this.Servicio.serv_nombre}}</h3>
+              <div class="event-meta d-flex align-items-center">
+                <div class="event-date">
+                  <i class="fa fa-calendar"></i>
+                  Fecha de Registro
+                  <span>{{ dmy(this.Servicio.serv_registro) }}</span>                  
+                </div>                
+                <div class="event-date">
+                  <i class="fa fa-calendar"></i>
+                  Fecha de Actualizacion
+                  <span>{{ dmy(this.Servicio.serv_update) }}</span>                  
+                </div>
+              </div>
+              <div class="desc mt-20 mb-30" v-html="this.Servicio.serv_descripcion">                
+              </div>
+              <div class="desc mt-20 mb-30">  
+                <ul>
+                  <li><b>Celular</b>: {{ this.Servicio.serv_nro_celular }}</li>                                    
                 </ul>
               </div>
               <h4><i class="fa fa-map-marker"></i> {{ Institucion.institucion_direccion }}</h4>
@@ -340,6 +590,9 @@
 import Categories from '../../components/CategoriesComp.vue';
 import Services from '@/services/Services'
 import { mapState } from 'vuex'
+import VuePdfEmbed from 'vue-pdf-embed'
+import LoadingPage from '../../components/LoadingComp.vue';
+
 export default {    
   name: 'ConvocatoriasDetalleView',
   data() {
@@ -358,7 +611,9 @@ export default {
     }
   },
   components:{
-    Categories
+    Categories,
+    VuePdfEmbed,
+    LoadingPage
   },
   computed: {
     ...mapState(['url_api','Institucion',])
@@ -387,7 +642,6 @@ export default {
               break
             case 'seminarios':
               await this.getCurso(id)
-              break
             case 'eventos':
               await this.getEvento(id)
               break
@@ -420,6 +674,7 @@ export default {
       try {
         const response = await Services.getConvocatoria(id)
         this.Convocatoria = response.data.Descripcion        
+        this.isLoad()
       } catch (e) {
         console.log(e)
       }
@@ -430,6 +685,7 @@ export default {
       try {
         const response = await Services.getCurso(id)        
         this.Curso = response.data.Descripcion   
+        this.isLoad()
       } catch (e) {
         console.log(e)
       }
@@ -440,6 +696,7 @@ export default {
       try {
         const response = await Services.getEvento(id)
         this.Evento = response.data.Descripcion
+        this.isLoad()
       } catch (e) {
         console.log(e)
       }
@@ -449,7 +706,8 @@ export default {
     async getServicio(id) {
       try {
         const response = await Services.getServicio(id)
-        this.Servicio = response.data.Descripcion
+        this.Servicio = response.data.Descripcion   
+        this.isLoad()     
       } catch (e) {
         console.log(e)
       }
@@ -460,6 +718,7 @@ export default {
       try {
         const response = await Services.getGaceta(id)
         this.Gaceta = response.data.Descripcion
+        this.isLoad()
       } catch (e) {
         console.log(e)
       }
@@ -470,6 +729,7 @@ export default {
       try {
         const response = await Services.getOferta(id)
         this.OfertaAcademica = response.data.Descripcion
+        this.isLoad()
       } catch (e) {
         console.log(e)
       }
@@ -480,6 +740,7 @@ export default {
       try {
         const response = await Services.getPublicacion(id)
         this.Publicacion = response.data.Descripcion
+        this.isLoad()
       } catch (e) {
         console.log(e)
       }
@@ -490,6 +751,7 @@ export default {
       try {
         const response = await Services.getVideo(id)
         this.Video = response.data.Descripcion
+        this.isLoad()
       } catch (e) {
         console.log(e)
       }
@@ -514,7 +776,12 @@ export default {
       let fechaCadena = fecha.substr(0, 10)
       let fechaArray = fechaCadena.split('-')
       return fechaArray[2] + ' de ' + meses[fechaArray[1] - 1] + ' de ' + fechaArray[0]
-    }
+    },
+
+    isLoad(){
+      var load = document.getElementById("loading");
+      load.style.display = "none";
+    },
   },
   created() {
     this.getDetalleConvocatoria(this.$route.params.idconv,this.$route.params.tipo)

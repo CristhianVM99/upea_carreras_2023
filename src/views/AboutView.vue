@@ -1,18 +1,25 @@
 <template>
+  <loading-page></loading-page>
   <!-- Main content Start -->
   <div class="main-content">
     <!-- Breadcrumbs Start -->
     <div class="sc-breadcrumbs breadcrumbs-overlay">
       <div class="breadcrumbs-img">
-        <img src="src/assets/images/breadcrumbs/1.jpg" alt="Breadcrumbs Image" />
+        <img src="../../../public/bgUpea.jpg" alt="Breadcrumbs Image" />
       </div>
       <div class="breadcrumbs-text white-color">
-        <h1 class="page-title">About Us</h1>
+        <h1 class="page-title">
+          Sobre Nosotros
+        </h1>
         <ul>
-          <li>
-            <a class="active" href="index.html">Home ></a>
-          </li>
-          <li class="active">About Us</li>
+          <router-link :to="{ name: 'home' }">
+            <button class="btn-page mr-40">
+              Home
+            </button>
+          </router-link>          
+          <button class="btn-page">
+            nosotros
+          </button>
         </ul>
       </div>
     </div>
@@ -28,10 +35,10 @@
           <div class="col-lg-5 md-mb-115">
             <div class="img-part position-relative">
               <img :src="url_api + '/InstitucionUpea/' + Institucion.institucion_logo" alt="img" />
-              <div class="about-experience text-center">
+              <!--<div class="about-experience text-center">
                 <span>22+</span>
                 Años de Experiencia
-              </div>
+              </div>-->
             </div>
           </div>
           <div class="col-lg-7 pl-90 md-pl-15">
@@ -183,6 +190,8 @@
 <script>
 import { mapState } from 'vuex'
 import Services from '@/services/Services'
+import LoadingPage from '../components/LoadingComp.vue'
+
 export default {
   name: 'AboutView',
   data() {
@@ -192,6 +201,9 @@ export default {
       Servicios: [],
       Ofertas: [],
     }
+  },
+  components:{
+    LoadingPage
   },
   computed: {
     ...mapState(['Institucion', 'url_api'])
@@ -233,12 +245,17 @@ export default {
         console.log(e)
       }
     },
+    isLoad(){
+      var load = document.getElementById("loading");
+      load.style.display = "none";
+    },
     //metodo que ejecuta los demas
-    createdComponent(){
-      this.getConvocatoriasAll()
-      this.getCursosAll()
-      this.getServiciosAll()
-      this.getOfertasAll()
+    async createdComponent(){
+      await this.getConvocatoriasAll()
+      await this.getCursosAll()
+      await this.getServiciosAll()
+      await this.getOfertasAll()
+      this.isLoad()
     }
   },
   created(){
@@ -246,3 +263,46 @@ export default {
   }
 }
 </script>
+<style>
+.breadcrumbs-img img {
+  height: 300px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.page-title {
+  text-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
+}
+/*==================== btn-page ============ */
+.btn-page {
+  padding: 0.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000 !important;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+.btn-page a {
+  color: #000;
+}
+.btn-page a:hover {
+  color: #fff;
+}
+.btn-page:hover {
+  background-color: var(--main-color);
+  box-shadow: 0px 15px 20px var(--main-color-2);
+  color: #fff !important;
+  transform: translateY(-7px);
+}
+
+.btn-page:active {
+  transform: translateY(-1px);
+}
+</style>

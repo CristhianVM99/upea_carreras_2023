@@ -85,15 +85,8 @@
                           <li v-for="(area, id_area) in MenuAreasyCarreras" :key="id_area">
                             <a href="#">{{ area.area.toLowerCase() }}</a>
                             <ul class="sub-menu">
-                              <li v-for="(carrera, id_carrera) in area.carreras" :key="id_carrera">
-                                <router-link
-                              :to="{
-                                name: 'convocatorias',
-                                params: {
-                                  tipo_id: carrera.car_id
-                                }
-                              }"
-                              >{{ carrera.carrera }}</router-link>
+                              <li v-for="(carrera, id_carrera) in area.carreras" :key="id_carrera">                                
+                              <router-link >{{ carrera.carrera }}</router-link>
                               </li>
                             </ul>
                           </li>

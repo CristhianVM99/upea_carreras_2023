@@ -1,35 +1,184 @@
 <template>
+  <loading-page></loading-page>
   <!-- Main content Start -->
   <div class="main-content">
-    <!-- Banner Section Start -->
-    <swiper
-      :spaceBetween="30"
-      :centeredSlides="true"
-      :autoplay="{
-        delay: 2500,
-        disableOnInteraction: false
-      }"
-      :pagination="{
-        clickable: false
-      }"
-      :navigation="true"
-      :modules="modules"
-      class="mySwiper bg-principal-slide-content"
-    >
-      <swiper-slide v-for="(portada, id_img) in Institucion.portada" :key="id_img" class="bg-principal-slide">
-        <div class="bg-principal-content">
-          <img
-            class="bg-img bg-principal-img"
-            :src="this.url_api + '/InstitucionUpea/Portada/' + portada.portada_imagen"
-            alt="{{ id_img }}"
-          />
-          <!--<img class="bg-principal-img" src="https://www.upea.bo/assets/upea/fondos/BackGround-UPEA-08.jpg" alt="" />-->
+    <!--========================= PARA LA UNIVERSIDAD PUBLICA DE EL ALTO ================-->
+    <div class="bg-principal-slide-content-main" v-if="this.carrera_id == 0">
+      <!-- Banner Section Start -->
+      <swiper
+        :spaceBetween="30"
+        :centeredSlides="true"
+        :autoplay="{
+          delay: 12000,
+          disableOnInteraction: false
+        }"
+        :pagination="{
+          clickable: false
+        }"
+        :navigation="true"
+        :modules="modules"
+        class="mySwiper bg-principal-slide-content-upea"
+        v-if="this.carrera_id == 0"
+      >
+        <swiper-slide class="bg-principal-slide">
+          <div class="bg-principal-content-upea">
+            <video autoplay muted loop id="bg-video" class="bg-principal-video-upea">
+              <source src="../assets/video/upea.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </swiper-slide>
+        <swiper-slide class="bg-principal-slide">
+          <img src="../assets/images/upeabg3.jpg" alt="" class="bg-principal-img-upea" />
+        </swiper-slide>
+        <swiper-slide class="bg-principal-slide">
+          <div class="bg-principal-content-upea">
+            <video autoplay muted loop id="bg-video" class="bg-principal-video-upea">
+              <source src="../assets/video/videoplayback.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </swiper-slide>
+        <swiper-slide class="bg-principal-slide">
+          <img src="../assets/images/upeabg3.jpg" alt="" class="bg-principal-img-upea" />
+        </swiper-slide>
+      </swiper>
+
+      <!-- Banner Section End -->
+      <div
+        id="sc-banner"
+        class="sc-banner banner-style3 upposition-relative bg-principal-view-upea"
+        v-if="this.carrera_id == 0"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <!--<img src="src/assets/images/upeabg2.jpg" alt="" class="content-principal-img">-->
+              <div class="content-principal-img"></div>
+              <div class="banner-content content-principal-text">
+                <div
+                  class="sub-title wow position-relative mb-8 fadeInUp"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2000ms"
+                >
+                  {{ Institucion.institucion_iniciales }}
+                  <span class="heading-border-line"></span>
+                </div>
+
+                <h1
+                  class="banner-title mb-15 wow fadeInUp"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2500ms"
+                >
+                  {{ Institucion.institucion_nombre }}
+                </h1>
+                <h5
+                  class="banner-des mb-35 wow fadeInUp"
+                  data-wow-delay="300ms"
+                  data-wow-duration="3000ms"
+                  v-if="Institucion.institucion_objetivos != null"
+                  v-html="Institucion.institucion_objetivos"
+                ></h5>
+                <!--<form class="newsletter-form mt-40">
+                <input type="text" name="email" placeholder="search course..." />
+                <button type="submit"><i class="flaticon flaticon-magnifying-glass"></i></button>
+              </form>-->
+              </div>
+            </div>
+            <div class="col-lg-6 hidden-md">
+              <div class="banner-img upea-rector hidden-sm">
+                <img
+                  class="wow fadeInRight"
+                  src="src/assets/images/rectorvicerector.png"
+                  alt="Banner Image"
+                  data-wow-delay="300ms"
+                  data-wow-duration="2000ms"
+                />
+              </div>
+              <!--<div
+              class="view-students-img wow fadeInUp"
+              data-wow-delay="300ms"
+              data-wow-duration="2000ms"
+            >
+              <img src="src/assets/images/banner/view-students.png" alt="Banner Image" />
+            </div>
+            -->
+              <div class="animate-circle"></div>
+            </div>
+          </div>
         </div>
-      </swiper-slide>            
-    </swiper>
-    
-    <!-- Banner Section End -->
-    <div id="sc-banner" class="sc-banner banner-style3 upposition-relative bg-principal-view">
+        <div class="animated-arrow-1 animated-arrow left-right-new">
+          <img src="../assets/images/banner/arrow-1.png" alt="" />
+        </div>
+        <div class="animated-arrow-2 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-2.png" alt="" />
+        </div>
+
+        <div class="animated-arrow-3 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-3.png" alt="" />
+        </div>
+        <div class="animated-arrow-4 animated-arrow left-right-new">
+          <img src="../assets/images/banner/arrow-4.png" alt="" />
+        </div>
+        <div class="animated-arrow-5 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-5.png" alt="" />
+        </div>
+        <div class="animated-arrow-7 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-6.png" alt="" />
+        </div>
+        <div class="animated-arrow-8 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-7.png" alt="" />
+        </div>
+        <div class="animated-arrow-9 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-8.png" alt="" />
+        </div>
+        <div class="animated-arrow-10 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-9.png" alt="" />
+        </div>
+        <div class="animated-arrow-11 animated-arrow up-down-new">
+          <img src="../assets/images/banner/arrow-9.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-principal-slide-content-second">
+      <!-- ======================== PARA LAS CARRERAS =================-->
+      <!-- Banner Section Start -->
+      <swiper
+        :spaceBetween="30"
+        :centeredSlides="true"
+        :autoplay="{
+          delay: 2500,
+          disableOnInteraction: false
+        }"
+        :pagination="{
+          clickable: false
+        }"
+        :navigation="true"
+        :modules="modules"
+        class="mySwiper bg-principal-slide-content"
+        v-if="this.carrera_id != 0"
+      >
+        <swiper-slide
+          v-for="(portada, id_img) in Institucion.portada"
+          :key="id_img"
+          class="bg-principal-slide"
+        >
+          <div class="bg-principal-content">
+            <img
+              class="bg-img bg-principal-img"
+              :src="this.url_api + '/InstitucionUpea/Portada/' + portada.portada_imagen"
+              alt="{{ id_img }}"
+            />
+            <!--<img class="bg-principal-img" src="https://www.upea.bo/assets/upea/fondos/BackGround-UPEA-08.jpg" alt="" />-->
+          </div>
+        </swiper-slide>
+      </swiper>
+
+      <!-- Banner Section End -->
+      <div
+        id="sc-banner"
+        class="sc-banner banner-style3 upposition-relative bg-principal-view"
+        v-if="this.carrera_id != 0"
+      >
         <div class="container">
           <div class="row">
             <div class="col-lg-6 box-p">
@@ -55,7 +204,7 @@
                   class="banner-des mb-35 wow fadeInUp inst-objetivos"
                   data-wow-delay="300ms"
                   data-wow-duration="3000ms"
-                  v-if="(Institucion.institucion_objetivos!=null)"
+                  v-if="Institucion.institucion_objetivos != null"
                   v-html="Institucion.institucion_objetivos"
                 ></h5>
                 <!--<form class="newsletter-form mt-40">
@@ -118,7 +267,24 @@
           <img src="../assets/images/banner/arrow-9.png" alt="" />
         </div>
       </div>
+    </div>
 
+    <!-- ===================== CARRERAS ==============-->
+    <swiper
+      :slidesPerView="5"
+      :spaceBetween="30"
+      :freeMode="true"
+      :pagination="{
+        clickable: true
+      }"
+      :modules="modules"
+      class="mySwiper swiper-carreras"
+      v-if="this.carrera_id == 0"
+    >
+      <swiper-slide v-for="(carrera, id_carrera) in Carreras" :key="id_carrera">
+        <span>{{ carrera.carrera }}</span>     
+      </swiper-slide>
+    </swiper>
     <!-- Blog Single Start -->
     <div class="sc-blog-single pt-120 pb-120 md-pt-80 md-pb-80">
       <div class="container">
@@ -140,7 +306,10 @@
                 </div>
                 <blockquote>
                   <p>
-                    La Universidad Pública de El Alto no solo forma profesionales altamente capacitados en diversas áreas del conocimiento, sino que también es un espacio de encuentro y diálogo intercultural, donde se fomenta el respeto y la valoración de la diversidad de saberes y culturas
+                    La Universidad Pública de El Alto no solo forma profesionales altamente
+                    capacitados en diversas áreas del conocimiento, sino que también es un espacio
+                    de encuentro y diálogo intercultural, donde se fomenta el respeto y la
+                    valoración de la diversidad de saberes y culturas
                   </p>
                 </blockquote>
                 <!--<div class="blog-desc mb-40">
@@ -162,22 +331,18 @@
           </div>
           <div class="col-lg-3 col-md-12 md-mt-60">
             <div class="widget-area">
-              <div class="widget-archives mb-50">
+              <div class="widget-archives mb-50" v-if="this.carrera_id != 0">
                 <h3 class="widget-title">Links Externos</h3>
                 <ul>
-                  <li
-                    v-for="(link, id_link) of Links"
-                    :key="id_link"
-                    :style="
-                      'background-image: url(' +
-                      url_api +
-                      '/InstitucionUpea/LinksExternos/' +
-                      link.ei_imagen +
-                      ');object-fit:cover;height:100px;'
-                    "
-                    class="links_externos"
-                  >
-                    <a :href="link.ei_link" target="_blank">{{ link.ei_nombre }}</a>                    
+                  <li v-for="(link, id_link) of Links" :key="id_link" class="links_externos">
+                    <img
+                      :src="url_api + '/InstitucionUpea/LinksExternos/' + link.ei_imagen"
+                      alt=""
+                      class="links_externos_img"
+                    />
+                    <a :href="link.ei_link" target="_blank" class="links_externos_link">{{
+                      link.ei_nombre
+                    }}</a>
                   </li>
                 </ul>
               </div>
@@ -585,7 +750,9 @@
                   :src="url_api + '/Convocatorias/' + latestConvocatoria.con_foto_portada"
                   alt="img"
                 />
-                <span>{{latestConvocatoria.tipo_conv_comun.tipo_conv_comun_titulo.toLowerCase()}}</span>
+                <span>{{
+                  latestConvocatoria.tipo_conv_comun.tipo_conv_comun_titulo.toLowerCase()
+                }}</span>
               </div>
               <div class="card-description">
                 <h3 class="title">
@@ -608,8 +775,8 @@
                         }
                       }"
                       class="btn-conv"
-                      >Leer Mas</router-link                      
-                    >                    
+                      >Leer Mas</router-link
+                    >
                   </div>
                 </div>
               </div>
@@ -771,7 +938,7 @@
                 </ul>
                 <div class="bottom-part d-flex align-items-center justify-content-between">
                   <div class="event-join">
-                    <router-link                      
+                    <router-link
                       class="btn-conv"
                       :to="{
                         name: 'convocatoriadetalle',
@@ -809,7 +976,7 @@
                 </ul>
                 <div class="bottom-part d-flex align-items-center justify-content-between">
                   <div class="event-join">
-                    <router-link                      
+                    <router-link
                       :to="{
                         name: 'convocatoriadetalle',
                         params: {
@@ -863,13 +1030,17 @@ import VuePdfEmbed from 'vue-pdf-embed'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
+import 'swiper/css/free-mode'
 
-import { Autoplay, Pagination, Navigation } from 'swiper'
+import { Autoplay, FreeMode, Pagination, Navigation } from 'swiper'
+import LoadingPage from '../components/LoadingComp.vue'
+import { onMounted } from 'vue'
 
 export default {
   name: 'HomeView',
   data() {
     return {
+      Carreras: [],
       Convocatorias: 0,
       latestConvocatoria: {},
       latestComunicado: {},
@@ -905,7 +1076,8 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
-    VuePdfEmbed
+    VuePdfEmbed,
+    LoadingPage
   },
   setup() {
     const onSwiper = (swiper) => {
@@ -917,10 +1089,19 @@ export default {
     return {
       onSwiper,
       onSlideChange,
-      modules: [Autoplay, Pagination, Navigation]
+      modules: [Autoplay, FreeMode, Pagination, Navigation]
     }
   },
   methods: {
+    async getCarreras() {
+      try {
+        const response = await Services.getCarreras()
+        this.Carreras = response.data
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
     async getConvocatoriasAll() {
       try {
         //optenemos todas la convocatoarias de la api
@@ -1082,19 +1263,31 @@ export default {
         return fechaArray[2] + ' de ' + meses[fechaArray[1] - 1] + ' de ' + fechaArray[0]
       }
     },
-    createdComponent() {
-      this.getConvocatoriasAll()
-      this.getCursosAll()
-      this.getServiciosAll()
-      this.getOfertasAll()
-      this.getPublicaciones()
-      this.getGacetaAll()
-      this.getEventos()
-      this.getVideos()
+    isLoad() {
+      var load = document.getElementById('loading')
+      load.style.display = 'none'
+    },
+    async createdComponent() {
+      await this.getCarreras()
+      if (this.carrera_id != 0) {
+        await this.getConvocatoriasAll()
+        await this.getCursosAll()
+        await this.getServiciosAll()
+        await this.getOfertasAll()
+        await this.getPublicaciones()
+        await this.getGacetaAll()
+        await this.getEventos()
+        await this.getVideos()
+      }
+      this.isLoad()
     }
   },
   created() {
     this.createdComponent()
+  },
+  updated() {
+    if (this.isLoad == 8) {
+    }
   }
 }
 </script>
@@ -1110,8 +1303,6 @@ export default {
 }
 
 .inst-objetivos {
-  
-  
 }
 
 .inst-nombre {
@@ -1123,30 +1314,25 @@ export default {
 }
 /* ============================== diseño de los links externos  ====================== */
 .links_externos {
-  display: flex;
+  /*display: flex;
   justify-content: flex-start;
   align-items: center;
   background-repeat: no-repeat !important;
   background-position: right !important;
   background-size: contain !important;
-  padding: 20px !important;
+  padding: 20px !important;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 5px !important;
 }
-/*.links_externos a {
-  background-color: var(--main-color);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
-  color: #ffffff !important;
-  padding: 7px 20px;
-  width: 10em;
-  border-radius: 20px;
-  text-align: center;
-  border: 1px solid red !important;
+.links_externos_img {
+  height: 100px !important;
+  object-fit: contain;
 }
-.links_externos a:hover {
-  background: var(--main-color-2);
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
-}*/
-
-.links_externos a {
+.links_externos_link {
   width: 10em;
   height: 2.3em;
   margin: 0.5em;
@@ -1164,11 +1350,11 @@ export default {
   padding: 7px 20px;
 }
 
-.links_externos a:hover {
+.links_externos_link:hover {
   color: var(--main-color-2) !important;
 }
 
-.links_externos a:after {
+.links_externos_link:after {
   content: '';
   background: white;
   position: absolute;
@@ -1181,7 +1367,7 @@ export default {
   transition: all 0.5s;
 }
 
-.links_externos a:hover:after {
+.links_externos_link:hover:after {
   transform: skewX(-45deg) scale(1, 1);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -1215,18 +1401,18 @@ export default {
 
 .cta-text {
   background: var(--main-color-2);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 30px );
-  -webkit-backdrop-filter: blur( 10px );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 10px;
   padding: 20px;
-  opacity: .95; 
+  opacity: 0.95;
   position: relative;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
   text-align: center;
   position: relative;
 }
-.cta-text span{
+.cta-text span {
   width: 3em;
   height: 1.5em;
   position: absolute;
@@ -1236,8 +1422,8 @@ export default {
   border-top-left-radius: 20px;
   border-bottom-right-radius: 10px;
 }
-.cta-span{
-  font-size: 1.5em;  
+.cta-span {
+  font-size: 1.5em;
   margin-bottom: 15px;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
   background: rgba(0, 0, 0, 0.5);
@@ -1274,33 +1460,94 @@ export default {
   width: 100%;
 }
 /*=================== SLIDE PRINCIPAL BACKGROUND ============== */
-
-.bg-principal-slide-content{
+.bg-principal-slide-content {
   position: absolute;
   width: 100%;
   height: 100vh;
 }
 
 .swiper .swiper-button-prev,
-.swiper .swiper-button-next{
+.swiper .swiper-button-next {
   z-index: 1000;
   border: 1px solid red !important;
   color: red !important;
 }
-.bg-principal-slide{
-  
-
+.bg-principal-slide {
 }
 .bg-principal-content {
-  
 }
 .bg-principal-img {
-  
   width: 100%;
   height: 100vh;
 }
-.bg-principal-view{
+.bg-principal-view {
+}
+/*==================== SLIDE PRINCIPAL UPEA ================= */
+.bg-principal-slide-content-main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.bg-principal-slide-content-upea {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
 
+.bg-principal-video-upea {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bg-principal-img-upea {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+.bg-principal-view-upea {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+.upea-rector {
+}
+.upea-rector:before {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 550px;
+  height: 550px;
+  background: linear-gradient(to left, var(--main-color), var(--main-color-2));
+  border-radius: 50%;
+  z-index: -1;
+}
+.content-principal-img {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 93%;
+  object-fit: cover;
+  object-position: right;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  clip-path: polygon(0 0, 20% 0, 40% 100%, 0% 100%);
+}
+.content-principal-text {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/*===================== SWIPER CARRERAS =================== */
+
+.swiper-carreras {
+  border: 1px solid red;
+  height: 200px;
 }
 
 /*==================== PDF INSTITUCION ========== */
@@ -1494,17 +1741,17 @@ export default {
 }
 
 /*================== card de comunicados cursos etc. ==============*/
-.txt-reciente{
+.txt-reciente {
   color: var(--main-color);
   font-size: 1.5em;
   text-transform: uppercase;
   text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 }
-.txt-reciente::after{
+.txt-reciente::after {
   content: '...';
 }
 
-.txt-reciente::first-letter{
+.txt-reciente::first-letter {
   font-size: 1.7em;
 }
 
@@ -1668,136 +1915,135 @@ export default {
 }
 /*=========================== PRINCIPAL PAGINA =================== */
 .box-p {
- position: relative;
- width: 700px;
- height: 650px;
- display: flex;
- justify-content: center;
- align-items: center;
- transition: 0.5s;
- z-index: 1;
+  position: relative;
+  width: 700px;
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  z-index: 1;
 }
 
 .box-p::before {
- content: ' ';
- position: absolute;
- top: 0;
- left: 50px;
- width: 50%;
- height: 100%;
- text-decoration: none;
- background: #fff;
- border-radius: 8px;
- transform: skewX(15deg);
- transition: 0.5s;
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 50%;
+  height: 100%;
+  text-decoration: none;
+  background: #fff;
+  border-radius: 8px;
+  transform: skewX(15deg);
+  transition: 0.5s;
 }
 
 .box-p::after {
- content: '';
- position: absolute;
- top: 0;
- left: 50;
- width: 50%;
- height: 100%;
- background: #fff;
- border-radius: 8px;
- transform: skewX(15deg);
- transition: 0.5s;
- filter: blur(30px);
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50;
+  width: 50%;
+  height: 100%;
+  background: #fff;
+  border-radius: 8px;
+  transform: skewX(15deg);
+  transition: 0.5s;
+  filter: blur(30px);
 }
 
 .box-p:hover:before,
 .box-p:hover:after {
- transform: skewX(0deg) scaleX(1.3);
+  transform: skewX(0deg) scaleX(1.3);
 }
 
 .box-p:before,
 .box-p:after {
- background: linear-gradient(315deg, var(--main-color-2), var(--main-color));
-
+  background: linear-gradient(315deg, var(--main-color-2), var(--main-color));
 }
 
 .box-p span {
- display: block;
- position: absolute;
- top: 0;
- left: 0;
- right: 0;
- bottom: 0;
- z-index: 5;
- pointer-events: none;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  pointer-events: none;
 }
 
 .box-p span::before {
- content: '';
- position: absolute;
- top: 0;
- left: 0;
- width: 0;
- height: 0;
- border-radius: 8px;
- background: rgba(255, 255, 255, 0.1);
- backdrop-filter: blur(10px);
- opacity: 0;
- transition: 0.1s;
- animation: animate 2s ease-in-out infinite;
- box-shadow: 0 5px 15px rgba(0,0,0,0.08)
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: 0.1s;
+  animation: animate 2s ease-in-out infinite;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 .box-p span::before {
- top: -40px;
- left: 40px;
- width: 50px;
- height: 50px;
- opacity: 1;
+  top: -40px;
+  left: 40px;
+  width: 50px;
+  height: 50px;
+  opacity: 1;
 }
 
 .box-p span::after {
- content: '';
- position: absolute;
- bottom: 0;
- right: 0;
- width: 100%;
- height: 100%;
- border-radius: 8px;
- background: rgba(255, 255, 255, 0.1);
- backdrop-filter: blur(10px);
- opacity: 0;
- transition: 0.5s;
- box-shadow: 0 5px 15px rgba(0,0,0,0.08);
- animation-delay: -1s;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: 0.5s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  animation-delay: -1s;
 }
 
 .box-p span:after {
- bottom: -40px;
- right: 40px;
- width: 50px;
- height: 50px;
- opacity: 1;
+  bottom: -40px;
+  right: 40px;
+  width: 50px;
+  height: 50px;
+  opacity: 1;
 }
 
 .box-p .content-p {
- position: relative;
- width: 690px;
- height: 500px;
- padding: 20px 40px;
- background: rgba(255, 255, 255, 0.05);
- backdrop-filter: blur(10px);
- box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
- border-radius: 8px;
- z-index: 1;
- transform: 0.5s;
- color: #fff;
- display: flex;
- justify-content: center;
- align-items: start;
- flex-direction: column;
+  position: relative;
+  width: 690px;
+  height: 500px;
+  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1;
+  transform: 0.5s;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
 }
 
 .box-p .content-p h2 {
- font-size: 20px;
- color: #fff;
- margin-bottom: 10px;
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 10px;
 }
 .box-p .content-p h5 {
   color: #ffffff;

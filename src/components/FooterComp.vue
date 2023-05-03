@@ -53,12 +53,12 @@
               </ul>
             </div>
           </div>
-          <div class="col-lg-3 md-mb-32 footer-widget md-mt-45">
+          <div class="col-lg-3 md-mb-32 footer-widget md-mt-45" v-if="this.carrera_id != 0">
             <h4 class="widget-title">
               Convocatorias <br />y<br />
               Cursos
             </h4>
-            <ul class="widget-menu" v-if="this.carrera_id != 0">
+            <ul class="widget-menu">
               <li v-for="(link, id_conv) in MenuConvocatorias" :key="id_conv">
                 <router-link
                   :to="{
@@ -84,9 +84,9 @@
               </li>
             </ul>
           </div>
-          <div class="col-lg-3 md-mb-32 footer-widget">
+          <div class="col-lg-3 md-mb-32 footer-widget" v-if="(this.carrera_id!=0)">
             <h4 class="widget-title">Mas+</h4>
-            <ul class="widget-menu" v-if="(this.carrera_id!=0)">
+            <ul class="widget-menu">
               <li>
                 <router-link
                   :to="{

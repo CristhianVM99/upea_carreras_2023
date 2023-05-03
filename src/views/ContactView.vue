@@ -1,18 +1,25 @@
-<template>
+<template>  
+
   <!-- Main content Start -->
   <div class="main-content">
     <!-- Breadcrumbs Start -->
     <div class="sc-breadcrumbs breadcrumbs-overlay">
       <div class="breadcrumbs-img">
-        <img src="../assets/images/breadcrumbs/1.jpg" alt="Breadcrumbs Image" />
+        <img src="../../../public/bgUpea.jpg" alt="Breadcrumbs Image" />
       </div>
       <div class="breadcrumbs-text white-color">
-        <h1 class="page-title">Contactese con Nosotros</h1>
+        <h1 class="page-title">
+          Contacto
+        </h1>
         <ul>
-          <li>
-            <router-link :to="{ name: 'home' }" class="active">Home ></router-link>
-          </li>
-          <li class="active">Contacto</li>
+          <router-link :to="{ name: 'home' }">
+            <button class="btn-page mr-40">
+              Home
+            </button>
+          </router-link>          
+          <button class="btn-page">
+            contacto
+          </button>
         </ul>
       </div>
     </div>
@@ -107,10 +114,10 @@
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
               <div class="sec-title">
                 <div class="sub-title position-relative">
-                  Ingenieria de Sistemas<span class="heading-border-line"></span>
+                  upea<span class="heading-border-line"></span>
                 </div>
                 <h2 class="title mb-0 white-color">
-                  La ingeniería es el puente entre la ciencia y la realidad.
+                  La UPEA es una universidad que trabaja por una sociedad más justa, equitativa y solidaria a través de la formación de líderes
                 </h2>
               </div>
             </div>
@@ -147,10 +154,66 @@
 </template>
 <script>
 import { mapState } from 'vuex'
+import LoadingPage from '../components/LoadingComp.vue';
+
 export default {
   name: 'ContactView',
   computed: {
     ...mapState(['url_api', 'Institucion'])
-  }
+  },
+  components:{
+    LoadingPage,
+  },
+  methods: {
+    isLoad(){
+      var load = document.getElementById("loading");
+      load.style.display = "none";
+    },
+  },
+  mounted() {
+  },
 }
 </script>
+<style>
+.breadcrumbs-img img {
+  height: 300px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.page-title {
+  text-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
+}
+/*==================== btn-page ============ */
+.btn-page {
+  padding: 0.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000 !important;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+.btn-page a {
+  color: #000;
+}
+.btn-page a:hover {
+  color: #fff;
+}
+.btn-page:hover {
+  background-color: var(--main-color);
+  box-shadow: 0px 15px 20px var(--main-color-2);
+  color: #fff !important;
+  transform: translateY(-7px);
+}
+
+.btn-page:active {
+  transform: translateY(-1px);
+}
+</style>

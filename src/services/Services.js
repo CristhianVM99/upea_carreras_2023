@@ -21,6 +21,11 @@ function getInstitucion() {
 }
 
 //Home View 
+
+function getCarreras(){
+  return Api().get('api/upeacarrera')
+}
+
 function getConvocatoriasAll(){
     return Api().get('/api/convocatoriasAll/' + import.meta.env.VITE_VUE_APP_ID_CARRERA)
 }
@@ -99,6 +104,8 @@ export default {
   getLinks,
   getInstitucion,
   //Home View
+  getCarreras,
+
   getConvocatoriasAll,
   getConvocatoria,
 

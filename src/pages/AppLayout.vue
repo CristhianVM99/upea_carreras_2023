@@ -40,9 +40,9 @@ export default {
     async getMenuAreasyCarreras() {
       try {
         //optencion de menu de areas y carreras.
-        const response = await Services.getMenuAreasyCarreras()
+        const response = await Services.getMenuAreasyCarreras()        
         this.$store.state.MenuAreasyCarreras = response.data
-        console.log(response.data)
+        console.log(this.MenuAreasyCarreras)
       } catch (e) {
         console.log(e)
       }

@@ -220,7 +220,7 @@
 <script>
 import { mapState } from 'vuex'
 import Services from '@/services/Services'
-export default {
+export default{
   name: 'AppLayout',
   props: {
     tipo_cat: {

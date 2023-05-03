@@ -1,4 +1,5 @@
 <template>
+  <loading-page></loading-page>
   <!-- Main content Start -->
   <div class="main-content">
     <!-- Breadcrumbs Start -->
@@ -273,7 +274,7 @@
                                 name: 'convocatoriadetalle',
                                 params: {
                                   tipo: tipo_conv.toLowerCase(),
-                                  idconv: ofer.evento_id
+                                  idconv: ofer.ofertas_id
                                 }
                               }"
                             class="btn-conv">
@@ -433,7 +434,6 @@
                         <img
                           :src="url_api + '/Eventos/' + ev.evento_imagen"
                           alt="img"
-                          width="200"
                         />
                         <div class="event-price">
                           <span class="price">{{ tipo_conv }}</span>
@@ -472,7 +472,7 @@
               <!-- Videos -->
               <swiper
                 :modules="modules"
-                :slidesPerView="3"
+                :slidesPerView="2"
                 :centeredSlides="true"
                 :spaceBetween="30"
                 :pagination="{
@@ -490,13 +490,14 @@
                   :virtualIndex="id_vid"
                   class="grid-conv-item"
                 >
-                  <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+                  <div class="col-lg-12 col-md-6 mb-30 loadcourse addcourse slide-videos">
                     <div class="events-item">
                       <div class="img-part">
                         <iframe
                           :src="vid.video_enlace"
                           frameborder="0"
                           style="border-radius: 5px"
+                          class="video-slide"
                         />
                         <div class="event-price">
                           <span class="price">{{ tipo_conv }}</span>
@@ -559,6 +560,7 @@ import VuePdfEmbed from 'vue-pdf-embed'
 // import Swiper core and required modules
 import { Pagination, Navigation, Virtual } from 'swiper'
 import SinRegistros from '../../pages/SinRegistros.vue'
+import LoadingPage from '../../components/LoadingComp.vue'
 export default {
   name: 'ConvocatoriasView',
   data() {
@@ -580,7 +582,8 @@ export default {
     SwiperSlide,
     VuePdfEmbed,
     Categories,
-    SinRegistros
+    SinRegistros,
+    LoadingPage
   },
   setup() {
     // Create array with 500 slides
@@ -629,36 +632,47 @@ export default {
           switch (this.tipo_conv.toLowerCase()) {
             case 'avisos':
               await this.getConvocatoriasAll()
+              this.isLoad()
               break
             case 'comunicados':
               await this.getConvocatoriasAll()
+              this.isLoad()
               break
             case 'convocatorias':
               await this.getConvocatoriasAll()
+              this.isLoad()
               break
             case 'cursos':
               await this.getCursosAll()
+              this.isLoad()
               break
             case 'seminarios':
               await this.getCursosAll()
+              this.isLoad()
               break
             case 'eventos':
               await this.getEventosAll()
+              this.isLoad()
               break
             case 'gacetas':
               await this.getGacetasAll()
+              this.isLoad()
               break
             case 'ofertasacademicas':
               await this.getOfertasAll()
+              this.isLoad()
               break
             case 'publicaciones':
               await this.getPublicacionesAll()
+              this.isLoad()
               break
             case 'servicios':
               await this.getServiciosAll()
+              this.isLoad()
               break
             case 'videos':
               await this.getVideosAll()
+              this.isLoad()
               break
             default:
               console.log('error de carga')
@@ -804,7 +818,15 @@ export default {
       let fechaCadena = fecha.substr(0, 10)
       let fechaArray = fechaCadena.split('-')
       return fechaArray[2] + ' de ' + meses[fechaArray[1] - 1] + ' de ' + fechaArray[0]
-    }
+    },
+    isLoad(){
+      var load = document.getElementById("loading");
+      load.style.display = "none";
+    },
+    isLoadNew(){
+      var load = document.getElementById("loading");
+      load.style.display = "block";
+    },
   },
 
   created() {
@@ -815,7 +837,9 @@ export default {
   },
   updated() {
     if (this.$route.params.tipo != this.tipo_conv) {
+      this.isLoadNew()
       this.getCategoria(this.$route.params.tipo)
+      
     }
   }
   /*mounted() {
@@ -829,6 +853,7 @@ export default {
   height: 115vh;
 }
 .grid-conv-item {
+  
 }
 
 .title {
@@ -953,5 +978,13 @@ export default {
     transform: scale(1);
   }
 }
+/*================= para videos ============ */
+.slide-videos{
+  
+}
+.video-slide{
+  width: 100%;
+  height: 400px;
+}
 </style>
->
+
