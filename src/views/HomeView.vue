@@ -12,10 +12,8 @@
           delay: 12000,
           disableOnInteraction: false
         }"
-        :pagination="{
-          clickable: false
-        }"
-        :navigation="true"
+        :pagination="false"
+        :navigation="false"
         :modules="modules"
         class="mySwiper bg-principal-slide-content-upea"
         v-if="this.carrera_id == 0"
@@ -127,7 +125,7 @@
         <div class="animated-arrow-8 animated-arrow up-down-new">
           <img src="../assets/images/banner/arrow-7.png" alt="" />
         </div>
-        <div class="animated-arrow-9 animated-arrow up-down-new">
+        <div class="animated-arrow-9 animated-arHistoria administracion de empresasrow up-down-new">
           <img src="../assets/images/banner/arrow-8.png" alt="" />
         </div>
         <div class="animated-arrow-10 animated-arrow up-down-new">
@@ -271,18 +269,16 @@
 
     <!-- ===================== CARRERAS ==============-->
     <swiper
-      :slidesPerView="5"
+      :slidesPerView="8"
       :spaceBetween="30"
       :freeMode="true"
-      :pagination="{
-        clickable: true
-      }"
+      :pagination= "false"
       :modules="modules"
       class="mySwiper swiper-carreras"
       v-if="this.carrera_id == 0"
     >
       <swiper-slide v-for="(carrera, id_carrera) in Carreras" :key="id_carrera">
-        <span>{{ carrera.carrera }}</span>     
+        <a href="#"><img :src="url_api + '/Carrera/Logos/' + carrera.logos[0].logos_carrera" alt="img" class="carrera_logos" /></a>
       </swiper-slide>
     </swiper>
     <!-- Blog Single Start -->
@@ -1034,7 +1030,6 @@ import 'swiper/css/free-mode'
 
 import { Autoplay, FreeMode, Pagination, Navigation } from 'swiper'
 import LoadingPage from '../components/LoadingComp.vue'
-import { onMounted } from 'vue'
 
 export default {
   name: 'HomeView',
@@ -1097,6 +1092,7 @@ export default {
       try {
         const response = await Services.getCarreras()
         this.Carreras = response.data
+        console.log(this.Carreras)
       } catch (e) {
         console.log(e)
       }
@@ -1268,7 +1264,10 @@ export default {
       load.style.display = 'none'
     },
     async createdComponent() {
-      await this.getCarreras()
+      if(this.carrera_id == 0){
+        await this.getCarreras()
+        this.isLoad()
+      }
       if (this.carrera_id != 0) {
         await this.getConvocatoriasAll()
         await this.getCursosAll()
@@ -1278,17 +1277,13 @@ export default {
         await this.getGacetaAll()
         await this.getEventos()
         await this.getVideos()
-      }
-      this.isLoad()
+        this.isLoad()
+      }      
     }
   },
   created() {
     this.createdComponent()
-  },
-  updated() {
-    if (this.isLoad == 8) {
-    }
-  }
+  },  
 }
 </script>
 <style scoped>
@@ -1527,6 +1522,7 @@ export default {
   border-radius: 50%;
   z-index: -1;
 }
+
 .content-principal-img {
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
@@ -1546,8 +1542,13 @@ export default {
 /*===================== SWIPER CARRERAS =================== */
 
 .swiper-carreras {
-  border: 1px solid red;
-  height: 200px;
+  height: 100px;
+  padding: 0px 50px;
+}
+
+/*============================= CARRERAS ================== */
+.carrera_logos{
+  height: 100%;
 }
 
 /*==================== PDF INSTITUCION ========== */

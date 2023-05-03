@@ -12,6 +12,7 @@ export default createStore({
     Institucion: {},
     //no uso
     statusImg: true,
+    Institucion_id:import.meta.env.VITE_VUE_APP_ID_INSTITUCION,
     carrera_id: import.meta.env.VITE_VUE_APP_ID_CARRERA,
   },
   getters: {

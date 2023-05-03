@@ -11,12 +11,19 @@ import Services from '@/services/Services'
 
 export default {
   name: 'AppLayout',
+
+  data(){
+    return{
+
+    }
+  },
+
   components: {
     HeaderCompVue,
     FooterCompVue
   },
   computed: {
-    ...mapState(['url_api', 'Institucion', 'MenuConvocatorias', 'MenuCursos','MenuAreasyCarreras','carrera_id'])
+    ...mapState(['url_api', 'Institucion', 'MenuConvocatorias', 'MenuCursos','MenuAreasyCarreras','carrera_id','institucion_id'])
   },
   methods: {
     async getMenuConvocatorias() {
@@ -149,11 +156,14 @@ export default {
           document.documentElement.style.setProperty(
             '--main-color',
             this.Institucion.colorinstitucion[0].color_primario
+            
           )
           document.documentElement.style.setProperty(
             '--main-color-2',
             this.Institucion.colorinstitucion[0].color_secundario
           )
+          console.log(this.Institucion.colorinstitucion[0].color_primario)
+          console.log(this.Institucion.colorinstitucion[0].color_secundario)
         }
     },
 
@@ -171,7 +181,8 @@ export default {
   },
   created() {
     //creamos el componente
+    
     this.createdComponent()
-  },    
+  },      
 }
 </script>
