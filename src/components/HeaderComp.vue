@@ -177,11 +177,11 @@
                       </li>
 
                       <li class="menu-item-has-children"
-                      v-if="(this.carrera_id!=0)"
+                      v-if="(this.carrera_id ==0)"
                       >
                         <a href="#">Mas</a>
                         <ul class="sub-menu">
-                          <li>
+                          <li v-if="(this.carrera_id !=0)">
                             <router-link
                               :to="{
                                 name: 'servicios',
@@ -192,7 +192,7 @@
                               >Servicios</router-link
                             >
                           </li>
-                          <li>
+                          <li v-if="(this.carrera_id !=0)">
                             <router-link
                               :to="{
                                 name: 'ofertasacademicas',
@@ -271,7 +271,7 @@
                 <!-- //.main-menu -->
               </div>
               <div class="expand-btn-inner text-end">
-                <ul>
+                <!--<ul>
                   <li>
                     <a
                       class="hidden-xs sc-search"
@@ -282,7 +282,7 @@
                       <i class="flaticon flaticon-magnifying-glass"></i>
                     </a>
                   </li>
-                </ul>
+                </ul>-->
                 <span>
                   <a id="nav-expander" class="nav-expander">
                     <span class="dot1"></span>

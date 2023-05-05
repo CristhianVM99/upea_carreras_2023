@@ -46,13 +46,17 @@
         class="sc-banner banner-style3 upposition-relative bg-principal-view-upea"
         v-if="this.carrera_id == 0"
       >
-        <div class="container">
+      <div class="container">
           <div class="row">
             <div class="col-lg-6">
-              <!--<img src="src/assets/images/upeabg2.jpg" alt="" class="content-principal-img">-->
-              <div class="content-principal-img"></div>
-              <div class="banner-content content-principal-text">
-                <div
+              <span></span>
+              <div class="banner-content">
+                <div class="content-principal-img"></div>
+                <div class="content-card">
+                  <div class="content-circle"></div>
+                  <div class="content-circle"></div>
+                  <div class="content-card-inner">
+                    <div
                   class="sub-title wow position-relative mb-8 fadeInUp"
                   data-wow-delay="300ms"
                   data-wow-duration="2000ms"
@@ -62,27 +66,25 @@
                 </div>
 
                 <h1
-                  class="banner-title mb-15 wow fadeInUp"
+                  class="banner-title mb-15 wow fadeInUp inst-nombre"
                   data-wow-delay="300ms"
                   data-wow-duration="2500ms"
                 >
                   {{ Institucion.institucion_nombre }}
                 </h1>
                 <h5
-                  class="banner-des mb-35 wow fadeInUp"
+                  class="banner-des mb-35 wow fadeInUp inst-objetivos"
                   data-wow-delay="300ms"
                   data-wow-duration="3000ms"
                   v-if="Institucion.institucion_objetivos != null"
                   v-html="Institucion.institucion_objetivos"
                 ></h5>
-                <!--<form class="newsletter-form mt-40">
-                <input type="text" name="email" placeholder="search course..." />
-                <button type="submit"><i class="flaticon flaticon-magnifying-glass"></i></button>
-              </form>-->
+                  </div>                
+                </div>
               </div>
             </div>
             <div class="col-lg-6 hidden-md">
-              <div class="banner-img upea-rector hidden-sm">
+              <div class="banner-img hidden-sm img-principal-upea-rector">
                 <img
                   class="wow fadeInRight"
                   src="src/assets/images/rectorvicerector.png"
@@ -277,9 +279,9 @@
       class="mySwiper swiper-carreras"
       v-if="this.carrera_id == 0"
     >
-      <swiper-slide v-for="(carrera, id_carrera) in Carreras" :key="id_carrera">
+      <!--<swiper-slide v-for="(carrera, id_carrera) in this.Carreras" :key="id_carrera">
         <a href="#"><img :src="url_api + '/Carrera/Logos/' + carrera.logos[0].logos_carrera" alt="img" class="carrera_logos" /></a>
-      </swiper-slide>
+      </swiper-slide>-->
     </swiper>
     <!-- Blog Single Start -->
     <div class="sc-blog-single pt-120 pb-120 md-pt-80 md-pb-80">
@@ -1103,6 +1105,47 @@ export default {
         //optenemos todas la convocatoarias de la api
         const response = await Services.getConvocatoriasAll()
         this.Convocatorias = response.data
+        console.log("convocatorias de la upea")
+        console.log(this.Convocatorias)
+
+        //obtenemos los ultimos comunicados de convocatorias, comunicados y avisos
+        if (response != null) {
+          this.Convocatorias.forEach((conv) => {
+            if (
+              conv.tipo_conv_comun.tipo_conv_comun_titulo.toUpperCase() == 'CONVOCATORIAS' &&
+              conv.con_estado == '1'
+            ) {
+              this.latestConvocatoria = conv
+            } else {
+              if (
+                conv.tipo_conv_comun.tipo_conv_comun_titulo.toUpperCase() == 'COMUNICADOS' &&
+                conv.con_estado == '1'
+              ) {
+                this.latestComunicado = conv
+              } else {
+                if (
+                  conv.tipo_conv_comun.tipo_conv_comun_titulo.toUpperCase() == 'AVISOS' &&
+                  conv.con_estado == '1'
+                ) {
+                  this.latestAviso = conv
+                }
+              }
+            }
+          })
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
+
+    async getConvocatoriasAllUPEA() {
+      try {
+        //optenemos todas la convocatoarias de la api
+        const response = await Services.getConvocatoriasAllUPEA()
+        this.Convocatorias = response.data
+        console.log("convocatorias de la upea")
+        console.log(this.Convocatorias)
 
         //obtenemos los ultimos comunicados de convocatorias, comunicados y avisos
         if (response != null) {
@@ -1266,13 +1309,14 @@ export default {
     async createdComponent() {
       if(this.carrera_id == 0){
         await this.getCarreras()
-        this.isLoad()
-      }
-      if (this.carrera_id != 0) {
+        await this.getConvocatoriasAllUPEA()
+        this.isLoad()        
+      }            
+      if (this.carrera_id != 0) {        
         await this.getConvocatoriasAll()
         await this.getCursosAll()
         await this.getServiciosAll()
-        await this.getOfertasAll()
+        await this.getOfertasAll()        
         await this.getPublicaciones()
         await this.getGacetaAll()
         await this.getEventos()
@@ -1522,11 +1566,10 @@ export default {
   border-radius: 50%;
   z-index: -1;
 }
-
 .content-principal-img {
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: 93%;
+  height: 100%;
   object-fit: cover;
   object-position: right;
   position: absolute;
@@ -1535,8 +1578,70 @@ export default {
   z-index: -2;
   clip-path: polygon(0 0, 20% 0, 40% 100%, 0% 100%);
 }
-.content-principal-text {
-  background: rgba(0, 0, 0, 0.8);
+.content-principal-img::before{
+  position: absolute;
+  content:'';
+  top:0;
+  left:0;
+  width: 80%;
+  height: 100%;
+  background: url(../assets/images/fondobgprincipal.png);
+  clip-path: polygon(0 0, 20% 0, 40% 100%, 0% 100%);
+  background-size: container;
+}
+.content-card {
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s;
+  position: relative;
+  cursor: pointer;
+  margin-top: 30%;  
+}
+
+.content-card-inner {
+  width: inherit;
+  height: inherit;
+  background: rgba(255,255,255,.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 10%;
+}
+
+.content-card:hover {
+  transform: scale(1.04) rotate(1deg);
+}
+
+.content-circle {
+  width: 150px;
+  height: 150px;
+  background: var(--main-color);
+  border-radius: 50%;
+  position: absolute;
+  animation: move-up6 2s ease-in infinite alternate-reverse;
+}
+
+.content-circle:nth-child(1) {
+  top: -25px;
+  left: -25px;
+}
+
+.content-circle:nth-child(2) {
+  bottom: -25px;
+  right: -25px;
+  animation-name: move-down1;
+}
+
+@keyframes move-up6 {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes move-down1 {
+  to {
+    transform: translateY(10px);
+  }
 }
 
 /*===================== SWIPER CARRERAS =================== */

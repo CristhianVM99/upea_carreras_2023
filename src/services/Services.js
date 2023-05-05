@@ -29,6 +29,10 @@ function getCarreras(){
 function getConvocatoriasAll(){
     return Api().get('/api/convocatoriasAll/' + import.meta.env.VITE_VUE_APP_ID_CARRERA)
 }
+
+function getConvocatoriasAllUPEA(){
+  return Api().get('/api/convocatoriasAll/' + import.meta.env.VITE_VUE_APP_ID_INSTITUCION)
+}
 function getConvocatoria(id){
   return Api().get('/api/convocatorias/'+id)
 }
@@ -108,6 +112,7 @@ export default {
 
   getConvocatoriasAll,
   getConvocatoria,
+  getConvocatoriasAllUPEA,
 
   getCursosAll,
   getCurso,

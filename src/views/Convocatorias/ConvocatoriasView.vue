@@ -786,6 +786,18 @@ export default {
       }
     },
 
+    async getPublicacionesAllUPEA() {
+      try {
+        const response = await Services.getPublicacionesUpea()
+        this.Publicaciones = []
+        response.data.forEach((conv) => {
+          this.Publicaciones.push(conv)
+        })
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
     //optenemos todos los registros de las videos de la tipo this.tipo
     async getVideosAll() {
       try {
