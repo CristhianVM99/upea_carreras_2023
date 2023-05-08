@@ -82,11 +82,11 @@
                       >
                         <a href="#">Areas y Carreras </a>
                         <ul class="sub-menu">
-                          <li v-for="(area, id_area) in MenuAreasyCarreras" :key="id_area">
+                          <li v-for="(area, id_area) of this.MenuAreasyCarreras" :key="id_area">
                             <a href="#">{{ area.area.toLowerCase() }}</a>
                             <ul class="sub-menu">
-                              <li v-for="(carrera, id_carrera) in area.carreras" :key="id_carrera">                                
-                              <router-link >{{ carrera.carrera }}</router-link>
+                              <li v-for="(carrera, id_carrera) in area.carrera" :key="id_carrera">                                
+                              <a href="#">{{ carrera.carrera }}</a>
                               </li>
                             </ul>
                           </li>
@@ -367,11 +367,7 @@ export default {
 
   computed: {
     ...mapState(['url_api', 'MenuConvocatorias', 'MenuCursos', 'Institucion', 'Links','carrera_id','MenuAreasyCarreras'])
-  },
-  methods: {},
-  created() {
-
-  }
+  },  
 }
 </script>
 <style scoped>

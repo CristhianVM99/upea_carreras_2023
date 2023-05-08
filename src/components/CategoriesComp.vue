@@ -1,7 +1,7 @@
 <template>
   <!-- CONVOCATOARIAS VIEW -->
   <div class="widget-area" v-if="tipo_cat == 1">
-    <div class="search-widget mb-50">
+    <div class="search-widget mb-50" v-if="(this.carrera_id!=0)">
       <div class="search-wrap">
         <input type="search" placeholder="Buscar..." name="" class="search-input" />
         <button type="submit" value="Search">
@@ -36,7 +36,7 @@
             <span>{{ contarCur(cur.tipo_conv_curso_nombre) }}</span>
           </router-link>
         </li>
-        <li>
+        <li v-if="(this.carrera_id!=0)">
           <router-link
             :to="{
               name: 'servicios',
@@ -47,7 +47,7 @@
             >SERVICIOS <span>{{ Servicios.length }}</span>
           </router-link>
         </li>
-        <li>
+        <li v-if="(this.carrera_id!=0)">
           <router-link
             :to="{
               name: 'ofertasacademicas',
@@ -108,7 +108,7 @@
   <!-- CONVOCATORIAS DETALLE -->
   <div class="inner-column" v-if="tipo_cat == 2">
     <div class="search-widget mb-50">
-      <div class="search-wrap">
+      <div class="search-wrap" v-if="(this.carrera_id!=0)">
         <input type="search" placeholder="Searching..." name="s" class="search-input" value="" />
         <button type="submit" value="Search">
           <i class="flaticon flaticon-magnifying-glass"></i>
@@ -142,7 +142,7 @@
           <span class="value">{{ contarCur(cur.tipo_conv_curso_nombre) }}</span>
         </li>
 
-        <li class="quizzes-feature">
+        <li class="quizzes-feature" v-if="(this.carrera_id!=0)">
           <router-link 
           :to="{
               name: 'servicios',
@@ -154,7 +154,7 @@
           <span class="value">{{ Servicios.length }}</span>
         </li>      
 
-        <li class="students-feature">
+        <li class="students-feature" v-if="(this.carrera_id!=0)">
           <router-link
           :to="{
               name: 'ofertasacademicas',

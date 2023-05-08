@@ -619,7 +619,7 @@
           <div class="sub-title primary">Autoridades<span class="heading-border-line"></span></div>
           <h2 class="title mb-0">Nuestras Autoridades</h2>
         </div>
-        <swiper :slides-per-view="3" :space-between="50" class="autoridades-content">
+        <swiper :slides-per-view="2" :space-between="50" class="autoridades-content">
           <swiper-slide v-for="(autoridad, id_aut) of Institucion.autoridad" :key="id_aut">
             <div class="team-inner-item autoridades-target">
               <div class="team-wrap">
@@ -720,10 +720,46 @@
         </div>
       </div>
     </div>
+
+    <div
+      id="sc-about-instructor"
+      class="sc-about-instructor pt-80 pb-90 md-pt-50 md-pb-70 organigrama"
+      v-if="carrera_id == 0"
+    >
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-5 md-mb-45">
+            <div class="img-part position-relative organigrama-pdf">
+              <!--<img class="" src="../assets/images/about/instructor.png" alt="About Image" />-->
+              <a
+                :href="url_api + '/Gaceta/' + this.Gaceta.gaceta_documento"
+                target="_blank"
+              >
+              <vue-pdf-embed
+                          :source="url_api + '/Gaceta/' + this.Gaceta.gaceta_documento"
+                          :page="1"
+              />
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-7 pl-85 md-pl-15">
+            <div class="sec-title mb-20">
+              <div class="sub-title position-relative">
+                institucion <span class="heading-border-line"></span>
+              </div>
+              <h2 class="title mb-20 organigrama-text">Organigrama</h2>
+              <h3 class="des mb-40 organigrama-text">
+                Organización y estructura administrativa de la carrera.
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- About Instructor Section End -->
 
     <!-- Blog Section Start -->
-    <div id="sc-blog" class="sc-blog main-home pb-200 pt-110 md-pt-70 md-pb-160">
+    <div id="sc-blog" class="sc-blog main-home pb-200 pt-110 md-pt-70 md-pb-160" v-if="(this.carrera_id != 0)">
       <div class="container">
         <div class="sec-title mb-60 text-center md-mb-30">
           <div class="sub-title primary txt-reciente">lo más reciente</div>
@@ -862,6 +898,66 @@
     </div>
     <!-- Blog Section End -->
 
+    <!-- Blog Section Start -->
+    <div id="sc-blog" class="sc-blog main-home pb-200 pt-120 md-pt-70 md-pb-160" v-if="(this.carrera_id == 0)">
+      <div class="container">
+        <div class="sec-title mb-60 text-center md-mb-30">
+          <div class="sub-title primary txt-reciente">lo más reciente de</div>
+          <h2 class="title mb-0">Eventos</h2>
+        </div>
+        <swiper
+          :slides-per-view="3"
+          :space-between="50"          
+        >
+          <!-- CURSOS -->
+          <swiper-slide 
+          class="card-content"
+          v-for="(ev, id_ev) in Eventos"
+          :key="id_ev"
+          >
+            <div class="card col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+              <div class="card-image">
+                <img
+                  class="img_swiper"
+                  :src="url_api + '/Eventos/' + ev.evento_imagen"
+                  alt="img"
+                />
+                <span>Eventos</span>
+              </div>
+              <div class="card-description">
+                <h3 class="title">
+                  {{ ev.evento_titulo  }}
+                </h3>
+                <ul class="meta-part">
+                  <li class="event-date">
+                    <i class="fa fa-calendar-check-o"></i>{{ dmy(ev.evento_fecha) }}
+                  </li>
+                </ul>
+                <div class="bottom-part d-flex align-items-center justify-content-between">
+                  <div class="event-join">
+                    <router-link
+                    class="btn-conv"
+                            :to="{
+                                name: 'convocatoriadetalle',
+                                params: {
+                                  tipo: 'eventos',
+                                  idconv: ev.evento_id
+                                }
+                              }"
+                            >
+                              <span>Leer Mas</span>
+                            </router-link>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+          </swiper-slide>          
+        </swiper>
+      </div>
+    </div>
+    <!-- Blog Section End -->
+
     <!-- CTA Section Start -->
     <div
       class="sc-cta-section cta-bg-image5 cta pt-40 pb-30 right-bg-image2 md-pt-75 md-pb-80 position-relative arrow-animation-1"
@@ -903,7 +999,7 @@
     <!-- CTA Section End -->
 
     <!-- Blog Section Start -->
-    <div id="sc-blog" class="sc-blog main-home pb-200 pt-120 md-pt-70 md-pb-160">
+    <div id="sc-blog" class="sc-blog main-home pb-200 pt-120 md-pt-70 md-pb-160" v-if="(this.carrera_id != 0)">
       <div class="container">
         <div class="sec-title mb-60 text-center md-mb-30">
           <div class="sub-title primary txt-reciente">lo más reciente</div>
@@ -994,6 +1090,66 @@
       </div>
     </div>
     <!-- Blog Section End -->
+
+    <!-- Blog Section Start -->
+    <div id="sc-blog" class="sc-blog main-home pb-200 pt-120 md-pt-70 md-pb-160" v-if="(this.carrera_id == 0)">
+      <div class="container">
+        <div class="sec-title mb-60 text-center md-mb-30">
+          <div class="sub-title primary txt-reciente">lo más reciente de</div>
+          <h2 class="title mb-0">Publicaciones</h2>
+        </div>
+        <swiper
+          :slides-per-view="3"
+          :space-between="50"          
+        >
+          <!-- CURSOS -->
+          <swiper-slide 
+          class="card-content"
+          v-for="(pub, id_pub) in Publicaciones" 
+          :key="id_pub"
+          >
+            <div class="card col-lg-12 col-md-6 mb-30 loadcourse addcourse">
+              <div class="card-image">
+                <img
+                  class=""
+                  :src="url_api + '/Publicaciones/' + pub.publicaciones_imagen"
+                  alt="img"
+                />
+                <span>Publicaciones</span>
+              </div>
+              <div class="card-description">
+                <h3 class="title">
+                  {{ pub.publicaciones_titulo }}
+                </h3>
+                <ul class="meta-part">
+                  <li class="event-date">
+                    <i class="fa fa-calendar-check-o"></i>{{ dmy(pub.publicaciones_fecha) }}
+                  </li>
+                </ul>
+                <div class="bottom-part d-flex align-items-center justify-content-between">
+                  <div class="event-join">
+                    <router-link
+                    class="btn-conv"
+                            :to="{
+                                name: 'convocatoriadetalle',
+                                params: {
+                                  tipo: 'publicaciones',
+                                  idconv: pub.publicaciones_id
+                                }
+                              }"
+                            >
+                              <span>Leer Mas</span>
+                            </router-link>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+          </swiper-slide>          
+        </swiper>
+      </div>
+    </div>
+    <!-- Blog Section End -->
   </div>
   <!-- Map Start -->
 
@@ -1051,6 +1207,7 @@ export default {
       Ofertas: [],
       Publicaciones: [],
       Gacetas: [],
+      Gaceta:[],
       Eventos: [],
       Videos: [],
       ObjetivosCarrera: [],
@@ -1094,6 +1251,7 @@ export default {
       try {
         const response = await Services.getCarreras()
         this.Carreras = response.data
+        console.log("carreras")
         console.log(this.Carreras)
       } catch (e) {
         console.log(e)
@@ -1144,8 +1302,7 @@ export default {
         //optenemos todas la convocatoarias de la api
         const response = await Services.getConvocatoriasAllUPEA()
         this.Convocatorias = response.data
-        console.log("convocatorias de la upea")
-        console.log(this.Convocatorias)
+        
 
         //obtenemos los ultimos comunicados de convocatorias, comunicados y avisos
         if (response != null) {
@@ -1220,7 +1377,9 @@ export default {
     async getPublicaciones() {
       try {
         const response = await Services.getPublicaciones()
-        this.Publicaciones = response.data
+        response.data.forEach((conv) => {
+          this.Publicaciones.push(conv)
+        })        
       } catch (e) {
         console.log(e)
       }
@@ -1229,6 +1388,9 @@ export default {
       try {
         const response = await Services.getGacetaAll()
         this.Gacetas = response.data
+        this.Gacetas.forEach(gaceta =>{
+          this.Gaceta = gaceta
+        })        
       } catch (e) {
         console.log(e)
       }
@@ -1236,7 +1398,9 @@ export default {
     async getEventos() {
       try {
         const response = await Services.getEventos()
-        this.Eventos = response.data
+        response.data.forEach((conv) => {
+          this.Eventos.push(conv)
+        })
       } catch (e) {
         console.log(e)
       }
@@ -1309,17 +1473,17 @@ export default {
     async createdComponent() {
       if(this.carrera_id == 0){
         await this.getCarreras()
-        await this.getConvocatoriasAllUPEA()
-        this.isLoad()        
+        await this.getConvocatoriasAllUPEA()         
+        await this.getGacetaAll()
+        await this.getPublicaciones() 
+        await this.getEventos()
+        this.isLoad()       
       }            
       if (this.carrera_id != 0) {        
         await this.getConvocatoriasAll()
         await this.getCursosAll()
         await this.getServiciosAll()
-        await this.getOfertasAll()        
-        await this.getPublicaciones()
-        await this.getGacetaAll()
-        await this.getEventos()
+        await this.getOfertasAll()                               
         await this.getVideos()
         this.isLoad()
       }      

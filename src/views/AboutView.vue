@@ -74,6 +74,7 @@
     <!-- Counter Section Start -->
     <div
       class="sc-counter style2-about pt-120 pb-115 md-pt-80 md-pb-50 counter-bg1 position-relative arrow-animation-1"
+      v-if="this.carrera_id != 0"
     >
       <div class="container">
         <div class="row couter-area">
@@ -206,7 +207,7 @@ export default {
     LoadingPage
   },
   computed: {
-    ...mapState(['Institucion', 'url_api'])
+    ...mapState(['Institucion', 'url_api','carrera_id'])
   },
   methods: {
     async getConvocatoriasAll() {
@@ -249,12 +250,18 @@ export default {
       var load = document.getElementById("loading");
       load.style.display = "none";
     },
+    async getNull(){
+      await console.log("todo bien");
+    },  
     //metodo que ejecuta los demas
     async createdComponent(){
-      await this.getConvocatoriasAll()
-      await this.getCursosAll()
-      await this.getServiciosAll()
-      await this.getOfertasAll()
+      await this.getNull()
+      if(this.carrera_id!=0){
+        await this.getConvocatoriasAll()
+        await this.getCursosAll()
+        await this.getServiciosAll()
+        await this.getOfertasAll()
+      }
       this.isLoad()
     }
   },

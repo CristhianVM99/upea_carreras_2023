@@ -165,10 +165,20 @@ export default {
     LoadingPage,
   },
   methods: {
+    async getNull(){
+      await console.log("todo bien");
+    },  
     isLoad(){
       var load = document.getElementById("loading");
       load.style.display = "none";
     },
+    async createdComponent(){
+      await this.getNull()
+      this.isLoad()
+    }
+  },
+  created(){
+    this.createdComponent()
   },
   mounted() {
   },

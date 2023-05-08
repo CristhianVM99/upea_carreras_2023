@@ -49,6 +49,7 @@ export default {
         //optencion de menu de areas y carreras.
         const response = await Services.getMenuAreasyCarreras()        
         this.$store.state.MenuAreasyCarreras = response.data
+        console.log("menu  de carreras")
         console.log(this.MenuAreasyCarreras)
       } catch (e) {
         console.log(e)
